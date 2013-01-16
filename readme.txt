@@ -1,4 +1,4 @@
-=== Spider Event Calendar ===  
+=== WordPress Event Calendar ===  
 Contributors: webdorado  
 Donate link: http://web-dorado.com/products/wordpress-calendar.html  
 Tags: Calendar,event, event calendar, event manager 
@@ -16,7 +16,7 @@ Spider Event Calendar is a highly configurable product which allows you to have 
 [Demo](http://wpdemo.web-dorado.com/spider-calendar/)  
 [Demo Admin](http://wpdemo.web-dorado.com/wp-admin/admin.php?page=SpiderCalendar)  
 [User Manual](http://web-dorado.com/spider-calendar-wordpress-guide-step-1.html)  
-[Frequently Asked Questions](http://web-dorado.com/forum/spider-calendar/5-spider-calendar-faq.html)  
+[Frequently Asked Questions](http://web-dorado.com/forum/spider-calendar-wordpress/1033-spider-calendar-faq.html)  
 
 
 Spider Event Calendar is a highly configurable plugin which allows you to have multiple organized events in a calendar. This plugin is one of the best WordPress Calendar available in WordPress Directory.  If you have problem with organizing your WordPress Calendar events and displaying them in a calendar format, then Spider Wordpress Calendar Plugin is the best solution. Maybe you just want to have a quick look at your calendar to remind yourself about the future appointments? It will be great if calendar extension will be able to show all events, display them in a widget as a beautiful and customizable calendar on your website. Spider WordPress Calendar is an extraordinary user friendly calendar. 
@@ -141,7 +141,7 @@ There are 11 default calendar and widget themes. You can use one of the calendar
 3.2.4 The first day of the week. Choose whether to start the calendar from Monday or from Sunday.   
 3.2.5 Main Border Color. Choose the color of the calendar main border.   
 3.2.6 Main Border Radius. Define the radius of the calendar main border.   
-3.2.7 Main Border Width. Define the width of the [WordPress Calendar plugin](http://wordpress.org/extend/plugins/spider-calendar/) main border.   
+3.2.7 Main Border Width. Define the width of the [WordPress Calendar plugin](http://wordpress.org/extend/plugins/spider-event-calendar/) main border.   
     
     
 3.3 The Header Parameters of the Spider Event Calendar    
@@ -163,17 +163,17 @@ There are 11 default calendar and widget themes. You can use one of the calendar
 3.3.16 Arrow size. Define the size of the arrow on the calendar.    
 3.3.17 Weekdays color. Choose the color for the calendar weekdays.    
 3.3.18 Weekdays background color. Choose the background color for the calendar weekdays.    
-3.3.19 Sunday background color. Choose Sunday background color for the [WordPress Calendar](http://wordpress.org/extend/plugins/spider-calendar/).    
+3.3.19 Sunday background color. Choose Sunday background color for the [WordPress Event Calendar](http://wordpress.org/extend/plugins/spider-event-calendar/).   
 3.3.20 Weekdays font size.Define the font size of the calendar weekdays.    
      
      
-3.4 The Body Parameters of the Spider [WordPress Calendar](http://web-dorado.com/products/wordpress-calendar.html).    
+3.4 The Body Parameters of the Spider [WordPress Event Calendar](http://wordpress.org/extend/plugins/spider-event-calendar/).    
 3.4.1 Background color. Choose the background color for the calendar.    
 3.4.2 Cell height. Define the height of the calendar cell.    
 3.4.3 Other months days text color. Choose the text color of the other months for the calendar.   
 3.4.4  Other months days background color. Choose the background color for the other months days on the calendar.   
 3.4.5 Cell text color without events. Choose the text color for the calendar cell without events.    
-3.4.6 Cell text color with [WordPress Calendar events](http://wordpress.org/extend/plugins/spider-calendar/). Choose the text color for the calendar cell with events.    
+3.4.6 Cell text color with [WordPress Calendar events](http://wordpress.org/extend/plugins/spider-event-calendar/). Choose the text color for the calendar cell with events.    
 3.4.7 Cell background color with events. Choose the background color for the calendar cell with events.    
 3.4.8 Event title color. Choose the color for the  calendarevent title.    
 3.4.9 Current day cell border color. Choose the cell border color for the calendar current day.    
