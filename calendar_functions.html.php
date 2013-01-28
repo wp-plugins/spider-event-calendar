@@ -257,7 +257,13 @@ var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.
         }
 }
 }
-        </script>    
+        </script>  
+        <style>
+        .calendar .button
+		{
+		display:table-cell !important;
+		}
+        </style>  
             <table width="95%">
             <tr>
         	<td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
@@ -307,7 +313,18 @@ This section allows you to create calendars. You can add unlimited number of cal
 	<label for="time_format1">Yes</label>
 							</td>
 						</tr>
-						
+												<tr>
+							<td class="key">
+								<label for="name">
+									Start with:
+								</label>
+							</td>
+							<td>											
+                          <div class="alignleft actions"><input style="width: 90px;" class="inputbox" type="text" name="start_month" id="startdate" size="10" maxlength="10" value=""> 
+<input type="reset" class="button" value="..." onclick="return showCalendar('startdate','%Y-%m-%d');"> 
+    </div>
+							</td>
+						</tr>
 						<tr>
 							<td class="key">
 								<label for="published">
@@ -371,6 +388,12 @@ var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.
 }
 }
         </script>    
+           <style>
+        .calendar .button
+		{
+		display:table-cell !important;
+		}
+        </style>  
             <table width="95%">
                     <tr>
         <td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
@@ -420,7 +443,18 @@ This section allows you to create calendars. You can add unlimited number of cal
 	<label for="time_format1">Yes</label>
 							</td>
 						</tr>
-						
+						<tr>
+							<td class="key">
+								<label for="name">
+									Start with:
+								</label>
+							</td>
+							<td>											
+                          <div class="alignleft actions"><input style="width: 90px;" class="inputbox" type="text" name="start_month" id="startdate" size="10" maxlength="10" value="<?php echo $row->start_month ?>"> 
+<input type="reset" class="button" value="..." onclick="return showCalendar('startdate','%Y-%m-%d');"> 
+    </div>
+							</td>
+						</tr>
 						<tr>
 							<td class="key">
 								<label for="published">
@@ -1235,7 +1269,8 @@ onclick="return showCalendar('date_end','%Y-%m-%d');" />
 	
 	
 function html_edit_spider_event($row,$calendar_id,$id,$cal_name){
-
+	global $wpdb;
+$calendar=$wpdb->get_row("SELECT * FROM ".$wpdb->prefix."spidercalendar_calendar");
 ?>
           <style>
     .calendar .button
@@ -1627,8 +1662,8 @@ $row ->date_end="";
 									<input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right" onkeypress="return check12hour('selhour_from')" value="<?php echo $from[0]; ?>" title="from"  onblur="add_0('selhour_from')"/> <b>:</b>
                                     <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right" onkeypress="return checkminute('selminute_from')" value="<?php echo substr($from[1],0,2); ?>"  title="from" onblur="add_0('selminute_from')"/> 
                                     <select id="select_from" name="select_from" >
-									<option <?php if(substr($from[1],3,2)=="AM") echo 'selected="selected"'; ?>>AM</option>
-									<option <?php if(substr($from[1],3,2)=="PM") echo 'selected="selected"'; ?>>PM</option>
+									<option <?php if(substr($from[1],2,2)=="AM") echo 'selected="selected"'; ?>>AM</option>
+									<option <?php if(substr($from[1],2,2)=="PM") echo 'selected="selected"'; ?>>PM</option>
 									
 									</select>
 								   
@@ -1638,8 +1673,8 @@ $row ->date_end="";
                                     <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right" onkeypress="return checkminute('selminute_to')" value="<?php echo substr($to[1],0,2); ?>"  title="to" onblur="add_0('selminute_to')"/>
                                      
 									 <select id="select_to" name="select_to">
-									<option <?php if(substr($to[1],3,2)=="AM") echo 'selected="selected"'; ?>>AM</option>
-									<option <?php if(substr($to[1],3,2)=="PM") echo 'selected="selected"';  ?>>PM</option>
+									<option <?php if(substr($to[1],2,2)=="AM") echo 'selected="selected"'; ?>>AM</option>
+									<option <?php if(substr($to[1],2,2)=="PM") echo 'selected="selected"';  ?>>PM</option>
 									
 									</select>
 									

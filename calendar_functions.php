@@ -97,6 +97,7 @@ function save_spider_calendar(){
 		'id'	=> NULL,
         'title'     => $_POST["title"],
         'gid'    => $_POST["user_type"],
+		'start_month' => $_POST["start_month"],
         'time_format'  =>$_POST["time_format"],
         'allow_publish'   => $_POST["allow_publish"],
 		'published'=>$_POST["published"],
@@ -105,7 +106,8 @@ function save_spider_calendar(){
 				'%d',
 				'%s',
 				'%s',
-				'%d',
+				'%s',
+				'%s',
 				'%s',	
 				'%d'					
 				)
@@ -199,6 +201,7 @@ $save_or_no= $wpdb->update($wpdb->prefix.'spidercalendar_calendar', array(
 	   'title'     => $_POST["title"],
         'gid'    => $_POST["user_type"],
         'time_format'  =>$_POST["time_format"],
+		'start_month' => $_POST["start_month"],
         'allow_publish'   => $_POST["allow_publish"],
 		'published'=>$_POST["published"],
                 ),
@@ -206,7 +209,8 @@ $save_or_no= $wpdb->update($wpdb->prefix.'spidercalendar_calendar', array(
 				array(
 				'%s',
 				'%s',
-				'%d',
+				'%s',
+				'%s',
 				'%s',	
 				'%d'					
 				)

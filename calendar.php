@@ -3,7 +3,7 @@
 /*
 Plugin Name: Spider Event Calendar
 Plugin URI: http://web-dorado.com/products/wordpress-calendar.html
-Version: 1.0
+Version: 1.1
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -247,10 +247,21 @@ jQuery(document).ready(function($) {
     }
 }; 
 
-<?php }?>
+<?php }
+global $wpdb;
+$calendarr=$wpdb->get_row($wpdb->prepare("SELECT * FROM ".$wpdb->prefix."spidercalendar_calendar WHERE id=%d",$id));
+if($calendarr->start_month){
+	$date=substr($calendarr->start_month, 0, 7);
+}
+else
+{
+	$date=date("Y").'-'.date("m");
+}
+
+?>
 //SqueezeBox.presets.onClose=function (){document.getElementById('sbox-content').innerHTML="";};
 
-showbigcalendar( 'bigcalendar<?php echo $many_sp_calendar ?>','<?php  echo plugins_url("front_end/bigcalendar.php",__FILE__).'?theme_id='.$theme.'&calendar='.$id.'&date='.date("Y").'-'.date("m").'&many_sp_calendar='.$many_sp_calendar; echo '&cur_page_url='.urlencode(current_page_url_sc()); if($wiidget) echo '&widget='.$wiidget;?>')
+showbigcalendar( 'bigcalendar<?php echo $many_sp_calendar ?>','<?php  echo plugins_url("front_end/bigcalendar.php",__FILE__).'?theme_id='.$theme.'&calendar='.$id.'&date='.$date.'&many_sp_calendar='.$many_sp_calendar; echo '&cur_page_url='.urlencode(current_page_url_sc()); if($wiidget) echo '&widget='.$wiidget;?>')
 
 
 
@@ -1035,11 +1046,12 @@ function SpiderCalendar_activate()
 
 
 $spider_calendar_table="CREATE TABLE IF NOT EXISTS `".$wpdb->prefix."spidercalendar_calendar` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+ `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `gid` varchar(255) NOT NULL,
   `time_format` tinyint(1) NOT NULL,
   `allow_publish` varchar(255) NOT NULL,
+  `start_month` varchar(255) NOT NULL,
   `published` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
@@ -1221,6 +1233,35 @@ $wpdb->query($spider_widget_theme_rows);
 register_activation_hook( __FILE__, 'SpiderCalendar_activate' );
 ///////////////////// update plugin
 
+
+if(get_bloginfo ('version')>=3.1){
+
+add_action('plugins_loaded', 'spider_calendar_chech_update');
+
+}
+else{
+	spider_calendar_chech_update();
+}
+
+
+function spider_calendar_chech_update() {
+	global $wpdb;
+	
+   if(get_site_option('spider_calendar_cureent_version')!='1.1') {
+	   
+	 	$sql="ALTER TABLE ".$wpdb->prefix."spidercalendar_calendar  ADD start_month varchar(255);";	  
+	  	$wpdb->query($sql);
+		
+if(!get_site_option('spider_calendar_cureent_version',false)){
+	if($wpdb->get_var("SHOW TABLES LIKE '".$wpdb->prefix."spidercalendar_widget_theme'") == $wpdb->prefix."spidercalendar_widget_theme")
+add_option('spider_calendar_cureent_version','1.1');
+}
+else{
+	if($wpdb->get_var("SHOW TABLES LIKE '".$wpdb->prefix."spidercalendar_widget_theme'") == $wpdb->prefix."spidercalendar_widget_theme")
+update_option('spider_calendar_cureent_version','1.1');
+}
+    }
+}
 
 
 
