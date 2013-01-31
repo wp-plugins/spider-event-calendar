@@ -3,7 +3,7 @@
 /*
 Plugin Name: Spider Event Calendar
 Plugin URI: http://web-dorado.com/products/wordpress-calendar.html
-Version: 1.1
+Version: 1.2
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -72,76 +72,10 @@ global $many_sp_calendar;
 <script>
 var tb_pathToImage = "<?php echo plugins_url('images/loadingAnimation.gif',__FILE__) ?>";
 var tb_closeImage = "<?php echo plugins_url('images/tb-close.png',__FILE__) ?>"
-
-<?php if( $many_sp_calendar==1 && isset($_GET['frst_theme_id']) && isset($_GET['frst_calendar_id']) && isset($_GET['frst_ev_ids']) && isset($_GET['frst_eventID']) && isset($_GET['frst_date']) && isset($_GET['frst_day']) && isset($_GET['frst_theme_id']) && isset($_GET['frst_theme_id'])){ ?>
-
-	var thickDims, tbWidth, tbHeight;
-
-jQuery(document).ready(function($) {
-
-        thickDims = function() {
-                var tbWindow = $('#TB_window'), H = $(window).height(), W = $(window).width(), w, h;
-
-                w = (tbWidth && tbWidth < W - 90) ? tbWidth : W - 200;
-                h = (tbHeight && tbHeight < H - 60) ? tbHeight : H - 200;
-
-                if ( tbWindow.size() ) {
-                        tbWindow.width(w).height(h);
-                        $('#TB_iframeContent').width(w).height(h - 27);
-                        tbWindow.css({'margin-left': '-' + parseInt((w / 2),10) + 'px'});
-                        if ( typeof document.body.style.maxWidth != 'undefined' )
-                                tbWindow.css({'top':(H-h)/2,'margin-top':'0'});
-                }
-        };
-
-        thickDims();
-        $(window).resize( function() { thickDims() } );
-
-        $('a.thickbox-preview111').click( function() {
-
-                tb_click.call(this);
-
-                var alink = $(this).parents('.available-theme').find('.activatelink'), link = '', href = $(this).attr('href'), url, text;
-
-                if ( tbWidth = href.match(/&tbWidth=[0-9]+/) )
-                        tbWidth = parseInt(tbWidth[0].replace(/[^0-9]+/g, ''), 10);
-                else
-                        tbWidth = $(window).width() - 90;
-
-                if ( tbHeight = href.match(/&tbHeight=[0-9]+/) )
-                        tbHeight = parseInt(tbHeight[0].replace(/[^0-9]+/g, ''), 10);
-                else
-                        tbHeight = $(window).height() - 60;
-
-                if ( alink.length ) {
-                        url = alink.attr('href') || '';
-                        text = alink.attr('title') || '';
-                        link = '&nbsp; <a href="' + url + '" target="_top" class="tb-theme-preview-link">' + text + '</a>';
-                } else {
-                        text = $(this).attr('title') || '';
-                        link = '&nbsp; <span class="tb-theme-preview-link">' + text + '</span>';
-                }
-
-                $('#TB_title').css({'background-color':'#222','color':'#dfdfdf'});
-                $('#TB_closeAjaxWindow').css({'float':'left'});
-                $('#TB_ajaxWindowTitle').css({'float':'right'}).html(link);
-
-                $('#TB_iframeContent').width('100%');
-                thickDims();
-
-                return false;
-        } );
-setTimeout('frst_cal_my_id()',200);
-});
-<?php }?>
-
-
-
-
-<?php if($many_sp_calendar==1) {?>
+if(typeof showbigcalendar != 'function')
+ {
 function showbigcalendar(id,calendarlink)
 {
-
 var xmlHttp;
 	try{	
 		xmlHttp=new XMLHttpRequest();// Firefox, Opera 8.0+, Safari
@@ -160,29 +94,22 @@ var xmlHttp;
 			}
 		}
 	}
-
 xmlHttp.onreadystatechange=function(){
 	if(xmlHttp.readyState==4){
 		document.getElementById(id).innerHTML=xmlHttp.responseText;
 	}
 }
-
 xmlHttp.open("GET",calendarlink,false);
 xmlHttp.send();
 //alert(document.getElementById('days').parentNode.lastChild.childNodes[6].innerHTML);
 //document.getElementById('days').parentNode.lastChild.childNodes[6].style.borderBottomRightRadius='<?php echo $border_radius ?>px';
-//document.getElementById('days').parentNode.lastChild.childNodes[0].style.borderBottomLeftRadius='<?php echo $border_radius ?>px';	
-		
+//document.getElementById('days').parentNode.lastChild.childNodes[0].style.borderBottomLeftRadius='<?php echo $border_radius ?>px';			
 	var thickDims, tbWidth, tbHeight;
-
 jQuery(document).ready(function($) {
-
         thickDims = function() {
                 var tbWindow = $('#TB_window'), H = $(window).height(), W = $(window).width(), w, h;
-
                 w = (tbWidth && tbWidth < W - 90) ? tbWidth : W - 200;
                 h = (tbHeight && tbHeight < H - 60) ? tbHeight : H - 200;
-
                 if ( tbWindow.size() ) {
                         tbWindow.width(w).height(h);
                         $('#TB_iframeContent').width(w).height(h - 27);
@@ -191,26 +118,19 @@ jQuery(document).ready(function($) {
                                 tbWindow.css({'top':(H-h)/2,'margin-top':'0'});
                 }
         };
-
         thickDims();
         $(window).resize( function() { thickDims() } );
-
         $('a.thickbox-preview'+id).click( function() {
-
                 tb_click.call(this);
-
                 var alink = $(this).parents('.available-theme').find('.activatelink'), link = '', href = $(this).attr('href'), url, text;
-
                 if ( tbWidth = href.match(/&tbWidth=[0-9]+/) )
                         tbWidth = parseInt(tbWidth[0].replace(/[^0-9]+/g, ''), 10);
                 else
                         tbWidth = $(window).width() - 90;
-
                 if ( tbHeight = href.match(/&tbHeight=[0-9]+/) )
                         tbHeight = parseInt(tbHeight[0].replace(/[^0-9]+/g, ''), 10);
                 else
                         tbHeight = $(window).height() - 60;
-
                 if ( alink.length ) {
                         url = alink.attr('href') || '';
                         text = alink.attr('title') || '';
@@ -218,36 +138,24 @@ jQuery(document).ready(function($) {
                 } else {
                         text = $(this).attr('title') || '';
                         link = '&nbsp; <span class="tb-theme-preview-link">' + text + '</span>';
-                }
-
+						            }
                 $('#TB_title').css({'background-color':'#222','color':'#dfdfdf'});
                 $('#TB_closeAjaxWindow').css({'float':'left'});
                 $('#TB_ajaxWindowTitle').css({'float':'right'}).html(link);
-
                 $('#TB_iframeContent').width('100%');
                 thickDims();
-
                 return false;
         } );
-
-  
-
-});
-  
-};
-
-
-
+});  
+}
+ }
  document.onkeydown = function(evt) {
     evt = evt || window.event;
-    if (evt.keyCode == 27) {
-     
-		document.getElementById('sbox-window').close();
-		
+    if (evt.keyCode == 27) {     
+		document.getElementById('sbox-window').close();	
     }
 }; 
-
-<?php }
+<?php
 global $wpdb;
 $calendarr=$wpdb->get_row($wpdb->prepare("SELECT * FROM ".$wpdb->prefix."spidercalendar_calendar WHERE id=%d",$id));
 if($calendarr->start_month){
@@ -260,29 +168,14 @@ else
 
 ?>
 //SqueezeBox.presets.onClose=function (){document.getElementById('sbox-content').innerHTML="";};
-
 showbigcalendar( 'bigcalendar<?php echo $many_sp_calendar ?>','<?php  echo plugins_url("front_end/bigcalendar.php",__FILE__).'?theme_id='.$theme.'&calendar='.$id.'&date='.$date.'&many_sp_calendar='.$many_sp_calendar; echo '&cur_page_url='.urlencode(current_page_url_sc()); if($wiidget) echo '&widget='.$wiidget;?>')
-
-
-
 //window.onload=document.getElementById('show_cal_frst').click();
-
 </script>
-<?php if( $many_sp_calendar==1 && isset($_GET['frst_theme_id']) && isset($_GET['frst_calendar_id']) && isset($_GET['frst_ev_ids']) && isset($_GET['frst_eventID']) && isset($_GET['frst_date']) && isset($_GET['frst_day']) && isset($_GET['frst_theme_id']) && isset($_GET['frst_theme_id'])){ ?> 
-<a class="thickbox-preview111"  style="display:none" id='show_cal_frst' href="<?php  echo plugins_url('front_end/spidercalendarbig.php',__FILE__).'?theme_id='.str_replace("\\'",'',$_GET['frst_theme_id']).'&calendar_id=' .str_replace("\\'",'',$_GET['frst_calendar_id']).'&ev_ids=' .str_replace("\\'",'',$_GET['frst_ev_ids']).'&eventID=' .str_replace("\\'",'',$_GET['frst_eventID']).'&date=' .str_replace("\\'",'',$_GET['frst_date']).'&day=' .str_replace("\\'",'',$_GET['frst_day']).'&cur_page_url='.$_GET['cur_page_url'].'&TB_iframe=1&tbWidth=600&tbHeight=500'?>"></a>
-		
-		
-		<script>
-        function frst_cal_my_id(){			
-         document.getElementById('show_cal_frst').click();
-		}
-        </script>
-		
-		<?php
-}
+<?php
         $many_sp_calendar++;
 		$calendar=ob_get_contents();
 		ob_end_clean();
+
 		return $calendar;
 }
 
