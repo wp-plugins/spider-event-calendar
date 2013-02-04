@@ -138,11 +138,11 @@ function getCheckedValue(radioObj) {
     <form method="post" onkeypress="doNothing()" action="admin.php?page=SpiderCalendar" id="admin_form" name="admin_form">
 	<table cellspacing="10" width="96.5%" id="calendar_table">
         <tr>
-        <td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
-This section allows you to create calendars. You can add unlimited number of calendars. <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>
+        <td width="100%" style="font-size:14px; font-weight:bold"><a href="http://webdorado.org/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
+This section allows you to create calendars. You can add unlimited number of calendars. <a href="http://webdorado.org/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>
             <td colspan="7" align="right" style="font-size:16px;">
-              <a href="http://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
-            <img src="<?php echo plugins_url('images/header.png',__FILE__) ?>" border="0" alt="http://web-dorado.com/files/fromSpiderCalendarWP.php" width="215"><br>
+              <a href="http://webdorado.org/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
+            <img src="<?php echo plugins_url('images/header.png',__FILE__) ?>" border="0" alt="http://webdorado.org/files/fromSpiderCalendarWP.php" width="215"><br>
             Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
             </a>
  			 </td>
@@ -266,11 +266,11 @@ var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.
         </style>  
             <table width="95%">
             <tr>
-        	<td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
-This section allows you to create calendars. You can add unlimited number of calendars. <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>
+        	<td width="100%" style="font-size:14px; font-weight:bold"><a href="http://webdorado.org/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
+This section allows you to create calendars. You can add unlimited number of calendars. <a href="http://webdorado.org/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>
             <td colspan="7" align="right" style="font-size:16px;">
-              <a href="http://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
-            <img src="<?php echo plugins_url('images/header.png',__FILE__) ?>" border="0" alt="http://web-dorado.com/files/fromSpiderCalendarWP.php" width="215"><br>
+              <a href="http://webdorado.org/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
+            <img src="<?php echo plugins_url('images/header.png',__FILE__) ?>" border="0" alt="http://webdorado.org/files/fromSpiderCalendarWP.php" width="215"><br>
             Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
             </a>
  			 </td>
@@ -396,11 +396,11 @@ var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.
         </style>  
             <table width="95%">
                     <tr>
-        <td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
-This section allows you to create calendars. You can add unlimited number of calendars. <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>
+        <td width="100%" style="font-size:14px; font-weight:bold"><a href="http://webdorado.org/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
+This section allows you to create calendars. You can add unlimited number of calendars. <a href="http://webdorado.org/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>
             <td colspan="7" align="right" style="font-size:16px;">
-              <a href="http://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
-            <img src="<?php echo plugins_url('images/header.png',__FILE__) ?>" border="0" alt="http://web-dorado.com/files/fromSpiderCalendarWP.php" width="215"><br>
+              <a href="http://webdorado.org/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
+            <img src="<?php echo plugins_url('images/header.png',__FILE__) ?>" border="0" alt="http://webdorado.org/files/fromSpiderCalendarWP.php" width="215"><br>
             Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
             </a>
  			 </td>
@@ -583,12 +583,12 @@ var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.
     <form method="post" onkeypress="doNothing()" action="admin.php?page=SpiderCalendar&task=show_manage_event&calendar_id=<?php echo  $calendar_id; ?>" id="admin_form" name="admin_form">
 	<table cellspacing="10" width="95%">
             <tr>
-        <td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
+        <td width="100%" style="font-size:14px; font-weight:bold"><a href="http://webdorado.org/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
 This section allows you to create/edit the events of a particular calendar.<br /> You can add
-unlimited number of events for each calendar. <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>
+unlimited number of events for each calendar. <a href="http://webdorado.org/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>
             <td colspan="7" align="right" style="font-size:16px;">
-              <a href="http://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
-            <img src="<?php echo plugins_url('images/header.png',__FILE__) ?>" border="0" alt="http://web-dorado.com/files/fromSpiderCalendarWP.php" width="215"><br>
+              <a href="http://webdorado.org/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
+            <img src="<?php echo plugins_url('images/header.png',__FILE__) ?>" border="0" alt="http://webdorado.org/files/fromSpiderCalendarWP.php" width="215"><br>
             Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
             </a>
  			 </td>
@@ -997,12 +997,12 @@ function radio_month()
 }        </style>   
 <table width="95%"><tbody>
             <tr>
-        <td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
+        <td width="100%" style="font-size:14px; font-weight:bold"><a href="http://webdorado.org/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
 This section allows you to create/edit the events of a particular calendar.<br /> You can add
-unlimited number of events for each calendar. <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>
+unlimited number of events for each calendar. <a href="http://webdorado.org/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>
             <td colspan="7" align="right" style="font-size:16px;">
-              <a href="http://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
-            <img src="<?php echo plugins_url('images/header.png',__FILE__) ?>" border="0" alt="http://web-dorado.com/files/fromSpiderCalendarWP.php" width="215"><br>
+              <a href="http://webdorado.org/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
+            <img src="<?php echo plugins_url('images/header.png',__FILE__) ?>" border="0" alt="http://webdorado.org/files/fromSpiderCalendarWP.php" width="215"><br>
             Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
             </a>
  			 </td>
@@ -1569,12 +1569,12 @@ function input_value(id)
 }        </style> 
 <table width="95%">
             <tr>
-        <td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
+        <td width="100%" style="font-size:14px; font-weight:bold"><a href="http://webdorado.org/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
 This section allows you to create/edit the events of a particular calendar.<br /> You can add
-unlimited number of events for each calendar. <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>
+unlimited number of events for each calendar. <a href="http://webdorado.org/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>
             <td colspan="7" align="right" style="font-size:16px;">
-              <a href="http://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
-            <img src="<?php echo plugins_url('images/header.png',__FILE__) ?>" border="0" alt="http://web-dorado.com/files/fromSpiderCalendarWP.php" width="215"><br>
+              <a href="http://webdorado.org/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
+            <img src="<?php echo plugins_url('images/header.png',__FILE__) ?>" border="0" alt="http://webdorado.org/files/fromSpiderCalendarWP.php" width="215"><br>
             Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
             </a>
  			 </td>

@@ -2,9 +2,9 @@
 
 /*
 Plugin Name: Spider Event Calendar
-Plugin URI: http://web-dorado.com/products/wordpress-calendar.html
-Version: 1.2
-Author: http://web-dorado.com/
+Plugin URI: http://webdorado.org/products/wordpress-calendar.html
+Version: 1.2.1
+Author: http://webdorado.org/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
 
@@ -370,7 +370,7 @@ limitation is the use of the themes. If you want to use one of the 11 standard t
 satisfies the needs of your web site, you are required to purchase a license.<br /> Purchasing a license will add 11
 standard themes and give possibility to edit the themes of the Spider Event Calendar. </p>
 <br /><br />
-<a href="http://web-dorado.com/files/fromSpiderCalendarWP.php" class="button-primary" target="_blank">Purchase a License</a>
+<a href="http://webdorado.org/files/fromSpiderCalendarWP.php" class="button-primary" target="_blank">Purchase a License</a>
 <br /><br /><br />
 <p>After the purchasing the commercial version follow this steps:</p>
 <ol>

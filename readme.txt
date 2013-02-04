@@ -1,6 +1,6 @@
 === WordPress Event Calendar ===  
 Contributors: webdorado  
-Donate link: http://web-dorado.com/products/wordpress-calendar.html  
+Donate link: http://webdorado.org/products/wordpress-calendar.html  
 Tags: Calendar,event, event calendar, event manager 
 Requires at least: 3.0  
 Tested up to: 3.5  
@@ -12,11 +12,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. 
 == Description ==    
   
-###[WordPress Calendar](http://web-dorado.com/products/wordpress-calendar.html)  
-[Demo](http://wpdemo.web-dorado.com/spider-calendar/)  
-[Demo Admin](http://wpdemo.web-dorado.com/wp-admin/admin.php?page=SpiderCalendar)  
-[User Manual](http://web-dorado.com/spider-calendar-wordpress-guide-step-1.html)  
-[Frequently Asked Questions](http://web-dorado.com/forum/spider-calendar-wordpress/1033-spider-calendar-faq.html)  
+###[WordPress Calendar](http://webdorado.org/products/wordpress-calendar.html)  
+[Demo](http://wpdemo.webdorado.org/spider-calendar/)  
+[Demo Admin](http://wpdemo.webdorado.org/wp-admin/admin.php?page=SpiderCalendar)  
+[User Manual](http://webdorado.org/spider-calendar-wordpress-guide-step-1.html)  
+[Frequently Asked Questions](http://webdorado.org/forum/spider-calendar-wordpress/1033-spider-calendar-faq.html)  
 
 
 Spider Event Calendar is a highly configurable plugin which allows you to have multiple organized events in a calendar. This plugin is one of the best WordPress Calendar available in WordPress Directory.  If you have problem with organizing your WordPress Calendar events and displaying them in a calendar format, then Spider Wordpress Calendar Plugin is the best solution. Maybe you just want to have a quick look at your calendar to remind yourself about the future appointments? It will be great if calendar extension will be able to show all events, display them in a widget as a beautiful and customizable calendar on your website. Spider WordPress Calendar is an extraordinary user friendly calendar. 
@@ -24,7 +24,7 @@ Spider Event Calendar is a highly configurable plugin which allows you to have m
 = Features of Spider Event Calendar: =    
   
 * You can add unlimited number of calendars and unlimited number of events for each calendar.  
-* [WordPress Calendar](http://web-dorado.com/products/wordpress-calendar.html) can be used as a plugin and as a widget as well.  
+* [WordPress Calendar](http://webdorado.org/products/wordpress-calendar.html) can be used as a plugin and as a widget as well.  
 * With a simple click on the date on the Calendar you will see the events and their descriptions recorded for that day.  
 * Spider Event Calendar supports events that last more than one day.  
 * Possibility to set the month and the year initially displayed on the calendar (option to display any particular month instead of the current month on the calendar).  
@@ -33,7 +33,7 @@ Spider Event Calendar is a highly configurable plugin which allows you to have m
 * Possibility to choose month display format in the Spider Event Calendar.  
 * Spider Event Calendar allows you to change the colors of the calendar and fit it to the colors of your website (*commercial version*).  
 * Spider Event Calendar has 11 standard calendars themes included in the package for the plugin and the widget (*commercial version*).  
-* You can set the height and width of the Spider Event Calendar in the widget and in the [WordPress calendar plugin](http://web-dorado.com/products/wordpress-calendar.html) as well (*commercial version*).  
+* You can set the height and width of the Spider Event Calendar in the widget and in the [WordPress calendar plugin](http://webdorado.org/products/wordpress-calendar.html) as well (*commercial version*).  
 * You can change calendar date color, font size and font family in the popup (*commercial version*).  
 * Possibility to change arrow color and background color in the popup in the Spider Event Calendar (*commercial version*).  
 * Possibility to change popup background color in the Spider Event Calendar (*commercial version*).  
@@ -115,7 +115,7 @@ Vietnamese (vi)
 3.	Click **Choose file** (**Browse**) and select the Spider Event Calendar zip file.    
 4.	Click **Upload&Install** button for uploading and installing the calendar.    
 5.	Click **Activate Plugin** button for activating the calendar plugin.    
-If the installation of the calendar succeeded you will see the message in the picture. If any problem occurs, during the installation of the calendar please contact us info@web-dorado.com.    
+If the installation of the calendar succeeded you will see the message in the picture. If any problem occurs, during the installation of the calendar please contact us info@webdorado.org.    
 
 == Step 2:Spider Event Calendar  ==        
     
