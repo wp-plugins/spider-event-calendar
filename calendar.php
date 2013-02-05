@@ -3,7 +3,7 @@
 /*
 Plugin Name: Spider Event Calendar
 Plugin URI: http://web-dorado.com/products/wordpress-calendar.html
-Version: 1.2.1
+Version: 1.2.2
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -31,14 +31,19 @@ function current_page_url_sc() {
 	$pageURL = get_permalink();
 	return $pageURL;
 }
-
+add_action('wp_head','resolv_js_prob');
+function resolv_js_prob() {
+?>
+<script>
+var xx_cal_xx='&';
+</script>
+<?php
+}
 
 
 
 
 function spider_calendar_scripts() {
-  
-				 
 	wp_enqueue_script("jquery");
 	wp_enqueue_script('thickbox',null,array('jquery'));
     wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');
@@ -60,10 +65,11 @@ function Spider_calendar_big($atts) {
 }
 add_shortcode('Spider_Calendar', 'Spider_calendar_big');
 
+add_action('wp_head','resolv_js_prob');
 
 
 function Spider_calendar_big_front_end($id,$theme,$wiidget=0)
-{ 
+{
 ob_start();
 global $many_sp_calendar;
 	?>
@@ -103,13 +109,13 @@ xmlHttp.open("GET",calendarlink,false);
 xmlHttp.send();
 //alert(document.getElementById('days').parentNode.lastChild.childNodes[6].innerHTML);
 //document.getElementById('days').parentNode.lastChild.childNodes[6].style.borderBottomRightRadius='<?php echo $border_radius ?>px';
-//document.getElementById('days').parentNode.lastChild.childNodes[0].style.borderBottomLeftRadius='<?php echo $border_radius ?>px';			
+//document.getElementById('days').parentNode.lastChild.childNodes[0].style.borderBottomLeftRadius='<?php echo $border_radius ?>px';		
 	var thickDims, tbWidth, tbHeight;
 jQuery(document).ready(function($) {
         thickDims = function() {
                 var tbWindow = $('#TB_window'), H = $(window).height(), W = $(window).width(), w, h;
-                w = (tbWidth && tbWidth < W - 90) ? tbWidth : W - 200;
-                h = (tbHeight && tbHeight < H - 60) ? tbHeight : H - 200;
+				if(tbWidth){if(tbWidth < (W - 90)) w=tbWidth; else  w =  W - 200;} else w = W - 200;
+				if(tbHeight){if(tbHeight < (H - 90)) h=tbHeight; else  h =  H - 200;} else h = H - 200;  
                 if ( tbWindow.size() ) {
                         tbWindow.width(w).height(h);
                         $('#TB_iframeContent').width(w).height(h - 27);
@@ -118,16 +124,18 @@ jQuery(document).ready(function($) {
                                 tbWindow.css({'top':(H-h)/2,'margin-top':'0'});
                 }
         };
-        thickDims();
+        thickDims();		
         $(window).resize( function() { thickDims() } );
         $('a.thickbox-preview'+id).click( function() {
                 tb_click.call(this);
                 var alink = $(this).parents('.available-theme').find('.activatelink'), link = '', href = $(this).attr('href'), url, text;
-                if ( tbWidth = href.match(/&tbWidth=[0-9]+/) )
+                var reg_with=new RegExp(xx_cal_xx+"tbWidth=[0-9]+");
+				if ( tbWidth = href.match(reg_with) )
                         tbWidth = parseInt(tbWidth[0].replace(/[^0-9]+/g, ''), 10);
                 else
                         tbWidth = $(window).width() - 90;
-                if ( tbHeight = href.match(/&tbHeight=[0-9]+/) )
+				var reg_heght=new RegExp(xx_cal_xx+"tbHeight=[0-9]+");
+                if ( tbHeight = href.match(reg_heght) )
                         tbHeight = parseInt(tbHeight[0].replace(/[^0-9]+/g, ''), 10);
                 else
                         tbHeight = $(window).height() - 60;
@@ -138,7 +146,7 @@ jQuery(document).ready(function($) {
                 } else {
                         text = $(this).attr('title') || '';
                         link = '&nbsp; <span class="tb-theme-preview-link">' + text + '</span>';
-						            }
+                }
                 $('#TB_title').css({'background-color':'#222','color':'#dfdfdf'});
                 $('#TB_closeAjaxWindow').css({'float':'left'});
                 $('#TB_ajaxWindowTitle').css({'float':'right'}).html(link);
@@ -152,7 +160,7 @@ jQuery(document).ready(function($) {
  document.onkeydown = function(evt) {
     evt = evt || window.event;
     if (evt.keyCode == 27) {     
-		document.getElementById('sbox-window').close();	
+		document.getElementById('sbox-window').close();		
     }
 }; 
 <?php
@@ -168,7 +176,7 @@ else
 
 ?>
 //SqueezeBox.presets.onClose=function (){document.getElementById('sbox-content').innerHTML="";};
-showbigcalendar( 'bigcalendar<?php echo $many_sp_calendar ?>','<?php  echo plugins_url("front_end/bigcalendar.php",__FILE__).'?theme_id='.$theme.'&calendar='.$id.'&date='.$date.'&many_sp_calendar='.$many_sp_calendar; echo '&cur_page_url='.urlencode(current_page_url_sc()); if($wiidget) echo '&widget='.$wiidget;?>')
+showbigcalendar( 'bigcalendar<?php echo $many_sp_calendar ?>','<?php  echo plugins_url("front_end/bigcalendar.php",__FILE__).'?theme_id='.$theme.'\'+xx_cal_xx+\'calendar='.$id.'\'+xx_cal_xx+\'date='.$date.'\'+xx_cal_xx+\'many_sp_calendar='.$many_sp_calendar; echo '\'+xx_cal_xx+\'cur_page_url='.urlencode(current_page_url_sc()); if($wiidget) echo '\'+xx_cal_xx+\'widget='.$wiidget;?>')
 //window.onload=document.getElementById('show_cal_frst').click();
 </script>
 <?php
