@@ -644,7 +644,7 @@ unlimited number of events for each calendar. <a href="http://web-dorado.com/spi
  <tr>
          <td><?php echo $rows[$i]->id; ?></td>
          <td><a href="admin.php?page=SpiderCalendar&calendar_id=<?php echo  $calendar_id; ?>&task=edit_event&id=<?php echo $rows[$i]->id; ?>"><?php echo $rows[$i]->title; ?></a></td>
-         <td><?php echo $rows[$i]->date ?></td>
+         <td><?php if($rows[$i]->date_end!='0000-00-00' ) {echo $rows[$i]->date.' - '.$rows[$i]->date_end; }else echo $rows[$i]->date;  ?></td>
          <td><?php echo $rows[$i]->time ?></td>
         
          <td><a <?php if(!$rows[$i]->published) echo 'style="color:#C00"'; ?> href="admin.php?page=SpiderCalendar&calendar_id=<?php echo  $calendar_id; ?>&task=published_event&id=<?php echo $rows[$i]->id; ?>"><?php if($rows[$i]->published) echo "Yes"; else echo "No"; ?></a></td>

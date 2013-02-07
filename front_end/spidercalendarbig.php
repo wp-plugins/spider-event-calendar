@@ -38,7 +38,7 @@ else
 	$widget=0;
 }
 
- $theme_id =$_GET['theme_id'];
+ $theme_id =1;
  if($widget)
 $theme 	=$wpdb->get_row($wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'spidercalendar_widget_theme WHERE id=%d',$theme_id));
 else

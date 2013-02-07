@@ -42,7 +42,7 @@ if(!is_numeric($many_sp_calendar)){
        $many_sp_calendar=1;
 }
 require_once("functions_bigcalendar.php");
-$theme_id =$_GET['theme_id'];
+$theme_id =1;
 if($widget){
 	$theme 	=$wpdb->get_row( $wpdb->prepare( 'SELECT * FROM '.$wpdb->prefix.'spidercalendar_widget_theme WHERE id=%d',$theme_id));
 }
@@ -360,7 +360,10 @@ font-size: <?php echo $weekdays_font_size ?>px !important;
 {
 
 }
-
+#bigcalendar<?php echo $many_sp_calendar ?> .calyear_table a
+{
+	vertical-align:top !important;
+}
 #bigcalendar<?php echo $many_sp_calendar ?> .calborder_day
 {
 border: solid  <?php echo $border_day ?> <?php if($widget) echo $all_days_border_width; else echo '1' ?>px !important;
@@ -469,7 +472,7 @@ $cell_width=$cal_width/7;
 
                         <?php //YEAR TABLE ?>
 
-                   <table cellpadding="0" cellspacing="0" border="0" align="center" class="calyear_table"  style="margin:0 !important; padding:0 !important; text-align:center !important; width:<?php echo $cal_width ?>px !important; height:<?php echo $top_height ?>px !important;">
+                   <table cellpadding="0" cellspacing="0" border="0" align="center" class="calyear_table"  style="margin:0 !important; padding:0 !important; text-align:center !important; width:100% !important; height:<?php echo $top_height ?>px !important;">
 
                             <tr>
 								<td style="width:100% !important;vertical-align:bottom !important;padding-bottom:0px !important;">
@@ -721,7 +724,11 @@ $dayevent='';
 		{ 
 		
 		if($widget){
+			if($k!=1)
 			echo  '<td bgcolor="'.$bg_color_selected.'"  class="cala_day" style="padding:0 !important; margin:0 !important;line-height:15px !important;"><div class="calborder_day" style=" width:'.$cell_width.'px !important; margin:0 !important; padding:0 !important;"><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.plugins_url("spidercalendarbig_seemore.php",__FILE__).'?theme_id='.$theme_id.'&ev_ids='.$ev_ids_inline.'&calendar_id='.$calendar_id.'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&cur_page_url='.$path_sp_cal.'&widget=1&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'"><b style="color:'.$evented_color.'">'.$i.'</b></a></td></div>';
+			else
+			echo  '<td bgcolor="'.$bg_color_selected.'"  class="cala_day" style="padding:0 !important; margin:0 !important;line-height:15px !important;"><div class="calborder_day" style=" width:'.$cell_width.'px !important; margin:0 !important; padding:0 !important;"><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.plugins_url("spidercalendarbig.php",__FILE__).'?theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[0].'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'"><b style="color:'.$evented_color.'">'.$i.'</b></a></td></div>';
+			
 		}
 		else{
 		
@@ -750,7 +757,10 @@ $dayevent='';
 	
 			if( in_array ($i,$array_days)){
 			if($widget){
+				if($k!=1)
 				echo  '<td class="cala_day" style="background-color:'.$evented_color_bg.' !important;padding:0 !important; margin:0 !important;line-height:15px !important; border: px solid '.$border_day.' !important;"><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.plugins_url("spidercalendarbig_seemore.php",__FILE__).'?theme_id='.$theme_id.'&ev_ids='.$ev_ids_inline.'&calendar_id='.$calendar_id.'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&cur_page_url='.$path_sp_cal.'&widget=1&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'&Itemid=1" '.$dayevent.'><b style="color:'.$evented_color.' !important;font-size:'.$other_days_font_size.'px">'.$i.'</b></a></td>';
+			 	else
+				echo  '<td class="cala_day" style="background-color:'.$evented_color_bg.' !important;padding:0 !important; margin:0 !important;line-height:15px !important; border: px solid '.$border_day.' !important;"><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.plugins_url("spidercalendarbig.php",__FILE__).'?theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[0].'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" '.$dayevent.'><b style="color:'.$evented_color.' !important;font-size:'.$other_days_font_size.'px">'.$i.'</b></a></td>';
 			}
 			else
 			{
@@ -784,7 +794,10 @@ $dayevent='';
 	
 			if( in_array ($i,$array_days)){
 			if($widget){
+				if($k!=1)
 				echo  '<td class="cala_day" style="background-color:'.$evented_color_bg.' !important;padding:0 !important; margin:0 !important;line-height:15px !important;"><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.plugins_url("spidercalendarbig_seemore.php",__FILE__).'?theme_id='.$theme_id.'&ev_ids='.$ev_ids_inline.'&calendar_id='.$calendar_id.'&date='.$year.'-'.add_0(Month_num($month)).'-'.$i.'&Itemid='.$Itemid.'&cur_page_url='.$path_sp_cal.'&widget=1&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" '.$dayevent.'><b style="color:'.$evented_color.' !important;font-size:'.$other_days_font_size.'px !important;">'.$i.'</b></a></td>';
+				else
+				echo  '<td class="cala_day" style="background-color:'.$evented_color_bg.' !important;padding:0 !important; margin:0 !important;line-height:15px !important;"><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.plugins_url("spidercalendarbig.php",__FILE__).'?theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[0].'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" '.$dayevent.'><b style="color:'.$evented_color.' !important;font-size:'.$other_days_font_size.'px !important;">'.$i.'</b></a></td>';
 			}
 			else
 			{
@@ -820,7 +833,10 @@ $dayevent='';
 		{ 
 			if($widget)
 			{
+				if($k!=1)
 				echo  '<td bgcolor="'.$bg_color_selected.'" class="cala_day" style="padding:0 !important; margin:0 !important;line-height:15px !important;"><div class="calborder_day" style=" width:'.$cell_width.'px !important; margin:0 !important; padding:0 !important;"><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.plugins_url("spidercalendarbig_seemore.php",__FILE__).'?theme_id='.$theme_id.'&ev_ids='.$ev_ids_inline.'&calendar_id='.$calendar_id.'&date='.$year.'-'.add_0(Month_num($month)).'-'.$i.'&Itemid='.$Itemid.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" '.$dayevent.'><b style="color:'.$evented_color.' !important;font-size:'.$other_days_font_size.'px">'.$i.'</b></a></div></td>';
+				else
+				echo  '<td bgcolor="'.$bg_color_selected.'" class="cala_day" style="padding:0 !important; margin:0 !important;line-height:15px !important;"><div class="calborder_day" style=" width:'.$cell_width.'px !important; margin:0 !important; padding:0 !important;"><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.plugins_url("spidercalendarbig.php",__FILE__).'?theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[0].'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&Itemid='.$Itemid.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" '.$dayevent.'><b style="color:'.$evented_color.' !important;font-size:'.$other_days_font_size.'px">'.$i.'</b></a></div></td>';
 			}
 			else
 			{
@@ -851,7 +867,10 @@ $dayevent='';
 				if( in_array ($i,$array_days)){
 					if($widget)
 					{
+						if($k!=1)
 						echo  '<td class="cala_day" style="background-color:'.$evented_color_bg.' !important;padding:0 !important; margin:0 !important;line-height:15px !important; border: 3px solid '.$current_day_border_color.' !important;"><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.plugins_url("spidercalendarbig_seemore.php",__FILE__).'?theme_id='.$theme_id.'&ev_ids='.$ev_ids_inline.'&calendar_id='.$calendar_id.'&date='.$year.'-'.add_0(Month_num($month)).'-'.$i.'&Itemid='.$Itemid.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" '.$dayevent.'><b style="color:'.$evented_color.' !important;font-size:'.$other_days_font_size.'px">'.$i.'</b></a></td>';
+						else
+						echo  '<td class="cala_day" style="background-color:'.$evented_color_bg.' !important;padding:0 !important; margin:0 !important;line-height:15px !important; border: 3px solid '.$current_day_border_color.' !important;"><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.plugins_url("spidercalendarbig.php",__FILE__).'?theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[0].'&date='.$year.'-'.add_0(Month_num($month)).'-'.$i.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" '.$dayevent.'><b style="color:'.$evented_color.' !important;font-size:'.$other_days_font_size.'px">'.$i.'</b></a></td>';
 					}
 					else
 					{
@@ -885,7 +904,10 @@ $dayevent='';
 			if( in_array ($i,$array_days)){
 				if($widget)
 					{
+						if($k!=1)
 						echo  '<td class="cala_day" style="background-color:'.$evented_color_bg.' !important;padding:0 !important; margin:0 !important;line-height:15px !important;"><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.plugins_url("spidercalendarbig_seemore.php",__FILE__).'?theme_id='.$theme_id.'&ev_ids='.$ev_ids_inline.'&calendar_id='.$calendar_id.'&date='.$year.'-'.add_0(Month_num($month)).'-'.$i.'&Itemid='.$Itemid.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" '.$dayevent.'><b style="color:'.$evented_color.' !important;font-size:'.$other_days_font_size.'px !important;">'.$i.'</b></a></b>';
+						else
+						echo  '<td class="cala_day" style="background-color:'.$evented_color_bg.' !important;padding:0 !important; margin:0 !important;line-height:15px !important;"><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.plugins_url("spidercalendarbig.php",__FILE__).'?theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[0].'&date='.$year.'-'.add_0(Month_num($month)).'-'.$i.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" '.$dayevent.'><b style="color:'.$evented_color.' !important;font-size:'.$other_days_font_size.'px !important;">'.$i.'</b></a></b>';
 					}
 					else
 					{
