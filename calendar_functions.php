@@ -95,7 +95,7 @@ function save_spider_calendar(){
 	
 	$save_or_no= $wpdb->insert($wpdb->prefix.'spidercalendar_calendar', array(
 		'id'	=> NULL,
-        'title'     => $_POST["title"],
+        'title'     => stripslashes($_POST["title"]),
         'gid'    => $_POST["user_type"],
 		'start_month' => $_POST["start_month"],
         'time_format'  =>$_POST["time_format"],
@@ -198,7 +198,7 @@ if(!$id)
 global $wpdb;
 $save_or_no= $wpdb->update($wpdb->prefix.'spidercalendar_calendar', array(
 	 
-	   'title'     => $_POST["title"],
+	   'title'     => stripslashes($_POST["title"]),
         'gid'    => $_POST["user_type"],
         'time_format'  =>$_POST["time_format"],
 		'start_month' => $_POST["start_month"],
@@ -421,7 +421,7 @@ function save_spider_event($calendar_id){
 	
 	$save_or_no= $wpdb->insert($wpdb->prefix.'spidercalendar_event', array(
 		'id'				=> NULL,
-        'title'    			=> $_POST["title"],
+        'title'    			=> stripslashes($_POST["title"]),
 		'time'	   		    => $time,
 		'calendar'    		=> $calendar_id,
 		'date'     			=> $_POST["date"],
@@ -514,7 +514,7 @@ function apply_spider_event($calendar_id,$id){
 
 	
 $wpdb->update($wpdb->prefix.'spidercalendar_event', array(
-        'title'    			=> $_POST["title"],
+        'title'    			=> stripslashes($_POST["title"]),
 		'time'	   		    => $time,
 		'calendar'    		=> $calendar_id,
 		'date'     			=> $_POST["date"],
