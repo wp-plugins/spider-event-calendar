@@ -22,7 +22,7 @@
 			$id=$instance['calendar'];
 			$theme=$instance['theme'];
 	// Before widget //
-	
+	echo $before_widget;
 
 			
 	// Title of widget //
