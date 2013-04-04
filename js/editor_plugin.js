@@ -5,7 +5,7 @@
 			
 			ed.addCommand('mcesp_calendar_mce', function() {
 				ed.windowManager.open({
-					file : url + '/../window.php',
+					file : location.protocol + '//' + location.host + ajaxurl+ '?action=window',
 					width : 400 + ed.getLang('sp_calendar_mce.delta_width', 0),
 					height : 220 + ed.getLang('sp_calendar_mce.delta_height', 0),
 					inline : 1

@@ -1797,7 +1797,7 @@ if($row->repeat_method=='yearly') echo 'Year(s) in';
  <select name="monthly_list" id="monthly_list" class="inputbox">
 <option <?php echo selectted($row->monthly_list,'1'); ?> value="1">First</option>
 <option <?php echo selectted($row->monthly_list,'8'); ?> value="8">Second</option>
-<option <?php echo selectted($row->monthly_list,'25'); ?> value="15">Third</option>
+<option <?php echo selectted($row->monthly_list,'15'); ?> value="15">Third</option>
 <option <?php echo selectted($row->monthly_list,'22'); ?> value="22">Fourth</option>
 <option <?php echo selectted($row->monthly_list,'last'); ?> value="last">Last</option>
 </select>

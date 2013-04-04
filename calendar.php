@@ -3,7 +3,7 @@
 /*
 Plugin Name: Spider Event Calendar
 Plugin URI: http://web-dorado.com/products/wordpress-calendar.html
-Version: 1.2.5
+Version: 1.2.6
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -176,7 +176,7 @@ else
 
 ?>
 //SqueezeBox.presets.onClose=function (){document.getElementById('sbox-content').innerHTML="";};
-showbigcalendar( 'bigcalendar<?php echo $many_sp_calendar ?>','<?php  echo plugins_url("front_end/bigcalendar.php",__FILE__).'?theme_id='.$theme.'\'+xx_cal_xx+\'calendar='.$id.'\'+xx_cal_xx+\'date='.$date.'\'+xx_cal_xx+\'many_sp_calendar='.$many_sp_calendar; echo '\'+xx_cal_xx+\'cur_page_url='.urlencode(current_page_url_sc()); if($wiidget) echo '\'+xx_cal_xx+\'widget='.$wiidget;?>')
+showbigcalendar( 'bigcalendar<?php echo $many_sp_calendar ?>','<?php  echo admin_url('admin-ajax.php?action=spiderbigcalendar').'&theme_id='.$theme.'\'+xx_cal_xx+\'calendar='.$id.'\'+xx_cal_xx+\'date='.$date.'\'+xx_cal_xx+\'many_sp_calendar='.$many_sp_calendar; echo '\'+xx_cal_xx+\'cur_page_url='.urlencode(current_page_url_sc()); if($wiidget) echo '\'+xx_cal_xx+\'widget='.$wiidget;?>')
 //window.onload=document.getElementById('show_cal_frst').click();
 </script>
 <?php
@@ -473,6 +473,22 @@ function spide_ShowTinyMCE() {
 // add menu
 add_action('admin_menu', 'sp_calendar_options_panel');
 
+
+require_once("functions_for_xml_and_ajax.php");
+
+
+//////////////////////////////////////////////////////////////////////////actions for popup and xmls
+add_action('wp_ajax_spiderseemore'		, 'seemore');
+add_action('wp_ajax_spiderbigcalendar'		, 'big_calendarr');
+add_action('wp_ajax_spiderbigcalendarrr'		, 'spiderbigcalendar');
+add_action('wp_ajax_window'		, 'php_window');
+
+
+////////////////////////////ajax for users
+add_action('wp_ajax_nopriv_spiderseemore'		, 'seemore');
+add_action('wp_ajax_nopriv_spiderbigcalendar'		, 'big_calendarr');
+add_action('wp_ajax_nopriv_spiderbigcalendarrr'		, 'spiderbigcalendar');
+add_action('wp_ajax_nopriv_window'		, 'php_window');
 
 // add style head
 function add_button_style_calendar()
