@@ -1,7 +1,7 @@
 === WordPress Event Calendar ===  
 Contributors: webdorado  
 Donate link: http://web-dorado.com/products/wordpress-calendar.html  
-Tags: Calendar,event, event calendar, event manager 
+Tags: Calendar, event, event calendar, event manager, events calendar,
 Requires at least: 3.0  
 Tested up to: 3.5  
 Stable tag: trunk  

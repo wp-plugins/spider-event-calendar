@@ -279,6 +279,37 @@ $path_sp_cal=$_GET['cur_page_url'];
 		}
 		
 
+		function php_GetNextDate($beginDate,$repeat)
+				{
+				
+				   //explode the date by "-" and storing to array
+				   $date_parts1=explode("-", $beginDate);
+				   
+				   //gregoriantojd() Converts a Gregorian date to Julian Day Count
+				   $start_date=gregoriantojd($date_parts1[1], $date_parts1[2], $date_parts1[0]);
+				  
+				   return jdtogregorian($start_date+$repeat);
+				   
+				 
+				}	
+	
+	function php_daysDifference($beginDate,$endDate)
+				{
+				
+				   //explode the date by "-" and storing to array
+				   $date_parts1=explode("-", $beginDate);
+				   $date_parts2=explode("-", $endDate);
+				   
+				   //gregoriantojd() Converts a Gregorian date to Julian Day Count
+				   $start_date=gregoriantojd($date_parts1[1], $date_parts1[2], $date_parts1[0]);
+				   
+				   $end_date=gregoriantojd($date_parts2[1], $date_parts2[2], $date_parts2[0]);
+				  
+				   return $end_date-$start_date;
+				   
+				 
+				}	
+
 		
 		$show_time=1;		
 		if(!$_GET['calendar'])
@@ -339,6 +370,7 @@ $path_sp_cal=$_GET['cur_page_url'];
 				$date_days[]=$date_day;
 			}
 			
+	
 			
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////               Repeat   Daily             /////////////////////////////////////////////////////////////////////////////////////////////
@@ -346,9 +378,7 @@ $path_sp_cal=$_GET['cur_page_url'];
 			
 			if($rows[$i-1]->repeat_method=='daily')
 			{
-				
-				
-				 
+			
 					$t = php_daysDifference($rows[$i-1]->date,$rows[$i-1]->date_end);
 					
 					for($k=1;$k<=$t/$repeat;$k++){
@@ -1783,35 +1813,6 @@ function php_Month_num($month_name)
 	}
 	
 	
-	function php_GetNextDate($beginDate,$repeat)
-				{
-				
-				   //explode the date by "-" and storing to array
-				   $date_parts1=explode("-", $beginDate);
-				   
-				   //gregoriantojd() Converts a Gregorian date to Julian Day Count
-				   $start_date=gregoriantojd($date_parts1[1], $date_parts1[2], $date_parts1[0]);
-				  
-				   return jdtogregorian($start_date+$repeat);
-				   
-				 
-				}				
-function php_daysDifference($beginDate,$endDate)
-				{
-				
-				   //explode the date by "-" and storing to array
-				   $date_parts1=explode("-", $beginDate);
-				   $date_parts2=explode("-", $endDate);
-				   
-				   //gregoriantojd() Converts a Gregorian date to Julian Day Count
-				   $start_date=gregoriantojd($date_parts1[1], $date_parts1[2], $date_parts1[0]);
-				   
-				   $end_date=gregoriantojd($date_parts2[1], $date_parts2[2], $date_parts2[0]);
-				  
-				   return $end_date-$start_date;
-				   
-				 
-				}			
 	die();			
 	}
 
