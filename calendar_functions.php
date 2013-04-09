@@ -417,7 +417,10 @@ function save_spider_event($calendar_id){
 	
 	
 	
-
+if(!$_POST["date_end"]){
+	$date_end = $_POST["date"];
+}
+else $date_end = $_POST["date_end"];
 	
 	$save_or_no= $wpdb->insert($wpdb->prefix.'spidercalendar_event', array(
 		'id'				=> NULL,
@@ -429,13 +432,14 @@ function save_spider_event($calendar_id){
 		'published'    	 	=> $_POST["published"],
 		'repeat'     		=> $_POST["repeat"],
 		'week'     			=> $_POST["week"],
-		'date_end'     		=> $_POST["date_end"],
+		'date_end'     		=> $date_end,
 		'month'     		=> $_POST["month"],
 		'monthly_list'    	=> $_POST["monthly_list"],
 		'month_week'     	=> $_POST["month_week"],
 		'month_type'     	=> $_POST["month_type"],
 		'year_month'     	=> $_POST["year_month"],
-		'repeat_method'     	=> $_POST["repeat_method"]
+		'repeat_method'     	=> $_POST["repeat_method"],
+		'userID'			=> ''
 
                 ),
 				array(
@@ -454,6 +458,7 @@ function save_spider_event($calendar_id){
 				'%s',
 				'%s',
 				'%s',	
+				'%s',
 				'%s'				
 				)
                 );
