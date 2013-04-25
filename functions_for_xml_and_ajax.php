@@ -1533,7 +1533,7 @@ $dayevent='';
 		for($j=0;$j<$k; $j++)	
 			{
 			if($r<$number_of_shown_evetns)
-			echo '<a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="background:none !important;color:'.$event_title_color.' !important; " href="'.admin_url('admin-ajax.php?action=spiderseemore').'&theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[$j].'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" ><b>'.$ev_title[$j].'</b></a>';
+			echo '<a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="background:none !important;color:'.$event_title_color.' !important; " href="'.admin_url('admin-ajax.php?action=spiderbigcalendarrr').'&day='.$i.'&theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[$j].'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" ><b>'.$ev_title[$j].'</b></a>';
 			else
 			{
 			echo '<br><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.admin_url('admin-ajax.php?action=spiderseemore').'&theme_id='.$theme_id.'&ev_ids='.$ev_ids_inline.'&calendar_id='.$calendar_id.'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'"> <b>'.__('See more...','sp_calendar').'</b></a>';
@@ -1568,7 +1568,7 @@ $dayevent='';
 	for($j=0;$j<$k; $j++)	
 			{
 			if($r<$number_of_shown_evetns)
-				echo '<a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="background:none !important;color:'.$event_title_color.' !important; " href="'.admin_url('admin-ajax.php?action=spiderseemore').'&theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[$j].'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" ><b>'.$ev_title[$j].'</b></a>';
+				echo '<a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="background:none !important;color:'.$event_title_color.' !important; " href="'.admin_url('admin-ajax.php?action=spiderbigcalendarrr').'&day='.$i.'&theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[$j].'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" ><b>'.$ev_title[$j].'</b></a>';
 			else
 			{
 				echo '<br><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.admin_url('admin-ajax.php?action=spiderseemore').'&theme_id='.$theme_id.'&ev_ids='.$ev_ids_inline.'&calendar_id='.$calendar_id.'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'&Itemid=1" '.$dayevent.'> <b>'.__('See more...','sp_calendar').'</b></a>';
@@ -1603,7 +1603,7 @@ $dayevent='';
 			for($j=0;$j<$k; $j++)
 			{
 			if($r<$number_of_shown_evetns)
-			echo '<a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="background:none !important;color:'.$event_title_color.' !important; " href="'.admin_url('admin-ajax.php?action=spiderseemore').'&theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[$j].'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" ><b>'.$ev_title[$j].'</b></a>';
+			echo '<a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="background:none !important;color:'.$event_title_color.' !important; " href="'.admin_url('admin-ajax.php?action=spiderbigcalendarrr').'&day='.$i.'&theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[$j].'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" ><b>'.$ev_title[$j].'</b></a>';
 			else
 			{
 			echo '<br><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.admin_url('admin-ajax.php?action=spiderseemore').'&theme_id='.$theme_id.'&ev_ids='.$ev_ids_inline.'&calendar_id='.$calendar_id.'&date='.$year.'-'.add_0(Month_num($month)).'-'.$i.'&Itemid='.$Itemid.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" '.$dayevent.'> <b>'.__('See more...','sp_calendar').'</b></a>';
@@ -1642,7 +1642,7 @@ $dayevent='';
 			for($j=0;$j<$k; $j++)
 			{
 			if($r<$number_of_shown_evetns)
-			echo '<a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="background:none !important;color:'.$event_title_color.' !important; " href="'.admin_url('admin-ajax.php?action=spiderseemore').'&theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[$j].'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&Itemid='.$Itemid.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" ><b>'.$ev_title[$j].'</b></a>';
+			echo '<a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="background:none !important;color:'.$event_title_color.' !important; " href="'.admin_url('admin-ajax.php?action=spiderbigcalendarrr').'&day='.$i.'&theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[$j].'&date='.$year.'-'.add_0(Month_num($month).'-'.$i).'&Itemid='.$Itemid.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" ><b>'.$ev_title[$j].'</b></a>';
 			else
 			{
 			echo '<br><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.admin_url('admin-ajax.php?action=spiderseemore').'&theme_id='.$theme_id.'&ev_ids='.$ev_ids_inline.'&calendar_id='.$calendar_id.'&date='.$year.'-'.add_0(Month_num($month)).'-'.$i.'&Itemid='.$Itemid.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" '.$dayevent.'> <b>'.__('See more...','sp_calendar').'</b></a>';
@@ -1679,7 +1679,7 @@ $dayevent='';
 			for($j=0;$j<$k; $j++)
 			{
 			if($r<$number_of_shown_evetns)
-			echo '<a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="background:none !important;color:'.$event_title_color.' !important; " href="'.admin_url('admin-ajax.php?action=spiderseemore').'&theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[$j].'&date='.$year.'-'.add_0(Month_num($month)).'-'.$i.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" ><b>'.$ev_title[$j].'</b></a>';
+			echo '<a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="background:none !important;color:'.$event_title_color.' !important; " href="'.admin_url('admin-ajax.php?action=spiderbigcalendarrr').'&day='.$i.'&theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[$j].'&date='.$year.'-'.add_0(Month_num($month)).'-'.$i.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" ><b>'.$ev_title[$j].'</b></a>';
 			else{
 			echo '<br><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.admin_url('admin-ajax.php?action=spiderseemore').'&theme_id='.$theme_id.'&ev_ids='.$ev_ids_inline.'&calendar_id='.$calendar_id.'&date='.$year.'-'.add_0(Month_num($month)).'-'.$i.'&Itemid='.$Itemid.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" '.$dayevent.'> <b>'.__('See more...','sp_calendar').'</b></a>';
 			break;
@@ -1715,7 +1715,7 @@ $dayevent='';
 		for($j=0;$j<$k; $j++)
 			{
 			if($r<$number_of_shown_evetns)
-			echo '<a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="background:none !important;color:'.$event_title_color.' !important; " href="'.admin_url('admin-ajax.php?action=spiderseemore').'&theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[$j].'&date='.$year.'-'.add_0(Month_num($month)).'-'.$i.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" ><b>'.$ev_title[$j].'</b></a>';
+			echo '<a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="background:none !important;color:'.$event_title_color.' !important; " href="'.admin_url('admin-ajax.php?action=spiderbigcalendarrr').'&day='.$i.'&theme_id='.$theme_id.'&calendar_id='.$calendar_id.'&ev_ids='.$ev_ids_inline.'&eventID='.$ev_id[$j].'&date='.$year.'-'.add_0(Month_num($month)).'-'.$i.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" ><b>'.$ev_title[$j].'</b></a>';
 			else{
 			echo '<p><a class="thickbox-previewbigcalendar'.$many_sp_calendar.'"  rel="{handler: \'iframe\', size: {x: '.$popup_width.', y: '.$popup_height.'}}" style="font-size:11px !important;background:none !important;color:'.$event_title_color.' !important;text-align:center !important;" href="'.admin_url('admin-ajax.php?action=spiderseemore').'&theme_id='.$theme_id.'&ev_ids='.$ev_ids_inline.'&calendar_id='.$calendar_id.'&date='.$year.'-'.add_0(Month_num($month)).'-'.$i.'&Itemid='.$Itemid.'&cur_page_url='.$path_sp_cal.(($widget)?('&widget=1'):'').'&TB_iframe=1&tbWidth='.$popup_width.'&tbHeight='.$popup_height.'" '.$dayevent.'> <b>'.__('See more...','sp_calendar').'</b></a></p>';
 			break;
@@ -2609,7 +2609,7 @@ if($show_repeat==1)
 <iframe src="//www.facebook.com/plugins/like.php?href=<?php echo urlencode($url_for_page_de); ?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe>
 <?php
 	}
-
+die();
 	
 	}
 
