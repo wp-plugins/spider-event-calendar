@@ -3,7 +3,7 @@
 /*
 Plugin Name: Spider Event Calendar
 Plugin URI: http://web-dorado.com/products/wordpress-calendar.html
-Version: 1.3.0
+Version: 1.3.1
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -107,9 +107,6 @@ xmlHttp.onreadystatechange=function(){
 }
 xmlHttp.open("GET",calendarlink,false);
 xmlHttp.send();
-//alert(document.getElementById('days').parentNode.lastChild.childNodes[6].innerHTML);
-//document.getElementById('days').parentNode.lastChild.childNodes[6].style.borderBottomRightRadius='<?php echo $border_radius ?>px';
-//document.getElementById('days').parentNode.lastChild.childNodes[0].style.borderBottomLeftRadius='<?php echo $border_radius ?>px';		
 	var thickDims, tbWidth, tbHeight;
 jQuery(document).ready(function($) {
         thickDims = function() {
@@ -173,12 +170,7 @@ else
 {
 	$date=date("Y").'-'.date("m");
 }
-
-?>
-//SqueezeBox.presets.onClose=function (){document.getElementById('sbox-content').innerHTML="";};
-showbigcalendar( 'bigcalendar<?php echo $many_sp_calendar ?>','<?php  echo admin_url('admin-ajax.php?action=spiderbigcalendar').'&theme_id='.$theme.'\'+xx_cal_xx+\'calendar='.$id.'\'+xx_cal_xx+\'date='.$date.'\'+xx_cal_xx+\'many_sp_calendar='.$many_sp_calendar; echo '\'+xx_cal_xx+\'cur_page_url='.urlencode(current_page_url_sc()); if($wiidget) echo '\'+xx_cal_xx+\'widget='.$wiidget;?>')
-//window.onload=document.getElementById('show_cal_frst').click();
-</script>
+?> showbigcalendar( 'bigcalendar<?php echo $many_sp_calendar ?>','<?php  echo admin_url('admin-ajax.php?action=spiderbigcalendar').'\'+xx_cal_xx+\'theme_id='.$theme.'\'+xx_cal_xx+\'calendar='.$id.'\'+xx_cal_xx+\'date='.$date.'\'+xx_cal_xx+\'many_sp_calendar='.$many_sp_calendar; echo '\'+xx_cal_xx+\'cur_page_url='.urlencode(current_page_url_sc()); if($wiidget) echo '\'+xx_cal_xx+\'widget='.$wiidget;?>')</script>
 <?php
         $many_sp_calendar++;
 		$calendar=ob_get_contents();

@@ -26,22 +26,16 @@ function html_show_spider_calendar($rows, $pageNav,$sort){
 	}
 	function submit_form_id(x)
 				 {
-					 
 					 var val=x.options[x.selectedIndex].value;
 					 document.getElementById("id_for_playlist").value=val;
 					 document.getElementById("admin_form").submit();
 				 }
-				 
 				 	function doNothing() {  
 var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
     if( keyCode == 13 ) {
-
-
         if(!e) var e = window.event;
-
         e.cancelBubble = true;
         e.returnValue = false;
-
         if (e.stopPropagation) {
                 e.stopPropagation();
                 e.preventDefault();
@@ -64,19 +58,15 @@ function show_calendar_inline(cal_id)
 			   edit_cal_tr.innerHTML=data;
 			   edit_cal_tr.setAttribute('class','inline-edit-row inline-edit-row-page inline-edit-page quick-edit-row quick-edit-row-page inline-edit-page alternate inline-editor')
 			   edit_cal_tr.setAttribute('id','edit_calendar-'+cal_id);
-			   
 			  document.getElementById('Calendar-'+cal_id).style.display="none";
 			   document.getElementById('calendar_body').appendChild( edit_cal_tr);
 			   document.getElementById('calendar_body').insertBefore(edit_cal_tr,document.getElementById('Calendar-'+cal_id) );
 			   get_cal_id=cal_id;
-		
 			  show_one_cal=1
             }
 });	
 }
-	
 }
-
 function cancel_qiucik_edit(cal_id)
 {
 	if(document.getElementById('edit_calendar-'+cal_id)){
@@ -84,14 +74,11 @@ function cancel_qiucik_edit(cal_id)
 	tr.parentNode.removeChild(tr);
 	document.getElementById('Calendar-'+cal_id).style.display="";
 	}
-	
-	
 }
 function updae_inline_sp_calendar(cal_id)
 {	
 		var cal_title= document.getElementById('calendar_title').value;
 		var cal_12_format =getCheckedValue(document.getElementsByName('time_format'));
-
 	document.getElementById('imig_for_waiting').style.display="block";
 	jQuery.ajax({
 			 type: 'POST',
@@ -115,7 +102,6 @@ function updae_inline_sp_calendar(cal_id)
 					}
 				}
 	});	
-	
 }
 function getCheckedValue(radioObj) {
 	if(!radioObj)
@@ -133,7 +119,6 @@ function getCheckedValue(radioObj) {
 	}
 	return "";
 }
-
 	</script>
     <form method="post" onkeypress="doNothing()" action="admin.php?page=SpiderCalendar" id="admin_form" name="admin_form">
 	<table cellspacing="10" width="96.5%" id="calendar_table">
@@ -225,18 +210,14 @@ function html_add_spider_calendar()
 
 
 	<script language="javascript" type="text/javascript">
-		
 		function submitbutton(pressbutton) {
 		var form = document.adminForm;
 		if (pressbutton == 'cancel_calendar') {
 		submitform( pressbutton );
 		return;
 		}
-					
-					
 		submitform( pressbutton );
 		}
-		
 		function submitform(pressbutton){
 			document.getElementById('adminForm').action=document.getElementById('adminForm').action+"&task="+pressbutton;
 			document.getElementById('adminForm').submit();
@@ -244,13 +225,9 @@ function html_add_spider_calendar()
 function doNothing() {  
 var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
     if( keyCode == 13 ) {
-
-
         if(!e) var e = window.event;
-
         e.cancelBubble = true;
         e.returnValue = false;
-
         if (e.stopPropagation) {
                 e.stopPropagation();
                 e.preventDefault();
@@ -355,18 +332,14 @@ function html_edit_spider_calendar($row){	?>
 
 
 	<script language="javascript" type="text/javascript">
-	
 		function submitbutton(pressbutton) {
 		var form = document.adminForm;
 		if (pressbutton == 'cancel_calendar') {
 		submitform( pressbutton );
 		return;
 		}
-	
-					
 		submitform( pressbutton );
 		}
-		
 		function submitform(pressbutton){
 			document.getElementById('adminForm').action=document.getElementById('adminForm').action+"&task="+pressbutton;
 			document.getElementById('adminForm').submit();
@@ -374,13 +347,9 @@ function html_edit_spider_calendar($row){	?>
 				function doNothing() {  
 var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
     if( keyCode == 13 ) {
-
-
         if(!e) var e = window.event;
-
         e.cancelBubble = true;
         e.returnValue = false;
-
         if (e.stopPropagation) {
                 e.stopPropagation();
                 e.preventDefault();
@@ -566,13 +535,9 @@ function html_show_spider_event($rows, $pageNav,$sort,$calendar_id,$cal_name){
  	function doNothing() {  
 var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
     if( keyCode == 13 ) {
-
-
         if(!e) var e = window.event;
-
         e.cancelBubble = true;
         e.returnValue = false;
-
         if (e.stopPropagation) {
                 e.stopPropagation();
                 e.preventDefault();
@@ -685,24 +650,14 @@ function html_add_spider_event($calendar_id,$cal_name){
     </style>
  
 		<script language="javascript" type="text/javascript">
-		
 		function submitbutton(pressbutton)
-
 		{
-
 			var form = document.adminForm;
-
 			if (pressbutton == 'cancel_event') 
-
 			{
-
 				submitform( pressbutton );
-
 				return;
-
 			}
-			
-			
 		if(form.date.value.search(/^[0-9]{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/))
 		{
 			  alert('Invalid Date');
@@ -719,14 +674,9 @@ function html_add_spider_event($calendar_id,$cal_name){
 					else
 					alert('Invalid Time');
 		}
-		
-		
 		function submitform( pressbutton ){
-		
-		
 		document.getElementById('adminForm').action=document.getElementById('adminForm').action+"&task="+pressbutton;
 		document.getElementById('adminForm').submit();
-		
 		}
 		function checkhour(id)
 			{	
@@ -734,15 +684,12 @@ function html_add_spider_event($calendar_id,$cal_name){
 				{
 					var e = event; // for trans-browser compatibility
 					var charCode = e.which || e.keyCode;
-		
 						if (charCode > 31 && (charCode < 48 || charCode > 57))
 						return false;
-		
 						hour=""+document.getElementById(id).value+String.fromCharCode(e.charCode);
 						hour=parseFloat(hour);
 						if(document.getSelection()!='')
 						return true;
-						
 						if((hour<0) || (hour>23))
 						return false;
 				}
@@ -756,19 +703,14 @@ function html_add_spider_event($calendar_id,$cal_name){
 					var e = event; // for trans-browser compatibility
 					var charCode = e.which || e.keyCode;
 						input=document.getElementById(id);
-		
-		 
 						if(charCode==48 && input.value.length==0)
 						return false;
-						
 						if (charCode > 31 && (charCode < 48 || charCode > 57))
 						return false;
-		
 						hour=""+document.getElementById(id).value+String.fromCharCode(e.charCode);
 						hour=parseFloat(hour);
 						if(document.getSelection()!='')
 						return true;
-						
 						if((hour<0) || (hour>12))
 						return false;
 				}
@@ -781,25 +723,19 @@ function html_add_spider_event($calendar_id,$cal_name){
 				{
 					var e = event; // for trans-browser compatibility
 					var charCode = e.which || e.keyCode;
-		
 						if (charCode > 31 && (charCode < 48 || charCode > 57))
 						return false;
-		
 				}
 						return true;
 			}
-		
-		
 		function checkminute(id)
 			{	
 			if(typeof(event)!='undefined')
 				{
 				var e = event; // for trans-browser compatibility
 				var charCode = e.which || e.keyCode;
-		
 				if (charCode > 31 && (charCode < 48 || charCode > 57))
 				return false;
-		
 					minute=""+document.getElementById(id).value+String.fromCharCode(e.charCode);
 					minute=parseFloat(minute);
 					if(document.getSelection()!='')
@@ -811,58 +747,36 @@ function html_add_spider_event($calendar_id,$cal_name){
 			}		
 		function add_0(id)
 		{
-		
 		    input=document.getElementById(id);
-		
 		    if(input.value.length==1)
-		
 		    {
-		
 			input.value='0'+input.value;
-		
 			input.setAttribute("value", input.value);
-		
 		    }
-		
 		}
-	
-
-		
 		function change_type(type)
 {
 	if(document.getElementById('daily1').value=='')
 		document.getElementById('daily1').value=1;
 	else
 		document.getElementById('repeat_input').removeAttribute('style');
-	
 	if(document.getElementById('weekly1').value=='')
 		document.getElementById('weekly1').value=1;
-	
 	if(document.getElementById('monthly1').value=='')
 		document.getElementById('monthly1').value=1;
-	
 	if(document.getElementById('yearly1').value=='')
 		document.getElementById('yearly1').value=1;
-		
-		
-	
-			
 	switch(type)
 {
-	
-	
 	case 'no_repeat':	
 document.getElementById('daily').setAttribute('style','display:none');
 document.getElementById('weekly').setAttribute('style','display:none');
 document.getElementById('monthly').setAttribute('style','display:none');
 document.getElementById('year_month').setAttribute('style','display:none');
-//document.getElementById('repeat_input').value=1;
 document.getElementById('month').value='';
 document.getElementById('date_end').value=''
-
 document.getElementById('repeat_until').setAttribute('style','display:none');
 break;
-
 	case 'daily':	
 document.getElementById('daily').removeAttribute('style');
 document.getElementById('weekly').setAttribute('style','display:none');
@@ -873,10 +787,7 @@ document.getElementById('month').value='';
 document.getElementById('year_month').setAttribute('style','display:none');
 document.getElementById('repeat_until').removeAttribute('style');
 document.getElementById('repeat_input').onchange=function onchange(event) {return input_value('daily1')};
-
-
 break;
-
 case 'weekly':	
 document.getElementById('daily').removeAttribute('style');
 document.getElementById('weekly').removeAttribute('style');
@@ -887,9 +798,7 @@ document.getElementById('month').value='';
 document.getElementById('year_month').setAttribute('style','display:none');
 document.getElementById('repeat_until').removeAttribute('style');
 document.getElementById('repeat_input').onchange=function onchange(event) {return input_value('weekly1')};
-
 break;
-
 case 'monthly':	
 document.getElementById('daily').removeAttribute('style');
 document.getElementById('weekly').setAttribute('style','display:none');
@@ -900,9 +809,7 @@ document.getElementById('month').value='';
 document.getElementById('year_month').setAttribute('style','display:none');
 document.getElementById('repeat_until').removeAttribute('style');
 document.getElementById('repeat_input').onchange=function onchange(event) {return input_value('monthly1')};
-
 break;
-
 case 'yearly':	
 document.getElementById('daily').removeAttribute('style');
 document.getElementById('year_month').removeAttribute('style');
@@ -913,48 +820,29 @@ document.getElementById('repeat_input').value=document.getElementById('yearly1')
 document.getElementById('month').value='';
 document.getElementById('repeat_until').removeAttribute('style');
 document.getElementById('repeat_input').onchange=function onchange(event) {return input_value('yearly1')};
-
 break;
-
-	
-	
 }
-		
 }
-
 function week_value()
 {
 var value='';
 for(i=1; i<=7; i++)
 {
-
 if (document.getElementById('week_'+i).checked)
 {
 	value=value+document.getElementById('week_'+i).value+',';
-	
 }
-	
 }
 document.getElementById('week').value=value;
-
-
-
 }
-
-
-	
-
 function input_repeat()
 {
 	if(document.getElementById('repeat_input').value==1)
 	{
 	document.getElementById('repeat_input').value='';
-	
 	}
 	document.getElementById('repeat_input').removeAttribute('style');
-	
 }
-		
 function radio_month()
 {
 	if(document.getElementById('radio1').checked==true)
@@ -969,18 +857,11 @@ function radio_month()
 	document.getElementById('monthly_list').disabled=false;
 		document.getElementById('month_week').disabled=false;
 	}
-	
-
 }
-	
-	
 	function input_value(id)
-	
 {
 	document.getElementById(id).value=document.getElementById('repeat_input').value;
 }
-		
-
 		</script>  
         <style>
 		fieldset{
@@ -1280,24 +1161,16 @@ $calendar=$wpdb->get_row("SELECT * FROM ".$wpdb->prefix."spidercalendar_calendar
     
     </style>
 <script language="javascript" type="text/javascript">
-
-
 function submitform(pressbutton){
 	document.getElementById('adminForm').action=document.getElementById('adminForm').action+"&task="+pressbutton;
 	document.getElementById('adminForm').submit();
 }
 function submitbutton(pressbutton) {
-
 var form = document.adminForm;
-
 if (pressbutton == 'cancel_event') {
-
 submitform( pressbutton );
-
 return;
-
 }
-
 if(form.date.value.search(/^[0-9]{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/))
 {
 	  alert('Invalid Date');
@@ -1319,17 +1192,14 @@ else
 					else
 					alert('Invalid Time');
 		}
-		
 function checkhour(id)
 	{	
 		if(typeof(event)!='undefined')
 		{
 			var e = event; // for trans-browser compatibility
 			var charCode = e.which || e.keyCode;
-
 				if (charCode > 31 && (charCode < 48 || charCode > 57))
 				return false;
-
 				hour=""+document.getElementById(id).value+String.fromCharCode(e.charCode);
 				hour=parseFloat(hour);
 				if(document.getSelection()!='')
@@ -1346,10 +1216,8 @@ function checkminute(id)
 		{
 		var e = event; // for trans-browser compatibility
 		var charCode = e.which || e.keyCode;
-
 		if (charCode > 31 && (charCode < 48 || charCode > 57))
 		return false;
-
 			minute=""+document.getElementById(id).value+String.fromCharCode(e.charCode);
 			minute=parseFloat(minute);
 			if(document.getSelection()!='')
@@ -1359,7 +1227,6 @@ function checkminute(id)
 		}
 				return true;
 	}	
-	
 		function checknumber(id)
 			{	
 				if(typeof(event)!='undefined')
@@ -1373,9 +1240,6 @@ function checkminute(id)
 				}
 						return true;
 			}	
-	
-	
-	
 	function check12hour(id)
 			{	
 				if(typeof(event)!='undefined')
@@ -1383,19 +1247,14 @@ function checkminute(id)
 					var e = event; // for trans-browser compatibility
 					var charCode = e.which || e.keyCode;
 						input=document.getElementById(id);
-		
-		 
 						if(charCode==48 && input.value.length==0)
 						return false;
-						
 						if (charCode > 31 && (charCode < 48 || charCode > 57))
 						return false;
-		
 						hour=""+document.getElementById(id).value+String.fromCharCode(e.charCode);
 						hour=parseFloat(hour);
 						if(document.getSelection()!='')
 						return true;
-						
 						if((hour<0) || (hour>12))
 						return false;
 				}
@@ -1404,53 +1263,34 @@ function checkminute(id)
 		
 		function add_0(id)
 		{
-		
 		    input=document.getElementById(id);
-		
 		    if(input.value.length==1)
-		
 		    {
-		
 			input.value='0'+input.value;
-		
 			input.setAttribute("value", input.value);
-		
 		    }
-		
 		}
-		
 function change_type(type)
 {
-	
 	if(document.getElementById('daily1').value=='')
 		document.getElementById('daily1').value=1;
-	
 	if(document.getElementById('weekly1').value=='')
 		document.getElementById('weekly1').value=1;
-	
 	if(document.getElementById('monthly1').value=='')
 		document.getElementById('monthly1').value=1;
-	
 	if(document.getElementById('yearly1').value=='')
 		document.getElementById('yearly1').value=1;
-	
-	
-
 	switch(type)
 {
-	
-	
 	case 'no_repeat':	
 document.getElementById('daily').setAttribute('style','display:none');
 document.getElementById('weekly').setAttribute('style','display:none');
 document.getElementById('monthly').setAttribute('style','display:none');
 document.getElementById('year_month').setAttribute('style','display:none');
 document.getElementById('repeat_until').setAttribute('style','display:none');
-//document.getElementById('repeat_input').value='';
 document.getElementById('month').value='';
 document.getElementById('date_end').value=''
 break;
-
 	case 'daily':	
 document.getElementById('daily').removeAttribute('style');
 document.getElementById('repeat_until').removeAttribute('style');
@@ -1461,10 +1301,7 @@ document.getElementById('repeat_input').onchange=function onchange(event) {retur
 document.getElementById('month').value='';
 document.getElementById('year_month').setAttribute('style','display:none');
 document.getElementById('repeat_input').value=document.getElementById('daily1').value;
-
-
 break;
-
 case 'weekly':	
 document.getElementById('daily').removeAttribute('style');
 document.getElementById('weekly').removeAttribute('style');
@@ -1476,7 +1313,6 @@ document.getElementById('year_month').setAttribute('style','display:none');
 document.getElementById('repeat_until').removeAttribute('style');
 document.getElementById('repeat_input').value=document.getElementById('weekly1').value;
 break;
-
 case 'monthly':	
 document.getElementById('daily').removeAttribute('style');
 document.getElementById('weekly').setAttribute('style','display:none');
@@ -1488,7 +1324,6 @@ document.getElementById('year_month').setAttribute('style','display:none');
 document.getElementById('repeat_until').removeAttribute('style');
 document.getElementById('repeat_input').onchange=function onchange(event) {return input_value('monthly1')};
 break;
-
 case 'yearly':	
 document.getElementById('daily').removeAttribute('style');
 document.getElementById('year_month').removeAttribute('style');
@@ -1500,34 +1335,20 @@ document.getElementById('month').value='';
 document.getElementById('repeat_until').removeAttribute('style');
 document.getElementById('repeat_input').onchange=function onchange(event) {return input_value('yearly1')};
 break;
-
-	
-	
 }
-		
 }
-
 function week_value()
 {
 var value='';
 for(i=1; i<=7; i++)
 {
-
 if (document.getElementById('week_'+i).checked)
 {
 	value=value+document.getElementById('week_'+i).value+',';
-	
 }
-	
 }
 document.getElementById('week').value=value;
-
-
-
 }
-
-
-		
 function radio_month()
 {
 	if(document.getElementById('radio1').checked==true)
@@ -1542,16 +1363,11 @@ function radio_month()
 	document.getElementById('monthly_list').disabled=false;
 		document.getElementById('month_week').disabled=false;
 	}
-	
-
 }
-
 function input_value(id)
-	
 {
 	document.getElementById(id).value=document.getElementById('repeat_input').value;
 }
-
 </script>     
 
  <style>
