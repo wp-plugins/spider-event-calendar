@@ -1,7 +1,8 @@
 <?php 
-
-if(!current_user_can('manage_options')) {
-	die('Access Denied');
+if (function_exists('current_user_can')) {
+  if(!current_user_can('manage_options')) {
+    die('Access Denied');
+  }
 }	
 
 function add_spider_calendar(){
@@ -16,7 +17,7 @@ function show_spider_calendar(){
 			
 			if($_POST['asc_or_desc'])
 			{
-				$sort["sortid_by"]=$_POST['order_by'];
+				$sort["sortid_by"] = $wpdb->escape($_POST['order_by']);
 				if($_POST['asc_or_desc']==1)
 				{
 					$sort["custom_style"]="manage-column column-title sorted asc";
@@ -95,7 +96,7 @@ function save_spider_calendar(){
 	
 	$save_or_no= $wpdb->insert($wpdb->prefix.'spidercalendar_calendar', array(
 		'id'	=> NULL,
-        'title'     => stripslashes($_POST["title"]),
+        'title'     => esc_html(stripslashes($_POST["title"])),
         'gid'    => $_POST["user_type"],
 		'start_month' => $_POST["start_month"],
         'time_format'  =>$_POST["time_format"],
@@ -198,7 +199,7 @@ if(!$id)
 global $wpdb;
 $save_or_no= $wpdb->update($wpdb->prefix.'spidercalendar_calendar', array(
 	 
-	   'title'     => stripslashes($_POST["title"]),
+	   'title'     => esc_html(stripslashes($_POST["title"])),
         'gid'    => $_POST["user_type"],
         'time_format'  =>$_POST["time_format"],
 		'start_month' => $_POST["start_month"],
@@ -225,7 +226,7 @@ $save_or_no= $wpdb->update($wpdb->prefix.'spidercalendar_calendar', array(
  function spider_calendar_published($id)
  {
 	 		 global $wpdb;
-			 $yes_or_no=$wpdb->get_var('SELECT published FROM '.$wpdb->prefix.'spidercalendar_calendar WHERE `id`='.$id);
+			 $yes_or_no=$wpdb->get_var($wpdb->prepare('SELECT published FROM '.$wpdb->prefix.'spidercalendar_calendar WHERE `id`="%d"', $id));
 			 if( $yes_or_no)
 			 $yes_or_no=0;
 			 else
@@ -285,7 +286,7 @@ function show_spider_event($calendar_id){
 			
 			if($_POST['asc_or_desc'])
 			{
-				$sort["sortid_by"]=$_POST['order_by'];
+				$sort["sortid_by"] = $wpdb->escape($_POST['order_by']);
 				if($_POST['asc_or_desc']==1)
 				{
 					$sort["custom_style"]="manage-column column-title sorted asc";
@@ -424,7 +425,7 @@ else $date_end = $_POST["date_end"];
 	
 	$save_or_no= $wpdb->insert($wpdb->prefix.'spidercalendar_event', array(
 		'id'				=> NULL,
-        'title'    			=> stripslashes($_POST["title"]),
+        'title'    			=> esc_html(stripslashes($_POST["title"])),
 		'time'	   		    => $time,
 		'calendar'    		=> $calendar_id,
 		'date'     			=> $_POST["date"],
@@ -519,7 +520,7 @@ function apply_spider_event($calendar_id,$id){
 
 	
 $wpdb->update($wpdb->prefix.'spidercalendar_event', array(
-        'title'    			=> stripslashes($_POST["title"]),
+        'title'    			=> esc_html(stripslashes($_POST["title"])),
 		'time'	   		    => $time,
 		'calendar'    		=> $calendar_id,
 		'date'     			=> $_POST["date"],

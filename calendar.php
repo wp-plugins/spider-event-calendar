@@ -3,19 +3,17 @@
 /*
 Plugin Name: Spider Event Calendar
 Plugin URI: http://web-dorado.com/products/wordpress-calendar.html
-Version: 1.3.1
+Version: 1.3.2
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 /*LANGUAGE localization */
 //// load languages
-add_action( 'init', 'sp_calendar_language_load' );
-
 function sp_calendar_language_load() {
 	 load_plugin_textdomain('sp_calendar', false, basename( dirname( __FILE__ ) ) . '/languages' );
 }
-
+add_action( 'init', 'sp_calendar_language_load' );
 
 /////////////// include widget
 
@@ -185,14 +183,15 @@ else
 
 //////////////////////////////////////////////     quick edit
 
-
 add_action('wp_ajax_spidercalendarinlineedit', 'spider_calendar_quick_edit');
-
 add_action('wp_ajax_spidercalendarinlineupdate', 'spider_calendar_quick_update');
 function spider_calendar_quick_update(){
-	
-	global $wpdb;
-	
+	$current_user = wp_get_current_user();
+  if ($current_user->roles[0] !== 'administrator') {
+    echo 'You have no permission.';
+    die();
+  }
+	global $wpdb;	
 	if(isset($_POST['calendar_id']) && isset($_POST['calendar_title']) && isset($_POST['us_12_format_sp_calendar'])){
 		$wpdb->update( 
 			$wpdb->prefix.'spidercalendar_calendar', 
@@ -207,7 +206,7 @@ function spider_calendar_quick_update(){
 			), 
 			array( '%d' ) 
 		);
-		$row=$wpdb->get_row("SELECT * FROM ".$wpdb->prefix."spidercalendar_calendar WHERE id=".$_POST['calendar_id']);
+		$row = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".$wpdb->prefix."spidercalendar_calendar WHERE id='%d'", $_POST['calendar_id']));
 		?>
 		 <td><?php echo $row->id; ?></td>
          <td class="post-title page-title column-title">
@@ -238,9 +237,14 @@ function spider_calendar_quick_update(){
 	
 }
 function spider_calendar_quick_edit(){
+  $current_user = wp_get_current_user();
+  if ($current_user->roles[0] !== 'administrator') {
+    echo 'You have no permission.';
+    die();
+  }
 	global $wpdb;
 	if(isset($_POST['calendar_id'])){
-		$row=$wpdb->get_row("SELECT * FROM ".$wpdb->prefix."spidercalendar_calendar WHERE id=".$_POST['calendar_id']);
+		$row = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".$wpdb->prefix."spidercalendar_calendar WHERE id='%d'", $_POST['calendar_id']));
 		
 		
 		
@@ -528,7 +532,7 @@ function Manage_Spider_Calendar(){
 	}
 	if(isset($_GET["id"]))
 	{
-		$id=$_GET["id"];
+		$id = (int) $_GET["id"];
 	}
 	else
 	{
@@ -536,11 +540,11 @@ function Manage_Spider_Calendar(){
 	}
 	if(isset($_GET["calendar_id"]))
 	{
-		$calendar_id=$_GET["calendar_id"];
+		$calendar_id = (int) $_GET["calendar_id"];
 	}
 	else
 	{
-		$calendar_id=0;
+		$calendar_id = 0;
 	}
 	switch($task){
 			

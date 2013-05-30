@@ -1,8 +1,7 @@
 <?php
-
-
-	
-
+if (!class_exists('WP_Widget')) {
+  return;
+}
 
 	class spider_calendar extends WP_Widget {
 

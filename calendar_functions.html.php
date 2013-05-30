@@ -1,12 +1,10 @@
-	<?php		
-	
-if(!current_user_can('manage_options')) {
-	die('Access Denied');
-}	
-	
-	
-	
-		
+<?php
+if (function_exists('current_user_can')) {
+  if(!current_user_can('manage_options')) {
+    die('Access Denied');
+  }
+}
+
 function html_show_spider_calendar($rows, $pageNav,$sort){
 
 	?>

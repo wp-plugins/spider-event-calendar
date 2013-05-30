@@ -88,7 +88,10 @@ die();
 
 function big_calendarr(){
 	global $wpdb;
-function IsDate_inputed( $str ){ 
+function IsDate_inputed( $str ){
+  if (is_array($str)) {
+    return;
+  }
     $stamp = strtotime( $str ); 
     if (!is_numeric($stamp)) 
         return FALSE; 
@@ -252,7 +255,7 @@ $path_sp_cal=$_GET['cur_page_url'];
 		global $wpdb;
 		$id=$_GET['id'];
 		
-		$calendar	=$_GET['calendar'];
+		$calendar	= (int) $_GET['calendar'];
 		if(isset($_GET['date']))
 		{
 			if(IsDate_inputed($_GET['date']))
@@ -268,7 +271,7 @@ $path_sp_cal=$_GET['cur_page_url'];
 		$month=substr( $date,5,2); 
 		
 		
-			$theme_id =$_GET['theme_id'];
+			$theme_id = (int) $_GET['theme_id'];
 		if(isset($_GET['widget']))
 		{
 			$widget=1;
@@ -1012,7 +1015,7 @@ $path_sp_cal=$_GET['cur_page_url'];
 	};
 		 
 		 ///////////////////////////////////////////////////
-		 $calendar_id = $_GET['calendar'];
+		 $calendar_id = (int) $_GET['calendar'];
 		 
 		 if($cell_height=='')
 		 $cell_height=70;
@@ -1853,7 +1856,7 @@ function seemore(){
 		global $wpdb;
 		
 		if(isset($_GET['calendar_id']))
-		$calendar	=$_GET['calendar_id'];
+		$calendar	= (int) $_GET['calendar_id'];
 		else
 		$calendar=0;
 		if(isset($_GET['date'])){
@@ -1881,7 +1884,10 @@ function seemore(){
 	}
 	
 	global $wpdb;
-function IsDate_inputed( $str ){ 
+function IsDate_inputed( $str ){
+  if (is_array($str)) {
+    return;
+  }
     $stamp = strtotime( $str ); 
     if (!is_numeric($stamp)) 
         return FALSE; 
@@ -1893,7 +1899,7 @@ function IsDate_inputed( $str ){
     return FALSE; 
 }
 
- $theme_id =$_GET['theme_id'];
+ $theme_id = (int) $_GET['theme_id'];
  
  
  
@@ -1962,10 +1968,10 @@ $theme 	=$wpdb->get_row($wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'spidercal
 		$date =  $datee;
 		$day = substr($date,8);
 		if(isset($_GET['calendar_id']))
-		$calendar_id	=$_GET['calendar_id'];
+		$calendar_id	= (int) $_GET['calendar_id'];
 		else
 		$calendar_id	=0;
-		 $ev_ids =$_GET['ev_ids'];
+		 $ev_ids = esc_html($_GET['ev_ids']);
 	
     $ev_id = explode(',',$ev_ids);
 
@@ -1974,7 +1980,7 @@ $theme 	=$wpdb->get_row($wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'spidercal
    
 
 
-$eventID=$_GET['eventID'];
+$eventID= (int) $_GET['eventID'];
  
  ?>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
@@ -2141,7 +2147,7 @@ function spiderbigcalendar(){
 		if(isset($_GET['calendar_id']))
 		{
 			
-		$calendar	=$_GET['calendar_id'];
+		$calendar	= (int) $_GET['calendar_id'];
 		}
 		else
 		{
@@ -2150,7 +2156,7 @@ function spiderbigcalendar(){
 		$year=substr( $date,0,4); 
 		$month=substr( $date,5,2); 
 				
-		$eventID=$_GET['eventID'];
+		$eventID= (int) $_GET['eventID'];
 		$row =$wpdb->get_row($wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'spidercalendar_event WHERE id=%d',$eventID));			
 			$all_files_spider_cal['row']=$row;
 			$all_files_spider_cal['option']=$option;
@@ -2164,7 +2170,10 @@ function spiderbigcalendar(){
 	
 	
 global $wpdb;
-function IsDate_inputed( $str ){ 
+function IsDate_inputed( $str ){
+  if (is_array($str)) {
+    return;
+  }
     $stamp = strtotime( $str ); 
     if (!is_numeric($stamp)) 
         return FALSE; 
@@ -2185,7 +2194,7 @@ else
 	$widget=0;
 }
 
- $theme_id =$_GET['theme_id'];
+ $theme_id = (int) $_GET['theme_id'];
  if($widget)
 $theme 	=$wpdb->get_row($wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'spidercalendar_widget_theme WHERE id=%d',$theme_id));
 else
@@ -2333,12 +2342,12 @@ return false;
 		$date =  $datte;
 		$day = substr($date,8);
 		if(isset($_GET['calendar_id']))
-		$calendar_id	=$_GET['calendar_id'];
+		$calendar_id	= (int) $_GET['calendar_id'];
 		else
 		$calendar_id=0;
 		
 		 //$ev_ids =$session->get('ev_ids');
-	$ev_ids_inline=$_GET['ev_ids'];
+	$ev_ids_inline= esc_html($_GET['ev_ids']);
 	
     $ev_id = explode(',',$ev_ids_inline);
 	
@@ -2348,7 +2357,7 @@ return false;
     
 
  
-$eventID=$_GET['eventID'];
+$eventID= (int) $_GET['eventID'];
  
  ?>
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
