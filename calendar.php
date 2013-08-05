@@ -778,4 +778,13 @@ function SpiderCalendar_activate() {
 }
 register_activation_hook(__FILE__, 'SpiderCalendar_activate');
 
+function spider_calendar_ajax_func() {
+  ?>
+  <script>
+    var spider_calendar_ajax = '<?php echo admin_url("admin-ajax.php"); ?>';
+  </script>
+  <?php
+}
+add_action('admin_head', 'spider_calendar_ajax_func');
+
 ?>
