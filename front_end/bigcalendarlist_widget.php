@@ -333,7 +333,7 @@ function big_calendar_list_widget() {
     echo '<table style="height:14px;border-spacing:0;border-spacing:0;width: 100%;background-color:#D6D4D5;">
             <tr>
               <td style="padding-left:10px; font-size:12px;font-weight:bold;width:10px;text-align:center;background-color:' . $bg . ';color:#949394;"></td>
-              <td><h1 style="color:' . $bg . '; border:none">&nbsp;' . __('There Is No Event In This Month', 'sp_calendar') . '</h1></td>
+              <td><h1 style="font-size:12px;color:' . $bg . '; border:none">&nbsp;' . __('There Is No Event In This Month', 'sp_calendar') . '</h1></td>
             </tr>
           </table>';
   }

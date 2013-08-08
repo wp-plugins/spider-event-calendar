@@ -452,7 +452,7 @@ function big_calendar_week_widget() {
       echo '<table style="height:14px;border-spacing:0;width: 100%;background-color:#D6D4D5;">
               <tr>
                 <td style="font-size:22px; font-weight:bold; width:15px;text-align:center;background-color:' . $bg . ';color:#949394;"></td>
-                <td><h1 style="color:' . $bg . '; border:none">&nbsp;' . __('There Is No Event In This Day', 'sp_calendar') . '</h1></td>
+                <td><h1 style="font-size:12px;color:' . $bg . '; border:none">&nbsp;' . __('There Is No Event In This Day', 'sp_calendar') . '</h1></td>
               </tr>
             </table>';
     }

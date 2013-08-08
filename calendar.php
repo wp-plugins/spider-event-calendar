@@ -3,7 +3,7 @@
 /*
 Plugin Name: Spider Event Calendar
 Plugin URI: http://web-dorado.com/products/wordpress-calendar.html
-Version: 1.3.3
+Version: 1.3.4
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -95,6 +95,7 @@ function spider_calendar_big_front_end($id, $theme, $default, $select, $widget =
         xmlHttp.onreadystatechange = function () {
           if (xmlHttp.readyState == 4) {
             document.getElementById(id).innerHTML = xmlHttp.responseText;
+            jQuery('#' + id).html(xmlHttp.responseText);
           }
         }
         xmlHttp.open("GET", calendarlink, false);
