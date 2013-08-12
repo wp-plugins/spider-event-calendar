@@ -301,11 +301,11 @@ There are 11 default calendar and widget themes. You can use one of the calendar
     
     
 6.1 Press the button named Insert Spider Event Calendar in a post or page you want to show the calendar.	
-6.2 Select calendar. Select a calendar from the given list.	
+6.2 Select calendar. Select a calendar from the given list.   	
 6.3 Select theme. Select a calendar theme from the given list.	
-6.4 Select Default View. Select the default view from provided options (Month, List, Week and Day).	
-6.5 Select Views. Select the views options (Month, List, Week and Day) for the calendar in the public view.	
-6.6 Save the page or post where the calendar is inserted.	
+6.4 Select Default View. Select the default view from provided options (Month, List, Week and Day).   	
+6.5 Select Views. Select the views options (Month, List, Week and Day) for the calendar in the public view.   	
+6.6 Save the page or post where the calendar is inserted.   	
      
 Alternatively, you can use Spider Event Calendar without the button on the toolbar: Add the shortcode  [Spider_Calendar id="1" theme="10" default="month" select="month,list,week,day,"] (where Spider_Calendar id is the id of the calendar, theme is the ID of the theme, default is the default view of the calendar, select is the option for the available views.)	
 
@@ -316,16 +316,16 @@ Alternatively, you can use Spider Event Calendar without the button on the toolb
     
 7.1 Add  Spider Event Calendar Widget to the sidebar.	
 7.2 Select calendar. Select a calendar  from the given list.	
-7.3 Select theme for a widget. Select a  calendar theme for the widget from the given list.	
+7.3 Select theme for a widget. Select a  calendar theme for the widget from the given list.   	
 7.4 Select Default View. Select the default view from provided options (Month, List, Week and Day).	
 7.5 Select Views. Select the views options (Month, List, Week and Day) for the calendar in the public view.	
 7.6 Save the widget where the calendar is inserted.	
     
 == Screenshots of the WordPress Event Calendar ==
-1.  Spider Event Calendar - Calendar	
-2.  Spider Event Calendar - Widget Calendar	
-3.  Spider Event Calendar - Widget Calendar	
-4.  Spider Event Calendar - Widget Calendar	
-5.  Spider Event Calendar - Create Event	
-6.  Spider Event Calendar - Edit Theme	
+1.  WordPress Event Calendar - Calendar	
+2.  WordPress Event Calendar - Widget Calendar	
+3.  WordPress Event Calendar - Widget Calendar	
+4.  WordPress Event Calendar - Widget Calendar	
+5.  WordPress Event Calendar - Create Event	
+6.  WordPress Event Calendar - Edit Theme	
   
