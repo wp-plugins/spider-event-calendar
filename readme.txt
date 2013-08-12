@@ -230,9 +230,9 @@ There are 11 default calendar and widget themes. You can use one of the calendar
 4.5.15 Number of displayed events. Define the number of displayed events for the calendar.    
 4.5.16 Show repeat rate. Choose whether to show the calendar repeat rate or not.   
 
-4.6 The Other Views Parameters of the Spider Event Calendar 
+4.6 The Other Views Parameters of the Spider Event Calendar. 
 4.6.1 Date Background Color. Specify the background color of the event date cell (List View and Weekly View).
-4.6.2 Event Background Color 1. Select the background color of the events with an odd number
+4.6.2 Event Background Color 1. Select the background color of the events with an odd number.
 4.6.3 Event Background Color 2. Select the background color of the events with an even number.
 4.6.4 Event Number Background Color 1. Select the number background color of the events with an odd number.
 4.6.5 Event Number Background Color 2. Select the number background color of the events with an even number.
@@ -243,7 +243,7 @@ There are 11 default calendar and widget themes. You can use one of the calendar
 4.6.10 Event Number Font Size. Specify the font size of the event number.
 4.6.11 Event Cell Height. Specify the height of the event cell.
 4.6.12 Date Cell Height. Specify the height of the date cell.
-4.6.13 Day and Month Font Size. Specify the font size of the day and the month of the event date
+4.6.13 Day and Month Font Size. Specify the font size of the day and the month of the event date.
 4.6.14 Day of the Week Font Size. Specify the font size of the day of the week in the event date.
 
 
@@ -251,15 +251,15 @@ There are 11 default calendar and widget themes. You can use one of the calendar
     
 = Adding Themes to the calendar for the widget view  =    
     
-5.1 On the left menu select Calendar>Widget Themes>Add a Theme    
+5.1 On the left menu select Calendar>Widget Themes>Add a Theme.    
 
-5.2 The General Parameters of the Spider Event Calendar 
+5.2 The General Parameters of the Spider Event Calendar. 
 5.2.1 Title. Choose a title for the theme.
 5.2.2 Default Theme. Choose the default theme.
 5.2.3 Width. Define the Width.
 5.2.4 The First day of the Week. Choose whether to start the week from Monday or from Sunday.
 
-5.3. The Popup Window Parameters of the Spider Event Calendar
+5.3. The Popup Window Parameters of the Spider Event Calendar.
 5.3.1 Date Format in Popup. Choose the format of the date in popup.
 5.3.2 Event Title Color in Popup. Choose the color for the event title in popup.
 5.3.3 Event Title Font Size in Popup. Define the font size of the event title in popup.
@@ -276,7 +276,7 @@ There are 11 default calendar and widget themes. You can use one of the calendar
 5.3.14 Popup Height. Define the height of the popup.
 5.3.15 Show Repeat Rate. Choose whether to show the repeat rate or not.
 
-5.4. The Body Parameters of the Spider Event Calendar
+5.4. The Body Parameters of the Spider Event Calendar.
 5.4.1 YEAR Font. Choose font style for the year.
 5.4.2 MONTH Font. Choose font style for the month.
 5.4.3 DAY Font. Choose the font style for the day.
@@ -304,7 +304,7 @@ There are 11 default calendar and widget themes. You can use one of the calendar
     
 == Step 6:Spider Event Calendar  ==        
     
-= Publishing the created Calendar in the Page or Post,  =    
+= Publishing the created Calendar in the Page or Post  =    
     
     
 6.1 Press the button named Insert Spider Event Calendar in a post or page you want to show the calendar.   
