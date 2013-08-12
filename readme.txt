@@ -31,6 +31,7 @@ Spider Event Calendar is a highly configurable plugin which allows you to have m
 * Possibility to select calendar date style in the popup.  
 * You can create events in a calendar which will not repeat (and use a single time).  
 * Possibility to choose month display format in the Spider Event Calendar.  
+* Possibility to choose between four view modes (Month, List, Week and Day).
 * Spider Event Calendar allows you to change the colors of the calendar and fit it to the colors of your website (*commercial version*).  
 * Spider Event Calendar has 11 standard calendars themes included in the package for the plugin and the widget (*commercial version*).  
 * You can set the height and width of the Spider Event Calendar in the widget and in the [WordPress calendar plugin](http://web-dorado.com/products/wordpress-calendar.html) as well (*commercial version*).  
@@ -123,113 +124,200 @@ If the installation of the calendar succeeded you will see the message in the pi
     
 2.1 On the left menu select  Calendar>Calendars>Add a Calendar   
 2.2 Title. Add a title for the calendar.   
-2.3 Use 12 hours time format. Choose the format of the time for the calendar.   
-2.4 Published. Choose whether to publish the calendar or not.   
+2.3 Default Year. Specify the year that is displayed by default.
+2.4 Default month. Specify the month that is displayed by default. 
+2.5 Use 12 hours time format. Choose the format of the time for the calendar.   
+2.6 Published. Choose whether to publish the calendar or not.   
+
+== Step 3:Spider Event Calendar  ==        
+    
+= Creating/Editing events. =    
+
+3.1 On the left menu select  Calendar > Calendars.
+3.2 Select a calendar from the list. Click on the Add an Event button for creating a new event. If you want to edit an existing event, simply click on its title in the list of events.
+3.3 Title. Add a title for the event.
+3.4 Time. Set the start and the end time for the event.
+3.5 Note. Write the description of the event.
+3.6 Published. Choose whether to publish the event or not.
+3.7 Repeat Event. Choose the frequency for repeating the events.
+• Don't repeat this event.
+• Repeat daily. Choose the frequency of the days for repeating the events.
+• Repeat weekly. Choose the quantity of the weeks and a weekday for repeating the events.
+• Repeat monthly. Choose the quantity of the months and the quantity of the weekdays for repeating the events.
+• Repeat yearly. Choose the quantity of the years, choose a month and the frequency of the week and weekdays.
+• Repeat until. Choose the end date for repeating each event.
+3.8. Save. Click the Save button to save the created event.
+
    
     
-== Step 3:Spider Event Calendar  ==        
+== Step 4:Spider Event Calendar  ==        
     
 = Adding Themes to the calendar for a page/post view. =    
     
 There are 11 default calendar and widget themes. You can use one of the calendar default themes or create a new one. If you change the parameters of the calendar default theme here is a big **Reset Theme** button for resetting default theme*s parameters on the calendar  to original.    
    
-3.1 On the left menu select  Calendar>Calendar Themes>Add a Theme You can fill the all parameters of the calendar theme or inherit  the parameters of the  calendar theme from the default themes of the calendar.   
-3.2 The General Parameters of the Spider Event Calendar   
-3.2.1 Title. Choose a title for the calendar theme.   
-3.2.2 Default theme. Choose the default theme for the calendar.   
-3.2.3 Width. Define the width of the calendar.   
-3.2.4 The first day of the week. Choose whether to start the calendar from Monday or from Sunday.   
-3.2.5 Main Border Color. Choose the color of the calendar main border.   
-3.2.6 Main Border Radius. Define the radius of the calendar main border.   
-3.2.7 Main Border Width. Define the width of the [WordPress Calendar plugin](http://wordpress.org/extend/plugins/spider-event-calendar/) main border.   
+4.1 On the left menu select  Calendar>Calendar Themes>Add a Theme You can fill the all parameters of the calendar theme or inherit  the parameters of the  calendar theme from the default themes of the calendar.   
+4.2 The General Parameters of the Spider Event Calendar   
+4.2.1 Title. Choose a title for the calendar theme.   
+4.2.2 Default theme. Choose the default theme for the calendar.   
+4.2.3 Width. Define the width of the calendar.   
+4.2.4 The first day of the week. Choose whether to start the calendar from Monday or from Sunday.   
+4.2.5 Main Border Color. Choose the color of the calendar main border.   
+4.2.6 Main Border Radius. Define the radius of the calendar main border.   
+4.2.7 Main Border Width. Define the width of the [WordPress Calendar plugin](http://wordpress.org/extend/plugins/spider-event-calendar/) main border.   
     
     
-3.3 The Header Parameters of the Spider Event Calendar    
-3.3.1 Header height. Define the height of the calendar header.    
-3.3.2 Header background color. Choose the background color of the calendar header.     
-3.3.3 YEAR font size. Define the font size of the year on the calendar.    
-3.3.4 Year color. Choose the color for the calendar year.    
-3.3.5 Year arrow color. Choose the color of thecalendar  year arrow.    
-3.3.6 Month display format. Choose the format of the month display on the calendar.    
-3.3.7 Current month font size. Define the font size of the calendar current month.    
-3.3.8 Current Month color. Choose the color of the calendar current month.    
-3.3.9 Current Month arrow color. Choose the color for the calendar*s current month arrow.    
-3.3.10 Next month color. Choose the color for the calendar next month.    
-3.3.11 Next month font size. Define the font size of the calendar next month.    
-3.3.12 Next month arrow color. Choose the arrow color for the calendarnext month.    
-3.3.13 Previous month text color. Choose the color for the calendar previous month.    
-3.3.14 Previous month font size. Define the font size of the calendar previous month.    
-3.3.15 Previous month arrow color. Choose the color of the arrow for the calendar previous month.    
-3.3.16 Arrow size. Define the size of the arrow on the calendar.    
-3.3.17 Weekdays color. Choose the color for the calendar weekdays.    
-3.3.18 Weekdays background color. Choose the background color for the calendar weekdays.    
-3.3.19 Sunday background color. Choose Sunday background color for the [WordPress Event Calendar](http://wordpress.org/extend/plugins/spider-event-calendar/).   
-3.3.20 Weekdays font size.Define the font size of the calendar weekdays.    
+4.3 The Header Parameters of the Spider Event Calendar    
+4.3.1 Header height. Define the height of the calendar header.    
+4.3.2 Header background color. Choose the background color of the calendar header.     
+4.3.3 Current month font size. Define the font size of the calendar current month.    
+4.3.4 Current Month color. Choose the color of the calendar current month.    
+4.3.5 Current Month arrow color. Choose the color for the calendar*s current month arrow.    
+4.3.6 Arrow size. Define the size of the arrow on the calendar.    
+4.3.7 Names of the Weekdays color. Choose the color for the names of weekdays.    
+4.3.8 Names of the Weekdays cell height. Define the height of the cell for the names of weekdays.
+4.3.9 Names of the Weekdays Background Color. Choose the background color for the weekdays. 
+4.3.10 Sunday background color. Choose Sunday background color for the [WordPress Event Calendar](http://wordpress.org/extend/plugins/spider-event-calendar/).   
+4.3.11 Names of  the Weekdays Font Size. Define the font size of the weekday. 
      
      
-3.4 The Body Parameters of the Spider [WordPress Event Calendar](http://wordpress.org/extend/plugins/spider-event-calendar/).    
-3.4.1 Background color. Choose the background color for the calendar.    
-3.4.2 Cell height. Define the height of the calendar cell.    
-3.4.3 Other months days text color. Choose the text color of the other months for the calendar.   
-3.4.4  Other months days background color. Choose the background color for the other months days on the calendar.   
-3.4.5 Cell text color without events. Choose the text color for the calendar cell without events.    
-3.4.6 Cell text color with [WordPress Calendar events](http://wordpress.org/extend/plugins/spider-event-calendar/). Choose the text color for the calendar cell with events.    
-3.4.7 Cell background color with events. Choose the background color for the calendar cell with events.    
-3.4.8 Event title color. Choose the color for the  calendarevent title.    
-3.4.9 Current day cell border color. Choose the cell border color for the calendar current day.    
-3.4.10 Cell border color. Choose the color for the calendar cell border.    
-3.4.11 Sundays text color. Choose the text color for Sundays for the calendar.    
-6.3.12 Sundays cell background color. Choose the background color for Sundays cell for the calendar.    
-3.4.13 Sundays font size. Define the font size of Sundays for the calendar.    
-3.4.14 Days font size. Define the font size of the calendar days.    
-3.4.15 Show time in cell. Choose whether to show the time on the calendar cell or not.    
+4.4 The Body Parameters of the Spider [WordPress Event Calendar](http://wordpress.org/extend/plugins/spider-event-calendar/).    
+4.4.1 Background color. Choose the background color for the calendar.    
+4.4.2 Cell height. Define the height of the calendar cell.    
+4.4.3 Other months days text color. Choose the text color of the other months for the calendar.   
+4.4.4  Other months days background color. Choose the background color for the other months days on the calendar.   
+4.4.5 Cell text color without events. Choose the text color for the calendar cell without events.    
+4.4.6 Cell text color with [WordPress Calendar events](http://wordpress.org/extend/plugins/spider-event-calendar/). Choose the text color for the calendar cell with events.    
+4.4.7 Cell background color with events. Choose the background color for the calendar cell with events.    
+4.4.8 Event title color. Choose the color for the  calendarevent title.    
+4.4.9 Current day cell border color. Choose the cell border color for the calendar current day.    
+4.4.10 Cell border color. Choose the color for the calendar cell border.    
+4.4.11 Sundays text color. Choose the text color for Sundays for the calendar.    
+4.4.12 Sundays cell background color. Choose the background color for Sundays cell for the calendar.    
+4.4.13 Sundays font size. Define the font size of Sundays for the calendar.    
+4.4.14 Days font size. Define the font size of the calendar days.    
+4.4.15 Show time in cell. Choose whether to show the time on the calendar cell or not.  
+4.4.16 Show Numbers for event. Choose whether to display numbers for events or not.
+4.4.17 Number of Displayed event. Define the number of displayed events.
+4.4.18 Event Titles Background Color. Choose the background color for the event titles.
+4.4.19 Views Tabs Background Color. Choose the background color for the views tabs.
+4.4.20 Views Tabs Text Color. Choose the text color for the views tabs.
+4.4.21 Views Tabs Font Size. Define the font size of views tabs.  
      
      
-3.5 The Popup Window Parameters of the Spider Event Calendar    
-3.5.1 Date format in popup. Choose the format of the calendar date in popup.     
-3.5.2 Event title color in popup. Choose the color for the calendar event title in popup.    
-3.5.3 Event title font size in popup. Define the font size of the calendar event title in popup.   
-3.5.4 Event title font family in popup.Select thecalendar  event title font family in popup.   
-3.5.5 Event title font style in popup. Select the calendar event title font style in popup.   
-3.5.6 Date color in popup. Choose the color for the calendar date in popup.   
-3.5.7 Date font size in popup. Define the font size of thecalendar  date in popup.    
-3.5.8 Date font family in popup. Choose the font family of the calendar date in popup.   
-3.5.9 Date style in popup. Select the style of the calendar date in popup.    
-3.5.10 Arrow background color in popup. Choose the background color for the calendar arrow in popup.    
-3.5.11 Arrow color in popup. Choose the color for the calendar arrow in popup.    
-3.5.12 Popup background color. Choose the background color for the calendar popup.    
-3.5.13 Popup width. Define the width of the calendar popup.    
-3.5.14 Popup height. Define the height of the calendar popup.    
-3.5.15 Number of displayed events. Define the number of displayed events for the calendar.    
-3.5.16 Show repeat rate. Choose whether to show the calendar repeat rate or not.    
+4.5 The Popup Window Parameters of the Spider Event Calendar    
+4.5.1 Date format in popup. Choose the format of the calendar date in popup.     
+4.5.2 Event title color in popup. Choose the color for the calendar event title in popup.    
+4.5.3 Event title font size in popup. Define the font size of the calendar event title in popup.   
+4.5.4 Event title font family in popup.Select thecalendar  event title font family in popup.   
+4.5.5 Event title font style in popup. Select the calendar event title font style in popup.   
+4.5.6 Date color in popup. Choose the color for the calendar date in popup.   
+4.5.7 Date font size in popup. Define the font size of thecalendar  date in popup.    
+4.5.8 Date font family in popup. Choose the font family of the calendar date in popup.   
+4.5.9 Date style in popup. Select the style of the calendar date in popup.    
+4.5.10 Arrow background color in popup. Choose the background color for the calendar arrow in popup.    
+4.5.11 Arrow color in popup. Choose the color for the calendar arrow in popup.    
+4.5.12 Popup background color. Choose the background color for the calendar popup.    
+4.5.13 Popup width. Define the width of the calendar popup.    
+4.5.14 Popup height. Define the height of the calendar popup.    
+4.5.15 Number of displayed events. Define the number of displayed events for the calendar.    
+4.5.16 Show repeat rate. Choose whether to show the calendar repeat rate or not.   
 
-== Step 4:Spider Event Calendar  ==        
+4.6 The Other Views Parameters of the Spider Event Calendar 
+4.6.1 Date Background Color. Specify the background color of the event date cell (List View and Weekly View).
+4.6.2 Event Background Color 1. Select the background color of the events with an odd number
+4.6.3 Event Background Color 2. Select the background color of the events with an even number.
+4.6.4 Event Number Background Color 1. Select the number background color of the events with an odd number.
+4.6.5 Event Number Background Color 2. Select the number background color of the events with an even number.
+4.6.6 Event Number Color. Specify the color of the event number.
+4.6.7 Day and Month Font Color. Specify the font color of the day and the month of the event date (e.g. 23 March).
+4.6.8 Day of the Week Font Color. Specify the font color of the day of the week in the event date.
+4.6.9 Date Font Size. Specify the font size of the date text.
+4.6.10 Event Number Font Size. Specify the font size of the event number.
+4.6.11 Event Cell Height. Specify the height of the event cell.
+4.6.12 Date Cell Height. Specify the height of the date cell.
+4.6.13 Day and Month Font Size. Specify the font size of the day and the month of the event date
+4.6.14 Day of the Week Font Size. Specify the font size of the day of the week in the event date.
+
+
+== Step 5:Spider Event Calendar  ==        
     
 = Adding Themes to the calendar for the widget view  =    
     
-4.1 On the left menu select Calendar>Widget Themes>Add a Theme    
-4.2 Repeat the steps described in step 3.x for creating a calendar theme for the widget    
+5.1 On the left menu select Calendar>Widget Themes>Add a Theme    
+
+5.2 The General Parameters of the Spider Event Calendar 
+5.2.1 Title. Choose a title for the theme.
+5.2.2 Default Theme. Choose the default theme.
+5.2.3 Width. Define the Width.
+5.2.4 The First day of the Week. Choose whether to start the week from Monday or from Sunday.
+
+5.3. The Popup Window Parameters of the Spider Event Calendar
+5.3.1 Date Format in Popup. Choose the format of the date in popup.
+5.3.2 Event Title Color in Popup. Choose the color for the event title in popup.
+5.3.3 Event Title Font Size in Popup. Define the font size of the event title in popup.
+5.3.4 Event Title Font Family in Popup.Select the event title font family in popup.
+5.3.5 Event Title Font Style in Popup. Select the event title font style in popup.
+5.3.6 Date Color in Popup. Choose the color of the date in popup.
+5.3.7 Date Font Size in Popup. Define the font size of the date in popup.
+5.3.8 Date Font Family in Popup. Choose the font family of the date in popup.
+5.3.9 Date Style in Popup. Select the style of the date in popup.
+5.3.10 Arrow Background Color in Popup. Choose the background color of the arrow in popup.
+5.3.11 Arrow Color in Popup. Choose the color of the arrow in popup.
+5.3.12 Popup Background Color. Choose the background color for the popup.
+5.3.13 Popup Width. Define the width of the popup.
+5.3.14 Popup Height. Define the height of the popup.
+5.3.15 Show Repeat Rate. Choose whether to show the repeat rate or not.
+
+5.4. The Body Parameters of the Spider Event Calendar
+5.4.1 YEAR Font. Choose font style for the year.
+5.4.2 MONTH Font. Choose font style for the month.
+5.4.3 DAY Font. Choose the font style for the day.
+5.4.4 Names of the Weekdays Font. Choose the font style for the names of the weekdays.
+5.4.5 Header Background Color. Choose the background color of the header.
+5.4.6 Calendar Background Color. Choose the background color of the calendar.
+5.4.7 Color of Month. Choose the color to display the months.
+5.4.8 Color of the Names of the Weekdays. Choose the color to display the names of the weekdays.
+5.4.9 Color of Other Months. Choose the color for the other month days.
+5.4.10 Color of Days without Events. Choose the color for the days without events.
+5.4.11 Color of Days with Events. Choose the color for the days with events.
+5.4.12 Background Color of Days with Events. Select the background color for the days with events.
+5.4.13 Background Color of Current Day. Select the background color for the current day.
+5.4.14 Color of Arrows. Choose the color for the arrows.
+5.4.15 Color of Current Day. Choose the color for the current day.
+5.4.16 Border Color of the Current Day. Select the border color for the current day.
+5.4.17 Color of Sundays. Choose the color for Sundays.
+5.4.18 Background Color for the Names of the Weekdays. Select the background color for the names of the weekdays.
+5.4.19 Sunday Background Color. Select the background color for Sundays.
+5.4.20 Cell Border Color. Choose the color for the cell border.
+5.4.21 Year and Month Font Size. Choose the font size to display year and month.
+5.4.22 Year Font color. Select the font color for the year.
+5.4.23 Year Tabs Background color. Choose the background color for the year tabs.
     
     
-== Step 5:Spider Event Calendar  ==        
+== Step 6:Spider Event Calendar  ==        
     
 = Publishing the created Calendar in the Page or Post,  =    
     
     
-5.1 Press the button named Insert Spider Event Calendar in a post or page you want to show the calendar.   
-5.2 Select calendar. Select a calendar from the given list.    
-5.3 Select theme. Select a calendar theme from the given list.   
-5.4 Save the page or post where the calendar is inserted   
+6.1 Press the button named Insert Spider Event Calendar in a post or page you want to show the calendar.   
+6.2 Select calendar. Select a calendar from the given list.    
+6.3 Select theme. Select a calendar theme from the given list. 
+6.4 Select Default View. Select the default view from provided options (Month, List, Week and Day).  
+6.5 Select Views. Select the views options (Month, List, Week and Day) for the calendar in the public view.
+6.6 Save the page or post where the calendar is inserted.   
      
-Alternatively, you can use Spider Event Calendar without the button on the toolbar: Add the shortcode  [Spider_Calendar id="CalendarID" theme="ThemeID"] (whereCalendarID is the id of the calendar, ThemeID is the ID of the calendar theme.)    
+Alternatively, you can use Spider Event Calendar without the button on the toolbar: Add the shortcode  [Spider_Calendar id="1" theme="10" default="month" select="month,list,week,day,"] (where Spider_Calendar id is the id of the calendar, theme is the ID of the theme, default is the default view of the calendar, select is the option for the available views.)    
 
-== Step 6:Spider Event Calendar  ==        
+== Step 7:Spider Event Calendar  ==        
     
 = Publishing the created Calendar in the widget  =    
     
     
-6.1 Add  Spider Event Calendar Widget to the sidebar.    
-6.2 Select calendar. Select a calendar  from the given list.   
-6.3 Select theme for a widget. Select a  calendar theme for the widget from the given list.    
-6.4 Save the widget where the calendar is inserted    
+7.1 Add  Spider Event Calendar Widget to the sidebar.    
+7.2 Select calendar. Select a calendar  from the given list.   
+7.3 Select theme for a widget. Select a  calendar theme for the widget from the given list.
+7.4 Select Default View. Select the default view from provided options (Month, List, Week and Day).  
+7.5 Select Views. Select the views options (Month, List, Week and Day) for the calendar in the public view.
+7.6 Save the widget where the calendar is inserted.    
     
