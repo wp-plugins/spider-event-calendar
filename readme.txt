@@ -99,7 +99,14 @@ Ukrainian (uk_UA)
 Vietnamese (vi)  
   Spider Event Calendar is a highly configurable plugin which allows you to have multiple organized events in a calendar. This plugin is one of the best WordPress Calendar available in WordPress Directory.   
   
-
+== Screenshots ==
+1.  WordPress Event Calendar - Calendar	
+2.  WordPress Event Calendar - Widget Calendar	
+3.  WordPress Event Calendar - Widget Calendar	
+4.  WordPress Event Calendar - Widget Calendar	
+5.  WordPress Event Calendar - Create Event	
+6.  WordPress Event Calendar - Edit Theme	
+  
   == Spider Event Calendar ==    
 = Step by step guide for the calendar installation,Installing the calendar =    
 
@@ -321,11 +328,5 @@ Alternatively, you can use Spider Event Calendar without the button on the toolb
 7.5 Select Views. Select the views options (Month, List, Week and Day) for the calendar in the public view.	
 7.6 Save the widget where the calendar is inserted.	
     
-== Screenshots of the WordPress Event Calendar ==
-1.  WordPress Event Calendar - Calendar	
-2.  WordPress Event Calendar - Widget Calendar	
-3.  WordPress Event Calendar - Widget Calendar	
-4.  WordPress Event Calendar - Widget Calendar	
-5.  WordPress Event Calendar - Create Event	
-6.  WordPress Event Calendar - Edit Theme	
+
   
