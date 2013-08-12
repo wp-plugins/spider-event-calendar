@@ -141,18 +141,18 @@ If the installation of the calendar succeeded you will see the message in the pi
 = Creating/Editing events. =    
 
 3.1 On the left menu select  Calendar > Calendars.	
-3.2 Select a calendar from the list. Click on the Add an Event button for creating a new event. If you want to edit an existing event, simply click on its title in the list of events.
+3.2 Select a calendar from the list. Click on the Add an Event button for creating a new event. If you want to edit an existing event, simply click on its title in the list of events.	
 3.3 Title. Add a title for the event.	
-3.4 Time. Set the start and the end time for the event.	
+3.4 Time. Set the start and the end time for the event.   	
 3.5 Note. Write the description of the event.	
 3.6 Published. Choose whether to publish the event or not.	
 3.7 Repeat Event. Choose the frequency for repeating the events.	
-• Don't repeat this event.	
-• Repeat daily. Choose the frequency of the days for repeating the events.	
-• Repeat weekly. Choose the quantity of the weeks and a weekday for repeating the events.	
-• Repeat monthly. Choose the quantity of the months and the quantity of the weekdays for repeating the events.	
-• Repeat yearly. Choose the quantity of the years, choose a month and the frequency of the week and weekdays.	
-• Repeat until. Choose the end date for repeating each event.	
+ Don't repeat this event.	
+ Repeat daily. Choose the frequency of the days for repeating the events.	
+ Repeat weekly. Choose the quantity of the weeks and a weekday for repeating the events.	
+ Repeat monthly. Choose the quantity of the months and the quantity of the weekdays for repeating the events.	
+ Repeat yearly. Choose the quantity of the years, choose a month and the frequency of the week and weekdays.	
+ Repeat until. Choose the end date for repeating each event.	
 3.8. Save. Click the Save button to save the created event.	
 
    
@@ -164,7 +164,7 @@ If the installation of the calendar succeeded you will see the message in the pi
 There are 11 default calendar and widget themes. You can use one of the calendar default themes or create a new one. If you change the parameters of the calendar default theme here is a big **Reset Theme** button for resetting default theme*s parameters on the calendar  to original.    
    
 4.1 On the left menu select  Calendar>Calendar Themes>Add a Theme You can fill the all parameters of the calendar theme or inherit  the parameters of the  calendar theme from the default themes of the calendar.	
-4.2 The General Parameters of the Spider Event Calendar	
+4.2 The General Parameters of the Spider Event Calendar.   	
 4.2.1 Title. Choose a title for the calendar theme.	
 4.2.2 Default theme. Choose the default theme for the calendar.	
 4.2.3 Width. Define the width of the calendar.	
@@ -180,7 +180,7 @@ There are 11 default calendar and widget themes. You can use one of the calendar
 4.3.3 Current month font size. Define the font size of the calendar current month.	
 4.3.4 Current Month color. Choose the color of the calendar current month.	
 4.3.5 Current Month arrow color. Choose the color for the calendar*s current month arrow.	
-4.3.6 Arrow size. Define the size of the arrow on the calendar.	
+4.3.6 Arrow size. Define the size of the arrow on the calendar.   	
 4.3.7 Names of the Weekdays color. Choose the color for the names of weekdays.	
 4.3.8 Names of the Weekdays cell height. Define the height of the cell for the names of weekdays.	
 4.3.9 Names of the Weekdays Background Color. Choose the background color for the weekdays.	
@@ -195,9 +195,9 @@ There are 11 default calendar and widget themes. You can use one of the calendar
 4.4.4  Other months days background color. Choose the background color for the other months days on the calendar.	
 4.4.5 Cell text color without events. Choose the text color for the calendar cell without events.	
 4.4.6 Cell text color with [WordPress Calendar events](http://wordpress.org/extend/plugins/spider-event-calendar/). Choose the text color for the calendar cell with events.	
-4.4.7 Cell background color with events. Choose the background color for the calendar cell with events.	
-4.4.8 Event title color. Choose the color for the  calendarevent title.	
-4.4.9 Current day cell border color. Choose the cell border color for the calendar current day.	
+4.4.7 Cell background color with events. Choose the background color for the calendar cell with events.   	
+4.4.8 Event title color. Choose the color for the  calendarevent title.   	
+4.4.9 Current day cell border color. Choose the cell border color for the calendar current day.   	
 4.4.10 Cell border color. Choose the color for the calendar cell border.	
 4.4.11 Sundays text color. Choose the text color for Sundays for the calendar.	
 4.4.12 Sundays cell background color. Choose the background color for Sundays cell for the calendar.	
@@ -208,7 +208,7 @@ There are 11 default calendar and widget themes. You can use one of the calendar
 4.4.17 Number of Displayed event. Define the number of displayed events.	
 4.4.18 Event Titles Background Color. Choose the background color for the event titles.	
 4.4.19 Views Tabs Background Color. Choose the background color for the views tabs.	
-4.4.20 Views Tabs Text Color. Choose the text color for the views tabs.	
+4.4.20 Views Tabs Text Color. Choose the text color for the views tabs.   	
 4.4.21 Views Tabs Font Size. Define the font size of views tabs.	
      
      
@@ -217,7 +217,7 @@ There are 11 default calendar and widget themes. You can use one of the calendar
 4.5.2 Event title color in popup. Choose the color for the calendar event title in popup.	
 4.5.3 Event title font size in popup. Define the font size of the calendar event title in popup.	
 4.5.4 Event title font family in popup.Select thecalendar  event title font family in popup.	
-4.5.5 Event title font style in popup. Select the calendar event title font style in popup.	
+4.5.5 Event title font style in popup. Select the calendar event title font style in popup.   	
 4.5.6 Date color in popup. Choose the color for the calendar date in popup.	
 4.5.7 Date font size in popup. Define the font size of thecalendar  date in popup.	
 4.5.8 Date font family in popup. Choose the font family of the calendar date in popup.	
@@ -225,7 +225,7 @@ There are 11 default calendar and widget themes. You can use one of the calendar
 4.5.10 Arrow background color in popup. Choose the background color for the calendar arrow in popup.	
 4.5.11 Arrow color in popup. Choose the color for the calendar arrow in popup.	
 4.5.12 Popup background color. Choose the background color for the calendar popup.	
-4.5.13 Popup width. Define the width of the calendar popup.	
+4.5.13 Popup width. Define the width of the calendar popup.   	
 4.5.14 Popup height. Define the height of the calendar popup.	
 4.5.15 Number of displayed events. Define the number of displayed events for the calendar.	
 4.5.16 Show repeat rate. Choose whether to show the calendar repeat rate or not.	
@@ -234,15 +234,15 @@ There are 11 default calendar and widget themes. You can use one of the calendar
 4.6.1 Date Background Color. Specify the background color of the event date cell (List View and Weekly View).	
 4.6.2 Event Background Color 1. Select the background color of the events with an odd number.	
 4.6.3 Event Background Color 2. Select the background color of the events with an even number.	
-4.6.4 Event Number Background Color 1. Select the number background color of the events with an odd number.	
-4.6.5 Event Number Background Color 2. Select the number background color of the events with an even number.	
+4.6.4 Event Number Background Color 1. Select the number background color of the events with an odd number.   	
+4.6.5 Event Number Background Color 2. Select the number background color of the events with an even number.   	
 4.6.6 Event Number Color. Specify the color of the event number.	
 4.6.7 Day and Month Font Color. Specify the font color of the day and the month of the event date (e.g. 23 March).	
 4.6.8 Day of the Week Font Color. Specify the font color of the day of the week in the event date.	
 4.6.9 Date Font Size. Specify the font size of the date text.	
 4.6.10 Event Number Font Size. Specify the font size of the event number.	
 4.6.11 Event Cell Height. Specify the height of the event cell.	
-4.6.12 Date Cell Height. Specify the height of the date cell.	
+4.6.12 Date Cell Height. Specify the height of the date cell.   	
 4.6.13 Day and Month Font Size. Specify the font size of the day and the month of the event date.	
 4.6.14 Day of the Week Font Size. Specify the font size of the day of the week in the event date.	
 
@@ -260,11 +260,11 @@ There are 11 default calendar and widget themes. You can use one of the calendar
 5.2.4 The First day of the Week. Choose whether to start the week from Monday or from Sunday.	
 
 5.3 The Popup Window Parameters of the Spider Event Calendar.	
-5.3.1 Date Format in Popup. Choose the format of the date in popup.	
-5.3.2 Event Title Color in Popup. Choose the color for the event title in popup.	
-5.3.3 Event Title Font Size in Popup. Define the font size of the event title in popup.	
-5.3.4 Event Title Font Family in Popup.Select the event title font family in popup.	
-5.3.5 Event Title Font Style in Popup. Select the event title font style in popup.	
+5.3.1 Date Format in Popup. Choose the format of the date in popup.   	
+5.3.2 Event Title Color in Popup. Choose the color for the event title in popup.   	
+5.3.3 Event Title Font Size in Popup. Define the font size of the event title in popup.   	
+5.3.4 Event Title Font Family in Popup.Select the event title font family in popup.   	
+5.3.5 Event Title Font Style in Popup. Select the event title font style in popup.   	
 5.3.6 Date Color in Popup. Choose the color of the date in popup.	
 5.3.7 Date Font Size in Popup. Define the font size of the date in popup.	
 5.3.8 Date Font Family in Popup. Choose the font family of the date in popup.	
@@ -285,7 +285,7 @@ There are 11 default calendar and widget themes. You can use one of the calendar
 5.4.6 Calendar Background Color. Choose the background color of the calendar.	
 5.4.7 Color of Month. Choose the color to display the months.	
 5.4.8 Color of the Names of the Weekdays. Choose the color to display the names of the weekdays.	
-5.4.9 Color of Other Months. Choose the color for the other month days.	
+5.4.9 Color of Other Months. Choose the color for the other month days.   	
 5.4.10 Color of Days without Events. Choose the color for the days without events.	
 5.4.11 Color of Days with Events. Choose the color for the days with events.	
 5.4.12 Background Color of Days with Events. Select the background color for the days with events.	
@@ -296,9 +296,9 @@ There are 11 default calendar and widget themes. You can use one of the calendar
 5.4.17 Color of Sundays. Choose the color for Sundays.	
 5.4.18 Background Color for the Names of the Weekdays. Select the background color for the names of the weekdays.	
 5.4.19 Sunday Background Color. Select the background color for Sundays.	
-5.4.20 Cell Border Color. Choose the color for the cell border.	
+5.4.20 Cell Border Color. Choose the color for the cell border.   	
 5.4.21 Year and Month Font Size. Choose the font size to display year and month.	
-5.4.22 Year Font color. Select the font color for the year.	
+5.4.22 Year Font color. Select the font color for the year.   	
 5.4.23 Year Tabs Background color. Choose the background color for the year tabs.	
     
     
@@ -324,9 +324,9 @@ Alternatively, you can use Spider Event Calendar without the button on the toolb
 7.1 Add  Spider Event Calendar Widget to the sidebar.	
 7.2 Select calendar. Select a calendar  from the given list.	
 7.3 Select theme for a widget. Select a  calendar theme for the widget from the given list.   	
-7.4 Select Default View. Select the default view from provided options (Month, List, Week and Day).	
-7.5 Select Views. Select the views options (Month, List, Week and Day) for the calendar in the public view.	
-7.6 Save the widget where the calendar is inserted.	
+7.4 Select Default View. Select the default view from provided options (Month, List, Week and Day).   	
+7.5 Select Views. Select the views options (Month, List, Week and Day) for the calendar in the public view.   	
+7.6 Save the widget where the calendar is inserted.   	
     
 
   
