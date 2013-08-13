@@ -183,6 +183,9 @@ function big_calendar_list_widget() {
       top: 3px;
       font-family: <?php echo $font_month; ?>;
     }
+    #calendar_<?php echo $many_sp_calendar; ?> table tr {
+      background: transparent !important;
+    }
   </style>
   <div id="calendar_<?php echo $many_sp_calendar; ?>" style="width:<?php echo $calendar_width; ?>px;">
     <table cellpadding="0" cellspacing="0" style="border-spacing:0; width:<?php echo $calendar_width; ?>px; margin:0; padding:0;background-color:<?php echo $calendar_bg; ?>">
@@ -273,11 +276,11 @@ function big_calendar_list_widget() {
                       </td>
                       <td width="60%" style="text-align:center; margin:0; padding:0; font-family:<?php echo $font_month; ?>">
                         <input type="hidden" name="month" readonly="" value="<?php echo $month; ?>"/>
-                        <span style="font-size:<?php echo $year_font_size; ?>px;?>; color:<?php echo $text_color_month; ?>;"><?php echo $month; ?></span>
+                        <span style="font-size:<?php echo $year_font_size; ?>px;?>; color:<?php echo $text_color_month; ?>;"><?php echo __($month, 'sp_calendar'); ?></span>
                       </td>
                       <td style="text-align:right; margin:0; padding:0; line-height:16px"  class="cala_arrow" width="20%">
                         <a href="javascript:showbigcalendar('bigcalendar<?php echo $many_sp_calendar ?>','<?php
-                          if (Month_num($month) == 1) {
+                          if (Month_num($month) == 12) {
                             $needed_date = ($year + 1) . '-01';
                           }
                           else {

@@ -334,7 +334,7 @@ function spiderbigcalendar() {
   $activedatetimestamp = mktime(0, 0, 0, $activedate[1], $activedate[2], $activedate[0]);
   $activedatestr = '';
   for ($i = 0; $i < count($date_format_array); $i++) {
-    $activedatestr .= __(date("" . $date_format_array[$i] . "", $activedatetimestamp)) . ' ';
+    $activedatestr .= __(date("" . $date_format_array[$i] . "", $activedatetimestamp), 'sp_calendar') . ' ';
   }
   $date = $datte;
   $day = substr($date, 8);
