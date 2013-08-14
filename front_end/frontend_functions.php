@@ -926,13 +926,13 @@ function week_number($x) {
   if ($x == 1) {
     return __('First', 'sp_calendar');
   }
-  elseif ($x == 7) {
+  elseif ($x == 8) {
     return __('Second', 'sp_calendar');
   }
-  elseif ($x == 14) {
+  elseif ($x == 15) {
     return __('Third', 'sp_calendar');
   }
-  elseif ($x == 21) {
+  elseif ($x == 22) {
     return __('Fourth', 'sp_calendar');
   }
   elseif ($x == 'last') {
