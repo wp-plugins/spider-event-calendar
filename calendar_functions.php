@@ -102,7 +102,7 @@ function apply_spider_calendar($id) {
     echo '<h1 style="color:#00C">Error. ID does not exist.</h1>';
     exit;
   }
-  $title = (isset($_POST["title"]) ? esc_html($_POST["title"]) : '');
+  $title = (isset($_POST["title"]) ? esc_html(stripslashes($_POST["title"])) : '');
   $user_type = (isset($_POST["user_type"]) ? esc_html($_POST["user_type"]) : '');
   $time_format = (isset($_POST["time_format"]) ? (int) $_POST["time_format"] : 0);
   $def_year = (isset($_POST["def_year"]) ? esc_html($_POST["def_year"]) : '');
@@ -268,7 +268,7 @@ function edit_spider_event($calendar_id, $id) {
 // Save event.
 function apply_spider_event($calendar_id, $id) {
   global $wpdb;
-  $title = ((isset($_POST['title'])) ? stripslashes($_POST['title']) : '');
+  $title = ((isset($_POST['title'])) ? esc_html(stripslashes($_POST['title'])) : '');
   $text_for_date = ((isset($_POST['text_for_date'])) ? stripslashes($_POST['text_for_date']) : '');
   $published = ((isset($_POST['published'])) ? (int) $_POST['published'] : 1);
   $repeat = ((isset($_POST['repeat'])) ? esc_html($_POST['repeat']) : '');
@@ -375,7 +375,7 @@ function apply_spider_event($calendar_id, $id) {
       '%s'
     ));
   }
-  if ($save) {
+  if ($save !== FALSE) {
     ?>
     <div class="updated"><p><strong>Item Saved.</strong></p></div>
     <?php
