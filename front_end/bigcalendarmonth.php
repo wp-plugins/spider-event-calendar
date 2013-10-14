@@ -566,7 +566,7 @@ function big_calendar_month() {
         }
         else {
           echo '      <td class="calsun_days" style="padding:0; font-size:' . $sundays_font_size . 'px; margin:0;line-height:1.3;font-family:tahoma;padding-left: 5px; border: 1px solid ' . $border_day . '">
-                        <p>' . $i . '</p>
+                        <b>' . $i . '</b>
                       </td>';
         }
       }
@@ -620,7 +620,7 @@ function big_calendar_month() {
 			}
       else {
         echo '        <td class="calsun_days" style="padding:0; margin:0;line-height:1.3;font-family: tahoma;padding-left: 5px;font-size:' . $sundays_font_size . 'px">
-                        <p>' . $i . '</p>
+                        <b>' . $i . '</b>
                       </td>';
       }
     }

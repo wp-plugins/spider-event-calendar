@@ -123,6 +123,8 @@ function php_getdays($show_numbers_for_events, $calendar, $date, $theme_id, $wid
           $start_date_array[] = $start_date;
           $next_date = php_GetNextDate($start_date, $repeat * 7);
           $next_date_array = explode('/', $next_date);
+          if (($next_date_array[2] . '-' . add_0($next_date_array[0]) . '-' . add_0($next_date_array[1]) > $rows[$i - 1]->date_end) || ($next_date_array[0] > (int)$month && $next_date_array[2] == (int)$year) || ($next_date_array[2] > (int)$year))
+            break;
           if ((int)$month == $date_month && (int)substr($date_year_month, 0, 4) == (int)$year)
             $date_days[0] = $weekdays_start[$p];
           if ((int)$month == $next_date_array[0] && (int)$year == $next_date_array[2])
@@ -133,8 +135,8 @@ function php_getdays($show_numbers_for_events, $calendar, $date, $theme_id, $wid
               $weekdays[] = $next_date_array[1];
             }
           $start_date = date("Y-m-d", mktime(0, 0, 0, $next_date_array[0], $next_date_array[1], $next_date_array[2]));
-          if ($next_date_array[2] > (int)substr($rows[$i - 1]->date_end, 0, 4))
-            break;
+          // if ($next_date_array[2] > (int)substr($rows[$i - 1]->date_end, 0, 4))
+            // break;
         }
         $date_days = array_merge($weekdays, $date_days);
       }
