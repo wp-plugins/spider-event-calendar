@@ -151,7 +151,7 @@ function html_show_spider_calendar($rows, $pageNav, $sort) {
       $serch_value = "";
     }
     $serch_fields = '
-      <div class="alignleft actions" style="width:180px;">
+      <div class="alignleft actions">
         <label for="search_events_by_title" style="font-size:14px">Title: </label>
         <input type="text" name="search_events_by_title" value="' . $serch_value . '" id="search_events_by_title" onchange="clear_serch_texts()">
       </div>
@@ -231,7 +231,12 @@ function html_add_spider_calendar() {
     }
     function submitform(pressbutton) {
       document.getElementById('adminForm').action = document.getElementById('adminForm').action + "&task=" + pressbutton;
+	  if (document.getElementById('title').value == "") {
+					alert('Provide calendar title:');
+				  }
+				  else {
       document.getElementById('adminForm').submit();
+	  }
     }
     function doNothing() {
       var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
@@ -355,7 +360,12 @@ function html_edit_spider_calendar($row) {
     }
     function submitform(pressbutton) {
       document.getElementById('adminForm').action = document.getElementById('adminForm').action + "&task=" + pressbutton;
+	  if (document.getElementById('title').value == "") {
+					alert('Provide calendar title:');
+				  }
+				  else {
       document.getElementById('adminForm').submit();
+	  }
     }    
     function doNothing() {
       var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
@@ -478,6 +488,595 @@ function selectted($row, $y) {
   }
 }
 
+function show_event_category($rows, $pageNav, $sort){
+ global $wpdb;
+   ?>
+  <script language="javascript">
+    function confirmation(href, title) {
+      var answer = confirm("Are you sure you want to delete '" + title + "'?")
+      if (answer) {
+        document.getElementById('admin_form').action = href;
+        document.getElementById('admin_form').submit();
+      }
+    }
+    function ordering(name, as_or_desc) {
+      document.getElementById('asc_or_desc').value = as_or_desc;
+      document.getElementById('order_by').value = name;
+      document.getElementById('admin_form').submit();
+    }
+    function submit_form_id(x) {
+      var val = x.options[x.selectedIndex].value;
+      document.getElementById("id_for_playlist").value = val;
+      document.getElementById("admin_form").submit();
+    }
+    function doNothing() {
+      var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+      if (keyCode == 13) {
+        if (!e) var e = window.event;
+        e.cancelBubble = true;
+        e.returnValue = false;
+        if (e.stopPropagation) {
+          e.stopPropagation();
+          e.preventDefault();
+        }
+      }
+    }
+    var show_one_cal = 1;
+    var get_cal_id = 0;
+    function show_calendar_inline(cal_id) {
+      if (show_one_cal == 1) {
+        show_one_cal = 0;
+        jQuery.ajax({
+          type:'POST',
+          url:'<?php echo admin_url('admin-ajax.php?action=spidercalendarinlineedit') ?>',
+          data:{calendar_id:cal_id},
+          dataType:'html',
+          success:function (data) {
+            cancel_qiucik_edit(get_cal_id);
+            var edit_cal_tr = document.createElement("tr")
+            edit_cal_tr.innerHTML = data;
+            edit_cal_tr.setAttribute('class', 'inline-edit-row inline-edit-row-page inline-edit-page quick-edit-row quick-edit-row-page inline-edit-page alternate inline-editor')
+            edit_cal_tr.setAttribute('id', 'edit_calendar-' + cal_id);
+
+            document.getElementById('Calendar-' + cal_id).style.display = "none";
+            document.getElementById('calendar_body').appendChild(edit_cal_tr);
+            document.getElementById('calendar_body').insertBefore(edit_cal_tr, document.getElementById('Calendar-' + cal_id));
+            get_cal_id = cal_id;
+            show_one_cal = 1
+          }
+        });
+      }
+    }
+    function cancel_qiucik_edit(cal_id) {
+      if (document.getElementById('edit_calendar-' + cal_id)) {
+        var tr = document.getElementById('edit_calendar-' + cal_id);
+        tr.parentNode.removeChild(tr);
+        document.getElementById('Calendar-' + cal_id).style.display = "";
+      }
+    }
+    function updae_inline_sp_calendar(cal_id) {
+      var cal_title = document.getElementById('calendar_title').value;
+      var cal_12_format = getCheckedValue(document.getElementsByName('time_format'));
+      var def_year = document.getElementById('def_year').value;
+      var def_month = document.getElementById('def_month').value;
+      document.getElementById('imig_for_waiting').style.display = "block";
+      jQuery.ajax({
+        type:'POST',
+        url:'<?php echo admin_url('admin-ajax.php?action=spidercalendarinlineupdate') ?>',
+        data:{
+          calendar_id:cal_id,
+          calendar_title:cal_title,
+          us_12_format_sp_calendar:cal_12_format,
+          default_year:def_year,
+          default_month:def_month
+        },
+        dataType:'html',
+        success:function (data) {
+          if (data) {
+            document.getElementById('imig_for_waiting').style.display = "none";
+            document.getElementById('Calendar-' + cal_id).innerHTML = data;
+            cancel_qiucik_edit(cal_id);
+          }
+          else {
+            alert('ERROR PLEAS INSTALL PLUGIN AGAIN');
+            cancel_qiucik_edit(cal_id);
+          }
+        }
+      });
+    }
+    function getCheckedValue(radioObj) {
+      if (!radioObj)
+        return "";
+      var radioLength = radioObj.length;
+      if (radioLength == undefined)
+        if (radioObj.checked)
+          return radioObj.value;
+        else
+          return "";
+      for (var i = 0; i < radioLength; i++) {
+        if (radioObj[i].checked) {
+          return radioObj[i].value;
+        }
+      }
+      return "";
+    }
+  </script>
+  <form method="post" onkeypress="doNothing()" action="admin.php?page=spider_calendar_event_category" id="admin_form" name="admin_form">
+    <table cellspacing="10" width="100%" id="category_table">
+      <tr>
+        <td width="100%" style="font-size:14px; font-weight:bold">
+          <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a>
+          <br />
+          This section allows you to create calendars. You can add unlimited number of calendars.
+          <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a>
+        </td>
+		<td colspan="7" align="right" style="font-size:16px;">
+      <a href="http://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
+        <img src="<?php echo plugins_url('images/header.png', __FILE__); ?>" border="0" alt="http://web-dorado.com/files/fromSpiderCalendarWP.php" width="215"><br />
+        Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
+      </a>
+    </td>
+      </tr>
+	  
+      <tr>
+        <td style="width:210px"><h2>Event Category</h2></td>
+        <td style="width:90px; text-align:right;">
+          <p class="submit" style="padding:0px; text-align:left">
+            <input type="button" value="Add a Category" name="custom_parametrs" onclick="window.location.href='admin.php?page=spider_calendar_event_category&task=add_category'"/>
+          </p>
+        </td>
+        <td style="text-align:right;font-size:16px;padding:20px; padding-right:50px">
+        </td>
+      </tr>
+    </table>
+    <?php
+    if (isset($_POST['serch_or_not']) && ($_POST['serch_or_not'] == "search")) {
+      $serch_value = $_POST['search_cat_by_title'];
+    }
+    else {
+      $serch_value = "";
+    }
+    $serch_fields = '
+      <div class="alignleft actions" >
+        <label for="search_cat_by_title" style="font-size:14px">Title: </label>
+        <input type="text" name="search_cat_by_title" value="' . $serch_value . '" id="search_cat_by_title" onchange="clear_serch_texts()">
+      </div>
+      <div class="alignleft actions">
+        <input type="button" value="Search" onclick="document.getElementById(\'page_number\').value=\'1\'; document.getElementById(\'serch_or_not\').value=\'search\';
+          document.getElementById(\'admin_form\').submit();" class="button-secondary action">
+        <input type="button" value="Reset" onclick="window.location.href=\'admin.php?page=spider_calendar_event_category\'" class="button-secondary action">
+      </div>';
+    print_html_nav($pageNav['total'], $pageNav['limit'], $serch_fields);
+    ?>
+    <table class="wp-list-table widefat fixed pages" style="width:95%">
+      <thead>
+      <TR>
+        <th scope="col" id="id" class="<?php echo (($sort["sortid_by"] == "id") ? $sort["custom_style"] : $sort["default_style"]); ?>" style="width:50px">
+          <a href="javascript:ordering('id',<?php echo(($sort["sortid_by"] == "id") ? $sort["1_or_2"] : "1"); ?>)">
+            <span>ID</span>
+            <span class="sorting-indicator"></span>
+          </a>
+        </th>
+        <th scope="col" id="title" class="<?php echo (($sort["sortid_by"] == "title") ? $sort["custom_style"] : $sort["default_style"]); ?>">
+          <a href="javascript:ordering('title',<?php echo (($sort["sortid_by"] == "title") ? $sort["1_or_2"] : "1"); ?>)">
+            <span>Title</span>
+            <span class="sorting-indicator"></span>
+          </a>
+        </th>
+        <th scope="col" id="description" class="<?php echo (($sort["sortid_by"] == "description") ? $sort["custom_style"] : $sort["default_style"]); ?>">
+          <a href="javascript:ordering('description',<?php echo (($sort["sortid_by"] == "description") ? $sort["1_or_2"] : "1"); ?>)">
+            <span>Description</span>
+            <span class="sorting-indicator"></span>
+          </a>
+        </th>
+        <th scope="col" id="published" class="<?php echo (($sort["sortid_by"] == "published") ? $sort["custom_style"] : $sort["default_style"]); ?>" style="width:100px">
+          <a href="javascript:ordering('published',<?php echo (($sort["sortid_by"] == "published") ? $sort["1_or_2"] : "1"); ?>)">
+            <span>Published</span>
+            <span class="sorting-indicator"></span>
+          </a>
+        </th>
+      </TR>
+      </thead>
+      <tbody id="category_body">
+        <?php for ($i = 0; $i < count($rows); $i++) { ?>
+      <tr id="Calendar-<?php echo $rows[$i]->id; ?>" class=" hentry alternate iedit author-self" style="display:table-row;">
+        <td><?php echo $rows[$i]->id; ?></td>
+        <td class="post-title page-title column-title">
+          <?php echo $rows[$i]->title; ?></a>
+		  
+		 <div class="row-actions">
+            <span class="edit">
+              <a href="admin.php?page=spider_calendar_event_category&task=edit_event_category&id=<?php echo $rows[$i]->id; ?>" title="Edit This Calendar">Edit</a> | </span>
+            <span class="trash">
+              <a class="submitdelete" title="Delete This Calendar" href="javascript:confirmation('admin.php?page=spider_calendar_event_category&task=remove_event_category&id=<?php echo $rows[$i]->id; ?>','<?php echo $rows[$i]->title; ?>')">Delete</a></span>
+          </div>
+        </td>
+        <td><?php echo $rows[$i]->description; ?></td>
+        <td><a <?php if (!$rows[$i]->published) echo 'style="color:#C00"'; ?> href="admin.php?page=spider_calendar_event_category&task=published&id=<?php echo $rows[$i]->id; ?>"><?php if ($rows[$i]->published) echo 'Yes'; else echo 'No'; ?></a>
+        </td>
+      </tr>
+        <?php } ?>
+      </tbody>
+    </table>
+    <input type="hidden" name="id_for_playlist" id="id_for_playlist" value="<?php if (isset($_POST['id_for_playlist'])) echo $_POST['id_for_playlist'];?>"/>
+    <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if (isset($_POST['asc_or_desc'])) echo $_POST['asc_or_desc'];?>"/>
+    <input type="hidden" name="order_by" id="order_by" value="<?php if (isset($_POST['order_by'])) echo $_POST['order_by'];?>"/>
+    <?php
+    ?>
+  </form>
+  <?php
+
+}
+
+function edit_event_category($id){
+ global $wpdb;
+$row=$wpdb->get_row("SELECT * FROM " . $wpdb->prefix . "spidercalendar_event_category WHERE id=".$id."");
+		?>
+				
+		<script language="javascript" type="text/javascript">
+		<!--
+		function submitbutton(pressbutton) {
+			document.getElementById('adminForm').action = "admin.php?page=spider_calendar_event_category&task=" + pressbutton+"&id=<?php echo $id?>";
+				if (document.getElementById('cat_title').value == "") {
+					alert('Provide the category title:');
+				  }
+				  else {
+					document.getElementById('adminForm').submit();
+				  }
+		  }
+        </script>    
+
+	<table>
+		 <tr>
+			  <td align="right"><input type="button" onclick="submitbutton('save_category_event')" value="Save" class="button-secondary action"></td>
+			  <td align="right"><input type="button" onclick="submitbutton('apply_event_category')" value="Apply" class="button-secondary action"></td>
+			  <td align="right"><input type="button" onclick="window.location.href='admin.php?page=spider_calendar_event_category'" value="Cancel" class="button-secondary action">
+			  </td>   
+		 </tr>
+    </table>
+
+	
+		<form action="" method="post" name="adminForm" id="adminForm">
+	<div class="width-45 fltlft ">
+	<fieldset class="adminform" >
+
+	
+    
+    
+<table class="admintable" >
+
+
+          
+              <tr>
+                <td class="key" ><label for="message"><?php echo 'Category title'; ?>:</label>  </td>
+               <td> 
+			   
+			   <input   type="text" name="title" value="<?php if(isset($row->title)) echo htmlspecialchars($row->title); 
+			   ?>" id="cat_title"/>
+			   </td>
+               </tr>
+               
+				 <tr>
+			   <td class="key" ><label for="message"><?php echo 'Category Color'; ?>:</label>  </td>
+             
+               <td><input type="text" name="color" id="color" class="color" style="width:134px;" value="<?php if(isset($row->color)) echo htmlspecialchars($row->color); 
+			   ?>"/></td>
+               </tr>
+                
+
+			    <tr>
+					<td class="key"><label for="message"> <?php echo 'Description'; ?>:</label></td>
+					<td ><div id="poststuff" style="width:100% !important;">
+					
+					 <?php if(version_compare(get_bloginfo('version'),3.3)<0) {?>
+							<div id="<?php echo user_can_richedit() ? 'postdivrich' : 'postdiv'; ?>" class="postarea"><?php the_editor(stripslashes($row->description),"description","title" ); ?>
+							</div>
+							<?php }else{
+							if(isset($row->description)) $desc1 = $row->description;
+							else $desc1 = "";
+							wp_editor($desc1, "description"); }?>
+						
+					  </div>
+                    </div></td>	
+                        
+				</tr>		
+							
+					<tr>
+				<td class="key" ><label for="message"><?php echo 'Published'; ?>:</label>  </td>
+               
+			   <td>
+                    <input type="radio" name="published" id="published0" value="0" <?php if(isset($row->published)) cheched($row->published, '0'); ?> class="inputbox">
+                    <label for="published0">No</label>
+                    <input type="radio" name="published" id="published1" value="1" <?php if(isset($row->published)) cheched($row->published, '1'); ?> class="inputbox">
+                    <label for="published1">Yes</label>
+                  </td>
+                 </tr> 		
+
+                </table>
+                
+     </fieldset >  
+       </div>              
+<input type="hidden" name="id" value="<?php echo $id ?>" />
+</form>
+				<?php		
+			   
+		
+	
+	}
+
+	
+	function html_upcoming_widget($rows, $pageNav, $sort){
+require_once("spidercalendar_upcoming_events_widget.php");
+	  global $wpdb;
+	 $input_id=$_GET['id_input'];
+	 $w_id = $_GET['w_id'];
+	 $tbody_id='event'.$w_id;
+	 $calendar_id=$_GET['upcalendar_id'];
+	 ?><html>
+  <head>
+  <link rel="stylesheet" id="thickbox-css" href="<?php echo plugins_url("elements/calendar-jos.css", __FILE__) ?>" type="text/css" media="all">
+ <?php   wp_print_scripts("Canlendar_upcoming");
+  wp_print_scripts("calendnar-setup_upcoming");
+  wp_print_scripts("calenndar_function_upcoming");
+ ?>
+ 
+  <style>
+    .calendar .button {
+      display: table-cell !important;
+    }
+	
+	.button{
+		width: 30px;
+	}
+	input[type=checkbox]:checked:before,
+	th.sorted.asc .sorting-indicator:before, th.desc:hover span.sorting-indicator:before,
+	th.sorted.desc .sorting-indicator:before, th.asc:hover span.sorting-indicator:before{
+		content: close-quote !important;
+	}
+	
+  </style>
+  <script language="javascript">
+	function ordering(name, as_or_desc) {
+      document.getElementById('asc_or_desc').value = as_or_desc;
+      document.getElementById('order_by').value = name;
+      document.getElementById('admin_form').submit();
+    }
+    function submit_form_id(x) {
+      var val = x.options[x.selectedIndex].value;
+      document.getElementById("id_for_playlist").value = val;
+      document.getElementById("admin_form").submit();
+    }
+	
+    function doNothing() {
+      var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+      if (keyCode == 13) {
+        if (!e) {
+          var e = window.event;
+        }
+        e.cancelBubble = true;
+        e.returnValue = false;
+        if (e.stopPropagation) {
+          e.stopPropagation();
+          e.preventDefault();
+        }
+      }
+    }
+	
+	
+	function isChecked(isitchecked){
+	if (isitchecked == true){
+		document.adminForm.boxchecked.value++;
+	}
+	else {
+		document.adminForm.boxchecked.value--;
+	}
+}
+	
+	
+	function checkAll( n, fldName ) {
+
+  if (!fldName) {
+
+     fldName = 'cb';
+
+  }
+
+	var f = document.admin_form;
+
+	var c = f.toggle.checked;
+
+	var n2 = 0;
+
+	for (i=0; i < n; i++) {
+
+		cb = eval( 'f.' + fldName + '' + i );
+
+		if (cb) {
+
+			cb.checked = c;
+
+			n2++;
+
+		}
+
+	}
+
+	if (c) {
+
+		document.admin_form.boxchecked.value = n2;
+
+	} else {
+
+		document.admin_form.boxchecked.value = 0;
+
+	}
+
+}
+
+
+	
+
+function select_events()
+
+{
+	var id =[];
+	var title =[];
+
+	for(i=0; i<<?php echo count($rows)?>; i++)
+		if(document.getElementById("p"+i))
+			if(document.getElementById("p"+i).checked)
+			{
+				id.push(document.getElementById("p"+i).value);
+				title.push(document.getElementById("title_"+i).value);
+				
+			}
+	window.parent.jSelectEvents('<?php echo $input_id ?>','<?php echo $tbody_id ?>','<?php echo $w_id ?>',id, title);
+	}
+
+		
+  </script>
+<?php
+
+
+  if(get_bloginfo( 'version' )>3.3){
+
+	?>
+
+<link rel="stylesheet" href="<?php echo bloginfo("url") ?>/wp-admin/load-styles.php?c=0&amp;dir=ltr&amp;load=admin-bar,wp-admin&amp;ver=7f0753feec257518ac1fec83d5bced6a" type="text/css" media="all">
+
+<?php
+
+}
+
+else
+
+{
+
+	?>
+
+ <link rel="stylesheet" href="<?php echo bloginfo("url") ?>/wp-admin/load-styles.php?c=1&amp;dir=ltr&amp;load=global,wp-admin&amp;ver=aba7495e395713976b6073d5d07d3b17" type="text/css" media="all">
+
+ <?php
+
+}
+
+?>
+
+<link rel="stylesheet" id="thickbox-css" href="<?php echo bloginfo('url')?>/wp-includes/js/thickbox/thickbox.css?ver=20111117" type="text/css" media="all">
+
+<!---- <link rel="stylesheet" id="colors-css" href="<?php echo bloginfo('url')?>/wp-admin/css/colors-classic.css?ver=20111206" type="text/css" media="all"> --->
+</head>
+  <body>
+    <form method="post" onkeypress="doNothing()" action="<?php echo admin_url('admin-ajax.php') ?>?action=upcoming&id_input=<?php echo $input_id;?>&upcalendar_id=<?php echo $calendar_id;?>&w_id=<?php echo $w_id;?>" id="admin_form" name="admin_form">
+    <table cellspacing="10" width="100%">
+    
+    <tr>
+      <td width="100%"><h2>Event Manager</h2></td></td>
+	  <td align="right" width="100%">
+
+                <button onclick="select_events();" style="width:98px; height:34px; background:url(<?php echo plugins_url('',__FILE__) ?>/front_end/images/add_but.png) no-repeat;border:none;cursor:pointer;">&nbsp;</button>			
+           </td>
+    </tr>
+  </table>
+  <?php
+  if (isset($_POST['serch_or_not']) && ($_POST['serch_or_not'] == "search")) {
+    $serch_value = $_POST['search_events_by_title'];
+  }
+  else {
+    $serch_value = "";
+  }
+  $startdate = (isset($_POST["startdate"]) ? esc_html($_POST["startdate"]) : '');
+  $enddate = (isset($_POST["enddate"]) ? esc_html($_POST["enddate"]) : '');
+  $serch_fields = '
+    <div class="alignleft actions">
+    	<label for="search_events_by_title" style="font-size:14px">Title: </label>
+      <input type="text" name="search_events_by_title" value="' . $serch_value . '" id="search_events_by_title" onchange="clear_serch_texts()" style="border: 1px solid #DCDCEC;"/>
+    </div>
+    <div class="alignleft actions">
+      From: <input class="inputbox" type="text" style="width: 90px;border: 1px solid #DCDCEC;" name="startdate" id="startdate" size="10" maxlength="10" value="' . $startdate . '" />
+      <input type="reset" class="button" value="..." onclick="return showCalendar(\'startdate\',\'%Y-%m-%d\');">
+      To: <input class="inputbox" type="text" style="width: 90px;border: 1px solid #DCDCEC;" name="enddate" id="enddate" size="10" maxlength="10" value="' . $enddate . '">
+      <input type="reset" class="button" value="..." onclick="return showCalendar(\'enddate\',\'%Y-%m-%d\');">
+    </div>
+    <div class="alignleft actions">
+   		<input type="button" style="border: 1px solid #DCDCEC;border-radius: 10px;" value="Search" onclick="document.getElementById(\'page_number\').value=\'1\';document.getElementById(\'serch_or_not\').value=\'search\'; document.getElementById(\'admin_form\').submit();" class="button-secondary action">
+      <input type="button" style="border: 1px solid #DCDCEC;border-radius: 10px;" value="Reset" onclick="window.location.href=\'admin-ajax.php?action=upcoming&id_input='.$input_id.'&upcalendar_id='.$calendar_id.'&w_id='.$w_id.'\'" class="button-secondary action">
+    </div>';
+  print_html_nav($pageNav['total'], $pageNav['limit'], $serch_fields);
+  ?>
+  <style>
+  .sorting-indicator {
+width: 7px;
+height: 4px;
+margin-top: 8px;
+margin-left: 7px;
+background-image: url('images/sort.gif');
+background-repeat: no-repeat;
+}
+  </style>
+  <table class="wp-list-table widefat fixed pages" style="width:100%">
+    <thead>
+    <TR>
+      <th scope="col" id="id" class="<?php echo (($sort["sortid_by"] == "id") ? $sort["custom_style"] : $sort["default_style"]); ?>" style="width:50px;background-image: linear-gradient(to top, #EFF8FF, #F7FCFE);">
+        <a href="javascript:ordering('id',<?php echo (($sort["sortid_by"] == "id") ? $sort["1_or_2"] : "1"); ?>)">
+          <span>ID</span>
+          <span class="sorting-indicator"></span>
+        </a>
+      </th>
+	  <th style="background-image: linear-gradient(to top, #EFF8FF, #F7FCFE);" width="20" class="manage-column column-cb check-column">
+
+            <input  style="border: 1px solid #DCDCEC;-webkit-appearance: checkbox;" type="checkbox" name="toggle" id="toggle" value="" onclick="checkAll(<?php echo count($rows)?>, 'p')">
+
+            </th>
+      <th style="background-image: linear-gradient(to top, #EFF8FF, #F7FCFE);" scope="col" id="title" class="<?php echo (($sort["sortid_by"] == "title") ? $sort["custom_style"] : $sort["default_style"]); ?>">
+        <a href="javascript:ordering('title',<?php echo (($sort["sortid_by"] == "title") ? $sort["1_or_2"] : "1"); ?>)">
+          <span>Title</span>
+          <span class="sorting-indicator"></span>
+        </a>
+      </th>
+      <th style="background-image: linear-gradient(to top, #EFF8FF, #F7FCFE);"scope="col" id="date" class="<?php echo (($sort["sortid_by"] == "date") ? $sort["custom_style"] : $sort["default_style"]); ?>">
+        <a href="javascript:ordering('date',<?php echo (($sort["sortid_by"] == "date") ? $sort["1_or_2"] :  "1"); ?>)">
+          <span>Date</span>
+          <span class="sorting-indicator"></span>
+        </a>
+      </th>
+      <th style="background-image: linear-gradient(to top, #EFF8FF, #F7FCFE);"scope="col" id="time" class="<?php echo (($sort["sortid_by"] == "time") ? $sort["custom_style"] : $sort["default_style"]); ?>">
+        <a href="javascript:ordering('time',<?php echo (($sort["sortid_by"] == "time") ? $sort["1_or_2"] : "1"); ?>)">
+          <span>Time</span>
+          <span class="sorting-indicator"></span>
+        </a>
+      </th>
+    </TR>
+    </thead>
+    <tbody>
+      <?php for ($i = 0; $i < count($rows); $i++) { ?>
+    <tr>
+
+      <td style="border-bottom: 1px solid #DCDCEC;"><?php echo $rows[$i]->id; ?></td>
+	  	<td style="border-bottom: 1px solid #DCDCEC;">
+			<input style="border: 1px solid #DCDCEC;-webkit-appearance: checkbox;" type="checkbox" id="p<?php echo $i?>" value="<?php echo $rows[$i]->id;?>" />
+			<input type="hidden" id="title_<?php echo $i?>" value="<?php echo  htmlspecialchars($rows[$i]->title);?>" />
+		</td>
+      <td style="border-bottom: 1px solid #DCDCEC;"><a href="<?php echo admin_url('admin-ajax.php') ?>?action=upcoming" onclick="window.parent.jSelectEvents('<?php echo $input_id ?>','<?php echo $tbody_id ?>','<?php echo $w_id ?>',['<?php echo $rows[$i]->id?>'],['<?php echo htmlspecialchars(addslashes($rows[$i]->title));?>'])"><?php echo $rows[$i]->title; ?></a>
+      </td>
+      <td style="border-bottom: 1px solid #DCDCEC;"><?php if ($rows[$i]->date_end != '0000-00-00' && $rows[$i]->date_end != '2070-12-12') echo $rows[$i]->date . ' - ' . $rows[$i]->date_end; else echo $rows[$i]->date; ?></td>
+      <td style="border-bottom: 1px solid #DCDCEC;"><?php echo $rows[$i]->time ?></td>
+    </tr>
+      <?php } ?>
+    </tbody>
+  </table>
+  <input type="hidden" name="boxchecked" value="0">
+  <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if (isset($_POST['asc_or_desc'])) echo $_POST['asc_or_desc']; ?>"/>
+  <input type="hidden" name="order_by" id="order_by" value="<?php if (isset($_POST['order_by'])) echo $_POST['order_by']; ?>"/>
+  <?php
+  ?>
+</form>
+  </body>
+  </html>
+<?php
+die();
+}
+	
 // Events.
 function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name) {
   global $wpdb;
@@ -528,7 +1127,7 @@ function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name)
       <td width="100%"><h2>Event Manager for calendar <font style="color:red"><?php echo $cal_name; ?></font></h2></td>
       <td>
         <p class="submit" style="padding:0px; text-align:left">
-          <input class="button-primary" type="button" value="Add a Event" name="custom_parametrs" onclick="window.location.href='admin.php?page=SpiderCalendar&task=add_event&calendar_id=<?php echo $calendar_id; ?>'"/>
+          <input class="button-primary" type="button" value="Add an Event" name="custom_parametrs" onclick="window.location.href='admin.php?page=SpiderCalendar&task=add_event&calendar_id=<?php echo $calendar_id; ?>'"/>
         </p>
       </td>
       <td>
@@ -548,7 +1147,7 @@ function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name)
   $startdate = (isset($_POST["startdate"]) ? esc_html($_POST["startdate"]) : '');
   $enddate = (isset($_POST["enddate"]) ? esc_html($_POST["enddate"]) : '');
   $serch_fields = '
-    <div class="alignleft actions" style="width:180px;">
+    <div class="alignleft actions">
     	<label for="search_events_by_title" style="font-size:14px">Title: </label>
       <input type="text" name="search_events_by_title" value="' . $serch_value . '" id="search_events_by_title" onchange="clear_serch_texts()" />
     </div>
@@ -591,6 +1190,12 @@ function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name)
           <span class="sorting-indicator"></span>
         </a>
       </th>
+	   <th scope="col" id="cattitle" class="<?php echo (($sort["sortid_by"] == "cattitle") ? $sort["custom_style"] : $sort["default_style"]); ?>">
+        <a href="javascript:ordering('cattitle',<?php echo (($sort["sortid_by"] == "cattitle") ? $sort["1_or_2"] : "1"); ?>)">
+          <span>Category</span>
+          <span class="sorting-indicator"></span>
+        </a>
+      </th>
       <th scope="col" id="published" class="<?php echo (($sort["sortid_by"] == "published") ? $sort["custom_style"] : $sort["default_style"]); ?>" style="width:100px">
         <a href="javascript:ordering('published',<?php echo (($sort["sortid_by"] == "published") ? $sort["1_or_2"] : "1"); ?>)">
           <span>Published</span>
@@ -609,6 +1214,7 @@ function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name)
       </td>
       <td><?php if ($rows[$i]->date_end != '0000-00-00' && $rows[$i]->date_end != '2070-12-12') echo $rows[$i]->date . ' - ' . $rows[$i]->date_end; else echo $rows[$i]->date; ?></td>
       <td><?php echo $rows[$i]->time ?></td>
+	  <td><?php echo $rows[$i]->cattitle ?></td>
       <td><a <?php if (!$rows[$i]->published) echo 'style="color:#C00"'; ?>
         href="admin.php?page=SpiderCalendar&calendar_id=<?php echo $calendar_id; ?>&task=published_event&id=<?php echo $rows[$i]->id; ?>"><?php if ($rows[$i]->published)
         echo 'Yes'; else echo 'No'; ?></a>
@@ -659,15 +1265,25 @@ function html_add_spider_event($calendar_id, $cal_name) {
     else if (form.selhour_from.value != "" && form.selminute_from.value != "" && form.selhour_to.value != "" && form.selminute_to.value != "") {
       submitform(pressbutton);
     }
+
     else {
       alert('Invalid Time');
     }
   }
+  
+  
   function submitform(pressbutton) {
-    document.getElementById('adminForm').action = document.getElementById('adminForm').action + "&task=" + pressbutton;
-    document.getElementById('adminForm').submit();
+  
+  if (document.getElementById('title').value == "") {
+					alert('Provide the title:');
+				  }
+  else {
+		document.getElementById('adminForm').submit();	  
+		document.getElementById('adminForm').action = document.getElementById('adminForm').action + "&task=" + pressbutton;
+		document.getElementById('adminForm').submit();
+	}
   }
-  function checkhour(id) {
+  function checkhour(id,event) {
     if (typeof(event) != 'undefined') {
       var e = event; // for trans-browser compatibility
       var charCode = e.which || e.keyCode;
@@ -685,7 +1301,7 @@ function html_add_spider_event($calendar_id, $cal_name) {
     }
     return true;
   }
-  function check12hour(id) {
+  function check12hour(id,event) {
     if (typeof(event) != 'undefined') {
       var e = event; // for trans-browser compatibility
       var charCode = e.which || e.keyCode;
@@ -707,7 +1323,7 @@ function html_add_spider_event($calendar_id, $cal_name) {
     }
     return true;
   }
-  function checknumber(id) {
+  function checknumber(id,event) {
     if (typeof(event) != 'undefined') {
       var e = event; // for trans-browser compatibility
       var charCode = e.which || e.keyCode;
@@ -717,7 +1333,7 @@ function html_add_spider_event($calendar_id, $cal_name) {
     }
     return true;
   }
-  function checkminute(id) {
+  function checkminute(id,event) {
     if (typeof(event) != 'undefined') {
       var e = event; // for trans-browser compatibility
       var charCode = e.which || e.keyCode;
@@ -879,12 +1495,6 @@ function html_add_spider_event($calendar_id, $cal_name) {
       This section allows you to create/edit the events of a particular calendar.<br/> You can add unlimited number of events for each calendar.
       <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">More...</a>
     </td>
-    <td colspan="7" align="right" style="font-size:16px;">
-      <a href="http://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
-        <img src="<?php echo plugins_url('images/header.png', __FILE__); ?>" border="0" alt="http://web-dorado.com/files/fromSpiderCalendarWP.php" width="215"><br />
-        Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
-      </a>
-    </td>
   </tr>
   <tbody>
     <tr>
@@ -898,6 +1508,15 @@ function html_add_spider_event($calendar_id, $cal_name) {
 <?php
   global $wpdb;
   $calendar = $wpdb->get_row("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar WHERE id='" . $calendar_id . "'");
+ 
+  
+  $query1 = $wpdb->get_results("SELECT " . $wpdb->prefix . "spidercalendar_event.category, " . $wpdb->prefix . "spidercalendar_event_category.title
+FROM " . $wpdb->prefix . "spidercalendar_event
+JOIN " . $wpdb->prefix . "spidercalendar_event_category
+ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spidercalendar_event_category.id;");
+  
+  $query2 = $wpdb->get_results("SELECT title,id FROM " . $wpdb->prefix . "spidercalendar_event_category");
+
   ?>
   <form action="admin.php?page=SpiderCalendar&calendar_id=<?php echo $calendar_id; ?>" method="post" id="adminForm" name="adminForm">
     <table width="95%">
@@ -911,26 +1530,41 @@ function html_add_spider_event($calendar_id, $cal_name) {
                   <td class="key"><label for="title">Title: </label></td>
                   <td><input type="text" id="title" name="title" size="41"/></td>
                 </tr>
+				
+				<tr>
+                  <td class="key"><label for="category">Select Category: </label></td>
+                  <td>
+						<select id="category" name="category" style="width:240px">
+							<option value="0">--Select Category--</option>
+							<?php foreach ($query2 as $key => $category) {
+            ?>
+            <option value="<?php echo $category->id; ?>"><?php if(isset($category)) echo $category->title ?></option>
+            <?php
+          }
+          ?>
+						</select>
+				  </td>
+                </tr>
                 <tr>
                   <td class="key"><label for="date">Date: </label></td>
                   <td>
-                    <input style="width:90px" class="inputbox" type="text" name="date" id="date" size="10" maxlength="10" value=""/>
-                    <input type="reset" class="button" value="..." onclick="return showCalendar('date','%Y-%m-%d');"/>
+                    <input style="width:90px" class="inputbox" type="text" name="date" id="date" size="10" maxlength="10" value="" />
+                    <input type="reset" class="button" value="..." onclick="return showCalendar('date','%Y-%m-%d');" style="width: 31px;" />
                   </td>
                 </tr>
                 <tr>
                   <td class="key"><label for="selhour_from">Time: </label></td>
                   <?php if ($calendar->time_format == 1) { ?>
                   <td>
-                    <input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right" onkeypress="return check12hour('selhour_from')" value="" title="from"/> <b>:</b>
-                    <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right" onkeypress="return checkminute('selminute_from')" value="" onblur="add_0('selminute_from')" title="from"/>
+                    <input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right" onkeypress="return check12hour('selhour_from',event)" value="" title="from"/> <b>:</b>
+                    <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right" onkeypress="return checkminute('selminute_from',event)" value="" onblur="add_0('selminute_from')" title="from"/>
                     <select id="select_from" name="select_from">
                       <option selected="selected">AM</option>
                       <option>PM</option>
                     </select>
                     <span style="font-size:12px">&nbsp;-&nbsp;</span>
-                    <input type="text" id="selhour_to" name="selhour_to" size="1" style="text-align:right" onkeypress="return check12hour('selhour_to')" value="" title="to"/> <b>:</b>
-                    <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right" onkeypress="return checkminute('selminute_to')" value="" onblur="add_0('selminute_to')" title="to"/>
+                    <input type="text" id="selhour_to" name="selhour_to" size="1" style="text-align:right" onkeypress="return check12hour('selhour_to',event)" value="" title="to"/> <b>:</b>
+                    <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right" onkeypress="return checkminute('selminute_to',event)" value="" onblur="add_0('selminute_to')" title="to"/>
                     <select id="select_to" name="select_to">
                       <option>AM</option>
                       <option>PM</option>
@@ -938,19 +1572,25 @@ function html_add_spider_event($calendar_id, $cal_name) {
                   </td>
                   <?php } if ($calendar->time_format == 0) { ?>
                   <td>
-                    <input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right" onkeypress="return checkhour('selhour_from')" value="" title="from" onblur="add_0('selhour_from')"/> <b>:</b>
-                    <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right" onkeypress="return checkminute('selminute_from')" value="" title="from" onblur="add_0('selminute_from')"/>
+                    <input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right" onkeypress="return checkhour('selhour_from',event)" value="" title="from" onblur="add_0('selhour_from')"/> <b>:</b>
+                    <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right" onkeypress="return checkminute('selminute_from',event)" value="" title="from" onblur="add_0('selminute_from')"/>
                     <span style="font-size:12px">&nbsp;-&nbsp;</span>
-                    <input type="text" id="selhour_to" name="selhour_to" size="1" style="text-align:right" onkeypress="return checkhour('selhour_to')" value="" title="to" onblur="add_0('selhour_to')"/> <b>:</b>
-                    <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right" onkeypress="return checkminute('selminute_to')" value="" title="to" onblur="add_0('selminute_to')"/>
+                    <input type="text" id="selhour_to" name="selhour_to" size="1" style="text-align:right" onkeypress="return checkhour('selhour_to',event)" value="" title="to" onblur="add_0('selhour_to')"/> <b>:</b>
+                    <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right" onkeypress="return checkminute('selminute_to',event)" value="" title="to" onblur="add_0('selminute_to')"/>
                   </td>
                   <?php }?>
                 </tr>
                 <tr>
                   <td class="key"><label for="poststuff">Note: </label></td>
                   <td>
-                    <div id="poststuff" style="width:100% !important;">
-                      <div id="<?php echo (user_can_richedit() ? 'postdivrich' : 'postdiv'); ?>" class="postarea"><?php the_editor("", "text_for_date"); ?></div>
+                    <div id="poststuff" style="width:100% !important;">  
+					  <?php if(version_compare(get_bloginfo('version'),3.3)<0) {?>
+						<div id="<?php echo user_can_richedit() ? 'postdivrich' : 'postdiv'; ?>" class="postarea">
+						<?php the_editor(stripslashes(""),"text_for_date","title" ); ?>
+						</div>
+						<?php }else{
+						 wp_editor("", "text_for_date"); }?>
+					  </div>
                     </div>
                   </td>
                 </tr>
@@ -969,15 +1609,25 @@ function html_add_spider_event($calendar_id, $cal_name) {
         </td>
         <td style="padding-left:25px; vertical-align:top !important; width:45%">
           <div style="width:100%">
-            <fieldset class="adminform"><legend>Repeat Event</legend>
+            <fieldset class="adminform" style="margin-left: -25px;"><legend>Repeat Event</legend>
               <table>
                 <tr>
                   <td valign="top">
-                    <input type="radio" value="no_repeat" name="repeat_method" checked="checked" onchange="change_type('no_repeat')"/>Don't repeat this event<br/>
-                    <input type="radio" value="daily" name="repeat_method" onchange="change_type('daily');"/>Repeat daily<br/>
-                    <input type="radio" value="weekly" name="repeat_method" onchange="change_type('weekly');"/>Repeat weekly<br/>
-                    <input type="radio" value="monthly" name="repeat_method" onchange="change_type('monthly');"/>Repeat monthly<br/>
-                    <input type="radio" value="yearly" name="repeat_method" onchange="change_type('yearly');"/>Repeat yearly<br/>
+					<input type="radio" id="no_repeat_type" value="no_repeat" name="repeat_method" checked="checked" onchange="change_type('no_repeat')">
+					<label for="no_repeat_type">Don't repeat this event</label>
+                    <br/>
+                    <input type="radio" id="daily_type" value="daily" name="repeat_method" onchange="change_type('daily');">
+					<label for="daily_type">Repeat daily</label>
+					<br/>
+                    <input type="radio"  id="weekly_type" value="weekly" name="repeat_method" onchange="change_type('weekly');">
+					<label for="weekly_type">Repeat weekly</label>
+					<br/>
+                    <input type="radio"  id="monthly_type" value="monthly" name="repeat_method" onchange="change_type('monthly');">
+					<label for="monthly_type">Repeat monthly</label>
+					<br/>
+                    <input type="radio"  id="yearly_type" value="yearly" name="repeat_method" onchange="change_type('yearly');">
+					<label for="yearly_type">Repeat yearly</label>
+					<br/>
                   </td>
                   <td style="padding-left:10px" valign="top">
                     <div id="daily" style="display:none">Repeat every
@@ -1066,6 +1716,7 @@ function html_add_spider_event($calendar_id, $cal_name) {
 function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
   global $wpdb;
   $calendar = $wpdb->get_row("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar");
+  
   ?>
   <style>
     .calendar .button {
@@ -1084,8 +1735,13 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
   </style>
   <script language="javascript" type="text/javascript">
     function submitform(pressbutton) {
+	if (document.getElementById('title').value == "") {
+					alert('Provide the title:');
+				  }
+  else {
       document.getElementById('adminForm').action = document.getElementById('adminForm').action + "&task=" + pressbutton;
       document.getElementById('adminForm').submit();
+	  }
     }
     function submitbutton(pressbutton) {
       var form = document.adminForm;
@@ -1112,74 +1768,74 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
         alert('Invalid Time');
       }
     }
-    function checkhour(id) {
-      if (typeof(event) != 'undefined') {
-        var e = event; // for trans-browser compatibility
-        var charCode = e.which || e.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-          return false;
-        }
-        hour = "" + document.getElementById(id).value + String.fromCharCode(e.charCode);
-        hour = parseFloat(hour);
-        if (document.getSelection() != '') {
-          return true;
-        }
-        if ((hour < 0) || (hour > 23)) {
-          return false;
-        }
+      function checkhour(id,event) {
+    if (typeof(event) != 'undefined') {
+      var e = event; // for trans-browser compatibility
+      var charCode = e.which || e.keyCode;
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
       }
-      return true;
-    }
-    function checkminute(id) {
-      if (typeof(event) != 'undefined') {
-        var e = event; // for trans-browser compatibility
-        var charCode = e.which || e.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-          return false;
-        }
-        minute = "" + document.getElementById(id).value + String.fromCharCode(e.charCode);
-        minute = parseFloat(minute);
-        if (document.getSelection() != '') {
-          return true;
-        }
-        if ((minute < 0) || (minute > 59)) {
-          return false;
-        }
+      hour = "" + document.getElementById(id).value + String.fromCharCode(e.charCode);
+      hour = parseFloat(hour);
+      if (document.getSelection() != '') {
+        return true;
       }
-      return true;
-    }
-    function checknumber(id) {
-      if (typeof(event) != 'undefined') {
-        var e = event; // for trans-browser compatibility
-        var charCode = e.which || e.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-          return false;
-        }
+      if ((hour < 0) || (hour > 23)) {
+        return false;
       }
-      return true;
     }
-    function check12hour(id) {
-      if (typeof(event) != 'undefined') {
-        var e = event; // for trans-browser compatibility
-        var charCode = e.which || e.keyCode;
-        input = document.getElementById(id);
-        if (charCode == 48 && input.value.length == 0) {
-          return false;
-        }
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-          return false;
-        }
-        hour = "" + document.getElementById(id).value + String.fromCharCode(e.charCode);
-        hour = parseFloat(hour);
-        if (document.getSelection() != '') {
-          return true;
-        }
-        if ((hour < 0) || (hour > 12)) {
-          return false;
-        }
+    return true;
+  }
+  function check12hour(id,event) {
+    if (typeof(event) != 'undefined') {
+      var e = event; // for trans-browser compatibility
+      var charCode = e.which || e.keyCode;
+      input = document.getElementById(id);
+      if (charCode == 48 && input.value.length == 0) {
+        return false;
       }
-      return true;
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+      }
+      hour = "" + document.getElementById(id).value + String.fromCharCode(e.charCode);
+      hour = parseFloat(hour);
+      if (document.getSelection() != '') {
+        return true;
+      }
+      if ((hour < 0) || (hour > 12)) {
+        return false;
+      }
     }
+    return true;
+  }
+  function checknumber(id,event) {
+    if (typeof(event) != 'undefined') {
+      var e = event; // for trans-browser compatibility
+      var charCode = e.which || e.keyCode;
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+      }
+    }
+    return true;
+  }
+  function checkminute(id,event) {
+    if (typeof(event) != 'undefined') {
+      var e = event; // for trans-browser compatibility
+      var charCode = e.which || e.keyCode;
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+      }
+      minute = "" + document.getElementById(id).value + String.fromCharCode(e.charCode);
+      minute = parseFloat(minute);
+      if (document.getSelection() != '') {
+        return true;
+      }
+      if ((minute < 0) || (minute > 59)) {
+        return false;
+      }
+    }
+    return true;
+  }
     function add_0(id) {
       input = document.getElementById(id);
       if (input.value.length == 1) {
@@ -1293,6 +1949,10 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
       document.getElementById(id).value = document.getElementById('repeat_input').value;
     }
   </script>
+  <?php $query = $wpdb->get_results("SELECT " . $wpdb->prefix . "spidercalendar_event.category, " . $wpdb->prefix . "spidercalendar_event_category.title as cattitle FROM " . $wpdb->prefix . "spidercalendar_event JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spidercalendar_event_category.id");
+
+  $query2 = $wpdb->get_results("SELECT title,id FROM " . $wpdb->prefix . "spidercalendar_event_category");
+  ?>
   <table width="95%">
     <tr>
       <td width="100%" style="font-size:14px; font-weight:bold">
@@ -1300,12 +1960,6 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
         <br />
         This section allows you to create/edit the events of a particular calendar.<br/> You can add unlimited number of events for each calendar.
         <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">More...</a>
-      </td>
-      <td colspan="7" align="right" style="font-size:16px;">
-        <a href="http://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
-          <img src="<?php echo plugins_url('images/header.png', __FILE__); ?>" border="0" alt="http://web-dorado.com/files/fromSpiderCalendarWP.php" width="215"><br />
-          Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
-        </a>
       </td>
     </tr>
     <tbody>
@@ -1317,6 +1971,7 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
       </tr>
     </tbody>
   </table>
+
   <form action="admin.php?page=SpiderCalendar&calendar_id=<?php echo $calendar_id; ?>&id=<?php echo $id; ?>" method="post" id="adminForm" name="adminForm">
     <table width="95%">
       <tr>
@@ -1329,6 +1984,22 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
                   <td class="key"><label for="message">Title: </label></td>
                   <td><input type="text" id="title" name="title" size="41" value="<?php echo htmlspecialchars($row->title, ENT_QUOTES); ?>"/></td>
                 </tr>
+				<tr>
+                  <td class="key"><label for="category">Select Category: </label></td>
+                  <td>
+						<select id="category" name="category" style="width:240px">
+							<option value="0" <?php if ($row->category == "0") echo 'selected="selected"'; ?>><?php if(isset($category)) echo $category->title ?>--Select Category--</option>
+							<?php foreach ($query2 as $key => $category) {
+            ?>
+            <option value="<?php echo $category->id; ?>"  <?php if ( $category->id == $row->category ) echo 'selected="selected"'; ?>><?php if(isset($category)) echo $category->title ?></option>
+            <?php
+          }
+          ?>
+							
+						</select>
+				  </td>
+                </tr>
+				
                 <tr>
                   <td class="key"><label for="message">Date: </label></td>
                   <td>
@@ -1365,23 +2036,24 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
                     ?>
                     <?php if ($calendar->time_format == 0) { ?>
                     <input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right"
-                           onkeypress="return checkhour('selhour_from')" value="<?php echo $from[0]; ?>" title="from"
+                           onkeypress="return checkhour('selhour_from',event)" value="<?php echo $from[0]; ?>" title="from"
                            onblur="add_0('selhour_from')"/> <b>:</b>
                     <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right"
-                           onkeypress="return checkminute('selminute_from')" value="<?php echo substr($from[1], 0, 2); ?>"
+                           onkeypress="return checkminute('selminute_from',event)" value="<?php echo substr($from[1], 0, 2); ?>"
                            title="from" onblur="add_0('selminute_from')"/> <span style="font-size:12px">&nbsp;-&nbsp;</span>
                     <input type="text" id="selhour_to" name="selhour_to" size="1" style="text-align:right"
-                           onkeypress="return checkhour('selhour_to')" value="<?php echo $to[0]; ?>" title="to"
+                           onkeypress="return checkhour('selhour_to',event)" value="<?php echo $to[0]; ?>" title="to"
                            onblur="add_0('selhour_to')"/> <b>:</b>
                     <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right"
-                           onkeypress="return checkminute('selminute_to')" value="<?php echo substr($to[1], 0, 2); ?>"
+                           onkeypress="return checkminute('selminute_to',event)" value="<?php echo substr($to[1], 0, 2); ?>"
                            title="to" onblur="add_0('selminute_to')"/>
-                    <?php } if ($calendar->time_format == 1) { ?>
+                    <?php } 
+					if ($calendar->time_format == 1) { ?>
                     <input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right"
-                           onkeypress="return check12hour('selhour_from')" value="<?php echo $from[0]; ?>" title="from"
+                           onkeypress="return check12hour('selhour_from',event)" value="<?php echo $from[0]; ?>" title="from"
                            onblur="add_0('selhour_from')"/> <b>:</b>
                     <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right"
-                           onkeypress="return checkminute('selminute_from')" value="<?php echo substr($from[1], 0, 2); ?>"
+                           onkeypress="return checkminute('selminute_from',event)" value="<?php echo substr($from[1], 0, 2); ?>"
                            title="from" onblur="add_0('selminute_from')"/>
                     <select id="select_from" name="select_from">
                       <option <?php if (substr($from[1], 2, 2) == "AM")
@@ -1393,10 +2065,10 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
                     </select>
                     <span style="font-size:12px">&nbsp;-&nbsp;</span>
                     <input type="text" id="selhour_to" name="selhour_to" size="1" style="text-align:right"
-                           onkeypress="return check12hour('selhour_to')" value="<?php echo $to[0]; ?>" title="to"
+                           onkeypress="return check12hour('selhour_to',event)" value="<?php echo $to[0]; ?>" title="to"
                            onblur="add_0('selhour_to')"/> <b>:</b>
                     <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right"
-                           onkeypress="return checkminute('selminute_to')" value="<?php echo substr($to[1], 0, 2); ?>"
+                           onkeypress="return checkminute('selminute_to',event)" value="<?php echo substr($to[1], 0, 2); ?>"
                            title="to" onblur="add_0('selminute_to')"/>
                     <select id="select_to" name="select_to">
                       <option <?php if (substr($to[1], 2, 2) == "AM")
@@ -1412,8 +2084,15 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
                 <tr>
                   <td class="key"><label for="note">Note: </label></td>
                   <td>
-                    <div id="poststuff" style="width:100% !important;">
-                      <div id="<?php echo user_can_richedit() ? 'postdivrich' : 'postdiv'; ?>" class="postarea"><?php the_editor($row->text_for_date, "text_for_date"); ?></div>
+                    <div id="poststuff" style="width:100% !important;"> 
+						  <?php if(version_compare(get_bloginfo('version'),3.3)<0) {?>
+							<div id="<?php echo user_can_richedit() ? 'postdivrich' : 'postdiv'; ?>" class="postarea"><?php the_editor(stripslashes($row->description),"text_for_date","title" ); ?>
+							</div>
+							<?php }else{
+							if(isset($row->text_for_date)) $desc1 = $row->text_for_date;
+							else $desc1 = "";
+							wp_editor($desc1, "text_for_date"); }?>
+						</div>
                     </div>
                   </td>
                 </tr>
@@ -1432,21 +2111,31 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
         </td>
         <td style="padding-left:25px; vertical-align:top !important; width:45%">
           <div style="width:100%">
-            <fieldset class="adminform">
+            <fieldset class="adminform" style="margin-left: -25px;">
               <legend>Repeat Event</legend>
               <table>
                 <tr>
                   <td valign="top">
-                    <input type="radio" value="no_repeat" name="repeat_method" <?php if ($row->repeat_method == 'no_repeat')
-                      echo 'checked="checked"' ?> checked="checked" onchange="change_type('no_repeat')"/>Don't repeat this event<br/>
-                    <input type="radio" value="daily" name="repeat_method" <?php if ($row->repeat_method == 'daily')
-                      echo 'checked="checked"' ?>  onchange="change_type('daily')"/>Repeat daily<br/>
-                    <input type="radio" value="weekly" name="repeat_method" <?php if ($row->repeat_method == 'weekly')
-                      echo 'checked="checked"' ?> onchange="change_type('weekly')"/>Repeat weekly<br/>
-                    <input type="radio" value="monthly" name="repeat_method" <?php if ($row->repeat_method == 'monthly')
-                      echo 'checked="checked"'?> onchange="change_type('monthly')"/>Repeat monthly<br/>
-                    <input type="radio" value="yearly" name="repeat_method" <?php if ($row->repeat_method == 'yearly')
-                      echo 'checked="checked"' ?> onchange="change_type('yearly')"/>Repeat yearly<br/>
+                    <input type="radio" value="no_repeat" id="no_repeat_type" name="repeat_method" <?php if ($row->repeat_method == 'no_repeat')
+                      echo 'checked="checked"' ?> checked="checked" onchange="change_type('no_repeat')"/>
+					  <label for="no_repeat_type">Don't repeat this event</label><br/>
+					  
+                    <input type="radio" value="daily" id="daily_type" name="repeat_method" <?php if ($row->repeat_method == 'daily')
+                      echo 'checked="checked"' ?>  onchange="change_type('daily')"/>
+					  <label for="daily_type">Repeat daily</label><br/>
+					  
+                    <input type="radio" value="weekly" id="weekly_type" name="repeat_method" <?php if ($row->repeat_method == 'weekly')
+                      echo 'checked="checked"' ?> onchange="change_type('weekly')"/>
+					  <label for="weekly_type">Repeat weekly</label>
+					<br/>
+                    <input type="radio" value="monthly" id="monthly_type" name="repeat_method" <?php if ($row->repeat_method == 'monthly')
+                      echo 'checked="checked"'?> onchange="change_type('monthly')"/>
+					  <label for="monthly_type">Repeat monthly</label>
+					<br/>
+                    <input type="radio" value="yearly" id="yearly_type" name="repeat_method" <?php if ($row->repeat_method == 'yearly')
+                      echo 'checked="checked"' ?> onchange="change_type('yearly')"/>
+					  <label for="yearly_type">Repeat yearly</label>
+					<br/>
                   </td>
                   <td style="padding-left:10px" valign="top">
                     <div id="daily" style="display:<?php if ($row->repeat_method == 'no_repeat') echo 'none'; ?>">
@@ -1543,7 +2232,4 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
     <input type="hidden" name="cid[]" value="<?php echo $row->id; ?>"/>
     <input type="hidden" name="task" value="event"/>
     <input type="hidden" name="calendar" value=""/>
-  </form>
-  <?php
-}
-?>
+  </form> <?php } ?>

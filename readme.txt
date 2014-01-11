@@ -4,7 +4,7 @@ Donate link: http://web-dorado.com/products/wordpress-calendar.html
 Tags: Calendar, event, event calendar, event manager, events calendar,
 Requires at least: 3.0  
 Tested up to: 3.7.1  
-Stable tag: 1.3.9 
+Stable tag: 1.4
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -22,9 +22,11 @@ Spider Event Calendar is a highly configurable product which allows you to have 
 Spider Event Calendar is a highly configurable plugin which allows you to have multiple organized events in a calendar. This plugin is one of the best WordPress Calendar available in WordPress Directory.  If you have problem with organizing your WordPress Calendar events and displaying them in a calendar format, then Spider Wordpress Calendar Plugin is the best solution. Maybe you just want to have a quick look at your calendar to remind yourself about the future appointments? It will be great if calendar extension will be able to show all events, display them in a widget as a beautiful and customizable calendar on your website. Spider WordPress Calendar is an extraordinary user friendly calendar. 
   
 = Features of Spider Event Calendar: =    
-  
+
+* 100% responsive. Fully compatible with all mobile devices.
 * You can add unlimited number of calendars and unlimited number of events for each calendar.  
 * [WordPress Calendar](http://web-dorado.com/products/wordpress-calendar.html) can be used as a plugin and as a widget as well.  
+* Separate upcoming events widget to display upcoming events in a list. The widget features are customizable.
 * With a simple click on the date on the Calendar you will see the events and their descriptions recorded for that day.  
 * Spider Event Calendar supports events that last more than one day.  
 * Possibility to set the month and the year initially displayed on the calendar (option to display any particular month instead of the current month on the calendar).  
@@ -32,9 +34,11 @@ Spider Event Calendar is a highly configurable plugin which allows you to have m
 * You can create events in a calendar which will not repeat (and use a single time).  
 * Possibility to choose month display format in the Spider Event Calendar.  
 * Possibility to choose between four view modes (Month, List, Week and Day).
+* An option to create categories.
+* Possibility to assign a category for each event, option of having different colors for each category.
 * Spider Event Calendar allows you to change the colors of the calendar and fit it to the colors of your website (*commercial version*).  
-* Spider Event Calendar has 11 standard calendars themes included in the package for the plugin and the widget (*commercial version*).  
-* You can set the height and width of the Spider Event Calendar in the widget and in the [WordPress calendar plugin](http://web-dorado.com/products/wordpress-calendar.html) as well (*commercial version*).  
+* Spider Event Calendar has 17 standard themes included in extension package for the plugin and 6 themes for the widget. (*commercial version*).  
+* You can set width of the Spider Event Calendar in the widget and in the [WordPress calendar plugin](http://web-dorado.com/products/wordpress-calendar.html) as well (*commercial version*).  
 * You can change calendar date color, font size and font family in the popup (*commercial version*).  
 * Possibility to change arrow color and background color in the popup in the Spider Event Calendar (*commercial version*).  
 * Possibility to change popup background color in the Spider Event Calendar (*commercial version*).  

@@ -1,6 +1,4 @@
-<?php
-
-if (function_exists('current_user_can')) {
+<?php if (function_exists('current_user_can')) {
   if (!current_user_can('manage_options')) {
     die('Access Denied');
   }
@@ -10,17 +8,21 @@ function add_spider_calendar() {
   html_add_spider_calendar();
 }
 
-function show_spider_calendar() {
-  global $wpdb;
+function spider_upcoming(){
+if(isset($_GET['upcalendar_id']))
+ $calendar_id=(int)$_GET['upcalendar_id'];
+else $calendar_id="0";
+ 
+	  global $wpdb;
   $order = " ORDER BY title ASC";
   $sort["default_style"] = "manage-column column-autor sortable desc";
   $sort["sortid_by"] = "title";
   $sort["custom_style"] = "manage-column column-title sorted asc";
   $sort["1_or_2"] = "2";
   if (isset($_POST['page_number'])) {
-    if ($_POST['asc_or_desc'] && ($_POST['asc_or_desc'] == 1)) {
+    if (esc_html($_POST['asc_or_desc']) && (esc_html($_POST['asc_or_desc']) == 1)) {
       if (isset($_POST['order_by'])) {
-        $sort["sortid_by"] = $wpdb->escape($_POST['order_by']);
+        $sort["sortid_by"] = esc_html($_POST['order_by']);
       }
       $sort["custom_style"] = "manage-column column-title sorted asc";
       $sort["1_or_2"] = "2";
@@ -32,7 +34,75 @@ function show_spider_calendar() {
       $order = "ORDER BY " . $sort["sortid_by"] . " DESC";
     }
     if ($_POST['page_number']) {
-      $limit = ($_POST['page_number'] - 1) * 20;
+      $limit = (esc_html($_POST['page_number'])- 1) * 20;
+    }
+    else {
+      $limit = 0;
+    }
+  }
+  else {
+    $limit = 0;
+  }
+  if (isset($_POST['search_events_by_title'])) {
+    $search_tag = esc_html($_POST['search_events_by_title']);
+  }
+  else {
+    $search_tag = "";
+  }
+  
+    if ($search_tag) {
+    $where = ' AND ' . $wpdb->prefix . 'spidercalendar_event.title LIKE "%' . $search_tag . '%"';
+  }
+  else {
+    $where = '';
+  }
+  if (isset($_POST['startdate']) && esc_html($_POST['startdate'])) {
+    $where .= ' AND ' . $wpdb->prefix . 'spidercalendar_event.date > \'' . esc_html($_POST['startdate']) . '\' ';
+  }
+  if (isset($_POST['enddate']) && esc_html($_POST['enddate'])) {
+    $where .= ' AND ' . $wpdb->prefix . 'spidercalendar_event.date < \'' . esc_html($_POST['enddate']) . '\' ';
+  }
+  // Get the total number of records.
+
+  $query = "SELECT COUNT(*) FROM " . $wpdb->prefix . "spidercalendar_event WHERE calendar=" . $calendar_id . " " . $where . " ";
+  
+  $total = $wpdb->get_var($query);
+  $pageNav['total'] = $total;
+  $pageNav['limit'] = $limit / 20 + 1;
+  
+  $query = "SELECT * FROM " . $wpdb->prefix . "spidercalendar_event WHERE calendar=" . $calendar_id . "  " . $where . " " . $order . " " . " LIMIT " . $limit . ",20";
+
+  $rows=$wpdb->get_results($query);
+
+  
+  html_upcoming_widget($rows, $pageNav, $sort);
+
+}
+
+
+function show_spider_calendar() {
+  global $wpdb;
+  $order = " ORDER BY title ASC";
+  $sort["default_style"] = "manage-column column-autor sortable desc";
+  $sort["sortid_by"] = "title";
+  $sort["custom_style"] = "manage-column column-title sorted asc";
+  $sort["1_or_2"] = "2";
+  if (isset($_POST['page_number'])) {
+    if (isset($_POST['order_by']) && esc_html($_POST['order_by']) != '') {
+      $sort["sortid_by"] = esc_html($_POST['order_by']);
+    }
+    if (isset($_POST['asc_or_desc']) && (esc_html($_POST['asc_or_desc']) == 1)) {
+      $sort["custom_style"] = "manage-column column-title sorted asc";
+      $sort["1_or_2"] = "2";
+      $order = "ORDER BY " . $sort["sortid_by"] . " ASC";
+    }
+    else {
+      $sort["custom_style"] = "manage-column column-title sorted desc";
+      $sort["1_or_2"] = "1";
+      $order = "ORDER BY " . $sort["sortid_by"] . " DESC";
+    }
+    if (isset($_POST['page_number']) && (esc_html($_POST['page_number']))) {
+      $limit = (esc_html($_POST['page_number']) - 1) * 20;
     }
     else {
       $limit = 0;
@@ -62,6 +132,62 @@ function show_spider_calendar() {
   $rows = $wpdb->get_results($query);
   // display function
   html_show_spider_calendar($rows, $pageNav, $sort);
+}
+
+function show_event_cat(){
+ global $wpdb;
+  $order = " ORDER BY title ASC";
+  $sort["default_style"] = "manage-column column-autor sortable desc";
+  $sort["sortid_by"] = "title";
+  $sort["custom_style"] = "manage-column column-title sorted asc";
+  $sort["1_or_2"] = "2";
+  if (isset($_POST['page_number'])) {
+    if (isset($_POST['order_by']) && esc_html($_POST['order_by']) != '') {
+      $sort["sortid_by"] = esc_html($_POST['order_by']);
+    }
+    if (isset($_POST['asc_or_desc']) && (esc_html($_POST['asc_or_desc']) == 1)) {
+      $sort["custom_style"] = "manage-column column-title sorted asc";
+      $sort["1_or_2"] = "2";
+      $order = "ORDER BY " . $sort["sortid_by"] . " ASC";
+    }
+    else {
+      $sort["custom_style"] = "manage-column column-title sorted desc";
+      $sort["1_or_2"] = "1";
+      $order = "ORDER BY " . $sort["sortid_by"] . " DESC";
+    }
+    if (isset($_POST['page_number']) && (esc_html($_POST['page_number']))) {
+      $limit = (esc_html($_POST['page_number']) - 1) * 20;
+    }
+    else {
+      $limit = 0;
+    }
+  }
+  else {
+    $limit = 0;
+  }
+  if (isset($_POST['search_cat_by_title'])) {
+    $search_tag = esc_html($_POST['search_cat_by_title']);
+  }
+  else {
+    $search_tag = "";
+  }
+  if ($search_tag) {
+    $where = ' WHERE title LIKE "%' . $search_tag . '%"';
+  }
+  else {
+    $where = ' ';
+  }
+  // Get the total number of records.
+  $query = "SELECT COUNT(*) FROM " . $wpdb->prefix . "spidercalendar_event_category" . $where;
+  $total = $wpdb->get_var($query);
+  $pageNav['total'] = $total;
+  $pageNav['limit'] = $limit / 20 + 1;
+  $query = "SELECT * FROM " . $wpdb->prefix . "spidercalendar_event_category" . $where . " " . $order . " " . " LIMIT " . $limit . ",20";
+  
+  $rows = $wpdb->get_results($query);
+  // display function
+  show_event_category($rows, $pageNav, $sort);
+
 }
 
 // Edit calendar.
@@ -96,12 +222,98 @@ function remove_spider_calendar($id) {
   }
 }
 
+//Save Category Event
+
+function save_spider_category_event() {
+  /*
+  if (!$id) {
+    echo '<h1 style="color:#00C">Error. ID does not exist.</h1>';
+    exit;
+  }
+  */
+  if($_POST['title']!=""){
+	  $title = (isset($_POST["title"]) ? esc_html(stripslashes($_POST["title"])) : '');
+	  $published = (isset($_POST["published"]) ? (int) $_POST["published"] : 1);
+	  $color = (isset($_POST["color"]) ? esc_html(stripslashes($_POST["color"])) : '');
+	  $description = (isset($_POST["description"]) ? esc_html(stripslashes($_POST["description"])) : '');
+	  global $wpdb;
+	 
+		$save_or_no = $wpdb->insert($wpdb->prefix . 'spidercalendar_event_category', array(
+		  'id' => NULL,
+		  'title' => $title,
+		  'published' => $published,
+		  'color' => $color,
+		  'description' => $description,
+		), array(
+		  '%d',
+		  '%s',
+		  '%d',
+		  '%s',
+		  '%s'
+		));
+	}
+}
+
+
+// Publish/Unpublish category.
+function spider_category_published($id) {
+  global $wpdb;
+  $publish = $wpdb->get_var($wpdb->prepare('SELECT published FROM ' . $wpdb->prefix . 'spidercalendar_event_category WHERE `id`="%d"', $id));
+  if ($publish) {
+    $publish = 0;
+    $publish_unpublish = 'Category unpublished.';
+  }
+  else {
+    $publish = 1;
+    $publish_unpublish = 'Category published.';
+  }
+  $save_or_no = $wpdb->update($wpdb->prefix . 'spidercalendar_event_category', array(
+      'published' => $publish,
+    ), array('id' => $id), array(
+      '%d',
+    ));
+  if ($save_or_no !== FALSE) {
+    ?>
+    <div class="updated"><p><strong><?php echo $publish_unpublish; ?></strong></p></div>
+    <?php
+	$location_cal = admin_url('admin.php?page=spider_calendar_event_category');
+	header('Location: '.$location_cal.'');
+  }
+}
+
+
+//Apply category event
+
+function apply_spider_category_event($id) {
+
+	  $title = (isset($_POST["title"]) ? esc_html(stripslashes($_POST["title"])) : '');
+	  $published = (isset($_POST["published"]) ? (int) $_POST["published"] : 1);
+	  $color = (isset($_POST["color"]) ? esc_html(stripslashes($_POST["color"])) : '');
+	  $description = (isset($_POST["description"]) ? esc_html(stripslashes($_POST["description"])) : '');
+	  global $wpdb;
+
+
+    $save_or_no = $wpdb->update($wpdb->prefix . 'spidercalendar_event_category', array(
+      'title' => $title,
+      'published' => $published,
+	  'color' => $color,
+	  'description' => $description,
+    ), array('id' => $_POST['id']), array(
+      '%s',
+      '%d',
+      '%s',
+      '%s'
+    ));
+ 
+}
+
 // Save calendar.
 function apply_spider_calendar($id) {
   if (!$id) {
     echo '<h1 style="color:#00C">Error. ID does not exist.</h1>';
     exit;
   }
+  if(isset($_POST['title'])){
   $title = (isset($_POST["title"]) ? esc_html(stripslashes($_POST["title"])) : '');
   $user_type = (isset($_POST["user_type"]) ? esc_html($_POST["user_type"]) : '');
   $time_format = (isset($_POST["time_format"]) ? (int) $_POST["time_format"] : 0);
@@ -162,6 +374,7 @@ function apply_spider_calendar($id) {
     <?php
     return TRUE;
   }
+  }
 }
 
 // Publish/Unpublish calendar.
@@ -185,20 +398,24 @@ function spider_calendar_published($id) {
     ?>
     <div class="updated"><p><strong><?php echo $publish_unpublish; ?></strong></p></div>
     <?php
+	$location_cal = admin_url('admin.php?page=SpiderCalendar');
+	header('Location: '.$location_cal.'');
   }
 }
 
 // Event in table
 function show_spider_event($calendar_id) {
-  global $wpdb;
+global $wpdb;
   $order = " ORDER BY title ASC";
   $sort["default_style"] = "manage-column column-autor sortable desc";
   $sort["sortid_by"] = "title";
   $sort["custom_style"] = "manage-column column-title sorted asc";
   $sort["1_or_2"] = "2";
   if (isset($_POST['page_number'])) {
-    if (isset($_POST['asc_or_desc']) && ($_POST['asc_or_desc'] == 1)) {
-      $sort["sortid_by"] = ((isset($_POST['order_by'])) ? $wpdb->escape($_POST['order_by']) : 'title');
+    if (isset($_POST['order_by']) && esc_html($_POST['order_by']) != '') {
+      $sort["sortid_by"] = esc_html($_POST['order_by']);
+    }
+    if (isset($_POST['asc_or_desc']) && (esc_html($_POST['asc_or_desc']) == 1)) {
       $sort["custom_style"] = "manage-column column-title sorted asc";
       $sort["1_or_2"] = "2";
       $order = "ORDER BY " . $sort["sortid_by"] . " ASC";
@@ -208,8 +425,8 @@ function show_spider_event($calendar_id) {
       $sort["1_or_2"] = "1";
       $order = "ORDER BY " . $sort["sortid_by"] . " DESC";
     }
-    if (isset($_POST['page_number']) && $_POST['page_number']) {
-      $limit = ((int) $_POST['page_number'] - 1) * 20;
+    if (isset($_POST['page_number']) && (esc_html($_POST['page_number']))) {
+      $limit = (esc_html($_POST['page_number']) - 1) * 20;
     }
     else {
       $limit = 0;
@@ -219,31 +436,34 @@ function show_spider_event($calendar_id) {
     $limit = 0;
   }
   if (isset($_POST['search_events_by_title'])) {
-    $search_tag = $_POST['search_events_by_title'];
+    $search_tag = esc_html($_POST['search_events_by_title']);
   }
   else {
     $search_tag = "";
   }
   if ($search_tag) {
-    $where = ' AND title LIKE "%' . $search_tag . '%"';
+    $where = ' AND ' . $wpdb->prefix . 'spidercalendar_event.title LIKE "%' . $search_tag . '%"';
   }
   else {
     $where = '';
   }
-  if (isset($_POST['startdate']) && $_POST['startdate']) {
-    $where .= ' AND date > \'' . $_POST['startdate'] . '\' ';
+  if (isset($_POST['startdate']) && esc_html($_POST['startdate'])) {
+    $where .= ' AND ' . $wpdb->prefix . 'spidercalendar_event.date > \'' . esc_html($_POST['startdate']) . '\' ';
   }
   if (isset($_POST['enddate']) && $_POST['enddate']) {
-    $where .= ' AND date < \'' . $_POST['enddate'] . '\' ';
+    $where .= ' AND ' . $wpdb->prefix . 'spidercalendar_event.date < \'' . esc_html($_POST['enddate']) . '\' ';
   }
   // Get the total number of records.
   $query = "SELECT COUNT(*) FROM " . $wpdb->prefix . "spidercalendar_event WHERE calendar=" . $calendar_id . " " . $where . " ";
   $total = $wpdb->get_var($query);
   $pageNav['total'] = $total;
   $pageNav['limit'] = $limit / 20 + 1;
-  $query = "SELECT * FROM " . $wpdb->prefix . "spidercalendar_event WHERE calendar=" . $calendar_id . " " . $where . " " . $order . " " . " LIMIT " . $limit . ",20";
+  
+  $query = "SELECT " . $wpdb->prefix . "spidercalendar_event.*, " . $wpdb->prefix . "spidercalendar_event_category.title as cattitle FROM " . $wpdb->prefix . "spidercalendar_event LEFT JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spidercalendar_event_category.id
+	WHERE calendar=" . $calendar_id . " " . $where . " " . $order . " " . " LIMIT " . $limit . ",20";
+ 
   $rows = $wpdb->get_results($query);
-  $cal_name = $wpdb->get_var('SELECT title' . ' FROM ' . $wpdb->prefix . 'spidercalendar_calendar WHERE id=' . $calendar_id);
+  $cal_name = $wpdb->get_var($wpdb->prepare('SELECT title' . ' FROM ' . $wpdb->prefix . 'spidercalendar_calendar WHERE `id`="%d"', $calendar_id));
   html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name);
 }
 
@@ -268,7 +488,9 @@ function edit_spider_event($calendar_id, $id) {
 // Save event.
 function apply_spider_event($calendar_id, $id) {
   global $wpdb;
+  if(isset($_POST['title'])){
   $title = ((isset($_POST['title'])) ? esc_html(stripslashes($_POST['title'])) : '');
+  $category = ((isset($_POST['category'])) ? esc_html(stripslashes($_POST['category'])) : '');
   $text_for_date = ((isset($_POST['text_for_date'])) ? stripslashes($_POST['text_for_date']) : '');
   $published = ((isset($_POST['published'])) ? (int) $_POST['published'] : 1);
   $repeat = ((isset($_POST['repeat'])) ? esc_html($_POST['repeat']) : '');
@@ -304,6 +526,7 @@ function apply_spider_event($calendar_id, $id) {
   if ($id === -1) {
     $save = $wpdb->insert($wpdb->prefix . 'spidercalendar_event', array(
       'id' => NULL,
+	  'category' => $category,
       'title' => $title,
       'time' => $time,
       'calendar' => $calendar_id,
@@ -322,6 +545,7 @@ function apply_spider_event($calendar_id, $id) {
       'userID' => ''
     ), array(
       '%d',
+	  '%s',
       '%s',
       '%s',
       '%d',
@@ -343,6 +567,7 @@ function apply_spider_event($calendar_id, $id) {
   else {
     $save = $wpdb->update($wpdb->prefix . 'spidercalendar_event', array(
       'title' => $title,
+	  'category' => $category,
       'time' => $time,
       'calendar' => $calendar_id,
       'date' => $date,
@@ -359,6 +584,7 @@ function apply_spider_event($calendar_id, $id) {
       'repeat_method' => $repeat_method
     ), array('id' => $id), array(
       '%s',
+	  '%s',
       '%s',
       '%d',
       '%s',
@@ -387,10 +613,11 @@ function apply_spider_event($calendar_id, $id) {
     <?php
     return FALSE;
   }
+  }
 }
 
 // Publish/Unpublish event.
-function published_spider_event($id) {
+function published_spider_event($calendar_id, $id) {
   global $wpdb;
   $publish = $wpdb->get_var('SELECT published FROM ' . $wpdb->prefix . 'spidercalendar_event WHERE `id`=' . $id);
   if ($publish) {
@@ -410,6 +637,8 @@ function published_spider_event($id) {
     ?>
     <div class="updated"><p><strong><?php echo $publish_unpublish; ?></strong></p></div>
     <?php
+	$location_cal = admin_url('admin.php?page=SpiderCalendar&task=show_manage_event&calendar_id='.$calendar_id.'');
+	header('Location: '.$location_cal.'');
   }
 }
 
@@ -428,5 +657,17 @@ function remove_spider_event($calendar_id, $id) {
     <?php
   }
 }
-
-?>
+function remove_category_event($id) {
+  global $wpdb;
+  $sql_remove_vid = "DELETE FROM " . $wpdb->prefix . "spidercalendar_event_category WHERE id='" . $id . "'";
+  if (!$wpdb->query($sql_remove_vid)) {
+    ?>
+    <div id="message" class="error"><p>Event Category Not Deleted.</p></div>
+    <?php
+  }
+  else {
+    ?>
+    <div class="updated"><p><strong>Event Category Deleted.</strong></p></div>
+    <?php
+  }
+} ?>

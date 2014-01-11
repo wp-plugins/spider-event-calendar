@@ -1,16 +1,54 @@
-<?php
-
-function spider_calendar_chech_update() {
+<?php function spider_calendar_chech_update() {
   global $wpdb;
-  if (!$wpdb->get_var('SELECT def_month FROM ' . $wpdb->prefix . 'spidercalendar_calendar')) {
-    if ($wpdb->get_var('SELECT start_month FROM ' . $wpdb->prefix . 'spidercalendar_calendar')) {
+  // if (get_site_option('spider_calendar_cureent_version') != '1.3' || !get_site_option('spider_calendar_cureent_version', FALSE)) {
+  // if ($wpdb->get_var("SHOW TABLES LIKE '" . $wpdb->prefix . "formmaker_sessions'") != $wpdb->prefix . "formmaker_sessions") {
+  // if ($wpdb->query("ALTER TABLE `" . $wpdb->prefix . "spidercalendar_theme` IF EXISTS "))
+ 
+ $category = $wpdb->get_results("SHOW COLUMNS FROM ".$wpdb->prefix."spidercalendar_event");
+	$catexist=0;
+	for($i=0;$i<count($category);$i++){
+	if($category[$i]->Field=="category"){
+	$catexist=1;
+	break;
+	}
+
+}
+
+	if($catexist==0)
+	{
+	$wpdb->query("ALTER TABLE ".$wpdb->prefix."spidercalendar_event  ADD category int(11) AFTER title;");
+	}
+
+
+$calendar = $wpdb->get_results("SHOW COLUMNS FROM ".$wpdb->prefix."spidercalendar_calendar");
+	$calexist=0;
+	for($i=0;$i<count($calendar);$i++){
+	if($calendar[$i]->Field=="start_month"){
+	$calexist=1;
+	break;
+	}
+	}
+	
+	
+	$calendar1 = $wpdb->get_results("SHOW COLUMNS FROM ".$wpdb->prefix."spidercalendar_calendar");
+	$calexist1=0;
+	for($i=0;$i<count($calendar1);$i++){
+	if($calendar1[$i]->Field=="def_month"){
+	$calexist1=1;
+	break;
+	}
+	}
+	
+	
+	
+if ($calexist1==0) {
+    if ($calexist==1) {
       $sql = "ALTER TABLE " . $wpdb->prefix . "spidercalendar_calendar ADD start_month varchar(255);";
       $wpdb->query($sql);
     }
     $wpdb->query("ALTER TABLE " . $wpdb->prefix . "spidercalendar_calendar ADD `def_month` varchar(255) NOT NULL AFTER `start_month`");
     $wpdb->query("ALTER TABLE " . $wpdb->prefix . "spidercalendar_calendar CHANGE `start_month` `def_year` VARCHAR(512) NOT NULL");
-
-    $wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "spidercalendar_theme`");
+	$wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "spidercalendar_theme`");
     $spider_theme_table = "CREATE TABLE IF NOT EXISTS `" . $wpdb->prefix . "spidercalendar_theme` (
       `id` int(11) NOT NULL AUTO_INCREMENT,
       `title` varchar(255) NOT NULL,
@@ -101,6 +139,7 @@ function spider_calendar_chech_update() {
     $spider_widget_theme_table = "CREATE TABLE IF NOT EXISTS `" . $wpdb->prefix . "spidercalendar_widget_theme` (
       `id` int(11) NOT NULL AUTO_INCREMENT,
       `title` varchar(255) NOT NULL,
+	  `ev_title_color` varchar(255),
       `width` varchar(255) NOT NULL,
       `week_start_day` varchar(255) NOT NULL,
       `font_year` varchar(255) NOT NULL,
@@ -144,10 +183,8 @@ function spider_calendar_chech_update() {
       PRIMARY KEY (`id`)
     ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
     $wpdb->query($spider_widget_theme_table);
-    $spider_widget_theme_rows = "INSERT INTO `" . $wpdb->prefix . "spidercalendar_widget_theme` (`id`,`title`,`width`,`week_start_day`,`font_year`,`font_month`,`font_day`,`font_weekday`,`header_bgcolor`,`footer_bgcolor`,`text_color_month`,`text_color_week_days`,`text_color_other_months`,`text_color_this_month_unevented`,`text_color_this_month_evented`,`bg_color_this_month_evented`,`bg_color_selected`,`arrow_color`,`text_color_selected`,`border_day`,`text_color_sun_days`,`weekdays_bg_color`,`su_bg_color`,`cell_border_color`,`year_font_size`,`year_font_color`,`year_tabs_bg_color`,`date_format`,`title_color`,`title_font_size`,`title_font`,`title_style`,`date_color`,`date_size`,`date_font`,`date_style`,`next_prev_event_bgcolor`,`next_prev_event_arrowcolor`,`show_event_bgcolor`,`popup_width`,`popup_height`,`show_repeat`) VALUES
-      (1,'Shiny Blue','200','mo','','','','','005478','E1E1E1','FFFFFF','2F647D','939699','989898','FBFFFE','005478','005478','CED1D0','FFFFFF','005478','989898','D6D6D6','B5B5B5','D2D2D2','13','ACACAC','ECECEC','w/d/m/y','FFFFFF','','','normal','262626','','','normal','00608A','97A0A6','B4C5CC','600','500','1')";
+    $spider_widget_theme_rows = "INSERT INTO `" . $wpdb->prefix . "spidercalendar_widget_theme` (`id`,`title`,`ev_title_color`,`width`,`week_start_day`,`font_year`,`font_month`,`font_day`,`font_weekday`,`header_bgcolor`,`footer_bgcolor`,`text_color_month`,`text_color_week_days`,`text_color_other_months`,`text_color_this_month_unevented`,`text_color_this_month_evented`,`bg_color_this_month_evented`,`bg_color_selected`,`arrow_color`,`text_color_selected`,`border_day`,`text_color_sun_days`,`weekdays_bg_color`,`su_bg_color`,`cell_border_color`,`year_font_size`,`year_font_color`,`year_tabs_bg_color`,`date_format`,`title_color`,`title_font_size`,`title_font`,`title_style`,`date_color`,`date_size`,`date_font`,`date_style`,`next_prev_event_bgcolor`,`next_prev_event_arrowcolor`,`show_event_bgcolor`,`popup_width`,`popup_height`,`show_repeat`) VALUES
+      (1,'Shiny Blue','005478','200','mo','','','','','005478','E1E1E1','FFFFFF','2F647D','939699','989898','FBFFFE','005478','005478','CED1D0','FFFFFF','005478','989898','D6D6D6','B5B5B5','D2D2D2','13','ACACAC','ECECEC','w/d/m/y','FFFFFF','','','normal','262626','','','normal','00608A','97A0A6','B4C5CC','600','500','1')";
     $wpdb->query($spider_widget_theme_rows);
   }
-}
-
-?>
+} ?>

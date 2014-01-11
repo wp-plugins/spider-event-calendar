@@ -4,7 +4,7 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: http://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.3.9
+Version: 1.4
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -15,9 +15,20 @@ function sp_calendar_language_load() {
 }
 add_action('init', 'sp_calendar_language_load');
 
+add_action('init', 'sp_cal_registr_some_scripts');
+	
+function	sp_cal_registr_some_scripts(){
+
+ wp_register_script("Canlendar_upcoming", plugins_url("elements/calendar.js", __FILE__));
+  wp_register_script("calendnar-setup_upcoming", plugins_url("elements/calendar-setup.js", __FILE__));
+  wp_register_script("calenndar_function_upcoming", plugins_url("elements/calendar_function.js", __FILE__));
+
+
+}
+
 // Include widget.
 require_once("widget_spider_calendar.php");
-
+require_once("spidercalendar_upcoming_events_widget.php");
 function current_page_url_sc() {
   if (is_home()) {
     $pageURL = site_url();
@@ -68,13 +79,29 @@ function spider_calendar_big_front_end($id, $theme, $default, $select, $widget =
   require_once("front_end/frontend_functions.php");
   ob_start();
   global $many_sp_calendar;
+  global $wpdb;
+  
+  if ($widget === 1) {
+$themes = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_widget_theme WHERE id=%d', $theme));
+}
+else{
+$themes = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=%d', $theme));
+}
+  $cal_width = $themes->width;
+
   ?>
+  <input type="hidden" id="cal_width<?php echo $many_sp_calendar ?>" value="<?php echo $cal_width ?>" />
+  
   <div id='bigcalendar<?php echo $many_sp_calendar ?>'></div>
   <script>
+  
     var tb_pathToImage = "<?php echo plugins_url('images/loadingAnimation.gif', __FILE__) ?>";
     var tb_closeImage = "<?php echo plugins_url('images/tb-close.png', __FILE__) ?>"
+	var randi;
     if (typeof showbigcalendar != 'function') {
-      function showbigcalendar(id, calendarlink) {
+	
+      function showbigcalendar(id, calendarlink, randi,widget) {
+
         var xmlHttp;
         try {
           xmlHttp = new XMLHttpRequest();// Firefox, Opera 8.0+, Safari
@@ -95,22 +122,88 @@ function spider_calendar_big_front_end($id, $theme, $default, $select, $widget =
         }
         xmlHttp.onreadystatechange = function () {
           if (xmlHttp.readyState == 4) {
-            document.getElementById(id).innerHTML = xmlHttp.responseText;
+            // document.getElementById(id).innerHTML = xmlHttp.responseText;
             jQuery('#' + id).html(xmlHttp.responseText);
           }
         }
         xmlHttp.open("GET", calendarlink, false);
         xmlHttp.send();
+		
+		
+		////////////////////////////////////////////////////////////////////////////
+	 jQuery(document).ready(function (){
+     jQuery('#views_select').toggle(function () {
+	
+    jQuery('#drop_down_views').stop(true, true).delay(200).slideDown(500);
+  }, function () {
+  
+    jQuery('#drop_down_views').stop(true, true).slideUp(500);
+	
+  });
+ 
+
+	});
+		//////////////////////////////////////////////////////////////
+	
+
+if(widget!=1)
+{
+  if(jQuery(window).width() > 640)
+  {
+
+	jQuery('drop_down_views').hide();
+		var parent_width = document.getElementById('bigcalendar'+randi).parentNode.clientWidth;
+		var calwidth=  document.getElementById('cal_width'+randi).value;
+		var responsive_width = (calwidth)/parent_width*100;
+		document.getElementById('afterbig'+randi).setAttribute('style','width:'+responsive_width+'%;');
+		jQuery('pop_table').css('height','100%');
+
+  }
+ 
+ else if(jQuery(jQuery('#bigcalendar'+randi).parent()).width() > 640)
+  {
+
+	jQuery('drop_down_views').hide();
+		var parent_width = document.getElementById('bigcalendar'+randi).parentNode.clientWidth;
+		var calwidth=  document.getElementById('cal_width'+randi).value;
+		var responsive_width = (calwidth)/parent_width*100;
+		document.getElementById('afterbig'+randi).setAttribute('style','width:'+responsive_width+'%;');
+		jQuery('pop_table').css('height','100%');
+
+  }
+ 
+	else
+	{
+			document.getElementById('afterbig'+randi).setAttribute('style','width:100%;');
+	
+	}
+}
+
+
+
         var thickDims, tbWidth, tbHeight;
         jQuery(document).ready(function ($) {
           thickDims = function () {
-            var tbWindow = $('#TB_window'), H = $(window).height(), W = $(window).width(), w, h;
+		/*  var originH=jQuery('#TB_window').height();
+var originW=jQuery('#TB_window').width();
+alert(originW)*/
+            		
+			jQuery('#TB_window iframe').css('margin-left','0%');
+			jQuery('#TB_window iframe').css('margin-top','0%');
+			jQuery('#TB_window iframe').css('margin-left','0%');
+			jQuery('#TB_window iframe').css('margin-top','0%');
+			
+			jQuery('#TB_window iframe').css('padding-left','0%');
+			jQuery('#TB_window iframe').css('padding-top','0%');
+		
+             var tbWindow = $('#TB_window'), H = $(window).height(), W = $(window).width(), w, h;
             if (tbWidth) {
               if (tbWidth < (W - 90)) w = tbWidth; else  w = W - 200;
             } else w = W - 200;
             if (tbHeight) {
               if (tbHeight < (H - 90)) h = tbHeight; else  h = H - 200;
             } else h = H - 200;
+			
             if (tbWindow.size()) {
               tbWindow.width(w).height(h);
               $('#TB_iframeContent').width(w).height(h - 27);
@@ -118,19 +211,79 @@ function spider_calendar_big_front_end($id, $theme, $default, $select, $widget =
               if (typeof document.body.style.maxWidth != 'undefined')
                 tbWindow.css({'top':(H - h) / 2, 'margin-top':'0'});
             }
+
+			 if(jQuery(window).width() < 640 ){
+			  var tb_left = parseInt((w / 2), 10) + 20;
+				jQuery('#TB_window').css('left', tb_left + 'px')
+				jQuery('#TB_window').css('width','90%');
+				jQuery('#TB_window').css('margin-top','-13%');
+				jQuery('#TB_window iframe').css('height','100%');
+				jQuery('#TB_window iframe').css('width','100%');
+			}
+			  
+				
+			   
+			   
+			   if(jQuery(window).width() > 640 )
+			   {
+					jQuery('#TB_window').css('left','50%');
+				}
+				 
+		
+		
+		  
+		
+			
+		if (typeof popup_width_from_src != "undefined") {
+				popup_width_from_src=jQuery('.thickbox-previewbigcalendar'+randi).attr('href').indexOf('tbWidth=');
+				str=jQuery('.thickbox-previewbigcalendar'+randi).attr('href').substr(popup_width_from_src+8,150)
+				find_amp=str.indexOf('&');
+				width_orig=str.substr(0,find_amp);
+				
+				find_eq=str.indexOf('=');
+				height_orig=str.substr(find_eq+1,5);
+
+			jQuery('#TB_window').css('max-width',width_orig+'px');
+			jQuery('#TB_window iframe').css('max-width',width_orig+'px');
+			jQuery('#TB_window').css('max-height',height_orig+'px');
+			}
+			
+			jQuery('#TB_window').css('background','none');
+			jQuery('#TB_window').css('background-color','none');
+			jQuery('#TB_window iframe').css('background-color','none');
+			
           };
+		  
+
           thickDims();
           $(window).resize(function () {
-            thickDims()
-          });
+            thickDims();
+			
+			if(jQuery(window).width() < 640 ){
+				jQuery('#TB_window').css('width','90%');
+				jQuery('#TB_window').css('margin-top','-13%');
+				jQuery('#TB_window iframe').css('height','100%');
+				jQuery('#TB_window').css('height','100%');
+			}
+			
+			
+if(jQuery(window).width() > 900 )
+			   {
+					jQuery('#TB_window').css('left','50%');						
+				}
+		  });
+		  
           $('a.thickbox-preview' + id).click(function () {
             tb_click.call(this);
             var alink = jQuery(this).parents('.available-theme').find('.activatelink'), link = '', href = jQuery(this).attr('href'), url, text;
             var reg_with = new RegExp(xx_cal_xx + "tbWidth=[0-9]+");
+	
             if (tbWidth = href.match(reg_with))
               tbWidth = parseInt(tbWidth[0].replace(/[^0-9]+/g, ''), 10);
             else
               tbWidth = jQuery(window).width() - 90;
+
+			  
             var reg_heght = new RegExp(xx_cal_xx + "tbHeight=[0-9]+");
             if (tbHeight = href.match(reg_heght))
               tbHeight = parseInt(tbHeight[0].replace(/[^0-9]+/g, ''), 10);
@@ -139,19 +292,30 @@ function spider_calendar_big_front_end($id, $theme, $default, $select, $widget =
             jQuery('#TB_title').css({'background-color':'#222', 'color':'#dfdfdf'});
             jQuery('#TB_closeAjaxWindow').css({'float':'left'});
             jQuery('#TB_ajaxWindowTitle').css({'float':'right'}).html(link);
+			
             jQuery('#TB_iframeContent').width('100%');
             thickDims();
+			
             return false;
+			
           });
+		  	
         });
+	
+
+
       }
+
     }
+	
     document.onkeydown = function (evt) {
       evt = evt || window.event;
       if (evt.keyCode == 27) {
         document.getElementById('sbox-window').close();
       }
     };
+	
+	
     <?php global $wpdb;
     $calendarr = $wpdb->get_row($wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar WHERE id='%d'", $id));
     $year = ($calendarr->def_year ? $calendarr->def_year : date("Y"));
@@ -203,8 +367,15 @@ function spider_calendar_big_front_end($id, $theme, $default, $select, $widget =
       'many_sp_calendar' => $many_sp_calendar,
       'cur_page_url' => urlencode(current_page_url_sc()),
       'widget' => $widget,
-      ), admin_url('admin-ajax.php'));?>');
+	  'rand' => $many_sp_calendar,
+      ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>');
+	  
   </script>
+<style>
+#TB_iframeContent{
+	height: 100% !important;
+}
+</style>
   <?php
   $many_sp_calendar++;
   $calendar = ob_get_contents();
@@ -215,6 +386,7 @@ function spider_calendar_big_front_end($id, $theme, $default, $select, $widget =
 // Quick edit.
 add_action('wp_ajax_spidercalendarinlineedit', 'spider_calendar_quick_edit');
 add_action('wp_ajax_spidercalendarinlineupdate', 'spider_calendar_quick_update');
+add_action('wp_ajax_upcoming', 'upcoming_widget');
 function spider_calendar_quick_update() {
   $current_user = wp_get_current_user();
   if ($current_user->roles[0] !== 'administrator') {
@@ -360,11 +532,16 @@ function sp_calendar_register($plugin_array) {
 function sp_calendar_options_panel() {
   add_menu_page('Theme page title', 'Calendar', 'manage_options', 'SpiderCalendar', 'Manage_Spider_Calendar', plugins_url("images/calendar_menu.png", __FILE__));
   $page_calendar = add_submenu_page('SpiderCalendar', 'Calendars', 'Calendars', 'manage_options', 'SpiderCalendar', 'Manage_Spider_Calendar');
+  $page_event_category = add_submenu_page('SpiderCalendar', 'Event Category', 'Event Category', 'manage_options', 'spider_calendar_event_category', 'Manage_Spider_Category_Calendar');
   $page_theme = add_submenu_page('SpiderCalendar', 'Calendar Parameters', 'Calendar Themes', 'manage_options', 'spider_calendar_themes', 'spider_calendar_params');
   $page_widget_theme = add_submenu_page('SpiderCalendar', 'Calendar Parameters', 'Widget Themes', 'manage_options', 'spider_widget_calendar_themes', 'spider_widget_calendar_params');
+  $Featured_Plugins = add_submenu_page('SpiderCalendar', 'Featured Plugins', 'Featured Plugins', 'manage_options', 'calendar_Featured_Plugins', 'calendar_Featured_Plugins');
+  
   add_submenu_page('SpiderCalendar', 'Licensing', 'Licensing', 'manage_options', 'Spider_calendar_Licensing', 'Spider_calendar_Licensing');
   add_submenu_page('SpiderCalendar', 'Uninstall  Spider Event Calendar', 'Uninstall  Spider Event Calendar', 'manage_options', 'Uninstall_sp_calendar', 'Uninstall_sp_calendar'); // uninstall Calendar
+  add_action('admin_print_styles-' . $Featured_Plugins, 'calendar_Featured_Plugins_styles');
   add_action('admin_print_styles-' . $page_theme, 'spider_calendar_themes_admin_styles_scripts');
+  add_action('admin_print_styles-' . $page_event_category, 'spider_calendar_event_category_admin_styles_scripts');
   add_action('admin_print_styles-' . $page_calendar, 'spider_calendar_admin_styles_scripts');
   add_action('admin_print_styles-' . $page_widget_theme, 'spider_widget_calendar_themes_admin_styles_scripts');
 }
@@ -419,6 +596,14 @@ function spider_calendar_admin_styles_scripts() {
   wp_enqueue_style("Css", plugins_url("elements/calendar-jos.css", __FILE__), FALSE);
 }
 
+function spider_calendar_event_category_admin_styles_scripts(){
+  wp_enqueue_script("Calendar", plugins_url("elements/calendar.js", __FILE__), FALSE);
+  wp_enqueue_script("calendar-setup", plugins_url("elements/calendar-setup.js", __FILE__), FALSE);
+  wp_enqueue_script("calendar_function", plugins_url("elements/calendar_function.js", __FILE__), FALSE);
+  wp_enqueue_style("Css", plugins_url("elements/calendar-jos.css", __FILE__), FALSE);
+  wp_enqueue_script("colcor_js", plugins_url('jscolor/jscolor.js', __FILE__));
+  }
+
 add_filter('admin_head', 'spide_ShowTinyMCE');
 function spide_ShowTinyMCE() {
   // conditions here
@@ -429,8 +614,10 @@ function spide_ShowTinyMCE() {
     add_thickbox();
   }
   wp_print_scripts('media-upload');
+  if(version_compare(get_bloginfo('version'),3.3)<0){
   if (function_exists('wp_tiny_mce')) {
     wp_tiny_mce();
+  }
   }
   wp_admin_css();
   wp_enqueue_script('utils');
@@ -584,13 +771,94 @@ function Manage_Spider_Calendar() {
       show_spider_event($calendar_id);
       break;
     case 'published_event';
-      published_spider_event($id);
+      published_spider_event($calendar_id, $id);
       show_spider_event($calendar_id);
       break;
     default:
       show_spider_calendar();
       break;
   }
+}
+
+function Manage_Spider_Category_Calendar(){
+	require_once("calendar_functions.html.php");
+	require_once("calendar_functions.php");
+if (!function_exists('print_html_nav')) {
+    require_once("nav_function/nav_html_func.php");
+  }
+
+global $wpdb;
+  if (isset($_GET["task"])) {
+    $task = esc_html($_GET["task"]);
+  }
+  else {
+    $task = "";
+	show_event_cat();
+	return;
+  }
+  if (isset($_GET["id"])) {
+    $id = (int) $_GET["id"];
+  }
+  else {
+    $id = 0;
+  }
+
+switch($task){
+	case 'add_category':
+		edit_event_category($id);
+	break;
+
+	case 'save_category_event':
+	if(!$id){
+		save_spider_category_event();
+		$id = $wpdb->get_var("SELECT MAX(id) FROM " . $wpdb->prefix . "spidercalendar_event_category");
+		}
+		else
+		{
+		apply_spider_category_event($id);
+		}
+		show_event_cat();
+		break;
+		
+	case 'apply_event_category':
+	 if (!$id) {
+        save_spider_category_event();
+        $id = $wpdb->get_var("SELECT MAX(id) FROM " . $wpdb->prefix . "spidercalendar_event_category");
+      }
+      else {
+        apply_spider_category_event($id);
+      }
+      edit_event_category($id);
+		break;
+		
+	case 'edit_event_category':
+		//apply_spider_category_event();
+		edit_event_category($id);
+		break;
+		
+	case 'remove_event_category':	
+		remove_category_event($id);
+		show_event_cat();
+		break;
+	case 'published':
+		spider_category_published($id);
+		show_event_cat();
+		break;
+	  }
+
+}
+
+function upcoming_widget(){
+	require_once("calendar_functions.html.php");
+	require_once("spidercalendar_upcoming_events_widget.php");
+	require_once("calendar_functions.php");
+	if (!function_exists('print_html_nav')) {
+    require_once("nav_function/nav_html_func.php");
+  }
+ 
+	  global $wpdb;
+ 
+  spider_upcoming();
 }
 
 function spider_widget_calendar_params() {
@@ -646,26 +914,33 @@ function Uninstall_sp_calendar() {
   $base_name = plugin_basename('Spider_Calendar');
   $base_page = 'admin.php?page=' . $base_name;
   $mode = (isset($_GET['mode']) ? trim($_GET['mode']) : '');
+
   if (!empty($_POST['do'])) {
     if ($_POST['do'] == "UNINSTALL Spider Event Calendar") {
       check_admin_referer('Spider_Calendar uninstall');
-      if (trim($_POST['Spider_Calendar_yes']) == 'yes') {
-        echo '<div id="message" class="updated fade">';
+      
+        echo '<form id="message" class="updated fade">';
         echo '<p>';
         echo "Table '" . $wpdb->prefix . "spidercalendar_event' has been deleted.";
-        $wpdb->query("DROP TABLE " . $wpdb->prefix . "spidercalendar_event");
+		$wpdb->query("DROP TABLE " . $wpdb->prefix . "spidercalendar_event");
         echo '<font style="color:#000;">';
         echo '</font><br />';
         echo '</p>';
+		echo '<p>';
+        echo "Table '" . $wpdb->prefix . "spidercalendar_event_category' has been deleted.";
+		$wpdb->query("DROP TABLE " . $wpdb->prefix . "spidercalendar_event_category");
+        echo '<font style="color:#000;">';
+        echo '</font><br />';
+        echo '</p>';		
         echo '<p>';
         echo "Table '" . $wpdb->prefix . "spidercalendar_calendar' has been deleted.";
-        $wpdb->query("DROP TABLE " . $wpdb->prefix . "spidercalendar_calendar");
+		$wpdb->query("DROP TABLE " . $wpdb->prefix . "spidercalendar_calendar");
         echo '<font style="color:#000;">';
         echo '</font><br />';
         echo '</p>';
-        echo '<p>';
+		 echo '<p>';
         echo "Table '" . $wpdb->prefix . "spidercalendar_theme' has been deleted.";
-        $wpdb->query("DROP TABLE " . $wpdb->prefix . "spidercalendar_theme");
+		$wpdb->query("DROP TABLE " . $wpdb->prefix . "spidercalendar_theme");
         echo '<font style="color:#000;">';
         echo '</font><br />';
         echo '</p>';
@@ -675,9 +950,9 @@ function Uninstall_sp_calendar() {
         echo '<font style="color:#000;">';
         echo '</font><br />';
         echo '</p>';
-        echo '</div>';
+        echo '</form>';
         $mode = 'end-UNINSTALL';
-      }
+      
     }
   }
   switch ($mode) {
@@ -688,10 +963,10 @@ function Uninstall_sp_calendar() {
       echo '<p><strong>' . sprintf('<a href="%s">Click Here</a> To Finish The Uninstallation And Spider Event Calendar Will Be Deactivated Automatically.', $deactivate_url) . '</strong></p>';
       echo '</div>';
       break;
-    // Main Page.
+    // Main Page
     default:
       ?>
-      <form method="post" action="<?php echo admin_url('admin.php?page=Uninstall_sp_calendar'); ?>">
+      <form method="post" id="uninstall_form"  action="<?php echo admin_url('admin.php?page=Uninstall_sp_calendar'); ?>">
         <?php wp_nonce_field('Spider_Calendar uninstall'); ?>
         <div class="wrap">
           <div id="icon-Spider_Calendar" class="icon32"><br/></div>
@@ -721,25 +996,172 @@ function Uninstall_sp_calendar() {
                 <ol>
                   <?php
                   echo '<li>' . $wpdb->prefix . 'spidercalendar_event</li>' . "\n";
+				  echo '<li>' . $wpdb->prefix . 'spidercalendar_event_category</li>' . "\n";
                   echo '<li>' . $wpdb->prefix . 'spidercalendar_calendar</li>' . "\n";
-                  echo '<li>' . $wpdb->prefix . 'spidercalendar_theme</li>' . "\n";
+				  echo '<li>' . $wpdb->prefix . 'spidercalendar_theme</li>' . "\n";
                   echo '<li>' . $wpdb->prefix . 'spidercalendar_widget_theme</li>' . "\n";
                   ?>
                 </ol>
               </td>
             </tr>
           </table>
+		  <script>
+		  function uninstall(){
+		  jQuery(document).ready(function() {
+				  if(jQuery('#uninstall_yes').is(':checked')){
+					var answer = confirm('<?php echo 'You Are About To Uninstall Spider Event Calendar From WordPress.\nThis Action Is Not Reversible.\n\n Choose [Cancel] To Stop, [OK] To Uninstall.'; ?>');
+				
+					if(answer)
+						jQuery("#uninstall_form").submit();
+					}
+				  else
+					alert('To uninstall please check the box above.');
+
+			  });
+		  }
+		  </script>
           <p style="text-align: center;">
               <?php echo 'Do you really want to uninstall Spider Event Calendar?'; ?><br/><br/>
-            <input type="checkbox" name="Spider_Calendar_yes" value="yes"/>&nbsp;<?php echo 'Yes'; ?><br/><br/>
-            <input type="submit" name="do" value="<?php echo 'UNINSTALL Spider Event Calendar'; ?>"
+            <input type="checkbox" value="yes" id="uninstall_yes" />&nbsp;<?php echo 'Yes'; ?><br/><br/>
+			  <input type="hidden" name="do" value="UNINSTALL Spider Event Calendar" />
+            <input type="button" name="DODO" value="<?php echo 'UNINSTALL Spider Event Calendar'; ?>"
                    class="button-primary"
-                   onclick="return confirm('<?php echo 'You Are About To Uninstall Spider Event Calendar From WordPress.\nThis Action Is Not Reversible.\n\n Choose [Cancel] To Stop, [OK] To Uninstall.'; ?>')"/>
+                   onclick="uninstall()"/>
           </p>
         </div>
       </form>
       <?php
   }
+}
+
+function calendar_Featured_Plugins_styles() {
+  wp_enqueue_style("Featured_Plugins", plugins_url("featured_plugins.css", __FILE__));
+}
+function calendar_Featured_Plugins() {
+  ?>
+	<div id="main_featured_plugins_page">
+		<table align="center" width="90%" style="margin-top: 0px;border-bottom: rgb(111, 111, 111) solid 2px;">
+			<tr>
+				<td colspan="2" style="height: 70px;"><h3 style="margin: 0px;font-family:Segoe UI;padding-bottom: 15px;color: rgb(111, 111, 111); font-size:18pt;">Featured Plugins</h3></td>
+				<td  align="right" style="font-size:16px;">
+        </td>
+			</tr>
+		</table>
+		<form method="post">
+			<ul id="featured-plugins-list">
+        <li class="form-maker">
+                 <div class="product">
+                         <div class="title">
+                                 <strong class="heading">Form Maker</strong>
+                                 <p>Wordpress form builder plugin</p>
+                         </div>
+                 </div>
+                 <div class="description">
+                                 <p>Form Maker is a modern and advanced tool for creating WordPress forms easily and fast.</p>
+                                 <a target="_blank" href="http://web-dorado.com/products/wordpress-form.html" class="download">Download</a>
+                 </div>
+         </li>
+				 <li class="catalog">
+					<div class="product">
+						<div class="title">
+							<strong class="heading">Spider Catalog</strong>
+							<p>WordPress product catalog plugin</p>
+						</div>
+					</div>
+					<div class="description">
+							<p>Spider Catalog for WordPress is a convenient tool for organizing the products represented on your website into catalogs.</p>
+							<a target="_blank" href="http://web-dorado.com/products/wordpress-catalog.html" class="download">Download</a>
+					</div>
+				</li>
+        <li class="player">
+					<div class="product">
+						<div class="title">
+							<strong class="heading">Video Player</strong>
+							<p>WordPress Video player plugin</p>
+						</div>
+					</div>
+					<div class="description">
+							<p>Spider Video Player for WordPress is a Flash & HTML5 video player plugin that allows you to easily add videos to your website with the possibility</p>
+							<a target="_blank" href="http://web-dorado.com/products/wordpress-player.html" class="download">Download</a>
+					</div>
+				</li>
+				<li class="contacts">
+					<div class="product">
+						<div class="title">
+							<strong class="heading">Spider Contacts</strong>
+							<p>Wordpress staff list plugin</p>
+						</div>
+					</div>
+					<div class="description">
+							<p>Spider Contacts helps you to display information about the group of people more intelligible, effective and convenient.</p>
+							<a target="_blank" href="http://web-dorado.com/products/wordpress-contacts-plugin.html" class="download">Download</a>
+					</div>
+				</li>
+        <li class="facebook">
+					<div class="product">
+						<div class="title">
+							<strong class="heading">Spider Facebook</strong>
+							<p>WordPress Facebook plugin</p>
+						</div>
+					</div>
+					<div class="description">
+							<p>Spider Facebook is a WordPress integration tool for Facebook.It includes all the available Facebook social plugins and widgets to be added to your web</p>
+							<a target="_blank" href="http://web-dorado.com/products/wordpress-facebook.html" class="download">Download</a>
+					</div>
+				</li>
+                <li class="faq">
+					<div class="product">
+						<div class="title">
+							<strong class="heading">Spider FAQ</strong>
+							<p>WordPress FAQ Plugin</p>
+						</div>
+					</div>
+					<div class="description">
+							<p>The Spider FAQ WordPress plugin is for creating an FAQ (Frequently Asked Questions) section for your website.</p>
+							<a target="_blank" href="http://web-dorado.com/products/wordpress-faq-plugin.html" class="download">Download</a>
+					</div>
+				</li>
+                <li class="zoom">
+					<div class="product">
+						<div class="title">
+							<strong class="heading">Zoom</strong>
+							<p>WordPress text zoom plugin</p>
+						</div>
+					</div>
+					<div class="description">
+							<p>Zoom enables site users to resize the predefined areas of the web site.</p>
+							<a target="_blank" href="http://web-dorado.com/products/wordpress-zoom.html" class="download">Download</a>
+					</div>
+				</li>
+				<li class="flash-calendar">
+					<div class="product">
+						<div class="title">
+							<strong class="heading">Flash Calendar</strong>
+							<p>WordPress flash calendar plugin</p>
+						</div>
+					</div>
+					<div class="description">
+							<p>Spider Flash Calendar is a highly configurable Flash calendar plugin which allows you to have multiple organized events.</p>
+							<a target="_blank" href="http://web-dorado.com/products/wordpress-events-calendar.html" class="download">Download</a>
+					</div>
+				</li>
+        <li class="contact-maker">
+                 <div class="product">
+                         <div class="title">
+                                 <strong class="heading">Contact Form Maker</strong>
+                                 <p>WordPress contact form builder plugin</p>
+                         </div>
+                 </div>
+                 <div class="description">
+                                 <p>WordPress Contact Form Maker is an advanced and easy-to-use tool for creating forms.</p>
+                                 <a target="_blank" href="http://web-dorado.com/products/wordpress-contact-form-maker-plugin.html" class="download">Download</a>
+                 </div>
+         </li>
+
+			</ul>
+		</form>
+	</div >
+  <?php
 }
 
 // Activate plugin.
@@ -775,9 +1197,17 @@ function SpiderCalendar_activate() {
   `published` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
-
+$spider_category_event_table = "CREATE TABLE IF NOT EXISTS `" . $wpdb->prefix . "spidercalendar_event_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `published` tinyint(1) NOT NULL,
+  `color` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
   $wpdb->query($spider_event_table);
   $wpdb->query($spider_calendar_table);
+  $wpdb->query($spider_category_event_table);
   require_once "spider_calendar_update.php";
   spider_calendar_chech_update();
 }
@@ -791,5 +1221,4 @@ function spider_calendar_ajax_func() {
   <?php
 }
 add_action('admin_head', 'spider_calendar_ajax_func');
-
 ?>

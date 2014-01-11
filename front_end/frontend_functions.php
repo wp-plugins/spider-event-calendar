@@ -58,8 +58,56 @@ function php_getdays($show_numbers_for_events, $calendar, $date, $theme_id, $wid
     $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=%d', $theme_id));
     $show_time = $theme->show_time;
   }
+
+ if(isset($_GET['cat_id']))
+  $cat_id = $_GET['cat_id'];
+  else $cat_id = "";
   
-  $rows = $wpdb->get_results($wpdb->prepare("SELECT * from " . $wpdb->prefix . "spidercalendar_event where published=1 and ( ( (date<=%s or date like %s) and  date_end>=%s) or ( date_end is Null and date like %s ) ) and calendar=%d  ", "" . substr($date, 0, 7) . "-01", "" . substr($date, 0, 7) . "%", "" . substr($date, 0, 7) . "-01", "" . substr($date, 0, 7) . "%", $calendar));
+  if(isset($_GET['cat_ids']))
+  $cat_ids = $_GET['cat_ids'];
+  else $cat_ids = "";
+
+
+if($cat_ids=='')
+$cat_ids .= $cat_id.',';
+else
+$cat_ids .= ','.$cat_id.',';
+
+
+
+$cat_ids = substr($cat_ids, 0,-1);
+
+$cat_ids_array = explode(',',$cat_ids);
+
+
+if($cat_id!='')
+{
+
+if(getelementcountinarray($cat_ids_array,$cat_id )%2==0)
+{
+$index_in_line = getelementindexinarray($cat_ids_array, $cat_id);
+$index_array = explode(',' , $index_in_line);
+array_pop ($index_array);
+for($j=0; $j<count($index_array); $j++)
+unset($cat_ids_array[$index_array[$j]]);
+$cat_ids = implode(',',$cat_ids_array);
+}
+}
+else
+$cat_ids = substr($cat_ids, 0,-1);
+  
+  
+  if($cat_ids!=''){
+			$rows = $wpdb->get_results("SELECT " . $wpdb->prefix . "spidercalendar_event.*," . $wpdb->prefix . "spidercalendar_event_category.color  from " . $wpdb->prefix . "spidercalendar_event JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category = " . $wpdb->prefix . "spidercalendar_event_category.id where " . $wpdb->prefix . "spidercalendar_event_category.published=1 and " . $wpdb->prefix . "spidercalendar_event.category IN (".$cat_ids.") and " . $wpdb->prefix . "spidercalendar_event.published=1 and ( ( (date<='".substr( $date,0,7)."-01' or date like '".substr( $date,0,7)."%') and  (date_end>='".substr( $date,0,7)."-01' ) or date_end='0000-00-00'  ) or ( date_end is Null and date like '".substr( $date,0,7)."%' ) ) and calendar='".$calendar."' ORDER BY " . $wpdb->prefix . "spidercalendar_event.time ASC  ");
+			
+			}
+		else{
+			 $rows = $wpdb->get_results($wpdb->prepare("SELECT * from " . $wpdb->prefix . "spidercalendar_event where published=1 and ( ( (date<=%s or date like %s) and  date_end>=%s) or ( date_end is Null and date like %s ) ) and calendar=%d  ", "" . substr($date, 0, 7) . "-01", "" . substr($date, 0, 7) . "%", "" . substr($date, 0, 7) . "-01", "" . substr($date, 0, 7) . "%", $calendar));
+  
+  }
+  
+
+  
   $id_array = array();
   $s = count($rows);
   $id_array = array();
@@ -67,7 +115,7 @@ function php_getdays($show_numbers_for_events, $calendar, $date, $theme_id, $wid
   $array_days1 = array();
   $title = array();
   $ev_ids = array();
-  for ($i = 1; $i <= $s; $i++) {
+   for ($i = 1; $i <= $s; $i++) {
     $date_month = (int)substr($rows[$i - 1]->date, 5, 2);
     $date_end_month = (int)substr($rows[$i - 1]->date_end, 5, 2);
     $date_day = (int)substr($rows[$i - 1]->date, 8, 2);
@@ -85,6 +133,7 @@ function php_getdays($show_numbers_for_events, $calendar, $date, $theme_id, $wid
     $date_days = array();
     $weekdays_start = array();
     $weekdays = array();
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////                NO Repeat                /////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -123,6 +172,10 @@ function php_getdays($show_numbers_for_events, $calendar, $date, $theme_id, $wid
           $start_date_array[] = $start_date;
           $next_date = php_GetNextDate($start_date, $repeat * 7);
           $next_date_array = explode('/', $next_date);
+		 
+		 
+		 if ((int)$month == $date_month && (int)substr($date_year_month, 0, 4) == (int)$year)
+                $date_days[0] = $weekdays_start[$p];
           if (($next_date_array[2] . '-' . add_0($next_date_array[0]) . '-' . add_0($next_date_array[1]) > $rows[$i - 1]->date_end) || ($next_date_array[0] > (int)$month && $next_date_array[2] == (int)$year) || ($next_date_array[2] > (int)$year))
             break;
           if ((int)$month == $date_month && (int)substr($date_year_month, 0, 4) == (int)$year)
@@ -483,7 +536,57 @@ function php_getdays_for_three_months($calendar, $date, $months, $theme_id, $wid
     $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=%d', $theme_id));
     $show_time = $theme->show_time;
   }
-  $rows = $wpdb->get_results($wpdb->prepare("SELECT * from " . $wpdb->prefix . "spidercalendar_event where published=1 and ((date_end>=%s) or (date_end=%s)) and calendar=%d", "" . substr($date, 0, 7) . "-01", "0000-00-00", $calendar));
+
+ if(isset($_GET['cat_id']))
+  $cat_id = $_GET['cat_id'];
+  else $cat_id = "";
+  
+  if(isset($_GET['cat_ids']))
+  $cat_ids = $_GET['cat_ids'];
+  else $cat_ids = "";
+
+  
+if($cat_ids=='')
+$cat_ids .= $cat_id.',';
+else
+$cat_ids .= ','.$cat_id.',';
+
+
+
+$cat_ids = substr($cat_ids, 0,-1);
+
+$cat_ids_array = explode(',',$cat_ids);
+
+
+if($cat_id!='')
+{
+
+if(getelementcountinarray($cat_ids_array,$cat_id )%2==0)
+{
+$index_in_line = getelementindexinarray($cat_ids_array, $cat_id);
+$index_array = explode(',' , $index_in_line);
+array_pop ($index_array);
+for($j=0; $j<count($index_array); $j++)
+unset($cat_ids_array[$index_array[$j]]);
+$cat_ids = implode(',',$cat_ids_array);
+}
+}
+else
+$cat_ids = substr($cat_ids, 0,-1);
+  
+  
+  if($cat_ids!=''){
+			$rows = $wpdb->get_results("SELECT " . $wpdb->prefix . "spidercalendar_event.*," . $wpdb->prefix . "spidercalendar_event_category.color  from " . $wpdb->prefix . "spidercalendar_event JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category = " . $wpdb->prefix . "spidercalendar_event_category.id where " . $wpdb->prefix . "spidercalendar_event_category.published=1 and " . $wpdb->prefix . "spidercalendar_event.category IN (".$cat_ids.") and " . $wpdb->prefix . "spidercalendar_event.published=1 and ( ( (date<='".substr( $date,0,7)."-01' or date like '".substr( $date,0,7)."%') and  (date_end>='".substr( $date,0,7)."-01' ) or date_end='0000-00-00'  ) or ( date_end is Null and date like '".substr( $date,0,7)."%' ) ) and calendar='".$calendar."' ORDER BY " . $wpdb->prefix . "spidercalendar_event.time ASC  ");
+			
+			}
+		else{
+			 $rows = $wpdb->get_results($wpdb->prepare("SELECT * from " . $wpdb->prefix . "spidercalendar_event where published=1 and ((date_end>=%s) or (date_end=%s)) and calendar=%d", "" . substr($date, 0, 7) . "-01", "0000-00-00", $calendar));
+  }
+  
+  
+			
+  
+  
   $all_id_array = array();
   $all_array_days = array();
   $all_array_days1 = array();
@@ -904,6 +1007,7 @@ function php_getdays_for_three_months($calendar, $date, $months, $theme_id, $wid
   $all_calendar_files['all_calendar'] = $all_id_array;  
   return array($all_calendar_files);
 }
+
 
 function Month_name($month_num) {
   $timestamp = mktime(0, 0, 0, $month_num, 1, 2005);

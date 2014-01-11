@@ -4,6 +4,7 @@ div.calendar {
   position: relative;
   z-index: 100;
   width: 226px;
+  margin-left: -100px;
 }
 
 .calendar, .calendar table {
