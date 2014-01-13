@@ -508,7 +508,7 @@ position: relative;
   </style>
   <div  id="afterbig<?php echo $many_sp_calendar; ?>" style="<?php echo $display ?>">
   <div style="width:100%;">
-    <table  cellpadding="0" cellspacing="0">
+    <table  cellpadding="0" cellspacing="0" style="width:100%;">
       <tr>
         <td>
           <div id="views_tabs" style="width: 100%;<?php echo $display; ?>">

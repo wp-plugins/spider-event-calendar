@@ -607,8 +607,8 @@ function show_event_category($rows, $pageNav, $sort){
         <td width="100%" style="font-size:14px; font-weight:bold">
           <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a>
           <br />
-          This section allows you to create calendars. You can add unlimited number of calendars.
-          <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a>
+          This section allows you to create event categories. You can add unlimited number of categories.
+          <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-4.html" target="_blank" style="color:blue; text-decoration:none;">More...</a>
         </td>
 		<td colspan="7" align="right" style="font-size:16px;">
       <a href="http://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">

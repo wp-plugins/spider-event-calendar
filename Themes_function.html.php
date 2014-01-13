@@ -14,10 +14,10 @@ function html_show_theme_calendar() {
   <table width="95%">
     <tr>
       <td width="100%" style="font-size:14px; font-weight:bold">
-        <a href="http://web-dorado.com/step-4-adding-themes/spider-calendar-wordpress-guide-step-4-1.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br />
+        <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-5/5-1.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br />
         This section allows you to create/edit themes for the calendars.<br />
         This feature is disabled for the non-commercial version.
-        <a href="http://web-dorado.com/step-4-adding-themes/spider-calendar-wordpress-guide-step-4-1.html" target="_blank" style="color:blue; text-decoration:none;">More...</a><br />
+        <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-5/5-1.html" target="_blank" style="color:blue; text-decoration:none;">More...</a><br />
         Here are some examples of 17 standard templates included in the commercial version.
         <a href="http://wpdemo.web-dorado.com/spider-calendar/" target="_blank" style="color:blue; text-decoration:none;">Demo</a>
       </td>
