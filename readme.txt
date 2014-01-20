@@ -255,7 +255,7 @@ There are 11 default calendar and widget themes. You can use one of the calendar
     
 = Adding Themes to the calendar for the widget view  =    
     
-5.1 On the left menu select Calendar>Widget Themes>Add a Theme.	
+5.1 On the left menu select Calendar->Widget Themes->Add a Theme.	
 
 5.2 The General Parameters of the Spider Event Calendar.	
 5.2.1 Title. Choose a title for the theme.	
