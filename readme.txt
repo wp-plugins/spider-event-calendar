@@ -100,8 +100,7 @@ Tamil (ta)
 Thai (th)  
 Turkish (tr_TR)  
 Ukrainian (uk_UA)  
-Vietnamese (vi)  
-  Spider Event Calendar is a highly configurable plugin which allows you to have multiple organized events in a calendar. This plugin is one of the best WordPress Calendar available in WordPress Directory.   
+Vietnamese (vi)     
   
 == Screenshots ==
 1.  WordPress Event Calendar - Calendar	
