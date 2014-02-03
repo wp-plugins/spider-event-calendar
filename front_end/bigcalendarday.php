@@ -804,7 +804,7 @@ position: relative;
             <tr>
               <td style="height:' . $date_height . 'px;font-size:' . $date_font_size . 'px; padding-left:10px;background-color:' . $date_bg_color . '; color:#6E7276">
                 <span style="padding-left:10px; font-size:' . $week_font_size . 'px;color:' . $week_font_color . '">' . week_convert($week_day) . '</span>
-                <span style="font-size:' . $day_month_font_size . 'px;color:' . $day_month_font_color . '">(' . $month . ' ' . (int) $day . ', ' . $year . ')</span>
+                <span style="font-size:' . $day_month_font_size . 'px;color:' . $day_month_font_color . '">(' . __($month,'sp_calendar') . ' ' . (int) $day . ', ' . $year . ')</span>
               </td>
             </tr>
             <tr>
@@ -825,7 +825,7 @@ position: relative;
             <tr>
               <td style="height:' . $date_height . 'px;font-size:' . $date_font_size . 'px; padding-left:10px;background-color:' . $date_bg_color . '; color:#6E7276">
                 <span style="padding-left:10px; font-size:' . $date_font_size . 'px;color:' . $week_font_color . '">' . week_convert($week_day) . '</span>
-                <span style="font-size:' . $day_month_font_size . 'px;color:' . $day_month_font_color . '">(' . $month . ' ' . (int) $day . ', ' . $year . ')</span>
+                <span style="font-size:' . $day_month_font_size . 'px;color:' . $day_month_font_color . '">(' . __($month,'sp_calendar') . ' ' . (int) $day . ', ' . $year . ')</span>
               </td>
             <tr>
               <td>';

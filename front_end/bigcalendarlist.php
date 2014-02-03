@@ -773,7 +773,7 @@ position: relative;
             <tr>
               <td style="height:' . $date_height . 'px;font-size:' . $date_font_size . 'px; padding-left:10px;background-color:' . $date_bg_color . '; color:#6E7276">
                 <span style="padding-left:10px; font-size:' . $date_font_size . 'px;color:' . $week_font_color . '">' . week_convert($week_day) . '</span>
-                <span style="font-size:' . $day_month_font_size . 'px;color:' . $day_month_font_color . '">(' . add_0($array_days[$i]) . ' ' . $month . ')</span>
+                <span style="font-size:' . $day_month_font_size . 'px;color:' . $day_month_font_color . '">(' . add_0($array_days[$i]) . ' ' . __($month,'sp_calendar') . ')</span>
               </td>
             </tr>
             <tr>

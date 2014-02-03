@@ -535,11 +535,12 @@ position: relative;
     }
     sort($array_days, SORT_NUMERIC);
     $week_day = date('D', mktime(0, 0, 0, $month, (int) $day, $year));
+	$month_name = month_name($month);
     echo '<table style="width:100%;border-spacing:0;">
             <tr>
               <td style="height:14px;font-size:12px; padding-left:10px; background-color:#D6D4D5; color:#6E7276">
                 <span style="padding-left:10px; font-size:12px; color:' . $color_week_days . '">' . week_convert($week_day) . '</span>
-                <span style="font-size:12px;color:#949394;">(' . month_name($month) . ' ' . (int) $day . ')</span>
+                <span style="font-size:12px;color:#949394;">(' . __($month_name,'sp_calendar') . ' ' . (int) $day . ')</span>
               </td>
               <tr>
                 <td>';

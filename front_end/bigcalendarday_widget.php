@@ -504,7 +504,7 @@ position: relative;
             <tr>
               <td style="height:14px;font-size:12px; padding-left:10px;background-color:#D6D4D5; color:#6E7276">
                 <span style="padding-left:10px; font-size:12px;color:' . $color_week_days . '">' . week_convert($week_day) . '</span>
-                <span style="font-size:12px;color:#949394;">(' . $month . ' ' . (int) $day . ', ' . $year . ')</span>
+                <span style="font-size:12px;color:#949394;">(' . __($month,'sp_calendar') . ' ' . (int) $day . ', ' . $year . ')</span>
               </td>
             </tr>
             <tr>
@@ -525,7 +525,7 @@ position: relative;
             <tr>
               <td style="height:14px;font-size:12px; padding-left:10px;background-color:#D6D4D5; color:#6E7276">
                 <span style="padding-left:10px; font-size:12px;color:' . $color_week_days . '">' . week_convert($week_day) . '</span>
-                <span style="font-size:12px;color:#949394;">(' . $month . ' ' . (int) $day . ', ' . $year . ')</span>
+                <span style="font-size:12px;color:#949394;">(' . __($month,'sp_calendar') . ' ' . (int) $day . ', ' . $year . ')</span>
               </td>
             <tr>
               <td>';

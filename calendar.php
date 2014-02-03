@@ -4,7 +4,7 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: http://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.4.1
+Version: 1.4.2
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -87,21 +87,15 @@ $themes = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spid
 else{
 $themes = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=%d', $theme));
 }
-  $cal_width = $themes->width;
-
-  ?>
-  <input type="hidden" id="cal_width<?php echo $many_sp_calendar ?>" value="<?php echo $cal_width ?>" />
-  
+  $cal_width = $themes->width; ?>
+  <input type="hidden" id="cal_width<?php echo $many_sp_calendar ?>" value="<?php echo $cal_width ?>" /> 
   <div id='bigcalendar<?php echo $many_sp_calendar ?>'></div>
-  <script>
-  
+  <script> 
     var tb_pathToImage = "<?php echo plugins_url('images/loadingAnimation.gif', __FILE__) ?>";
     var tb_closeImage = "<?php echo plugins_url('images/tb-close.png', __FILE__) ?>"
 	var randi;
     if (typeof showbigcalendar != 'function') {
-	
       function showbigcalendar(id, calendarlink, randi,widget) {
-
         var xmlHttp;
         try {
           xmlHttp = new XMLHttpRequest();// Firefox, Opera 8.0+, Safari
@@ -122,88 +116,59 @@ $themes = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spid
         }
         xmlHttp.onreadystatechange = function () {
           if (xmlHttp.readyState == 4) {
-            // document.getElementById(id).innerHTML = xmlHttp.responseText;
             jQuery('#' + id).html(xmlHttp.responseText);
           }
         }
         xmlHttp.open("GET", calendarlink, false);
         xmlHttp.send();
-		
-		
-		////////////////////////////////////////////////////////////////////////////
 	 jQuery(document).ready(function (){
-     jQuery('#views_select').toggle(function () {
-	
+     jQuery('#views_select').toggle(function () {	
     jQuery('#drop_down_views').stop(true, true).delay(200).slideDown(500);
-  }, function () {
-  
-    jQuery('#drop_down_views').stop(true, true).slideUp(500);
-	
+  }, function () { 
+    jQuery('#drop_down_views').stop(true, true).slideUp(500);	
   });
- 
-
 	});
-		//////////////////////////////////////////////////////////////
-	
-
 if(widget!=1)
 {
   if(jQuery(window).width() > 640)
   {
-
 	jQuery('drop_down_views').hide();
 		var parent_width = document.getElementById('bigcalendar'+randi).parentNode.clientWidth;
 		var calwidth=  document.getElementById('cal_width'+randi).value;
 		var responsive_width = (calwidth)/parent_width*100;
 		document.getElementById('afterbig'+randi).setAttribute('style','width:'+responsive_width+'%;');
 		jQuery('pop_table').css('height','100%');
-
   }
- 
  else if(jQuery(jQuery('#bigcalendar'+randi).parent()).width() > 640)
   {
-
 	jQuery('drop_down_views').hide();
 		var parent_width = document.getElementById('bigcalendar'+randi).parentNode.clientWidth;
 		var calwidth=  document.getElementById('cal_width'+randi).value;
 		var responsive_width = (calwidth)/parent_width*100;
 		document.getElementById('afterbig'+randi).setAttribute('style','width:'+responsive_width+'%;');
 		jQuery('pop_table').css('height','100%');
-
-  }
- 
+  } 
 	else
 	{
-			document.getElementById('afterbig'+randi).setAttribute('style','width:100%;');
-	
+			document.getElementById('afterbig'+randi).setAttribute('style','width:100%;');	
 	}
 }
-
-
-
         var thickDims, tbWidth, tbHeight;
         jQuery(document).ready(function ($) {
           thickDims = function () {
-		/*  var originH=jQuery('#TB_window').height();
-var originW=jQuery('#TB_window').width();
-alert(originW)*/
-            		
 			jQuery('#TB_window iframe').css('margin-left','0%');
 			jQuery('#TB_window iframe').css('margin-top','0%');
 			jQuery('#TB_window iframe').css('margin-left','0%');
-			jQuery('#TB_window iframe').css('margin-top','0%');
-			
+			jQuery('#TB_window iframe').css('margin-top','0%');			
 			jQuery('#TB_window iframe').css('padding-left','0%');
-			jQuery('#TB_window iframe').css('padding-top','0%');
-		
+			jQuery('#TB_window iframe').css('padding-top','0%');		
              var tbWindow = $('#TB_window'), H = $(window).height(), W = $(window).width(), w, h;
             if (tbWidth) {
               if (tbWidth < (W - 90)) w = tbWidth; else  w = W - 200;
             } else w = W - 200;
             if (tbHeight) {
               if (tbHeight < (H - 90)) h = tbHeight; else  h = H - 200;
-            } else h = H - 200;
-			
+            } else h = H - 200;			
             if (tbWindow.size()) {
               tbWindow.width(w).height(h);
               $('#TB_iframeContent').width(w).height(h - 27);
@@ -211,7 +176,6 @@ alert(originW)*/
               if (typeof document.body.style.maxWidth != 'undefined')
                 tbWindow.css({'top':(H - h) / 2, 'margin-top':'0'});
             }
-
 			 if(jQuery(window).width() < 640 ){
 			  var tb_left = parseInt((w / 2), 10) + 20;
 				jQuery('#TB_window').css('left', tb_left + 'px')
@@ -220,70 +184,47 @@ alert(originW)*/
 				jQuery('#TB_window iframe').css('height','100%');
 				jQuery('#TB_window iframe').css('width','100%');
 			}
-			  
-				
-			   
-			   
 			   if(jQuery(window).width() > 640 )
 			   {
 					jQuery('#TB_window').css('left','50%');
 				}
-				 
-		
-		
-		  
-		
-			
 		if (typeof popup_width_from_src != "undefined") {
 				popup_width_from_src=jQuery('.thickbox-previewbigcalendar'+randi).attr('href').indexOf('tbWidth=');
 				str=jQuery('.thickbox-previewbigcalendar'+randi).attr('href').substr(popup_width_from_src+8,150)
 				find_amp=str.indexOf('&');
-				width_orig=str.substr(0,find_amp);
-				
+				width_orig=str.substr(0,find_amp);				
 				find_eq=str.indexOf('=');
 				height_orig=str.substr(find_eq+1,5);
-
 			jQuery('#TB_window').css('max-width',width_orig+'px');
 			jQuery('#TB_window iframe').css('max-width',width_orig+'px');
 			jQuery('#TB_window').css('max-height',height_orig+'px');
-			}
-			
+			}			
 			jQuery('#TB_window').css('background','none');
 			jQuery('#TB_window').css('background-color','none');
-			jQuery('#TB_window iframe').css('background-color','none');
-			
+			jQuery('#TB_window iframe').css('background-color','none');			
           };
-		  
-
           thickDims();
           $(window).resize(function () {
             thickDims();
-			
 			if(jQuery(window).width() < 640 ){
 				jQuery('#TB_window').css('width','90%');
 				jQuery('#TB_window').css('margin-top','-13%');
 				jQuery('#TB_window iframe').css('height','100%');
 				jQuery('#TB_window').css('height','100%');
-			}
-			
-			
+			}		
 if(jQuery(window).width() > 900 )
 			   {
 					jQuery('#TB_window').css('left','50%');						
 				}
-		  });
-		  
+		  });		  
           $('a.thickbox-preview' + id).click(function () {
             tb_click.call(this);
             var alink = jQuery(this).parents('.available-theme').find('.activatelink'), link = '', href = jQuery(this).attr('href'), url, text;
-            var reg_with = new RegExp(xx_cal_xx + "tbWidth=[0-9]+");
-	
+            var reg_with = new RegExp(xx_cal_xx + "tbWidth=[0-9]+");	
             if (tbWidth = href.match(reg_with))
               tbWidth = parseInt(tbWidth[0].replace(/[^0-9]+/g, ''), 10);
             else
               tbWidth = jQuery(window).width() - 90;
-
-			  
             var reg_heght = new RegExp(xx_cal_xx + "tbHeight=[0-9]+");
             if (tbHeight = href.match(reg_heght))
               tbHeight = parseInt(tbHeight[0].replace(/[^0-9]+/g, ''), 10);
@@ -291,31 +232,20 @@ if(jQuery(window).width() > 900 )
               tbHeight = jQuery(window).height() - 60;
             jQuery('#TB_title').css({'background-color':'#222', 'color':'#dfdfdf'});
             jQuery('#TB_closeAjaxWindow').css({'float':'left'});
-            jQuery('#TB_ajaxWindowTitle').css({'float':'right'}).html(link);
-			
+            jQuery('#TB_ajaxWindowTitle').css({'float':'right'}).html(link);			
             jQuery('#TB_iframeContent').width('100%');
-            thickDims();
-			
-            return false;
-			
-          });
-		  	
+            thickDims();			
+            return false;			
+          });		  	
         });
-	
-
-
       }
-
-    }
-	
+    }	
     document.onkeydown = function (evt) {
       evt = evt || window.event;
       if (evt.keyCode == 27) {
         document.getElementById('sbox-window').close();
       }
     };
-	
-	
     <?php global $wpdb;
     $calendarr = $wpdb->get_row($wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar WHERE id='%d'", $id));
     $year = ($calendarr->def_year ? $calendarr->def_year : date("Y"));
@@ -368,8 +298,7 @@ if(jQuery(window).width() > 900 )
       'cur_page_url' => urlencode(current_page_url_sc()),
       'widget' => $widget,
 	  'rand' => $many_sp_calendar,
-      ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>');
-	  
+      ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>');	  
   </script>
 <style>
 #TB_iframeContent{

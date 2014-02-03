@@ -823,11 +823,12 @@ position: relative;
 	
     sort($array_days, SORT_NUMERIC);
     $week_day = date('D', mktime(0, 0, 0, $month, (int) $day, $year));
+	$month_name = month_name($month);
     echo '<table style="width:100%;border-spacing:0;">
             <tr>
               <td style="height:' . $date_height . 'px;font-size:' . $date_font_size . 'px; padding-left:10px;background-color:' . $date_bg_color . '; color:#6E7276">
                 <span style="padding-left:10px; font-size:' . $date_font_size . 'px; color:' . $week_font_color . '">' . week_convert($week_day) . '</span>
-                <span style="font-size:' . $day_month_font_size . 'px;color:' . $day_month_font_color . '">(' . month_name($month) . ' ' . (int) $day . ')</span>
+                <span style="font-size:' . $day_month_font_size . 'px;color:' . $day_month_font_color . '">(' . __($month_name,'sp_calendar') . ' ' . (int) $day . ')</span>
               </td>
               <tr>
                 <td>';
