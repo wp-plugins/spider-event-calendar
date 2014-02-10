@@ -128,6 +128,10 @@ Vietnamese (vi)
 5.	Click **Activate Plugin** button for activating the calendar plugin.    
 If the installation of the calendar succeeded you will see the message in the picture. If any problem occurs, during the installation of the calendar please contact us info@web-dorado.com.    
 
+1.3 Updating the calendar.  
+
+If you want to update the calendar plugin while preserving your existing calendars, you need to deactivate and delete the Spider Calendar from the list of installed plugins (Do not uninstall it using the Uninstall Spider Calendar option of the plugin, otherwise you will lose your initial data) and install the new plugin. 
+
 == Step 2:Spider Event Calendar  ==        
     
 = Creating/Editing calendars. =    
