@@ -1715,7 +1715,7 @@ ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spide
 
 function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
   global $wpdb;
-  $calendar = $wpdb->get_row("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar");
+  $calendar = $wpdb->get_row("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar where id=".$calendar_id."");
   
   ?>
   <style>

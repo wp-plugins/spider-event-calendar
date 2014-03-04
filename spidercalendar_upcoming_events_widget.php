@@ -452,12 +452,15 @@ border:2px solid #6A6A6A;;
 
 
 <?php
-$query1= "SELECT * FROM " . $wpdb->prefix . "spidercalendar_event WHERE published='1'";
+$query1= "SELECT * FROM " . $wpdb->prefix . "spidercalendar_event WHERE published='1' LIMIT 0,".$event_from_current_day;
 $rows = $wpdb->get_results($query1);
+
+
  $daysarray = array();
 
 foreach($rows as $row)
 {
+
   if($row -> date_end!='0000-00-00')
   {
 $Startdate = $row->date;
@@ -488,15 +491,15 @@ $weekdays = explode(',',$row->week);
 $weekdays= array_slice($weekdays,0,count($weekdays)-1);
 }
 
+ }
 
- }//end main foreach
-////////////////////////////////////////////////
- 
+
 echo '<div class="module'.$id.'">';
 
  if($view_type==0)
 {
-	$query=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE calendar= ".$calendar_id."  AND published='1' ORDER BY date LIMIT 0, ".$event_from_current_day;				
+	$query=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE calendar= ".$calendar_id."  AND published='1' AND CURDATE()< date ORDER BY date LIMIT 0, ".$event_from_current_day;	
+	
 $evs = $wpdb->get_results($query);
 $st_date=date('Y-m-d');
 
@@ -729,7 +732,8 @@ $month_days = date('t',mktime(0, 0, 0, add_00($ev->year_month), 1, $date_st[0]))
 sort($dates[$ev->id]);
 }
 
-
+//var_dump($evs);
+//var_dump($dates);
 foreach($dates as $ev_id=>$date )
 {
 //echo compare_str_to_array($st_date,$date,$en_date). ' ';
@@ -744,23 +748,27 @@ $i=1;
 $j=0;	
 
 $p=0;
+//var_dump($evs);
 
 foreach($dates as $ev_id=>$date)
 {
 
-	$query0=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE id=".$ev_id;				
-	$curr_event1 = $wpdb->get_results($query0);
-	$curr_event=$curr_event1[0];
+	$query0=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE id=".$ev_id." AND CURDATE()< date";				
+	$curr_event = $wpdb->get_row($query0);
+
+	//var_dump($curr_event);
+
 
 $event_id = $curr_event->id;
 $event_title = $curr_event->title;
 
-$event_date = compare_str_to_array1($st_date,$date);
+$event_date = $curr_event->date;
 $event_end_date = $curr_event->date_end;
 $event_text = $curr_event->text_for_date;
 $calendar_id = $curr_event->calendar;
 $repeat = $curr_event->repeat;
 $week=explode(',',$curr_event->week);
+
 
 $year=substr($event_date,0,4);
 $month=substr($event_date,5,-3);
@@ -781,9 +789,9 @@ href="' . add_query_arg(array(
 							  'calendar_id' => $id,
                               'theme_id' => $theme_id,
                               'eventID' => $ev_id,
-							  'widget' => $widget,
-							  'TB_iframe' => 1,
+							  'widget' => $widget,							  
                               'date' => $year.'-'.$month.'-'.$day,
+							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
                               ), admin_url('admin-ajax.php')) . '"
@@ -799,8 +807,8 @@ href="' . add_query_arg(array(
                               'theme_id' => $theme_id,
                               'eventID' => $ev_id,
 							  'widget' => $widget,
-							  'TB_iframe' => 1,
                               'date' => $year.'-'.$month.'-'.$day,
+							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
                               ), admin_url('admin-ajax.php')) . '" ></br><b>'.$event_title.'</b></a></div>';
@@ -828,7 +836,7 @@ for ($i = 0; $i < count($date_format_array); $i++) {
   }
 
 if($show_time==1)
-echo '<div id="event_date'.$id.'">'.__($activedatestr, 'sp_calendar').'</div>';
+echo '<div id="event_date'.$id.'">'.$activedatestr.'</div>';
 
 
 if($show_repeat==1)
@@ -994,9 +1002,9 @@ href="' . add_query_arg(array(
                               'theme_id' => $theme_id,
                               'calendar_id' => $id,
                               'eventID' => $ev_id,
-							  'widget' => $widget,
-							  'TB_iframe' => 1,
+							  'widget' => $widget,						  
                               'date' => $year.'-'.$month.'-'.$day,
+							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
                               ), admin_url('admin-ajax.php')) . '" >'. __('See more', 'sp_calendar').'</a></div>';
@@ -1020,7 +1028,6 @@ break;
 
 if($view_type==1)
 {
-
 if($event_from_day_interval==0)		
 {			
 $st_date=date('Y-m-d');
@@ -1029,6 +1036,7 @@ if($ordering==0)
 $order="ORDER BY title";
 else
 $order="ORDER BY RAND()";
+$curdate="AND CURDATE()< date";
 
 $limit=$count;
 }
@@ -1040,11 +1048,13 @@ if($ordering1==0)
 $order="ORDER BY title";
 else
 $order="ORDER BY RAND()";
+$curdate = "AND ".$start_day_calendar."< date";
 $limit=$count1;
 }
 
 
-$query=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE calendar= ".$calendar_id."  AND  published='1' ".$order." LIMIT 0, ".$limit;	
+$query=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE calendar= ".$calendar_id."  ".$curdate." AND  published='1' ".$order." LIMIT 0, ".$limit;	
+
 $evs= $wpdb->get_results($query);
 
 $dates=array();
@@ -1305,7 +1315,6 @@ if(true)
 	$query0=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE id=".$ev_id;				
 	$curr_event1 = $wpdb->get_results($query0);
 	$order_event_current_day=$curr_event1[0];
-
    $event_id = $order_event_current_day->id; 
    $event_title = $order_event_current_day->title;
    $event_date =compare_str_to_array($st_date,$date,$en_date);
@@ -1332,9 +1341,9 @@ href="' . add_query_arg(array(
                               'theme_id' => $theme_id,
                               'calendar_id' => $id,
                               'eventID' => $ev_id,
-							  'widget' => $widget,
-							  'TB_iframe' => 1,
+							  'widget' => $widget,							  
                               'date' => $year.'-'.$month.'-'.$day,
+							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
                               ), admin_url('admin-ajax.php')) . '" ><b>'. $i++.'.'.$event_title.'</b></a></div>';
@@ -1347,9 +1356,9 @@ href="' . add_query_arg(array(
                               'theme_id' => $theme_id,
                               'calendar_id' => $id,
                               'eventID' => $ev_id,
-							  'widget' => $widget,
-							  'TB_iframe' => 1,
+							  'widget' => $widget,							  
                               'date' => $year.'-'.$month.'-'.$day,
+							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
                               ), admin_url('admin-ajax.php')) . '" ><b>'.$event_title.'</b></a></div>';
@@ -1373,7 +1382,7 @@ $activedatestr = '';
 $date_format_array = explode(' ', $date_format);
 
 for ($i = 0; $i < count($date_format_array); $i++) {
-    $activedatestr .= __(date("" . $date_format_array[$i] . "", strtotime($event_date)), 'sp_calendar') . ' ';
+    $activedatestr .=__(date("" . $date_format_array[$i] . "", strtotime($event_date)), 'sp_calendar') . ' ';
   }
 
 if($show_time==1)
@@ -1470,8 +1479,8 @@ href="' . add_query_arg(array(
                               'calendar_id' => $id,
                               'eventID' => $ev_id,
 							  'widget' => $widget,
-							  'TB_iframe' => 1,
                               'date' => $year.'-'.$month.'-'.$day,
+							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
                               ), admin_url('admin-ajax.php')) . '" >'. __('See more', 'sp_calendar').'</a></div>';
@@ -1876,8 +1885,8 @@ href="' . add_query_arg(array(
                               'calendar_id' => $id,
                               'eventID' => $ev_id,
 							  'widget' => $widget,
-							  'TB_iframe' => 1,
                               'date' => $year.'-'.$month.'-'.$day,
+							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
                               ), admin_url('admin-ajax.php')) . '" >'.__('See more', 'sp_calendar').'</a></div>';
