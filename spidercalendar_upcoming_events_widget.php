@@ -498,13 +498,11 @@ echo '<div class="module'.$id.'">';
 
  if($view_type==0)
 {
-	$query=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE calendar= ".$calendar_id."  AND published='1' AND CURDATE()< date ORDER BY date LIMIT 0, ".$event_from_current_day;	
-	
+	$query="SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE calendar=".$calendar_id."  AND published='1'  ORDER BY date";	
 $evs = $wpdb->get_results($query);
+
 $st_date=date('Y-m-d');
-
 $dates=array();
-
 foreach($evs as $ev)
 {
 
@@ -514,7 +512,6 @@ $en=$ev->date_end;
 else
 $en=date('Y-m-d', strtotime('+24 year', strtotime($st)));
 
-
 $date_st=explode('-',$st);
 
 $date_end=explode('-',$en);
@@ -523,9 +520,7 @@ $st_d= mktime(0, 0, 0,  $date_st[1],  $date_st[2], $date_st[0]);
 $en_d = mktime(0, 0, 0,  $date_end[1],  $date_end[2], $date_end[0]);
 $tarb=$en_d-$st_d;
 
-
 $weekly_array=explode(',',$ev->week);
-
 		for($j=0; $j<=6;$j++)
 					{
 						if( in_array(date("D", mktime(0, 0, 0, $date_st[1], $date_st[2]+$j, $date_st[0])),$weekly_array))
@@ -744,7 +739,7 @@ $gag[$ev_id]=compare_str_to_array1($st_date,$date);
 $dates=sorrt1($st_date,$dates);
 
 
-$i=1;	
+$isk=1;	
 $j=0;	
 
 $p=0;
@@ -753,16 +748,18 @@ $p=0;
 foreach($dates as $ev_id=>$date)
 {
 
-	$query0=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE id=".$ev_id." AND CURDATE()< date";				
+	$query0=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE id=".$ev_id;				
 	$curr_event = $wpdb->get_row($query0);
 
 	//var_dump($curr_event);
 
+	if(compare_str_to_array1($st_date,$date)=='')
+	continue;
 
 $event_id = $curr_event->id;
 $event_title = $curr_event->title;
 
-$event_date = $curr_event->date;
+$event_date =  compare_str_to_array1($st_date,$date);
 $event_end_date = $curr_event->date_end;
 $event_text = $curr_event->text_for_date;
 $calendar_id = $curr_event->calendar;
@@ -779,7 +776,6 @@ $jd=gregoriantojd($month,$day,$year);
 $weekday = jddayofweek($jd,2);
 $date = $weekday.' '.$month_date_year; 
 echo $weekday;*/
-
 echo '<div id="event_table'.$id.'" >';
 if($show_numbering==1) 
 {
@@ -795,7 +791,7 @@ href="' . add_query_arg(array(
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
                               ), admin_url('admin-ajax.php')) . '"
- ></br><b>'. $i++.'.'.$event_title.'</b></a></div>';
+ ></br><b>'. $isk++.'.'.$event_title.'</b></a></div>';
 
 }
 else
@@ -1033,10 +1029,9 @@ if($event_from_day_interval==0)
 $st_date=date('Y-m-d');
 $en_date=date('Y-m-d', strtotime('+'.$since.' day', strtotime($st_date)));
 if($ordering==0)
-$order="ORDER BY title";
+$order="ORDER BY date";
 else
 $order="ORDER BY RAND()";
-$curdate="AND CURDATE()< date";
 
 $limit=$count;
 }
@@ -1045,22 +1040,19 @@ else
 $st_date=$start_day_calendar;
 $en_date=date('Y-m-d', strtotime('+'.$since1.' day', strtotime($st_date)));
 if($ordering1==0)
-$order="ORDER BY title";
+$order="ORDER BY date";
 else
 $order="ORDER BY RAND()";
-$curdate = "AND ".$start_day_calendar."< date";
 $limit=$count1;
 }
 
 
-$query=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE calendar= ".$calendar_id."  ".$curdate." AND  published='1' ".$order." LIMIT 0, ".$limit;	
-
+$query=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE calendar= ".$calendar_id."  AND  published='1' ".$order." LIMIT 0, ".$limit;	
 $evs= $wpdb->get_results($query);
-
 $dates=array();
 foreach($evs as $ev)
 {
-
+ 
 $st=$ev->date;
 if($ev->date_end!='0000-00-00' AND $ev->date_end!='')
 {
@@ -1300,7 +1292,7 @@ $dates=sorrt($st_date,$dates,$en_date);
 
 
 
-$i=1;	
+$isk=1;	
 $j=0;	
 
 $p=0;
@@ -1309,12 +1301,16 @@ $p=0;
 foreach($dates as $ev_id=>$date)
 {
 
-if(true)
+if(compare_str_to_array($st_date,$date,$en_date)=='')
+	continue;
+
+if(compare_str_to_array($st_date,$date,$en_date)!='')
 {
 	
 	$query0=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE id=".$ev_id;				
 	$curr_event1 = $wpdb->get_results($query0);
 	$order_event_current_day=$curr_event1[0];
+	
    $event_id = $order_event_current_day->id; 
    $event_title = $order_event_current_day->title;
    $event_date =compare_str_to_array($st_date,$date,$en_date);
@@ -1346,7 +1342,7 @@ href="' . add_query_arg(array(
 							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
-                              ), admin_url('admin-ajax.php')) . '" ><b>'. $i++.'.'.$event_title.'</b></a></div>';
+                              ), admin_url('admin-ajax.php')) . '" ><b>'. $isk++.'.'.$event_title.'</b></a></div>';
 }
 else
 {
@@ -1382,7 +1378,7 @@ $activedatestr = '';
 $date_format_array = explode(' ', $date_format);
 
 for ($i = 0; $i < count($date_format_array); $i++) {
-    $activedatestr .=__(date("" . $date_format_array[$i] . "", strtotime($event_date)), 'sp_calendar') . ' ';
+    $activedatestr .= __(date("" . $date_format_array[$i] . "", strtotime($event_date)), 'sp_calendar') . ' ';
   }
 
 if($show_time==1)
@@ -1710,7 +1706,7 @@ sort($dates[$ev->id]);
 
 }
 
-	$i=1;
+	$isk=1;
 	$j=0;
 	$ev=0;
 
@@ -1750,7 +1746,7 @@ href="' . add_query_arg(array(
 							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
-                              ), admin_url('admin-ajax.php')) . '" ></br><b>'. $i++.'.'.$event_title.'</b></a></div>';
+                              ), admin_url('admin-ajax.php')) . '" ></br><b>'. $isk++.'.'.$event_title.'</b></a></div>';
 }
 else
 {
