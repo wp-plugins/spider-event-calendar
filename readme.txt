@@ -38,7 +38,7 @@ Possibility to add multiple events for a single date, including events from diff
 * Possibility to choose between four view modes (Month, List, Week and Day).
 * An option to create categories.
 * Possibility to assign a category for each event, option of having different colors for each category.
-* Filtering possibility in the front end: when clicking upon the category it will display events of that category only    
+* Filtering possibility in the front end: when clicking upon the category it will display events of that category only.    
 * Spider Event Calendar allows you to change the colors of the calendar and fit it to the colors of your website (*commercial version*).  
 * Spider Event Calendar has 17 standard themes included in extension package for the plugin and 6 themes for the widget. (*commercial version*).  
 * You can set width of the Spider Event Calendar in the widget and in the [WordPress calendar plugin](http://web-dorado.com/products/wordpress-calendar.html) as well (*commercial version*).  
