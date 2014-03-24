@@ -39,18 +39,22 @@ Possibility to add multiple events for a single date, including events from diff
 * An option to create categories.
 * Possibility to assign a category for each event, option of having different colors for each category.
 * Filtering possibility in the front end: when clicking upon the category it will display events of that category only.    
-* Spider Event Calendar allows you to change the colors of the calendar and fit it to the colors of your website (*commercial version*).  
-* Spider Event Calendar has 17 standard themes included in extension package for the plugin and 6 themes for the widget. (*commercial version*).  
-* You can set width of the Spider Event Calendar in the widget and in the [WordPress calendar plugin](http://web-dorado.com/products/wordpress-calendar.html) as well (*commercial version*).  
-* You can change calendar date color, font size and font family in the popup (*commercial version*).  
-* Possibility to change arrow color and background color in the popup in the Spider Event Calendar (*commercial version*).  
-* Possibility to change popup background color in the Spider Event Calendar (*commercial version*).  
-* Possibility to define the height and width of the popup in the Spider Event Calendar (*commercial version*).  
-* Possibility to define the number of displayed events in the popup in the Spider Event Calendar (*commercial version*).  
-* Possibility to change next, previous and current month font size and color in the Spider Event Calendar (*commercial version*).  
-* Possibility to change current day cell border color in the Spider Event Calendar (*commercial version*).  
-* Possibility to define the main border radius, color and width in the Spider Event Calendar (*commercial version*).  
-* You have also possibility to change popup window parameters in the Spider Event Calendar (*commercial version*).  
+ 
+
+Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-calendar.html) to add features:   
+* Spider Event Calendar allows you to change the colors of the calendar and fit it to the colors of your website.     
+* Spider Event Calendar has 17 standard themes included in extension package for the plugin and 6 themes for the widget.      
+* You can set width of the Spider Event Calendar in the widget and in the [WordPress calendar plugin](http://web-dorado.com/products/wordpress-calendar.html) as well.    
+* You can change calendar date color, font size and font family in the popup.   
+* Possibility to change arrow color and background color in the popup in the Spider Event Calendar.   
+* Possibility to change popup background color in the Spider Event Calendar.   
+* Possibility to define the height and width of the popup in the Spider Event Calendar.   
+* Possibility to define the number of displayed events in the popup in the Spider Event Calendar.   
+* Possibility to change next, previous and current month font size and color in the Spider Event Calendar.  
+* Possibility to change current day cell border color in the Spider Event Calendar.   
+* Possibility to define the main border radius, color and width in the Spider Event Calendar.   
+* You have also possibility to change popup window parameters in the Spider Event Calendar.    
+
 
 ###IMPORTANT: If you think you found a bug in Spider Calendar or have any problem/question concerning the plugin, please check out [Support Forum](http://web-dorado.com/forum/spider-calendar-wordpress.html) in our website. If you do not find a solution here, do not hesitate to contact us at [info@web-dorado.com](mailto:info@web-dorado.com).
 
