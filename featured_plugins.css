@@ -33,6 +33,13 @@
 	border-bottom-right-radius:3px;
 }
 
+#main_featured_plugins_page #featured-plugins-list li.photo-gallery .title,
+#main_featured_plugins_page #featured-plugins-list li.twitter-widget .title  {
+	border-left-style: solid;
+	border-width: 1px;
+	border-color: #ededed;
+}
+
 #main_featured_plugins_page #featured-plugins-list  li.form-maker  .product {background:url(images/form.jpg) left center no-repeat;}
 #main_featured_plugins_page #featured-plugins-list  li.catalog  .product {background:url(images/catalog.jpg) left center no-repeat;}
 #main_featured_plugins_page #featured-plugins-list  li.contact-maker  .product {background:url(images/contact.maker.jpg) left center no-repeat;}
@@ -44,7 +51,16 @@
 #main_featured_plugins_page #featured-plugins-list  li.player  .product {background:url(images/player.jpg) left center no-repeat;}
 #main_featured_plugins_page #featured-plugins-list  li.spider-calendar  .product {background:url(images/spider.calendar.jpg) left center no-repeat;}
 #main_featured_plugins_page #featured-plugins-list  li.zoom .product {background:url(images/zoom.jpg) left center no-repeat;}
-
+#main_featured_plugins_page #featured-plugins-list  li.photo-gallery  .product {background:url(images/photo-gallery.png) left center no-repeat #CACACA;
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;
+background-position-x: 5px;
+}
+#main_featured_plugins_page #featured-plugins-list  li.twitter-widget  .product {background:url(images/twittertools.png) left center no-repeat #CACACA;
+background-size: 85px;
+background-position-x: 12px;
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;}
 
 #main_featured_plugins_page #featured-plugins-list li  .title  .heading {
 	display:block;

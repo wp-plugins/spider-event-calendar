@@ -4,7 +4,7 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: http://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.4.4
+Version: 1.4.5
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -978,6 +978,19 @@ function calendar_Featured_Plugins() {
 		</table>
 		<form method="post">
 			<ul id="featured-plugins-list">
+		<li class="photo-gallery ">
+                 <div class="product">
+                         <div class="title">
+                                 <strong class="heading">Photo Gallery</strong>
+                                 <p>WordPress Photo Gallery Plugin</p>
+                         </div>
+                 </div>
+                 <div class="description">
+                                 <p>Photo Gallery is a fully responsive WordPress Gallery plugin with advanced functionality. It allows having different image galleries for your posts and pages, as well as different widgets.</p>
+                                 <a target="_blank" href="http://web-dorado.com/products/wordpress-photo-gallery-plugin.html" class="download">Download</a>
+                 </div>
+         </li>
+		 
         <li class="form-maker">
                  <div class="product">
                          <div class="title">
@@ -1086,7 +1099,18 @@ function calendar_Featured_Plugins() {
                                  <a target="_blank" href="http://web-dorado.com/products/wordpress-contact-form-maker-plugin.html" class="download">Download</a>
                  </div>
          </li>
-
+		<li class="twitter-widget">
+                 <div class="product">
+                         <div class="title">
+                                 <strong class="heading">Widget Twitter</strong>
+                                 <p>WordPress Widget Twitter plugin</p>
+                         </div>
+                 </div>
+                 <div class="description">
+                                 <p>The Widget Twitter plugin lets you to fully integrate your WordPress site with your Twitter account.</p>
+                                 <a target="_blank" href="http://web-dorado.com/products/wordpress-twitter-integration-plugin.html" class="download">Download</a>
+                 </div>
+         </li>
 			</ul>
 		</form>
 	</div >

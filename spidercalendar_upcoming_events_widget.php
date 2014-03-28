@@ -1046,8 +1046,7 @@ $order="ORDER BY RAND()";
 $limit=$count1;
 }
 
-
-$query=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE calendar= ".$calendar_id."  AND  published='1' ".$order." LIMIT 0, ".$limit;	
+$query=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE calendar= ".$calendar_id."  AND  published='1' ".$order;	
 $evs= $wpdb->get_results($query);
 $dates=array();
 foreach($evs as $ev)
