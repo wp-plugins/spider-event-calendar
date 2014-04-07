@@ -23,6 +23,7 @@ Spider Event Calendar is a highly configurable plugin which allows you to have m
 There is also a possibility of displaying the events in a list view. The product includes a widget called Upcoming events, allowing to have a specific number of upcoming events arranged in ordered or randomized option.   
 Possibility to add multiple events for a single date, including events from different categories.
 You can display the calendar in a smaller format for all pages using the Calendar widget.
+Different categories created for the calendar will be displayed as a legend below the calendar. This will allow the users to manage the types of the events they are looking for.
   
 = Features of Spider Event Calendar: =    
 
