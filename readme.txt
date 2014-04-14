@@ -3,7 +3,7 @@ Contributors: webdorado
 Donate link: http://web-dorado.com/products/wordpress-calendar.html  
 Tags: calendar , calendars, event, event calendar, event manager, events calendar,calendar widget,  event registration, event management,events, Kalender, agenda, calendario, availability calendar,online calendar,holiday calendar , scheduling, free calendar, Calender, upcoming events , event widget , event list, calendar localization, Organizer, editorial calendar, Interactive Calendar, news calendar, meeting , appointment, event tracking, event organizer, event page
 Requires at least: 3.0  
-Tested up to: 3.7.1  
+Tested up to: 3.8.2  
 Stable tag: 1.4.5
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
