@@ -703,10 +703,18 @@ position: relative;
                                       ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')">&#9664;
                                   </a>
                                 </td>
+								<?php									  
+										  $weekstartday = substr($week_days[0],8,2);
+										  $weekendday = substr($week_days[6],8,2);
+										  $startmonth = substr($week_days[0],5,2);
+										  $endmonth = substr($week_days[6],5,2);
+										  
+										  $startmonth_name = month_name($startmonth);
+										  $endmonth_name = month_name($endmonth); ?>										  
                                 <td style="text-align:center; margin:0;" width="40%">
                                   <input type="hidden" name="month" readonly="" value="<?php echo $month; ?>"/>
-                                  <span style="line-height: 30px;font-family:arial; color:<?php echo $text_color_month; ?>; font-size:<?php echo $month_font_size; ?>px;text-shadow: 1px 1px black;"><?php echo __('Week', 'sp_calendar'); ?> <?php echo date('W', mktime(0, 0, 0, month_num($month), $day, $year)) . ', ' . $year; ?></span>
-                          			</td>
+                                  <span style="line-height: 30px;font-family:arial; color:<?php echo $text_color_month; ?>; font-size:<?php echo $month_font_size; ?>px;text-shadow: 1px 1px black;"><?php echo __($startmonth_name,'sp_calendar').' '. $weekstartday . ' - ' . __($endmonth_name,'sp_calendar') .' '.  $weekendday; ?></span>
+                          		</td>
                                 <td style="margin:0; padding:0;text-align:left" width="15%" class="cala_arrow">
                                   <a style="text-shadow: 1px 1px 2px black;color:<?php echo $color_arrow_month; ?>" href="javascript:showbigcalendar('bigcalendar<?php echo $many_sp_calendar; ?>','<?php
                                     echo add_query_arg(array(

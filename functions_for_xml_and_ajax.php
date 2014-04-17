@@ -12,8 +12,6 @@ function php_window() {
               src="<?php echo get_option("siteurl"); ?>/wp-includes/js/jquery/jquery.js"></script>
       <script language="javascript" type="text/javascript"
               src="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
-      <link rel="stylesheet"
-            href="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/themes/advanced/skins/wp_theme/dialog.css?ver=342-20110630100">
       <script language="javascript" type="text/javascript"
               src="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
       <script language="javascript" type="text/javascript"
@@ -156,8 +154,7 @@ function php_window() {
           if ((calendar_id != '- Select a Calendar -') && (theme_id != '- Select a Theme -')) {
             var tagtext;
             tagtext = '[Spider_Calendar id="' + calendar_id + '" theme="' + theme_id + '" default="' + default_view + '" select="' + select_view + '"]';
-            window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, tagtext);
-            tinyMCEPopup.editor.execCommand('mceRepaint');
+            window.tinyMCE.execCommand('mceInsertContent', false, tagtext);
             tinyMCEPopup.close();
           }
           tinyMCEPopup.close();

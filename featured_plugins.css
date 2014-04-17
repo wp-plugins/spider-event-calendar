@@ -54,7 +54,8 @@
 #main_featured_plugins_page #featured-plugins-list  li.photo-gallery  .product {background:url(images/photo-gallery.png) left center no-repeat #CACACA;
 border-top-left-radius: 5px;
 border-bottom-left-radius: 5px;
-background-position-x: 5px;
+background-position-x: 7px;
+background-size: 95px;
 }
 #main_featured_plugins_page #featured-plugins-list  li.twitter-widget  .product {background:url(images/twittertools.png) left center no-repeat #CACACA;
 background-size: 85px;

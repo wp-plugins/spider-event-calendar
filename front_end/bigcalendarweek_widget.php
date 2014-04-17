@@ -436,10 +436,18 @@ position: relative;
                             ?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')">&#9668;
                         </a>
                       </td>
-                      <td width="60%" style="text-align:center; margin:0; padding:0; font-family:<?php echo $font_month; ?>">
-                        <input type="hidden" name="month" readonly="" value="<?php echo $month; ?>"/>
-                        <span style="font-size:<?php echo $year_font_size; ?>px;?>; color:<?php echo $text_color_month; ?>;"><?php echo __('Week', 'sp_calendar'); ?> <?php echo date('W', mktime(0, 0, 0, month_num($month), $day, $year)) . ', ' . $year; ?></span>
-                      </td>
+                      <?php									  
+										  $weekstartday = substr($week_days[0],8,2);
+										  $weekendday = substr($week_days[6],8,2);
+										  $startmonth = substr($week_days[0],5,2);
+										  $endmonth = substr($week_days[6],5,2);
+										  
+										  $startmonth_name = month_name($startmonth);
+										  $endmonth_name = month_name($endmonth); ?>										  
+                                <td style="text-align:center; margin:0;" width="40%">
+                                  <input type="hidden" name="month" readonly="" value="<?php echo $month; ?>"/>
+                                  <span style="line-height: 30px;font-family:arial; color:<?php echo $text_color_month; ?>; font-size:<?php echo $year_font_size; ?>px;"><?php echo __($startmonth_name,'sp_calendar').' '. $weekstartday . ' - ' . __($endmonth_name,'sp_calendar') .' '.  $weekendday; ?></span>
+                          		</td>
                       <td style="text-align:right; margin:0; padding:0; line-height:16px"  class="cala_arrow" width="20%">
                         <a href="javascript:showbigcalendar('bigcalendar<?php echo $many_sp_calendar ?>','<?php
                           if (Month_num($month) == 12) {
