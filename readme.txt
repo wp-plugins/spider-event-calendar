@@ -34,9 +34,10 @@ Different categories created for the calendar will be displayed as a legend belo
 * With a simple click on the date on the Calendar you will see the events and their descriptions recorded for that day.  
 * Spider Event Calendar supports events that last more than one day.  
 * Possibility to set the month and the year initially displayed on the calendar (option to display any particular month instead of the current month on the calendar).  
-* Possibility to select calendar date style in the popup.  
-* You can create events in a calendar which will not repeat (and use a single time).  
-* Possibility to choose month display format in the Spider Event Calendar.  
+* Possibility to select calendar date style in the popup.    
+* Possibility of displaying events which will be repeated at the certain date of week for a specific period.    
+* Possibily of displaying single-day events.   
+* Possibility to choose month display format in the Spider Event Calendar.    
 * Possibility to choose between four view modes (Month, List, Week and Day).
 * An option to create categories.
 * Possibility to assign a category for each event, option of having different colors for each category.
