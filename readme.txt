@@ -1,7 +1,7 @@
 === WordPress Event Calendar ===  
 Contributors: webdorado  
 Donate link: http://web-dorado.com/products/wordpress-calendar.html  
-Tags: calendar , calendars, event, event calendar, event manager, events calendar,calendar widget,  event registration, event management,events, Kalender, agenda, calendario, availability calendar,online calendar,holiday calendar , scheduling, free calendar, Calender, upcoming events , event widget , event list, calendar localization, Organizer, editorial calendar, Interactive Calendar, news calendar, meeting , appointment, event tracking, event organizer, event page
+Tags: calendar , calendars, event, event calendar, event manager, events calendar,calendar widget,  event registration, event management,events, Kalender, agenda, calendario, availability calendar,online calendar,holiday calendar , scheduling, free calendar, Calender, upcoming events , event widget , event list, calendar localization, Organizer, editorial calendar, Interactive Calendar, news calendar, meeting , appointment, event tracking, event organizer, event page, upcoming events widget
 Requires at least: 3.0  
 Tested up to: 3.9  
 Stable tag: 1.4.6
@@ -47,7 +47,7 @@ Different categories created for the calendar will be displayed as a legend belo
 
 Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-calendar.html) to add features:   
 
-*   Spider Event Calendar allows you to change the colors of the calendar and fit it to the colors of your website.     
+*   Spider Event Calendar allows you to change the colors of the calendar and fit it to the colors of your website.    
 *   Spider Event Calendar has 17 standard themes included in extension package for the plugin and 6 themes for the widget.      
 *   You can set width of the Spider Event Calendar in the widget and in the [WordPress calendar plugin](http://web-dorado.com/products/wordpress-calendar.html) as well.    
 *   You can change calendar date color, font size and font family in the popup.   
