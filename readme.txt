@@ -28,7 +28,7 @@ Different categories created for the calendar will be displayed as a legend belo
 = Features of Spider Event Calendar: =    
 
 * 100% responsive. Fully compatible with all mobile devices.
-* You can add unlimited number of calendars and unlimited number of events for each calendar.  
+* You can add unlimited number of calendars, event categories and unlimited number of events for each calendar.  
 * [WordPress Calendar](http://web-dorado.com/products/wordpress-calendar.html) can be used as a plugin and as a widget as well.  
 * Separate upcoming events widget to display upcoming events in a list. The widget features are customizable.
 * With a simple click on the date on the Calendar you will see the events and their descriptions recorded for that day.  
