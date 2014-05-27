@@ -344,14 +344,6 @@ $id = $this->get_field_id('title');
 ?>
 
 <style type="text/css">
-.widget{
-	padding:0px !important;
-}
-
-.site-footer .widget a{
-	color:none;
-}
-
 
 #event_repeat<?php echo $id?>{
 color:#<?php echo $repeat_color ?>;
@@ -2005,11 +1997,11 @@ $ev++;
 	 
 	 </script>
 	 <style>
-	 .calendar .button{
+	 #wd_admin_form .calendar .wd_button{
 		display: table-cell !important;
 	 }
 	 
-	 div.calendar{
+	 #wd_admin_form div.calendar{
 		margin-left: -101px;
 	 }
 	 </style>
@@ -2105,7 +2097,7 @@ $ev++;
 			<td>
 				<input style="width:85px" class="inputbox" type="text" name="<?php echo $this->get_field_name('start_date'); ?>'" id="<?php echo $this->get_field_id('start_date'); ?>" size="10" maxlength="10" value="<?php echo $instance['start_date']; ?>"/>
 				
-                    <input type="reset" class="button" value="..." onclick="return showCalendar('<?php echo $this->get_field_id('start_date'); ?>','%Y-%m-%d');"/>
+                    <input type="reset" class="wd_button" value="..." onclick="return showCalendar('<?php echo $this->get_field_id('start_date'); ?>','%Y-%m-%d');"/>
 			</td>
 		</tr>
 		
@@ -2424,8 +2416,8 @@ function addcal(x,y,z,f)
 	function jSelectEvents(input_id,tbody_id,w_id,evid,title) {
 		event_ids =document.getElementById(input_id).value;
 	
-		/* input = document.getElementById(<?php echo $this->get_field_id('event_select'); ?>);
-		input.setAttribute("value", "g"); */
+		input = document.getElementById(input_id);
+		input.setAttribute("value", "g");
 
 		tbody = document.getElementById(tbody_id);
 		var  str;

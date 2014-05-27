@@ -663,7 +663,7 @@ position: relative;
     </table>
   </div>
  <style>
- table{
+ #calendar_<?php echo $many_sp_calendar; ?> table{
 	width: 100%;
    }
   .categories1 , .categories2

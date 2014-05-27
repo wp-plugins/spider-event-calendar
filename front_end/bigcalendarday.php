@@ -327,12 +327,6 @@ $cat_ids = substr($cat_ids, 0,-1);
       z-index: 10000;
     }
     
-    
-    
-    
-    
-    
-    
     #bigcalendar<?php echo $many_sp_calendar; ?> td {
       vertical-align: middle !important;
     }

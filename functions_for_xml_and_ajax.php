@@ -264,9 +264,18 @@ function seemore() {
     <?php
 	if(!isset($date_font_style)) $date_font_style = "";
 echo '<div style="font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_style . ';font-weight:bold;text-align:center;border-bottom:1px solid #F3F3F3;color:' . $date_color . ';">'.$activedatestr.'</div>';
-	
-    foreach ($rows as $row) {
-	
+
+
+  			
+      for ($i = 0; $i < count($ev_id); $i++) {
+
+
+	  $row = $wpdb->get_row("SELECT " . $wpdb->prefix . "spidercalendar_event.* , " . $wpdb->prefix . "spidercalendar_event_category.color
+FROM " . $wpdb->prefix . "spidercalendar_event
+LEFT JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category = " . $wpdb->prefix . "spidercalendar_event_category.id
+WHERE " . $wpdb->prefix . "spidercalendar_event.published=1  AND " . $wpdb->prefix . "spidercalendar_event.id='".$ev_id[$i]."'");
+
+
 	if($row->repeat=='1')
 
 		$repeat='';
@@ -276,21 +285,16 @@ echo '<div style="font-size:' . $date_size . 'px; font-family:' . $date_font . '
 		$repeat=$row->repeat;
 		
  		$weekdays=explode(',',$row->week);
-				
-      for ($i = 0; $i < count($ev_id); $i++) {
-	  
-	  $color = $wpdb->get_results("SELECT " . $wpdb->prefix . "spidercalendar_event.* , " . $wpdb->prefix . "spidercalendar_event_category.color
-FROM " . $wpdb->prefix . "spidercalendar_event
-JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category = " . $wpdb->prefix . "spidercalendar_event_category.id
-WHERE " . $wpdb->prefix . "spidercalendar_event_category.published=1 AND " . $wpdb->prefix . "spidercalendar_event.id='".$row->id."'");
+
+
 
         if ($row->id == $ev_id[$i]) {
 		 
           if ($show_event || $widget==1) {		 
             echo '<div >';
 			echo '<div style="display: table-cell;">'; 
-			if(!isset($color[0]->color)) $color[0]->color = "";
-			echo '	<div style="border-top: 1px solid #FFF;height: 76px;border-right: 2px solid #'.$color[0]->color.';display: table-cell;font-size: 25px;background-color: #E8E8E8;">'.($i + 1).'&nbsp;</div>';
+			if(!isset($row->color)) $row->color = "";
+			echo '	<div style="border-top: 1px solid #FFF;height: 76px;border-right: 2px solid #'.$row->color.';display: table-cell;font-size: 25px;background-color: #E8E8E8;">'.($i + 1).'&nbsp;</div>';
                  echo '<a style="display: table-cell;text-decoration: none;font-size: 20px;color:' . $title_color . '; line-height:30px"
                     href="' . add_query_arg(array(
                       'action' => 'spidercalendarbig',
@@ -314,7 +318,7 @@ WHERE " . $wpdb->prefix . "spidercalendar_event_category.published=1 AND " . $wp
 		  {
 		  echo '<div >';
 		  echo '<div style="display: table-cell;">'; 
-		   echo '<div style="border-top: 1px solid #FFF;height: 76px;border-right: 2px solid #'.$color[0]->color.';display: table-cell;font-size: 25px;background-color: #E8E8E8;">&nbsp; &nbsp;&nbsp;</div>';
+		   echo '<div style="border-top: 1px solid #FFF;height: 76px;border-right: 2px solid #'.$row->color.';display: table-cell;font-size: 25px;background-color: #E8E8E8;">&nbsp; &nbsp;&nbsp;</div>';
                  echo '<a style="display: table-cell;text-decoration: none;font-size: 20px;color:' . $title_color . '; line-height:30px"
                     href="' . add_query_arg(array(
                       'action' => 'spidercalendarbig',
@@ -352,19 +356,19 @@ WHERE " . $wpdb->prefix . "spidercalendar_event_category.published=1 AND " . $wp
 
 		echo '<div style="margin-left: 25px;color:#6B696A;font-size:'.$date_size.'px; font-family:'.$date_font.';width: 97%;padding: 3px;background-color: #F8F8F8; margin-top: -45px;   "><div style="display:table-cell"><img src="' . plugins_url( 'images/calendar1.png' , __FILE__ ) . '" /></div> <div style="width:100%; display:table-cell;vertical-align:middle;padding-left:5px">Date: '.$row->date.''.$date_end.' ('. __('Repeat Every', 'sp_calendar').' ' .$repeat.' '.__('Week(s) on', 'sp_calendar').' ';
 
-		for ($i=0;$i<count($weekdays);$i++) 
+		for ($j=0;$j<count($weekdays);$j++) 
 
 		{
 
-			if($weekdays[$i]!=''){
+			if($weekdays[$j]!=''){
 
-				if($i!=count($weekdays)-2)
+				if($j!=count($weekdays)-2)
 
-					echo week_convert($weekdays[$i]).',';
+					echo week_convert($weekdays[$j]).',';
 
 				else
 
-					echo week_convert($weekdays[$i]);
+					echo week_convert($weekdays[$j]);
 
 			
 
@@ -410,7 +414,7 @@ WHERE " . $wpdb->prefix . "spidercalendar_event_category.published=1 AND " . $wp
 
         }
       }
-    }
+    
     ?>
 </div>
 

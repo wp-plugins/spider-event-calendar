@@ -906,7 +906,7 @@ if (in_array ($i,$array_days)) {
     </table>
   </div>
    <style>
-   table{
+   #calendar_<?php echo $many_sp_calendar; ?> table{
 	width: 100%;
    }
    

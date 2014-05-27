@@ -257,6 +257,12 @@ function html_add_spider_calendar() {
     .calendar .button {
       display: table-cell !important;
     }
+	.wd_button{
+		border: 1px solid #D5D5D5 !important;
+		border-radius: 10px;
+		width: 30px;
+		height: 25px;
+	}
   </style>
   <table width="95%">
     <tr>
@@ -386,6 +392,12 @@ function html_edit_spider_calendar($row) {
     .calendar .button {
       display: table-cell !important;
     }
+	.wd_button{
+		border: 1px solid #D5D5D5 !important;
+		border-radius: 10px;
+		width: 30px;
+		height: 25px;
+	}
   </style>
   <table width="95%">
     <tr>
@@ -825,8 +837,12 @@ require_once("spidercalendar_upcoming_events_widget.php");
       display: table-cell !important;
     }
 	
-	.button{
+	.wd_button{
+		border: 1px solid #D5D5D5 !important;
+		border-radius: 10px;
 		width: 30px;
+		height: 25px;
+	}
 	}
 	input[type=checkbox]:checked:before,
 	th.sorted.asc .sorting-indicator:before, th.desc:hover span.sorting-indicator:before,
@@ -994,9 +1010,9 @@ else
     </div>
     <div class="alignleft actions">
       From: <input class="inputbox" type="text" style="width: 90px;border: 1px solid #DCDCEC;" name="startdate" id="startdate" size="10" maxlength="10" value="' . $startdate . '" />
-      <input type="reset" class="button" value="..." onclick="return showCalendar(\'startdate\',\'%Y-%m-%d\');">
+      <input type="reset" class="wd_button" value="..." onclick="return showCalendar(\'startdate\',\'%Y-%m-%d\');">
       To: <input class="inputbox" type="text" style="width: 90px;border: 1px solid #DCDCEC;" name="enddate" id="enddate" size="10" maxlength="10" value="' . $enddate . '">
-      <input type="reset" class="button" value="..." onclick="return showCalendar(\'enddate\',\'%Y-%m-%d\');">
+      <input type="reset" class="wd_button" value="..." onclick="return showCalendar(\'enddate\',\'%Y-%m-%d\');">
     </div>
     <div class="alignleft actions">
    		<input type="button" style="border: 1px solid #DCDCEC;border-radius: 10px;" value="Search" onclick="document.getElementById(\'page_number\').value=\'1\';document.getElementById(\'serch_or_not\').value=\'search\'; document.getElementById(\'admin_form\').submit();" class="button-secondary action">
@@ -1005,14 +1021,20 @@ else
   print_html_nav($pageNav['total'], $pageNav['limit'], $serch_fields);
   ?>
   <style>
-  .sorting-indicator {
-width: 7px;
-height: 4px;
-margin-top: 8px;
-margin-left: 7px;
-background-image: url('images/sort.gif');
-background-repeat: no-repeat;
-}
+   .sorting-indicator {
+		width: 7px;
+		height: 4px;
+		margin-top: 8px;
+		margin-left: 7px;
+		background-image: url('images/sort.gif');
+		background-repeat: no-repeat;
+	}
+	.wd_button{
+		border: 1px solid #D5D5D5 !important;
+		border-radius: 10px;
+		width: 30px;
+		height: 25px;
+	}
   </style>
   <table class="wp-list-table widefat fixed pages" style="width:100%">
     <thead>
@@ -1085,6 +1107,12 @@ function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name)
     .calendar .button {
       display: table-cell !important;
     }
+	.wd_button{
+		border: 1px solid #D5D5D5 !important;
+		border-radius: 10px;
+		width: 30px;
+		height: 25px;
+	}
   </style>
   <script language="javascript">
     function ordering(name, as_or_desc) {
@@ -1153,9 +1181,9 @@ function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name)
     </div>
     <div class="alignleft actions">
       From: <input style="width: 90px;" class="inputbox" type="text" name="startdate" id="startdate" size="10" maxlength="10" value="' . $startdate . '" />
-      <input type="reset" class="button" value="..." onclick="return showCalendar(\'startdate\',\'%Y-%m-%d\');">
+      <input type="reset" class="wd_button" value="..." onclick="return showCalendar(\'startdate\',\'%Y-%m-%d\');">
       To: <input style="width: 90px;" class="inputbox" type="text" name="enddate" id="enddate" size="10" maxlength="10" value="' . $enddate . '">
-      <input type="reset" class="button" value="..." onclick="return showCalendar(\'enddate\',\'%Y-%m-%d\');">
+      <input type="reset" class="wd_button" value="..." onclick="return showCalendar(\'enddate\',\'%Y-%m-%d\');">
     </div>
     <div class="alignleft actions">
    		<input type="button" value="Search" onclick="document.getElementById(\'page_number\').value=\'1\';document.getElementById(\'serch_or_not\').value=\'search\'; document.getElementById(\'admin_form\').submit();" class="button-secondary action">
@@ -1245,6 +1273,12 @@ function html_add_spider_event($calendar_id, $cal_name) {
     .calendar .button {
       display: table-cell !important;
     }
+	.wd_button{
+		border: 1px solid #D5D5D5 !important;
+		border-radius: 10px;
+		width: 30px;
+		height: 25px;
+	}
   </style>
   <script language="javascript" type="text/javascript">
   function submitbutton(pressbutton) {
@@ -1486,6 +1520,12 @@ function html_add_spider_event($calendar_id, $cal_name) {
       border-radius: 8px;
 
     }
+	.wd_button{
+		border: 1px solid #D5D5D5 !important;
+		border-radius: 10px;
+		width: 30px;
+		height: 25px;
+	}
   </style>
 <table width="95%">
   <tr>
@@ -1549,7 +1589,7 @@ ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spide
                   <td class="key"><label for="date">Date: </label></td>
                   <td>
                     <input style="width:90px" class="inputbox" type="text" name="date" id="date" size="10" maxlength="10" value="" />
-                    <input type="reset" class="button" value="..." onclick="return showCalendar('date','%Y-%m-%d');" style="width: 31px;" />
+                    <input type="reset" class="wd_button" value="..." onclick="return showCalendar('date','%Y-%m-%d');" style="width: 31px;" />
                   </td>
                 </tr>
                 <tr>
@@ -1697,7 +1737,7 @@ ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spide
                   <td>Repeat until: </td>
                   <td>
                     <input style="width:90px" class="inputbox" type="text" name="date_end" id="date_end" size="10" maxlength="10" value=""/>
-                    <input type="reset" class="button" value="..." onclick="return showCalendar('date_end','%Y-%m-%d');"/>
+                    <input type="reset" class="wd_button" value="..." onclick="return showCalendar('date_end','%Y-%m-%d');"/>
                   </td>
                 </tr>
               </table>
@@ -1732,6 +1772,12 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
       -moz-border-radius: 8px;
       border-radius: 8px;
   }
+  .wd_button{
+		border: 1px solid #D5D5D5 !important;
+		border-radius: 10px;
+		width: 30px;
+		height: 25px;
+	}
   </style>
   <script language="javascript" type="text/javascript">
     function submitform(pressbutton) {
@@ -2009,7 +2055,7 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
                       $row->date_end = "";
                     }
                     ?>
-                    <input type="reset" class="button" value="..." onclick="return showCalendar('date','%Y-%m-%d');"/>
+                    <input type="reset" class="wd_button" value="..." onclick="return showCalendar('date','%Y-%m-%d');"/>
                   </td>
                 </tr>
                 <tr>
@@ -2218,7 +2264,7 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
                   ?>
                   <td>
                     <input style="width:90px" class="inputbox" type="text" name="date_end" id="date_end" size="10" maxlength="10" value="<?php echo $row->date_end; ?>"/>
-                    <input type="reset" class="button" value="..." onclick="return showCalendar('date_end','%Y-%m-%d');"/>
+                    <input type="reset" class="wd_button" value="..." onclick="return showCalendar('date_end','%Y-%m-%d');"/>
                   </td>
                 </tr>
               </table>

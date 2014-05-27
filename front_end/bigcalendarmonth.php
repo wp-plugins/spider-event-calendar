@@ -239,7 +239,7 @@ echo '<style>
 ?>
   <style type='text/css'>
   
-  table{
+  #bigcalendar<?php echo $many_sp_calendar; ?> table{
 	border-collapse: inherit !important;
   }
   
