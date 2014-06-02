@@ -40,7 +40,8 @@ Different categories created for the calendar will be displayed as a legend belo
 * Possibility to choose month display format in the Spider Event Calendar.    
 * Possibility to choose between four view modes (Month, List, Week and Day).
 * An option to create categories.
-* Possibility to assign a category for each event, option of having different colors for each category.
+* Possibility to assign a category for each event.   
+* Option of having different colors for each category.   
 * Filtering possibility in the front end: when clicking upon the category it will display events of that category only.    
 * Possibility to display multiple events for a single day.   
 * Possibility to include custom HTML, e.g. images in the event description.       
