@@ -42,10 +42,11 @@ Different categories created for the calendar will be displayed as a legend belo
 * An option to create categories.
 * Possibility to assign a category for each event.   
 * Option of having different colors for each category.   
-* Filtering possibility in the front end: when clicking upon the category it will display events of that category only.    
+* Filtering possibility in the front end: when clicking upon the category legend it will display events of that category only.    
 * Possibility to display multiple events for a single day.   
 * Possibility to include custom HTML, e.g. images in the event description.       
-* The events of the Upcoming events widget, as well as their sequence and number can be customized from widget area.   
+* The events of the Upcoming events widget, as well as their sequence and number can be customized from widget area.     
+* Possibility of displaying/hiding the category legend below the calendar    
 
 Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-calendar.html) to add features:   
 
