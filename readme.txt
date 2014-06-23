@@ -38,8 +38,9 @@ Different categories created for the calendar will be displayed as a legend belo
 * Possibility of displaying events which will be repeated at the certain date of week for a specific period.    
 * Possibily of displaying single-day events.   
 * Possibility to choose month display format in the Spider Event Calendar.    
-* Possibility to choose between four view modes (Month, List, Week and Day).
-* An option to create categories.
+* Option of displaying from one to four views (Month, List, Week and Day).   
+* Possibility of setting one of the view options as a default one.    
+* An option to create categories.     
 * Possibility to assign a category for each event.   
 * Option of having different colors for each category.   
 * Filtering possibility in the front end: when clicking upon the category legend it will display events of that category only.    
@@ -47,7 +48,7 @@ Different categories created for the calendar will be displayed as a legend belo
 * Possibility to include custom HTML, e.g. images in the event description.       
 * The events of the Upcoming events widget, as well as their sequence and number can be customized from widget area.     
 * Possibility of displaying/hiding the category legend below the calendar.    
-* Possibility of selecting the start day of the week (Monday, Sunday).
+* Possibility of selecting the start day of the week (Monday, Sunday).   
    
 Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-calendar.html) to add features:   
 
