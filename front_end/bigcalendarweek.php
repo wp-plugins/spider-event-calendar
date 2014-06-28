@@ -863,7 +863,7 @@ position: relative;
               $color = $event_num_bg_color1;
               $table_color = $event_bg_color1;
             }
-			if(!isset($cat_color->color)) $cat_color->color="";
+			if(!isset($cat_color->color)) { $cat_color = new stdClass; $cat_color->color="";};
             echo '<table style="height:' . $event_table_height . 'px;border-spacing:0;width: 100%;background-color:' . $table_color . '"  class="week_list">
                     <tr>
                       <td class="week_ev" style="font-size:' . $event_num_font_size . 'px;font-weight:bold;width:15px;text-align:center;background-color:#' . $cat_color->color . ';color:' . $event_num_color . '">' . (($show_numbers_for_events) ? ($j + 1) : '') . '</td>

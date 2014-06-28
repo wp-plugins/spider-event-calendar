@@ -839,7 +839,7 @@ position: relative;
 
 		   $cat_color = $wpdb->get_row($query);
 		
-		if(!isset($cat_color->color)) $cat_color->color="";
+		if(!isset($cat_color->color)) { $cat_color = new stdClass; $cat_color->color="";};
 		
           if (($j + 1) % 2 == 0) {
             $color = $event_num_bg_color2;

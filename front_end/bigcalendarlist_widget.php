@@ -509,7 +509,7 @@ position: relative;
             $color = $bg;
             $table_color = $calendar_bg;
           }
-		  if(!isset($cat_color->color)) $cat_color->color="";
+		  if(!isset($cat_color->color)) { $cat_color = new stdClass; $cat_color->color="";};
           echo '<table class="last_table" style="overflow:hidden;height:14px;border-spacing:0;width: 100%;background-color:' . $table_color . '">
                   <tr>
                     <td style="font-size:14px;font-weight:bold;width:15px;text-align:center;background-color:#' . $cat_color->color . ';color:' . $calendar_bg . '">' . ($j +1 ) . '</td>
