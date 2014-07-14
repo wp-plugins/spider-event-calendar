@@ -66,6 +66,7 @@ Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-cal
 *   Possibility to change current day cell border color in the Spider Event Calendar.   
 *   Possibility to define the main border radius, color and width in the Spider Event Calendar.   
 *   You have also possibility to change popup window parameters in the Spider Event Calendar.    
+*   Possibility to add new themes based on the default theme.   
 
 
 ###IMPORTANT: If you think you found a bug in Spider Calendar or have any problem/question concerning the plugin, please check out [Support Forum](http://web-dorado.com/forum/spider-calendar-wordpress.html) in our website. If you do not find a solution here, do not hesitate to contact us at [info@web-dorado.com](mailto:info@web-dorado.com).
