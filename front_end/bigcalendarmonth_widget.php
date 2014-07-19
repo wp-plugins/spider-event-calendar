@@ -605,7 +605,7 @@ $cat_ids = substr($cat_ids, 0,-1);
         }
         else {
           echo '
-                <td class="calsun_days" style="color:' . $text_color_selected . ';background-color:' . $bg_color_selected . ';text-align:center;padding:0; margin:0;line-height:inherit; border: 2px solid ' . $border_day . '">
+                <td class="calsun_days" style="color:' . $text_color_selected . ';text-align:center;padding:0; margin:0;line-height:inherit; border: 2px solid ' . $border_day . '">
                   <b>' . $i . '</b>
                 </td>';
         }

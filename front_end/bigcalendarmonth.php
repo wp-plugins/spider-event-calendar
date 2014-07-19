@@ -838,10 +838,12 @@ $color=str_replace('#','',$color);
 				
       }
       else
-	  if ($i == date('j') and $month == date('F') and $year == date('Y')) {
-	  if(!isset($border_day)) $border_day = "";
+	  if ($i ==date( 'j' ) and $month == date('F') and $year == date('Y')) {
+	  
+		if(!isset($border_day)) $border_day = "";
+                if ($i == date('j') and $month == date('F') and $year == date('Y')) { $border_day = $current_day_border_color;}
         if (in_array($i,$array_days)) {
-          echo '      <td class="cala_day" style="background-color:' . $ev_title_bg_color . ';padding:0; margin:0;line-height:15px; border: px solid ' . $border_day . '">
+          echo '      <td class="cala_day" style="background-color:' . $ev_title_bg_color . ';padding:0; margin:0;line-height:15px; border: 3px solid ' . $current_day_border_color . ' !important">
                         <p style="background-color:' . $evented_color_bg . ';color:' . $evented_color . ';font-size:' . $other_days_font_size . 'px;line-height:1.3;font-family:tahoma;padding-left: 5px;text-shadow: 1px 1px white;">' . $i . '</p>';
           $r = 0;
           echo '        <div style="background-color:' . $ev_title_bg_color . '">';
@@ -894,9 +896,8 @@ $color=str_replace('#','',$color);
                       </td>';
         }
         else {
-		
-		if(!isset($border_day)) $border_day = "";
-          echo '      <td class="calsun_days" style="padding:0; font-size:' . $sundays_font_size . 'px; margin:0;line-height:1.3;font-family:tahoma;padding-left: 5px; border: 1px solid ' . $border_day . ' !important">
+
+          echo '      <td class="calsun_days" style="padding:0; font-size:' . $sundays_font_size . 'px; margin:0;line-height:1.3;font-family:tahoma;padding-left: 5px; border: 3px solid ' . $current_day_border_color . ' !important">
                         <b>' . $i . '</b>
                       </td>';
         }
@@ -1021,7 +1022,10 @@ $color=str_replace('#','',$color);
                       </td>';
       }
       else {
-        if ($i == date('j') and $month == date('F') and $year == date('Y')) {
+ 
+       if ($i ==date( 'j' ) and $month == date('F') and $year == date('Y')) {
+		
+		
           if (in_array ($i,$array_days)) {
             echo  '   <td class="cala_day" style="background-color:' . $ev_title_bg_color . ';padding:0; margin:0;line-height:15px; border: 3px solid ' . $current_day_border_color . ' !important;">
                         <p style="background-color:' . $evented_color_bg . ';color:' . $evented_color . ';font-size:' . $other_days_font_size . 'px;line-height:1.3;font-family:tahoma;padding-left: 5px;text-shadow: 1px 1px white;">' . $i . '</p>
