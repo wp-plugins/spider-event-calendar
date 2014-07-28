@@ -170,20 +170,23 @@ If you want to update the calendar plugin while preserving your existing calenda
     
 = Creating/Editing events. =    
 
-3.1 On the left menu select  Calendar > Calendars.	
-3.2 Select a calendar from the list. Click on the Add an Event button for creating a new event. If you want to edit an existing event, simply click on its title in the list of events.	
-3.3 Title. Add a title for the event.	
-3.4 Time. Set the start and the end time for the event.   	
-3.5 Note. Write the description of the event.	
-3.6 Published. Choose whether to publish the event or not.	
-3.7 Repeat Event. Choose the frequency for repeating the events.	
- Don't repeat this event.	
- Repeat daily. Choose the frequency of the days for repeating the events.	
- Repeat weekly. Choose the quantity of the weeks and a weekday for repeating the events.	
- Repeat monthly. Choose the quantity of the months and the quantity of the weekdays for repeating the events.	
- Repeat yearly. Choose the quantity of the years, choose a month and the frequency of the week and weekdays.	
- Repeat until. Choose the end date for repeating each event.	
-3.8. Save. Click the Save button to save the created event.	
+3.1 On the left menu select  Calendar > Calendars.   
+3.2 Select a calendar from the list. Click on the Add an Event button for creating a new event. If you want to edit an existing event, simply click on its title in the list of events.    
+3.3 Title. Add a title for the event.   
+3.4 Select Category. Choose the category/categories of the events.    
+3.5 Date. Provide the date of the event.  
+3.6 Time. Set the start and the end time for the event.    
+3.7 Note. Write the description of the event.    
+3.8 Published. Choose whether to publish the event or not.    
+3.9 Repeat Event.Choose the frequency for repeating the events.     
+	• Don't repeat this event. 
+	• Repeat daily. Choose the frequency of the days for repeating the events. 
+	• Repeat weekly. Choose the quantity of the weeks and a weekday for repeating the events. 
+	• Repeat monthly. Choose the quantity of the months and the quantity of the weekdays for repeating the events. 
+	• Repeat yearly. Choose the quantity of the years, choose a month and the frequency of the week and weekdays. 
+	• Repeat until. Choose the end date for repeating each event.
+3.10 Save. Click the “Save” button to save the created event.   
+
 
    
     
