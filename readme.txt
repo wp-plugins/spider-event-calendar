@@ -179,12 +179,12 @@ If you want to update the calendar plugin while preserving your existing calenda
 3.7 Note. Write the description of the event.    
 3.8 Published. Choose whether to publish the event or not.    
 3.9 Repeat Event.Choose the frequency for repeating the events.     
-	• Don't repeat this event. 
-	• Repeat daily. Choose the frequency of the days for repeating the events. 
-	• Repeat weekly. Choose the quantity of the weeks and a weekday for repeating the events. 
-	• Repeat monthly. Choose the quantity of the months and the quantity of the weekdays for repeating the events. 
-	• Repeat yearly. Choose the quantity of the years, choose a month and the frequency of the week and weekdays. 
-	• Repeat until. Choose the end date for repeating each event.
+    -Don't repeat this event.     
+    -Repeat daily. Choose the frequency of the days for repeating the events.     
+    -Repeat weekly. Choose the quantity of the weeks and a weekday for repeating the events.    
+    -Repeat monthly. Choose the quantity of the months and the quantity of the weekdays for repeating the events.     
+    -Repeat yearly. Choose the quantity of the years, choose a month and the frequency of the week and weekdays.     
+    -Repeat until. Choose the end date for repeating each event.   
 3.10 Save. Click the “Save” button to save the created event.   
 
 
