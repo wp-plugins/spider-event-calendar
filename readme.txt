@@ -75,7 +75,7 @@ Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-cal
   
 ### Supported languages  
   
- *If you need language which is not included in this list, please contact us and we will do the translation within 3 days. IIf you find any mistakes in the translation, please contact us and we will make relevant corrections within 3 days.*  
+ *If you need language which is not included in this list, please contact us and we will do the translation within 3 days. If you find any mistakes in the translation, please contact us and we will make relevant corrections within 3 days.*  
   
 Afrikaans (af)  
 Albanian (sq)  
