@@ -35,7 +35,7 @@ Different categories created for the calendar will be displayed as a legend belo
 * Spider Event Calendar supports events that last more than one day.  
 * Possibility to set the month and the year initially displayed on the calendar (option to display any particular month instead of the current month on the calendar).  
 * Possibility to select calendar date style in the popup.    
-* Possibility of displaying events which will be repeated at the certain date of week for a specific period.    
+* Possibility of displaying events repeating on a specific day of week on a weekly, monthly and even yearly basis.       
 * Possibily of displaying single-day events.   
 * Possibility to choose month display format in the Spider Event Calendar.    
 * Option of displaying from one to four views (Month, List, Week and Day).   
