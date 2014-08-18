@@ -132,6 +132,41 @@ Vietnamese (vi)
 4.  WordPress Event Calendar - Widget Calendar	
 5.  WordPress Event Calendar - Create Event	
 6.  WordPress Event Calendar - Edit Theme	
+
+
+== Changelog ==
+
+= 1.4.9 =
+when the current day is sunday the calendar will not show the set bordercolor for the current day bug fixed
+
+= 1.4.8 =
+warning in list view fixed
+
+= 1.4.7 =
+add option Display Category Legend:   
+edit admin css
+
+= 1.4.6 =
+bug fixed in wp 3.9 editor
+
+= 1.4.5 =
+bug fixed in upcoming events
+
+= 1.4.4 =
+bug in upcoming events fixed
+
+= 1.4.3 =
+order events by time
+
+= 1.4.2 =
+translations fixed
+
+= 1.4.1 =
+bug fix, (width parameter problem), correct user manual links
+
+= 1.4 =
+categories and upcoming events
+
   
   == Spider Event Calendar ==    
 = Step by step guide for the calendar installation,Installing the calendar =    
