@@ -60,7 +60,7 @@ function php_window() {
               <tr>
                 <td class="key"><label for="default_view" style="font-size: 13px;">Default View</label></td>
                 <td>
-                  <select id="default_view" style="width:150px;" onchange="spider_calendar_select_view(this.value)">
+                  <select id="default_view" style="width:150px;" onChange="spider_calendar_select_view(this.value)">
                     <option value="month" selected="selected">Month</option>
                     <option value="list">List</option>
                     <option value="week">Week</option>
@@ -270,10 +270,10 @@ echo '<div style="font-size:' . $date_size . 'px; font-family:' . $date_font . '
       for ($i = 0; $i < count($ev_id); $i++) {
 
 
-	  $row = $wpdb->get_row("SELECT " . $wpdb->prefix . "spidercalendar_event.* , " . $wpdb->prefix . "spidercalendar_event_category.color
+	  $row = $wpdb->get_row($wpdb->prepare ("SELECT " . $wpdb->prefix . "spidercalendar_event.* , " . $wpdb->prefix . "spidercalendar_event_category.color
 FROM " . $wpdb->prefix . "spidercalendar_event
 LEFT JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category = " . $wpdb->prefix . "spidercalendar_event_category.id
-WHERE " . $wpdb->prefix . "spidercalendar_event.published=1  AND " . $wpdb->prefix . "spidercalendar_event.id='".$ev_id[$i]."'");
+WHERE " . $wpdb->prefix . "spidercalendar_event.published=1  AND " . $wpdb->prefix . "spidercalendar_event.id=%d",$ev_id[$i]));
 
 
 	if($row->repeat=='1')

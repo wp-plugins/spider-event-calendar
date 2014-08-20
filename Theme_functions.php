@@ -16,7 +16,7 @@ function show_theme_calendar() {
   $sort["1_or_2"] = "2";
   if (isset($_POST['page_number'])) {
     if (isset($_POST['order_by']) && esc_html($_POST['order_by']) != '') {
-      $sort["sortid_by"] = esc_html($_POST['order_by']);
+      $sort["sortid_by"] = esc_sql(esc_html($_POST['order_by']));
     }
     if (isset($_POST['asc_or_desc']) && (esc_html($_POST['asc_or_desc']) == 1)) {
       $sort["custom_style"] = "manage-column column-title sorted asc";
@@ -45,18 +45,18 @@ function show_theme_calendar() {
     $search_tag = "";
   }
   if ($search_tag) {
-    $where = ' WHERE title LIKE "%' . $search_tag . '%"';
+    $where = ' WHERE title LIKE "%%' . like_escape($search_tag) . '%%"';
   }
   else {
     $where = '';
   }
   // get the total number of records
-  $query = "SELECT COUNT(*) FROM " . $wpdb->prefix . "spidercalendar_theme" . $where;
+  $query = "SELECT COUNT(*) FROM " . $wpdb->prefix . "spidercalendar_theme" . str_replace('%%','%',$where);
   $total = $wpdb->get_var($query);
   $pageNav['total'] = $total;
   $pageNav['limit'] = $limit / 20 + 1;
-  $query = "SELECT * FROM " . $wpdb->prefix . "spidercalendar_theme" . $where . " " . $order . " " . " LIMIT " . $limit . ",20";
-  $rows = $wpdb->get_results($query);
+  $query = $wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spidercalendar_theme" . $where . " " . $order . " " . " LIMIT %d,20",$limit);
+  $rows = $wpdb->get_results( $query);
   html_show_theme_calendar($rows, $pageNav, $sort);
 }
 
@@ -68,6 +68,7 @@ function apply_theme_calendar($id) {
   $border_color = ((isset($_POST["border_color"])) ? esc_html($_POST["border_color"]) : '');
   $border_radius = ((isset($_POST["border_radius"])) ? esc_html($_POST["border_radius"]) : '');
   $border_width = ((isset($_POST["border_width"])) ? esc_html($_POST["border_width"]) : '');
+  $show_cat = ((isset($_POST["show_cat"])) ? esc_html($_POST["show_cat"]) : '');
   $top_height = ((isset($_POST["top_height"])) ? esc_html($_POST["top_height"]) : '');
   $bg_top = ((isset($_POST["bg_top"])) ? esc_html($_POST["bg_top"]) : '');
   $year_font_size = ((isset($_POST["year_font_size"])) ? esc_html($_POST["year_font_size"]) : '');
@@ -149,6 +150,7 @@ function apply_theme_calendar($id) {
       'border_color' => $border_color,
       'border_radius' => $border_radius,
       'border_width' => $border_width,
+	  'show_cat' => $show_cat,
       'top_height' => $top_height,
       'bg_top' => $bg_top,
       'year_font_size' => $year_font_size,
@@ -229,6 +231,7 @@ function apply_theme_calendar($id) {
       '%s',
       '%s',
       '%s',
+	  '%s',
       '%s',
       '%s',
       '%s',
@@ -300,7 +303,8 @@ function apply_theme_calendar($id) {
       '%s',
       '%s',
       '%s',
-      '%d'
+      '%d',
+	  '%d'
     ));
   }
   else {
@@ -383,6 +387,7 @@ function apply_theme_calendar($id) {
       'event_bg_color1' => $event_bg_color1,
       'date_bg_color' => $date_bg_color,
       'day_start' => $show_event,
+	  'show_cat' => $show_cat,
       ), array('id' => $id), array(
         '%s',
         '%s',
@@ -462,6 +467,7 @@ function apply_theme_calendar($id) {
         '%s',
         '%s',
         '%d',
+		'%d',
       ), array('%d'));
   }
   if ($save_or_no === FALSE) {
@@ -484,7 +490,7 @@ function edit_theme_calendar($id) {
     $row = $wpdb->get_row('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=1');
   }
   else {
-    $row = $wpdb->get_row('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=' . $id);
+    $row = $wpdb->get_row($wpdb->prepare ('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=%d' , $id ));
   }
   html_edit_theme_calendar($row, $id);
 }
@@ -497,7 +503,7 @@ function remove_theme_calendar($id) {
     return FALSE;
   }
   global $wpdb;
-  $sql_remove_tag = "DELETE FROM " . $wpdb->prefix . "spidercalendar_theme WHERE id='" . $id . "'";
+  $sql_remove_tag = $wpdb->prepare ( "DELETE FROM " . $wpdb->prefix . "spidercalendar_theme WHERE id=%d", $id );
   if (!$wpdb->query($sql_remove_tag)) {
     ?>
     <div id="message" class="error"><p>Spider Calendar Theme Not Deleted</p></div>

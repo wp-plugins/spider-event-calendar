@@ -515,11 +515,11 @@ $cat_ids = substr($cat_ids, 0,-1);
 	
 	if(isset($ev_ids_inline)){
 	 if($cat_ids!='')
-		$query = "SELECT DISTINCT sec.color FROM " . $wpdb->prefix . "spidercalendar_event AS se JOIN  
-		" . $wpdb->prefix . "spidercalendar_event_category AS sec ON se.category=sec.id  WHERE  se.published='1' AND sec.published='1' AND se.calendar=".$calendar_id." AND se.id IN (".$ev_ids_inline.") ";
+		$query = $wpdb->prepare ("SELECT DISTINCT sec.color FROM " . $wpdb->prefix . "spidercalendar_event AS se JOIN  
+		" . $wpdb->prefix . "spidercalendar_event_category AS sec ON se.category=sec.id  WHERE  se.published='1' AND sec.published='1' AND se.calendar=%d AND se.id IN (%s) ",$calendar_id,$ev_ids_inline);
     else
-		$query = "SELECT DISTINCT sec.color FROM " . $wpdb->prefix . "spidercalendar_event AS se JOIN  
-		" . $wpdb->prefix . "spidercalendar_event_category AS sec ON se.category=sec.id WHERE  se.published='1' AND sec.published='1' AND se.calendar=".$calendar_id." AND se.id IN (".$ev_ids_inline.") ";
+		$query = $wpdb->prepare ("SELECT DISTINCT sec.color FROM " . $wpdb->prefix . "spidercalendar_event AS se JOIN  
+		" . $wpdb->prefix . "spidercalendar_event_category AS sec ON se.category=sec.id WHERE  se.published='1' AND sec.published='1' AND se.calendar=%d AND se.id IN (%s) ",$calendar_id,$ev_ids_inline);
 
 		$categ_color=$wpdb->get_results($query);
 }	

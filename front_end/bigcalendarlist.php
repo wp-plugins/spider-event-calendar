@@ -86,6 +86,7 @@ $cat_ids = substr($cat_ids, 0,-1);
   
   $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=%d', $theme_id));
   $cal_width = $theme->width;
+  $show_cat = 1;
   $bg_top = '#' . $theme->bg_top;
   $bg_bottom = '#' . $theme->bg_bottom;
   $border_color = '#' . $theme->border_color;
@@ -786,9 +787,9 @@ position: relative;
         $ev_title = explode('</p>', $value);
         array_pop($ev_title);
         for ($j = 0; $j < count($ev_title); $j++) {
-		 $queryy = "SELECT " . $wpdb->prefix . "spidercalendar_event_category.color AS color FROM " . $wpdb->prefix . "spidercalendar_event  JOIN " . $wpdb->prefix . "spidercalendar_event_category
-	       ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spidercalendar_event_category.id WHERE " . $wpdb->prefix . "spidercalendar_event.calendar=".$calendar." AND 
-	       " . $wpdb->prefix . "spidercalendar_event.published='1' AND " . $wpdb->prefix . "spidercalendar_event_category.published='1' AND " . $wpdb->prefix . "spidercalendar_event.id=".$ev_id[$j];
+		 $queryy = $wpdb->prepare ("SELECT " . $wpdb->prefix . "spidercalendar_event_category.color AS color FROM " . $wpdb->prefix . "spidercalendar_event  JOIN " . $wpdb->prefix . "spidercalendar_event_category
+	       ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spidercalendar_event_category.id WHERE " . $wpdb->prefix . "spidercalendar_event.calendar=%d AND 
+	       " . $wpdb->prefix . "spidercalendar_event.published='1' AND " . $wpdb->prefix . "spidercalendar_event_category.published='1' AND " . $wpdb->prefix . "spidercalendar_event.id=%d",$calendar,$ev_id[$j]);
 		   
 		   $cat_color = $wpdb->get_row($queryy);
 		
@@ -800,7 +801,7 @@ position: relative;
             $color = $event_num_bg_color1;
             $table_color = $event_bg_color1;
           }
-		 if(!isset($cat_color->color)) { $cat_color = new stdClass; $cat_color->color="";};
+		  if(!isset($cat_color->color)) { $cat_color = new stdClass; $cat_color->color="";};
           echo '<table class="last_table" style="overflow:hidden;height:' . $event_table_height . 'px;border-spacing:0;width: 100%;background-color:' . $table_color . ';">
                   <tr>
                     <td style="font-size:' . $event_num_font_size . 'px;font-weight:bold;width:15px;text-align:center;background-color:#' . $cat_color->color . ';color:' . $event_num_color . '">' . (($show_numbers_for_events) ? ($j + 1) : '') . '</td>
@@ -924,8 +925,9 @@ echo'
 
 	if($cat_ids=='')
 		$cat_ids='';
-  
-  
+		
+if($show_cat==1)
+{  
 echo '<ul id="cats" style="list-style-type:none;">';
 
 foreach($categories as $category)
@@ -952,9 +954,9 @@ foreach($categories as $category)
 
 }
 
-echo '</ul><br><br>';
+echo '</ul>';
+}
 
   die();
 }
-
 ?>

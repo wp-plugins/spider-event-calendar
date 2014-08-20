@@ -88,6 +88,7 @@ $cat_ids = substr($cat_ids, 0,-1);
   $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_widget_theme WHERE id=%d', $theme_id));
   $weekstart = $theme->week_start_day;
   $bg = '#' . $theme->header_bgcolor;
+  $show_cat = 1;
   $bg_color_selected = '#' . $theme->bg_color_selected;
   $color_arrow = '#' . $theme->arrow_color;
   $evented_color = '#' . $theme->text_color_this_month_evented;
@@ -495,9 +496,9 @@ position: relative;
         $ev_title = explode('</p>', $value);
         array_pop($ev_title);
         for ($j = 0; $j < count($ev_title); $j++) {
-		 $queryy = "SELECT " . $wpdb->prefix . "spidercalendar_event_category.color AS color FROM " . $wpdb->prefix . "spidercalendar_event  JOIN " . $wpdb->prefix . "spidercalendar_event_category
-	       ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spidercalendar_event_category.id WHERE " . $wpdb->prefix . "spidercalendar_event.calendar=".$calendar." AND 
-	       " . $wpdb->prefix . "spidercalendar_event.published='1' AND " . $wpdb->prefix . "spidercalendar_event_category.published='1' AND " . $wpdb->prefix . "spidercalendar_event.id=".$ev_id[$j];
+		 $queryy = $wpdb->prepare ("SELECT " . $wpdb->prefix . "spidercalendar_event_category.color AS color FROM " . $wpdb->prefix . "spidercalendar_event  JOIN " . $wpdb->prefix . "spidercalendar_event_category
+	       ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spidercalendar_event_category.id WHERE " . $wpdb->prefix . "spidercalendar_event.calendar=%d AND 
+	       " . $wpdb->prefix . "spidercalendar_event.published='1' AND " . $wpdb->prefix . "spidercalendar_event_category.published='1' AND " . $wpdb->prefix . "spidercalendar_event.id=%d",$calendar,$ev_id[$j]);
 		   
 		   $cat_color = $wpdb->get_row($queryy);
 		
@@ -631,7 +632,7 @@ echo'
 	if($cat_ids=='')
 		$cat_ids='';
   
-  
+ if($show_cat==1){  
 echo '<ul id="cats_widget_'.$many_sp_calendar.'" style="list-style-type:none;">';
 
 foreach($categories as $category)
@@ -659,8 +660,8 @@ foreach($categories as $category)
 
 }
 
-echo '</ul><br><br>';
-
+echo '</ul>';
+}
   die();
 }
 

@@ -16,7 +16,7 @@ function show_theme_calendar_widget() {
   $sort["1_or_2"] = "2";
   if (isset($_POST['page_number'])) {
     if (isset($_POST['order_by']) && $_POST['order_by'] != '') {
-      $sort["sortid_by"] = $_POST['order_by'];
+      $sort["sortid_by"] =esc_sql( $_POST['order_by']);
     }
     if (isset($_POST['asc_or_desc']) && ($_POST['asc_or_desc'] == 1)) {
       $sort["custom_style"] = "manage-column column-title sorted asc";
@@ -45,17 +45,17 @@ function show_theme_calendar_widget() {
     $search_tag = "";
   }
   if ($search_tag) {
-    $where = ' WHERE title LIKE "%' . $search_tag . '%"';
+    $where = ' WHERE title LIKE "%%' . like_escape($search_tag) . '%%"';
   }
   else {
     $where = '';
   }
   // Get the total number of records.
-  $query = "SELECT COUNT(*) FROM " . $wpdb->prefix . "spidercalendar_widget_theme" . $where;
+  $query = "SELECT COUNT(*) FROM " . $wpdb->prefix . "spidercalendar_widget_theme" . str_replace('%%','%',$where);
   $total = $wpdb->get_var($query);
   $pageNav['total'] = $total;
   $pageNav['limit'] = $limit / 20 + 1;
-  $query = "SELECT * FROM " . $wpdb->prefix . "spidercalendar_widget_theme" . $where . " " . $order . " " . " LIMIT " . $limit . ",20";
+  $query = $wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spidercalendar_widget_theme" . $where . " " . $order . " " . " LIMIT %d,20", $limit);
   $rows = $wpdb->get_results($query);
   html_show_theme_calendar_widget($rows, $pageNav, $sort);
 }
@@ -89,7 +89,7 @@ function apply_theme_calendar_widget($id) {
   $year_font_size = ((isset($_POST["year_font_size"])) ? esc_html($_POST["year_font_size"]) : '');
   $year_font_color = ((isset($_POST["year_font_color"])) ? esc_html($_POST["year_font_color"]) : '');
   $year_tabs_bg_color = ((isset($_POST["year_tabs_bg_color"])) ? esc_html($_POST["year_tabs_bg_color"]) : '');
-  
+  $show_cat = ((isset($_POST["show_cat"])) ? esc_html($_POST["show_cat"]) : '');
   $date_format = ((isset($_POST["date_format"])) ? esc_html($_POST["date_format"]) : '');
   $title_color = ((isset($_POST["title_color"])) ? esc_html($_POST["title_color"]) : '');
   $title_font_size = ((isset($_POST["title_font_size"])) ? esc_html($_POST["title_font_size"]) : '');
@@ -150,6 +150,7 @@ function apply_theme_calendar_widget($id) {
       'popup_width' => $popup_width,
       'popup_height' => $popup_height,
       'show_repeat' => $show_repeat,
+	  'show_cat' => $show_cat,
     ), array(
       '%s',
 	  '%s',
@@ -193,7 +194,8 @@ function apply_theme_calendar_widget($id) {
       '%s',
       '%s',
       '%s',
-      '%s'
+      '%s',
+	  '%d'
     ));
   }
   else {
@@ -240,6 +242,7 @@ function apply_theme_calendar_widget($id) {
       'popup_width' => $popup_width,
       'popup_height' => $popup_height,
       'show_repeat' => $show_repeat,
+	  'show_cat' => $show_cat,
       ), array('id' => $id), array(
         '%s',
 		'%s',
@@ -282,7 +285,8 @@ function apply_theme_calendar_widget($id) {
         '%s',
         '%s',
         '%s',
-        '%s'
+        '%s',
+		'%d'
       ), array('%d'));
   }
   if ($save_or_no === FALSE) {
@@ -305,7 +309,7 @@ function edit_theme_calendar_widget($id) {
     $row = $wpdb->get_row('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_widget_theme WHERE id=1');
   }
   else {
-    $row = $wpdb->get_row('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_widget_theme WHERE id=' . $id);
+    $row = $wpdb->get_row($wpdb->prepare ('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_widget_theme WHERE id=%d' , $id ));
   }
   html_edit_theme_calendar_widget($row, $id);
 }
@@ -318,7 +322,7 @@ function remove_theme_calendar_widget($id) {
     return FALSE;
   }
   global $wpdb;
-  $sql_remove_tag = "DELETE FROM " . $wpdb->prefix . "spidercalendar_widget_theme WHERE id='" . $id . "'";
+  $sql_remove_tag = $wpdb->prepare ("DELETE FROM " . $wpdb->prefix . "spidercalendar_widget_theme WHERE id=%d", $id );
   if (!$wpdb->query($sql_remove_tag)) {
     ?>
     <div id="message" class="error"><p>Spider Calendar Theme Not Deleted.</p></div>
@@ -330,5 +334,4 @@ function remove_theme_calendar_widget($id) {
     <?php
   }
 }
-
 ?>

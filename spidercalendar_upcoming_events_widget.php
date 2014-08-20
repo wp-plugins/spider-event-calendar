@@ -152,7 +152,7 @@ var thickDims, tbWidth, tbHeight;
   
   $widget = ((isset($_GET['widget']) && (int) $_GET['widget']) ? (int) $_GET['widget'] : 1);
   
-$query="SELECT popup_width,popup_height FROM " . $wpdb->prefix . "spidercalendar_widget_theme WHERE id=".$theme_id;
+$query=$wpdb->prepare ("SELECT popup_width,popup_height FROM " . $wpdb->prefix . "spidercalendar_widget_theme WHERE id=%d",$theme_id);
 $popup_w_hs= $wpdb->get_results($query);
 
 $popup_w_h = array(
@@ -444,7 +444,7 @@ border:2px solid #6A6A6A;;
 
 
 <?php
-$query1= "SELECT * FROM " . $wpdb->prefix . "spidercalendar_event WHERE published='1' LIMIT 0,".$event_from_current_day;
+$query1= $wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spidercalendar_event WHERE published='1' LIMIT 0,%d",$event_from_current_day);
 $rows = $wpdb->get_results($query1);
 
 
@@ -490,7 +490,7 @@ echo '<div class="module'.$id.'">';
 
  if($view_type==0)
 {
-	$query="SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE calendar=".$calendar_id."  AND published='1'  ORDER BY date";	
+	$query=$wpdb->prepare ("SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE calendar=%d  AND published='1'  ORDER BY date",$calendar_id);	
 $evs = $wpdb->get_results($query);
 
 $st_date=date('Y-m-d');
@@ -1038,7 +1038,7 @@ $order="ORDER BY RAND()";
 $limit=$count1;
 }
 
-$query=" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE calendar= ".$calendar_id."  AND  published='1' ".$order;	
+$query=$wpdb->prepare (" SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE calendar=%d  AND  published='1' ".$order,$calendar_id);	
 $evs= $wpdb->get_results($query);
 $dates=array();
 foreach($evs as $ev)
@@ -1812,6 +1812,7 @@ echo '<div id="event_repeat'.$id.'" >';
 					echo week_convert_recent($week[$g]).',';
 
 				else
+
 
 					echo week_convert_recent($week[$g]);
 

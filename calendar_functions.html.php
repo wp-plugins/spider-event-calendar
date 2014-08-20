@@ -116,7 +116,7 @@ function html_show_spider_calendar($rows, $pageNav, $sort) {
       return "";
     }
   </script>
-  <form method="post" onkeypress="doNothing()" action="admin.php?page=SpiderCalendar" id="admin_form" name="admin_form">
+  <form method="post" onKeyPress="doNothing()" action="admin.php?page=SpiderCalendar" id="admin_form" name="admin_form">
     <table cellspacing="10" width="100%" id="calendar_table">
       <tr>
         <td width="100%" style="font-size:14px; font-weight:bold">
@@ -136,7 +136,7 @@ function html_show_spider_calendar($rows, $pageNav, $sort) {
         <td style="width:210px"><h2>Calendar Manager</h2></td>
         <td style="width:90px; text-align:right;">
           <p class="submit" style="padding:0px; text-align:left">
-            <input type="button" value="Add a Calendar" name="custom_parametrs" onclick="window.location.href='admin.php?page=SpiderCalendar&task=add_calendar'"/>
+            <input type="button" value="Add a Calendar" name="custom_parametrs" onClick="window.location.href='admin.php?page=SpiderCalendar&task=add_calendar'"/>
           </p>
         </td>
         <td style="text-align:right;font-size:16px;padding:20px; padding-right:50px">
@@ -196,7 +196,7 @@ function html_show_spider_calendar($rows, $pageNav, $sort) {
             <span class="edit">
               <a href="admin.php?page=SpiderCalendar&task=edit_calendar&id=<?php echo $rows[$i]->id; ?>" title="Edit This Calendar">Edit</a> | </span>
             <span class="inline hide-if-no-js">
-              <a href="#" class="editinline" onclick="show_calendar_inline(<?php echo  $rows[$i]->id; ?>)" title="Edit This Calendar Inline">Quick Edit</a>  | </span>
+              <a href="#" class="editinline" onClick="show_calendar_inline(<?php echo  $rows[$i]->id; ?>)" title="Edit This Calendar Inline">Quick Edit</a>  | </span>
             <span class="trash">
               <a class="submitdelete" title="Delete This Calendar" href="javascript:confirmation('admin.php?page=SpiderCalendar&task=remove_calendar&id=<?php echo $rows[$i]->id; ?>','<?php echo $rows[$i]->title; ?>')">Delete</a></span>
           </div>
@@ -281,13 +281,13 @@ function html_add_spider_calendar() {
     </tr>
     <tr>
       <td width="100%"><h2>Add Calendar</h2></td>
-      <td align="right"><input type="button" onclick="submitbutton('Save')" value="Save" class="button-secondary action"></td>
-      <td align="right"><input type="button" onclick="submitbutton('Apply')" value="Apply" class="button-secondary action"></td>
-      <td align="right"><input type="button" onclick="window.location.href='admin.php?page=SpiderCalendar'" value="Cancel" class="button-secondary action"></td>
+      <td align="right"><input type="button" onClick="submitbutton('Save')" value="Save" class="button-secondary action"></td>
+      <td align="right"><input type="button" onClick="submitbutton('Apply')" value="Apply" class="button-secondary action"></td>
+      <td align="right"><input type="button" onClick="window.location.href='admin.php?page=SpiderCalendar'" value="Cancel" class="button-secondary action"></td>
     </tr>
   </table>
 
-  <form onkeypress="doNothing()" action="admin.php?page=SpiderCalendar" method="post" name="adminForm" id="adminForm">
+  <form onKeyPress="doNothing()" action="admin.php?page=SpiderCalendar" method="post" name="adminForm" id="adminForm">
     <table class="form-table" style="width:400px">
       <tr>
         <td class="key"><label for="name">Title: </label></td>
@@ -416,13 +416,13 @@ function html_edit_spider_calendar($row) {
     </tr>
     <tr>
       <td width="100%"><h2>Calendar - <?php echo $row->title; ?></h2></td>
-      <td align="right"><input type="button" onclick="submitbutton('Save')" value="Save" class="button-secondary action"></td>
-      <td align="right"><input type="button" onclick="submitbutton('Apply')" value="Apply" class="button-secondary action"></td>
-      <td align="right"><input type="button" onclick="window.location.href='admin.php?page=SpiderCalendar'" value="Cancel" class="button-secondary action"></td>
+      <td align="right"><input type="button" onClick="submitbutton('Save')" value="Save" class="button-secondary action"></td>
+      <td align="right"><input type="button" onClick="submitbutton('Apply')" value="Apply" class="button-secondary action"></td>
+      <td align="right"><input type="button" onClick="window.location.href='admin.php?page=SpiderCalendar'" value="Cancel" class="button-secondary action"></td>
     </tr>
   </table>
 
-  <form onkeypress="doNothing()" action="admin.php?page=SpiderCalendar&id=<?php echo $row->id; ?>" method="post" name="adminForm" id="adminForm">
+  <form onKeyPress="doNothing()" action="admin.php?page=SpiderCalendar&id=<?php echo $row->id; ?>" method="post" name="adminForm" id="adminForm">
     <table class="form-table" style="width:400px">
       <tr>
         <td class="key"><label for="name">Title: </label></td>
@@ -613,7 +613,7 @@ function show_event_category($rows, $pageNav, $sort){
       return "";
     }
   </script>
-  <form method="post" onkeypress="doNothing()" action="admin.php?page=spider_calendar_event_category" id="admin_form" name="admin_form">
+  <form method="post" onKeyPress="doNothing()" action="admin.php?page=spider_calendar_event_category" id="admin_form" name="admin_form">
     <table cellspacing="10" width="100%" id="category_table">
       <tr>
         <td width="100%" style="font-size:14px; font-weight:bold">
@@ -634,7 +634,7 @@ function show_event_category($rows, $pageNav, $sort){
         <td style="width:210px"><h2>Event Category</h2></td>
         <td style="width:90px; text-align:right;">
           <p class="submit" style="padding:0px; text-align:left">
-            <input type="button" value="Add a Category" name="custom_parametrs" onclick="window.location.href='admin.php?page=spider_calendar_event_category&task=add_category'"/>
+            <input type="button" value="Add a Category" name="custom_parametrs" onClick="window.location.href='admin.php?page=spider_calendar_event_category&task=add_category'"/>
           </p>
         </td>
         <td style="text-align:right;font-size:16px;padding:20px; padding-right:50px">
@@ -722,7 +722,7 @@ function show_event_category($rows, $pageNav, $sort){
 
 function edit_event_category($id){
  global $wpdb;
-$row=$wpdb->get_row("SELECT * FROM " . $wpdb->prefix . "spidercalendar_event_category WHERE id=".$id."");
+$row=$wpdb->get_row($wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spidercalendar_event_category WHERE id=%d" , $id ));
 		?>
 				
 		<script language="javascript" type="text/javascript">
@@ -740,9 +740,9 @@ $row=$wpdb->get_row("SELECT * FROM " . $wpdb->prefix . "spidercalendar_event_cat
 
 	<table>
 		 <tr>
-			  <td align="right"><input type="button" onclick="submitbutton('save_category_event')" value="Save" class="button-secondary action"></td>
-			  <td align="right"><input type="button" onclick="submitbutton('apply_event_category')" value="Apply" class="button-secondary action"></td>
-			  <td align="right"><input type="button" onclick="window.location.href='admin.php?page=spider_calendar_event_category'" value="Cancel" class="button-secondary action">
+			  <td align="right"><input type="button" onClick="submitbutton('save_category_event')" value="Save" class="button-secondary action"></td>
+			  <td align="right"><input type="button" onClick="submitbutton('apply_event_category')" value="Apply" class="button-secondary action"></td>
+			  <td align="right"><input type="button" onClick="window.location.href='admin.php?page=spider_calendar_event_category'" value="Cancel" class="button-secondary action">
 			  </td>   
 		 </tr>
     </table>
@@ -983,14 +983,14 @@ else
 <!---- <link rel="stylesheet" id="colors-css" href="<?php echo bloginfo('url')?>/wp-admin/css/colors-classic.css?ver=20111206" type="text/css" media="all"> --->
 </head>
   <body>
-    <form method="post" onkeypress="doNothing()" action="<?php echo admin_url('admin-ajax.php') ?>?action=upcoming&id_input=<?php echo $input_id;?>&upcalendar_id=<?php echo $calendar_id;?>&w_id=<?php echo $w_id;?>" id="admin_form" name="admin_form">
+    <form method="post" onKeyPress="doNothing()" action="<?php echo admin_url('admin-ajax.php') ?>?action=upcoming&id_input=<?php echo $input_id;?>&upcalendar_id=<?php echo $calendar_id;?>&w_id=<?php echo $w_id;?>" id="admin_form" name="admin_form">
     <table cellspacing="10" width="100%">
     
     <tr>
       <td width="100%"><h2>Event Manager</h2></td></td>
 	  <td align="right" width="100%">
 
-                <button onclick="select_events();" style="width:98px; height:34px; background:url(<?php echo plugins_url('',__FILE__) ?>/front_end/images/add_but.png) no-repeat;border:none;cursor:pointer;">&nbsp;</button>			
+                <button onClick="select_events();" style="width:98px; height:34px; background:url(<?php echo plugins_url('',__FILE__) ?>/front_end/images/add_but.png) no-repeat;border:none;cursor:pointer;">&nbsp;</button>			
            </td>
     </tr>
   </table>
@@ -1047,7 +1047,7 @@ else
       </th>
 	  <th style="background-image: linear-gradient(to top, #EFF8FF, #F7FCFE);" width="20" class="manage-column column-cb check-column">
 
-            <input  style="border: 1px solid #DCDCEC;-webkit-appearance: checkbox;" type="checkbox" name="toggle" id="toggle" value="" onclick="checkAll(<?php echo count($rows)?>, 'p')">
+            <input  style="border: 1px solid #DCDCEC;-webkit-appearance: checkbox;" type="checkbox" name="toggle" id="toggle" value="" onClick="checkAll(<?php echo count($rows)?>, 'p')">
 
             </th>
       <th style="background-image: linear-gradient(to top, #EFF8FF, #F7FCFE);" scope="col" id="title" class="<?php echo (($sort["sortid_by"] == "title") ? $sort["custom_style"] : $sort["default_style"]); ?>">
@@ -1079,7 +1079,7 @@ else
 			<input style="border: 1px solid #DCDCEC;-webkit-appearance: checkbox;" type="checkbox" id="p<?php echo $i?>" value="<?php echo $rows[$i]->id;?>" />
 			<input type="hidden" id="title_<?php echo $i?>" value="<?php echo  htmlspecialchars($rows[$i]->title);?>" />
 		</td>
-      <td style="border-bottom: 1px solid #DCDCEC;"><a href="<?php echo admin_url('admin-ajax.php') ?>?action=upcoming" onclick="window.parent.jSelectEvents('<?php echo $input_id ?>','<?php echo $tbody_id ?>','<?php echo $w_id ?>',['<?php echo $rows[$i]->id?>'],['<?php echo htmlspecialchars(addslashes($rows[$i]->title));?>'])"><?php echo $rows[$i]->title; ?></a>
+      <td style="border-bottom: 1px solid #DCDCEC;"><a href="<?php echo admin_url('admin-ajax.php') ?>?action=upcoming" onClick="window.parent.jSelectEvents('<?php echo $input_id ?>','<?php echo $tbody_id ?>','<?php echo $w_id ?>',['<?php echo $rows[$i]->id?>'],['<?php echo htmlspecialchars(addslashes($rows[$i]->title));?>'])"><?php echo $rows[$i]->title; ?></a>
       </td>
       <td style="border-bottom: 1px solid #DCDCEC;"><?php if ($rows[$i]->date_end != '0000-00-00' && $rows[$i]->date_end != '2070-12-12') echo $rows[$i]->date . ' - ' . $rows[$i]->date_end; else echo $rows[$i]->date; ?></td>
       <td style="border-bottom: 1px solid #DCDCEC;"><?php echo $rows[$i]->time ?></td>
@@ -1135,7 +1135,7 @@ function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name)
       }
     }
   </script>
-  <form method="post" onkeypress="doNothing()" action="admin.php?page=SpiderCalendar&task=show_manage_event&calendar_id=<?php echo $calendar_id; ?>" id="admin_form" name="admin_form">
+  <form method="post" onKeyPress="doNothing()" action="admin.php?page=SpiderCalendar&task=show_manage_event&calendar_id=<?php echo $calendar_id; ?>" id="admin_form" name="admin_form">
     <table cellspacing="10" width="95%">
     <tr>
       <td width="100%" style="font-size:14px; font-weight:bold">
@@ -1155,12 +1155,12 @@ function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name)
       <td width="100%"><h2>Event Manager for calendar <font style="color:red"><?php echo $cal_name; ?></font></h2></td>
       <td>
         <p class="submit" style="padding:0px; text-align:left">
-          <input class="button-primary" type="button" value="Add an Event" name="custom_parametrs" onclick="window.location.href='admin.php?page=SpiderCalendar&task=add_event&calendar_id=<?php echo $calendar_id; ?>'"/>
+          <input class="button-primary" type="button" value="Add an Event" name="custom_parametrs" onClick="window.location.href='admin.php?page=SpiderCalendar&task=add_event&calendar_id=<?php echo $calendar_id; ?>'"/>
         </p>
       </td>
       <td>
         <p class="submit" style="padding:0px; text-align:left">
-          <input type="button" class="button-primary" value="Back" name="custom_parametrs" onclick="window.location.href='admin.php?page=SpiderCalendar'"/>
+          <input type="button" class="button-primary" value="Back" name="custom_parametrs" onClick="window.location.href='admin.php?page=SpiderCalendar'"/>
         </p>
       </td>
     </tr>
@@ -1539,15 +1539,15 @@ function html_add_spider_event($calendar_id, $cal_name) {
   <tbody>
     <tr>
       <td width="100%"><h2>Add an event for calendar <font style="color:red"><?php echo $cal_name; ?></font></h2></td>
-      <td align="right"><input type="button" onclick="submitbutton('save_event')" value="Save" class="button-secondary action"></td>
-      <td align="right"><input type="button" onclick="submitbutton('apply_event')" value="Apply" class="button-secondary action"></td>
-      <td align="right"><input type="button" onclick="window.location.href='admin.php?page=SpiderCalendar&calendar_id=<?php echo $calendar_id; ?>&task=show_manage_event'" value="Cancel" class="button-secondary action"></td>
+      <td align="right"><input type="button" onClick="submitbutton('save_event')" value="Save" class="button-secondary action"></td>
+      <td align="right"><input type="button" onClick="submitbutton('apply_event')" value="Apply" class="button-secondary action"></td>
+      <td align="right"><input type="button" onClick="window.location.href='admin.php?page=SpiderCalendar&calendar_id=<?php echo $calendar_id; ?>&task=show_manage_event'" value="Cancel" class="button-secondary action"></td>
     </tr>
     </tbody>
 </table>
 <?php
   global $wpdb;
-  $calendar = $wpdb->get_row("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar WHERE id='" . $calendar_id . "'");
+  $calendar = $wpdb->get_row($wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar WHERE id=%d",  $calendar_id ));
  
   
   $query1 = $wpdb->get_results("SELECT " . $wpdb->prefix . "spidercalendar_event.category, " . $wpdb->prefix . "spidercalendar_event_category.title
@@ -1589,22 +1589,22 @@ ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spide
                   <td class="key"><label for="date">Date: </label></td>
                   <td>
                     <input style="width:90px" class="inputbox" type="text" name="date" id="date" size="10" maxlength="10" value="" />
-                    <input type="reset" class="wd_button" value="..." onclick="return showCalendar('date','%Y-%m-%d');" style="width: 31px;" />
+                    <input type="reset" class="wd_button" value="..." onClick="return showCalendar('date','%Y-%m-%d');" style="width: 31px;" />
                   </td>
                 </tr>
                 <tr>
                   <td class="key"><label for="selhour_from">Time: </label></td>
                   <?php if ($calendar->time_format == 1) { ?>
                   <td>
-                    <input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right" onkeypress="return check12hour('selhour_from',event)" value="" title="from"/> <b>:</b>
-                    <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right" onkeypress="return checkminute('selminute_from',event)" value="" onblur="add_0('selminute_from')" title="from"/>
+                    <input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right" onKeyPress="return check12hour('selhour_from',event)" value="" title="from"/> <b>:</b>
+                    <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right" onKeyPress="return checkminute('selminute_from',event)" value="" onBlur="add_0('selminute_from')" title="from"/>
                     <select id="select_from" name="select_from">
                       <option selected="selected">AM</option>
                       <option>PM</option>
                     </select>
                     <span style="font-size:12px">&nbsp;-&nbsp;</span>
-                    <input type="text" id="selhour_to" name="selhour_to" size="1" style="text-align:right" onkeypress="return check12hour('selhour_to',event)" value="" title="to"/> <b>:</b>
-                    <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right" onkeypress="return checkminute('selminute_to',event)" value="" onblur="add_0('selminute_to')" title="to"/>
+                    <input type="text" id="selhour_to" name="selhour_to" size="1" style="text-align:right" onKeyPress="return check12hour('selhour_to',event)" value="" title="to"/> <b>:</b>
+                    <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right" onKeyPress="return checkminute('selminute_to',event)" value="" onBlur="add_0('selminute_to')" title="to"/>
                     <select id="select_to" name="select_to">
                       <option>AM</option>
                       <option>PM</option>
@@ -1612,11 +1612,11 @@ ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spide
                   </td>
                   <?php } if ($calendar->time_format == 0) { ?>
                   <td>
-                    <input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right" onkeypress="return checkhour('selhour_from',event)" value="" title="from" onblur="add_0('selhour_from')"/> <b>:</b>
-                    <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right" onkeypress="return checkminute('selminute_from',event)" value="" title="from" onblur="add_0('selminute_from')"/>
+                    <input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right" onKeyPress="return checkhour('selhour_from',event)" value="" title="from" onBlur="add_0('selhour_from')"/> <b>:</b>
+                    <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right" onKeyPress="return checkminute('selminute_from',event)" value="" title="from" onBlur="add_0('selminute_from')"/>
                     <span style="font-size:12px">&nbsp;-&nbsp;</span>
-                    <input type="text" id="selhour_to" name="selhour_to" size="1" style="text-align:right" onkeypress="return checkhour('selhour_to',event)" value="" title="to" onblur="add_0('selhour_to')"/> <b>:</b>
-                    <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right" onkeypress="return checkminute('selminute_to',event)" value="" title="to" onblur="add_0('selminute_to')"/>
+                    <input type="text" id="selhour_to" name="selhour_to" size="1" style="text-align:right" onKeyPress="return checkhour('selhour_to',event)" value="" title="to" onBlur="add_0('selhour_to')"/> <b>:</b>
+                    <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right" onKeyPress="return checkminute('selminute_to',event)" value="" title="to" onBlur="add_0('selminute_to')"/>
                   </td>
                   <?php }?>
                 </tr>
@@ -1653,25 +1653,25 @@ ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spide
               <table>
                 <tr>
                   <td valign="top">
-					<input type="radio" id="no_repeat_type" value="no_repeat" name="repeat_method" checked="checked" onchange="change_type('no_repeat')">
+					<input type="radio" id="no_repeat_type" value="no_repeat" name="repeat_method" checked="checked" onChange="change_type('no_repeat')">
 					<label for="no_repeat_type">Don't repeat this event</label>
                     <br/>
-                    <input type="radio" id="daily_type" value="daily" name="repeat_method" onchange="change_type('daily');">
+                    <input type="radio" id="daily_type" value="daily" name="repeat_method" onChange="change_type('daily');">
 					<label for="daily_type">Repeat daily</label>
 					<br/>
-                    <input type="radio"  id="weekly_type" value="weekly" name="repeat_method" onchange="change_type('weekly');">
+                    <input type="radio"  id="weekly_type" value="weekly" name="repeat_method" onChange="change_type('weekly');">
 					<label for="weekly_type">Repeat weekly</label>
 					<br/>
-                    <input type="radio"  id="monthly_type" value="monthly" name="repeat_method" onchange="change_type('monthly');">
+                    <input type="radio"  id="monthly_type" value="monthly" name="repeat_method" onChange="change_type('monthly');">
 					<label for="monthly_type">Repeat monthly</label>
 					<br/>
-                    <input type="radio"  id="yearly_type" value="yearly" name="repeat_method" onchange="change_type('yearly');">
+                    <input type="radio"  id="yearly_type" value="yearly" name="repeat_method" onChange="change_type('yearly');">
 					<label for="yearly_type">Repeat yearly</label>
 					<br/>
                   </td>
                   <td style="padding-left:10px" valign="top">
                     <div id="daily" style="display:none">Repeat every
-                      <input type="text" id="repeat_input" size="5" name="repeat" onclick="return input_repeat()" onkeypress="return checknumber(repeat_input)" value="1"/>
+                      <input type="text" id="repeat_input" size="5" name="repeat" onClick="return input_repeat()" onKeyPress="return checknumber(repeat_input)" value="1"/>
                       <label id="repeat"></label>
                       <label id="year_month" style="display:none;">
                         <select name="year_month" id="year_month" class="inputbox">
@@ -1696,20 +1696,20 @@ ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spide
                     <input type="hidden" id="monthly1"/>
                     <input type="hidden" id="yearly1"/>
                     <div class="key" id="weekly" style="display:none">
-                      <input type="checkbox" value="Mon" id="week_1" onchange="week_value()"/>Mon
-                      <input type="checkbox" value="Tue" id="week_2" onchange="week_value()"/>Tue
-                      <input type="checkbox" value="Wed" id="week_3" onchange="week_value()"/>Wed
-                      <input type="checkbox" value="Thu" id="week_4" onchange="week_value()"/>Thu
-                      <input type="checkbox" value="Fri" id="week_5" onchange="week_value()"/>Fri
-                      <input type="checkbox" value="Sat" id="week_6" onchange="week_value()"/>Sat
-                      <input type="checkbox" value="Sun" id="week_7" onchange="week_value()"/>Sun
+                      <input type="checkbox" value="Mon" id="week_1" onChange="week_value()"/>Mon
+                      <input type="checkbox" value="Tue" id="week_2" onChange="week_value()"/>Tue
+                      <input type="checkbox" value="Wed" id="week_3" onChange="week_value()"/>Wed
+                      <input type="checkbox" value="Thu" id="week_4" onChange="week_value()"/>Thu
+                      <input type="checkbox" value="Fri" id="week_5" onChange="week_value()"/>Fri
+                      <input type="checkbox" value="Sat" id="week_6" onChange="week_value()"/>Sat
+                      <input type="checkbox" value="Sun" id="week_7" onChange="week_value()"/>Sun
                       <input type="hidden" name="week" id="week"/>
                     </div>
                     <br/>
                     <div class="key" id="monthly" style="display:none">
-                      <input type="radio" id="radio1" onchange="radio_month()" name="month_type" value="1" checked="checked"/>on the:  
-                      <input type="text" onkeypress="return checknumber(month)" name="month" size="3" id="month"/><br/>
-                      <input type="radio" id="radio2" onchange="radio_month()" name="month_type" value="2"/>on the: 
+                      <input type="radio" id="radio1" onChange="radio_month()" name="month_type" value="1" checked="checked"/>on the:  
+                      <input type="text" onKeyPress="return checknumber(month)" name="month" size="3" id="month"/><br/>
+                      <input type="radio" id="radio2" onChange="radio_month()" name="month_type" value="2"/>on the: 
                       <select name="monthly_list" id="monthly_list" class="inputbox">
                         <option value="1">First</option>
                         <option value="8">Second</option>
@@ -1737,7 +1737,7 @@ ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spide
                   <td>Repeat until: </td>
                   <td>
                     <input style="width:90px" class="inputbox" type="text" name="date_end" id="date_end" size="10" maxlength="10" value=""/>
-                    <input type="reset" class="wd_button" value="..." onclick="return showCalendar('date_end','%Y-%m-%d');"/>
+                    <input type="reset" class="wd_button" value="..." onClick="return showCalendar('date_end','%Y-%m-%d');"/>
                   </td>
                 </tr>
               </table>
@@ -1755,7 +1755,7 @@ ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spide
 
 function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
   global $wpdb;
-  $calendar = $wpdb->get_row("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar where id=".$calendar_id."");
+  $calendar = $wpdb->get_row($wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar where id=%d", $calendar_id ));
   
   ?>
   <style>
@@ -2011,9 +2011,9 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
     <tbody>
       <tr>
         <td width="100%"><h2>Edit an event for calendar <font style="color:red"><?php echo $cal_name; ?></font></h2></td>
-        <td align="right"><input type="button" onclick="submitbutton('save_event')" value="Save" class="button-secondary action"></td>
-        <td align="right"><input type="button" onclick="submitbutton('apply_event')" value="Apply" class="button-secondary action"></td>
-        <td align="right"><input type="button" onclick="window.location.href='admin.php?page=SpiderCalendar&calendar_id=<?php echo $calendar_id; ?>&task=show_manage_event'" value="Cancel" class="button-secondary action"></td>
+        <td align="right"><input type="button" onClick="submitbutton('save_event')" value="Save" class="button-secondary action"></td>
+        <td align="right"><input type="button" onClick="submitbutton('apply_event')" value="Apply" class="button-secondary action"></td>
+        <td align="right"><input type="button" onClick="window.location.href='admin.php?page=SpiderCalendar&calendar_id=<?php echo $calendar_id; ?>&task=show_manage_event'" value="Cancel" class="button-secondary action"></td>
       </tr>
     </tbody>
   </table>
@@ -2055,7 +2055,7 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
                       $row->date_end = "";
                     }
                     ?>
-                    <input type="reset" class="wd_button" value="..." onclick="return showCalendar('date','%Y-%m-%d');"/>
+                    <input type="reset" class="wd_button" value="..." onClick="return showCalendar('date','%Y-%m-%d');"/>
                   </td>
                 </tr>
                 <tr>
@@ -2086,13 +2086,13 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
                            onblur="add_0('selhour_from')"/> <b>:</b>
                     <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right"
                            onkeypress="return checkminute('selminute_from',event)" value="<?php echo substr($from[1], 0, 2); ?>"
-                           title="from" onblur="add_0('selminute_from')"/> <span style="font-size:12px">&nbsp;-&nbsp;</span>
+                           title="from" onBlur="add_0('selminute_from')"/> <span style="font-size:12px">&nbsp;-&nbsp;</span>
                     <input type="text" id="selhour_to" name="selhour_to" size="1" style="text-align:right"
                            onkeypress="return checkhour('selhour_to',event)" value="<?php echo $to[0]; ?>" title="to"
                            onblur="add_0('selhour_to')"/> <b>:</b>
                     <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right"
                            onkeypress="return checkminute('selminute_to',event)" value="<?php echo substr($to[1], 0, 2); ?>"
-                           title="to" onblur="add_0('selminute_to')"/>
+                           title="to" onBlur="add_0('selminute_to')"/>
                     <?php } 
 					if ($calendar->time_format == 1) { ?>
                     <input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right"
@@ -2100,7 +2100,7 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
                            onblur="add_0('selhour_from')"/> <b>:</b>
                     <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right"
                            onkeypress="return checkminute('selminute_from',event)" value="<?php echo substr($from[1], 0, 2); ?>"
-                           title="from" onblur="add_0('selminute_from')"/>
+                           title="from" onBlur="add_0('selminute_from')"/>
                     <select id="select_from" name="select_from">
                       <option <?php if (substr($from[1], 2, 2) == "AM")
                         echo 'selected="selected"'; ?>>AM
@@ -2115,7 +2115,7 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
                            onblur="add_0('selhour_to')"/> <b>:</b>
                     <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right"
                            onkeypress="return checkminute('selminute_to',event)" value="<?php echo substr($to[1], 0, 2); ?>"
-                           title="to" onblur="add_0('selminute_to')"/>
+                           title="to" onBlur="add_0('selminute_to')"/>
                     <select id="select_to" name="select_to">
                       <option <?php if (substr($to[1], 2, 2) == "AM")
                         echo 'selected="selected"'; ?>>AM
@@ -2163,7 +2163,7 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
                 <tr>
                   <td valign="top">
                     <input type="radio" value="no_repeat" id="no_repeat_type" name="repeat_method" <?php if ($row->repeat_method == 'no_repeat')
-                      echo 'checked="checked"' ?> checked="checked" onchange="change_type('no_repeat')"/>
+                      echo 'checked="checked"' ?> checked="checked" onChange="change_type('no_repeat')"/>
 					  <label for="no_repeat_type">Don't repeat this event</label><br/>
 					  
                     <input type="radio" value="daily" id="daily_type" name="repeat_method" <?php if ($row->repeat_method == 'daily')
@@ -2171,21 +2171,21 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
 					  <label for="daily_type">Repeat daily</label><br/>
 					  
                     <input type="radio" value="weekly" id="weekly_type" name="repeat_method" <?php if ($row->repeat_method == 'weekly')
-                      echo 'checked="checked"' ?> onchange="change_type('weekly')"/>
+                      echo 'checked="checked"' ?> onChange="change_type('weekly')"/>
 					  <label for="weekly_type">Repeat weekly</label>
 					<br/>
                     <input type="radio" value="monthly" id="monthly_type" name="repeat_method" <?php if ($row->repeat_method == 'monthly')
-                      echo 'checked="checked"'?> onchange="change_type('monthly')"/>
+                      echo 'checked="checked"'?> onChange="change_type('monthly')"/>
 					  <label for="monthly_type">Repeat monthly</label>
 					<br/>
                     <input type="radio" value="yearly" id="yearly_type" name="repeat_method" <?php if ($row->repeat_method == 'yearly')
-                      echo 'checked="checked"' ?> onchange="change_type('yearly')"/>
+                      echo 'checked="checked"' ?> onChange="change_type('yearly')"/>
 					  <label for="yearly_type">Repeat yearly</label>
 					<br/>
                   </td>
                   <td style="padding-left:10px" valign="top">
                     <div id="daily" style="display:<?php if ($row->repeat_method == 'no_repeat') echo 'none'; ?>">
-                      Repeat every <input type="text" id="repeat_input" size="5" name="repeat" onkeypress="return checknumber(repeat_input)" value="<?php echo $row->repeat ?>"/>
+                      Repeat every <input type="text" id="repeat_input" size="5" name="repeat" onKeyPress="return checknumber(repeat_input)" value="<?php echo $row->repeat ?>"/>
                       <label id="repeat"><?php if ($row->repeat_method == 'daily')
                         echo 'Day(s)';
                         if ($row->repeat_method == 'weekly')
@@ -2217,21 +2217,21 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
                     </div>
                     <br/>
                     <div class="key" id="weekly" style="display:<?php if ($row->repeat_method != 'weekly') echo 'none'; ?>">
-                      <input type="checkbox" value="Mon" id="week_1" onchange="week_value()" <?php if (in_array('Mon', explode(',', $row->week))) echo 'checked="checked"' ?>   />Mon
-                      <input type="checkbox" value="Tue" id="week_2" onchange="week_value()" <?php if (in_array('Tue', explode(',', $row->week))) echo 'checked="checked"' ?>   />Tue
-                      <input type="checkbox" value="Wed" id="week_3" onchange="week_value()" <?php if (in_array('Wed', explode(',', $row->week))) echo 'checked="checked"' ?> />Wed
-                      <input type="checkbox" value="Thu" id="week_4" onchange="week_value()" <?php if (in_array('Thu', explode(',', $row->week))) echo 'checked="checked"' ?>  />Thu
-                      <input type="checkbox" value="Fri" id="week_5" onchange="week_value()" <?php if (in_array('Fri', explode(',', $row->week))) echo 'checked="checked"' ?> />Fri
-                      <input type="checkbox" value="Sat" id="week_6" onchange="week_value()" <?php if (in_array('Sat', explode(',', $row->week))) echo 'checked="checked"' ?>  />Sat
-                      <input type="checkbox" value="Sun" id="week_7" onchange="week_value()" <?php if (in_array('Sun', explode(',', $row->week))) echo 'checked="checked"' ?> />Sun
+                      <input type="checkbox" value="Mon" id="week_1" onChange="week_value()" <?php if (in_array('Mon', explode(',', $row->week))) echo 'checked="checked"' ?>   />Mon
+                      <input type="checkbox" value="Tue" id="week_2" onChange="week_value()" <?php if (in_array('Tue', explode(',', $row->week))) echo 'checked="checked"' ?>   />Tue
+                      <input type="checkbox" value="Wed" id="week_3" onChange="week_value()" <?php if (in_array('Wed', explode(',', $row->week))) echo 'checked="checked"' ?> />Wed
+                      <input type="checkbox" value="Thu" id="week_4" onChange="week_value()" <?php if (in_array('Thu', explode(',', $row->week))) echo 'checked="checked"' ?>  />Thu
+                      <input type="checkbox" value="Fri" id="week_5" onChange="week_value()" <?php if (in_array('Fri', explode(',', $row->week))) echo 'checked="checked"' ?> />Fri
+                      <input type="checkbox" value="Sat" id="week_6" onChange="week_value()" <?php if (in_array('Sat', explode(',', $row->week))) echo 'checked="checked"' ?>  />Sat
+                      <input type="checkbox" value="Sun" id="week_7" onChange="week_value()" <?php if (in_array('Sun', explode(',', $row->week))) echo 'checked="checked"' ?> />Sun
                       <input type="hidden" name="week" id="week" value="<?php echo $row->week ?>"/>
                     </div>
                     <br/>
                     <div class="key" id="monthly" style="display:<?php if ($row->repeat_method != 'monthly' && $row->repeat_method != 'yearly') echo 'none'; ?>">
-                      <input type="radio" id="radio1" name="month_type" onchange="radio_month()" value="1" checked="checked" <?php if ($row->month_type == 1)
-                        echo 'checked="checked"' ?>  />on the: <input type="text" name="month" size="3" onkeypress="return checknumber(month)" id="month"
+                      <input type="radio" id="radio1" name="month_type" onChange="radio_month()" value="1" checked="checked" <?php if ($row->month_type == 1)
+                        echo 'checked="checked"' ?>  />on the: <input type="text" name="month" size="3" onKeyPress="return checknumber(month)" id="month"
                                                                       value="<?php echo $row->month; ?>"/><br/>
-                      <input type="radio" id="radio2" name="month_type" onchange="radio_month()" value="2" <?php if ($row->month_type == 2) echo 'checked="checked"'; ?> />on the:
+                      <input type="radio" id="radio2" name="month_type" onChange="radio_month()" value="2" <?php if ($row->month_type == 2) echo 'checked="checked"'; ?> />on the:
                       <select name="monthly_list" id="monthly_list" class="inputbox">
                         <option <?php echo selectted($row->monthly_list, '1'); ?> value="1">First</option>
                         <option <?php echo selectted($row->monthly_list, '8'); ?> value="8">Second</option>
@@ -2264,7 +2264,7 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
                   ?>
                   <td>
                     <input style="width:90px" class="inputbox" type="text" name="date_end" id="date_end" size="10" maxlength="10" value="<?php echo $row->date_end; ?>"/>
-                    <input type="reset" class="wd_button" value="..." onclick="return showCalendar('date_end','%Y-%m-%d');"/>
+                    <input type="reset" class="wd_button" value="..." onClick="return showCalendar('date_end','%Y-%m-%d');"/>
                   </td>
                 </tr>
               </table>
