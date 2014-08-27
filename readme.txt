@@ -52,6 +52,7 @@ Different categories created for the calendar will be displayed as a legend belo
 * Possibility of defining the default view, as well as view options for the calendar widget.
 * Colors and fonts of the Upcoming events widget can be customized from the widget area.  
 * Possibility to include only the events and not the calendar as whole in a list form with Upcoming Events widget.    
+* Possibility of displaying/hiding the category legend below the calendar widget.
 
 Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-calendar.html) to add features:   
 
