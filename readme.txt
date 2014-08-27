@@ -52,7 +52,6 @@ Different categories created for the calendar will be displayed as a legend belo
 * Possibility of defining the default view, as well as view options for the calendar widget.
 * Colors and fonts of the Upcoming events widget can be customized from the widget area.  
 * Possibility to include only the events and not the calendar as whole in a list form with Upcoming Events widget.    
-* Possibility of displaying/hiding the category legend below the calendar widget.
 
 Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-calendar.html) to add features:   
 
@@ -69,6 +68,7 @@ Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-cal
 *   Possibility to define the main border radius, color and width in the Spider Event Calendar.   
 *   You have also possibility to change popup window parameters in the Spider Event Calendar.    
 *   Possibility to add new themes based on the default theme.   
+*   Possibility of displaying/hiding the category legend below the calendar widget.
 
 
 ###IMPORTANT: If you think you found a bug in Spider Calendar or have any problem/question concerning the plugin, please check out [Support Forum](http://web-dorado.com/forum/spider-calendar-wordpress.html) in our website. If you do not find a solution here, do not hesitate to contact us at [info@web-dorado.com](mailto:info@web-dorado.com).
