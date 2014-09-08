@@ -3,7 +3,7 @@ Contributors: webdorado
 Donate link: http://web-dorado.com/products/wordpress-calendar.html  
 Tags: calendar, calendars, event, event calendar, event manager, events calendar,calendar widget,  event registration, event management,events, Kalender, agenda, calendario, availability calendar,online calendar,holiday calendar , scheduling, free calendar, Calender, upcoming events , event widget , event list, calendar localization, Organizer, editorial calendar, Interactive Calendar, news calendar, meeting , appointment, event tracking, event organizer, upcoming events widget, event page
 Requires at least: 3.0  
-Tested up to: 3.9  
+Tested up to: 4.0  
 Stable tag: 1.4.10
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. 
 == Description ==    
   
-###[WordPress Calendar](http://web-dorado.com/products/wordpress-calendar.html)  
+[WordPress Calendar](http://web-dorado.com/products/wordpress-calendar.html)  
 [Demo](http://wpdemo.web-dorado.com/spider-calendar/)  
 [Demo Admin](http://wpdemo.web-dorado.com/wp-admin/admin.php?page=SpiderCalendar)  
 [User Manual](http://web-dorado.com/spider-calendar-wordpress-guide-step-1.html)  
