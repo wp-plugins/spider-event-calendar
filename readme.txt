@@ -54,6 +54,7 @@ Different categories created for the calendar will be displayed as a legend belo
 * Possibility to include only the events and not the calendar as whole in a list form with Upcoming Events widget.    
 * Calendar widget uses lightbox for displaying events similar to the large calendar.   
 * Possibility of searching and browsing event in the back end for easier and quick editing.   
+* Possibility to display events of only specific categories, when pressing the mentioned category labels below.   
 
 Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-calendar.html) to add features:   
 
