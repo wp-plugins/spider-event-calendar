@@ -141,6 +141,9 @@ Vietnamese (vi)
 
 == Changelog ==
 
+= 1.4.10 =
+bug fixed
+
 = 1.4.9 =
 when the current day is sunday the calendar will not show the set bordercolor for the current day bug fixed
 
