@@ -55,7 +55,8 @@ Different categories created for the calendar will be displayed as a legend belo
 * Calendar widget uses lightbox for displaying events similar to the large calendar.   
 * Possibility of searching and browsing event in the back end for easier and quick editing.   
 * Possibility to display events of only specific categories, when pressing the mentioned category labels below.   
-* Possibility to use the same color for the event categories (legend display below the calendars) for a uni-color design
+* Possibility to use the same color for the event categories (legend display below the calendars) for a uni-color design.
+* Support for both 12-hour and 24-hour time options.
 
 Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-calendar.html) to add features:   
 
