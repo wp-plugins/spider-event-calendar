@@ -88,7 +88,7 @@ $cat_ids = substr($cat_ids, 0,-1);
   
   $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=%d', $theme_id));
   $cal_width = $theme->width;
-  $show_cat = 1;
+  $show_cat = $theme->show_cat;
   $bg_top = '#' . $theme->bg_top;
   $bg_bottom = '#' . $theme->bg_bottom;
   $border_color = '#' . $theme->border_color;
@@ -1000,11 +1000,23 @@ foreach($categories as $category)
 
 
 <?php
-
-
 }
-
-echo '</ul>';
+if (!empty($categories)) {
+?>
+<li style="float:left;"><p class="categories1" style="background-color:<?php echo $bg_top;?>">&nbsp;&nbsp;&nbsp;&nbsp;</p><p class="categories2" id="category0" style="color:<?php echo $bg_top; ?>" onclick="showbigcalendar('bigcalendar<?php echo $many_sp_calendar; ?>', '<?php echo add_query_arg(array(
+                'action' => 'spiderbigcalendar_day',
+                'theme_id' => $theme_id,
+                'calendar' => $calendar_id,
+                'select' => $view_select,
+                'date' => $year . '-' . add_0(Month_num($month)) . '-' . add_0($day),
+                'many_sp_calendar' => $many_sp_calendar,
+                'cur_page_url' => $path_sp_cal,
+				'cat_id' => '',
+				'cat_ids' => '',
+                'widget' => $widget,
+                ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"><?php echo __('All categories', 'sp_calendar'); ?></p></li>
+<?php echo '</ul>';
+}
 }
   die();
 }

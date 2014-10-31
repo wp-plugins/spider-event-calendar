@@ -89,7 +89,7 @@ $cat_ids = substr($cat_ids, 0,-1);
   
   $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_widget_theme WHERE id=%d', $theme_id));
   $weekstart = $theme->week_start_day;
-  $show_cat = 1;
+  $show_cat = $theme->show_cat;
   $bg = '#' . $theme->header_bgcolor;
   $bg_color_selected = '#' . $theme->bg_color_selected;
   $color_arrow = '#' . $theme->arrow_color;
@@ -713,10 +713,8 @@ echo'
 echo '<ul id="cats_widget_'.$many_sp_calendar.'" style="list-style-type:none;">';
 
 foreach($categories as $category)
-{
-	
+{	
 ?>
-
 <li style="height:30px"><p class="categories1" style="background-color:#<?php echo $category->color;?>">&nbsp;&nbsp;&nbsp;&nbsp;</p><p class="categories2" id="category<?php echo $category->id ?>" style="color:#<?php echo $category->color?>" onclick="showbigcalendar('bigcalendar<?php echo $many_sp_calendar; ?>', '<?php echo add_query_arg(array(
                 'action' => 'spiderbigcalendar_week_widget',
                 'theme_id' => $theme_id,
@@ -731,14 +729,26 @@ foreach($categories as $category)
                 'widget' => $widget,
 				'TB_iframe' => 1,
                 ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"> <?php echo  $category->title ?></p></li>
-
-
 <?php
-
-
 }
-
-echo '</ul>';
+if (!empty($categories)) {
+?>
+<li style="height:30px"><p class="categories1" style="background-color:<?php echo $bg;?>">&nbsp;&nbsp;&nbsp;&nbsp;</p><p class="categories2" id="category0" style="color:<?php echo $bg; ?>" onclick="showbigcalendar('bigcalendar<?php echo $many_sp_calendar; ?>', '<?php echo add_query_arg(array(
+                'action' => 'spiderbigcalendar_week_widget',
+                'theme_id' => $theme_id,
+                'calendar' => $calendar_id,
+                'select' => $view_select,
+				'months' => $prev_month . ',' . $this_month . ',' . $next_month,
+                'date' => $year . '-' . $month . '-' . add_0($day),
+                'many_sp_calendar' => $many_sp_calendar,
+                'cur_page_url' => $path_sp_cal,
+				'cat_id' => '',
+				'cat_ids' => '',
+                'widget' => $widget,
+				'TB_iframe' => 1,
+                ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"><?php echo __('All categories', 'sp_calendar'); ?></p></li>
+<?php echo '</ul>';
+}
 }
   die();
 }

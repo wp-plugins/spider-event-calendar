@@ -341,5 +341,9 @@ msgstr "Zaterdag"
 msgid "Sunday"
 msgstr "Zondag"
 
+#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/views.php:760
+msgid "All categories"
+msgstr "Alle categorieën"
+
 #~ msgid "No Repeat"
 #~ msgstr "No Repeat"

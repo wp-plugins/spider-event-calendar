@@ -105,16 +105,15 @@ $cat_ids = substr($cat_ids, 0,-1);
 	 else{
 		$order_by = " ORDER BY STR_TO_DATE( SUBSTRING( time, 1, 7 ) ,  '%h:%i%p' )";
 	 }
+    
+  if($cat_ids!='' and preg_match("/^[0-9\,]+$/", $cat_ids)) {
   
-  if($cat_ids!=''){
-			$rows = $wpdb->get_results($wpdb->prepare ("SELECT " . $wpdb->prefix . "spidercalendar_event.*," . $wpdb->prefix . "spidercalendar_event_category.color  from " . $wpdb->prefix . "spidercalendar_event JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category = " . $wpdb->prefix . "spidercalendar_event_category.id where " . $wpdb->prefix . "spidercalendar_event_category.published=1 and " . $wpdb->prefix . "spidercalendar_event.category IN (%s) and " . $wpdb->prefix . "spidercalendar_event.published=1 and ( ( (date<=%s or date like %s) and  (date_end>=%s ) or date_end='0000-00-00'  ) or ( date_end is Null and date like %s ) ) and calendar=%d ".$order_by."  ",$cat_ids,substr( $date,0,7).'-01',substr( $date,0,7)."%",substr( $date,0,7).'-01',substr( $date,0,7)."%",$calendar));
-			
+			$query = $wpdb->prepare ("SELECT " . $wpdb->prefix . "spidercalendar_event.*," . $wpdb->prefix . "spidercalendar_event_category.color  from " . $wpdb->prefix . "spidercalendar_event JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category = " . $wpdb->prefix . "spidercalendar_event_category.id where " . $wpdb->prefix . "spidercalendar_event_category.published=1 and " . $wpdb->prefix . "spidercalendar_event.category IN (".$cat_ids.") and " . $wpdb->prefix . "spidercalendar_event.published=1 and ( ( (date<=%s or date like %s) and  (date_end>=%s ) or date_end='0000-00-00'  ) or ( date_end is Null and date like %s ) ) and calendar=%d", substr( $date,0,7).'-01',substr( $date,0,7)."%",substr( $date,0,7).'-01',substr( $date,0,7)."%",$calendar);
 			}
-		else{
-			 $rows = $wpdb->get_results($wpdb->prepare("SELECT * from " . $wpdb->prefix . "spidercalendar_event where published=1 and ( ( (date<=%s or date like %s) and  date_end>=%s) or ( date_end is Null and date like %s ) ) and calendar=%d   ", "" . substr($date, 0, 7) . "-01", "" . substr($date, 0, 7) . "%", "" . substr($date, 0, 7) . "-01", "" . substr($date, 0, 7) . "%", $calendar)." ".$order_by." ");
-  
-  }
-  
+   else{
+			$query = $wpdb->prepare("SELECT * from " . $wpdb->prefix . "spidercalendar_event where published=1 and ( ( (date<=%s or date like %s) and  date_end>=%s) or ( date_end is Null and date like %s ) ) and calendar=%d   ", "" . substr($date, 0, 7) . "-01", "" . substr($date, 0, 7) . "%", "" . substr($date, 0, 7) . "-01", "" . substr($date, 0, 7) . "%", $calendar);
+			}
+  $rows = $wpdb->get_results($query." ".$order_by);
   
   
   $id_array = array();
@@ -593,14 +592,14 @@ $cat_ids = substr($cat_ids, 0,-1);
 		$order_by = " ORDER BY STR_TO_DATE( SUBSTRING( time, 1, 7 ) ,  '%h:%i%p' )";
 	 } 
   
-  if($cat_ids!=''){
-			$rows = $wpdb->get_results($wpdb->prepare ("SELECT " . $wpdb->prefix . "spidercalendar_event.*,	" . $wpdb->prefix . "spidercalendar_event_category.color  from " . $wpdb->prefix . "spidercalendar_event JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category = " . $wpdb->prefix . "spidercalendar_event_category.id 	where " . $wpdb->prefix . "spidercalendar_event_category.published=1 and " . $wpdb->prefix . "spidercalendar_event.category IN (%s) and " . $wpdb->prefix . "spidercalendar_event.published=1 and ( ( (date<=%s	or date like %s) and  (date_end>=%s ) or date_end='0000-00-00'  ) or ( date_end is Null and date like %s ) ) and calendar=%d  ".$order_by." ",$cat_ids,substr( $date,0,7).'-01',substr( $date,0,7)."%",	substr( $date,0,7).'-01',substr( $date,0,7)."%",$calendar));
-			
-			}
-		else{
-			 $rows = $wpdb->get_results($wpdb->prepare("SELECT * from " . $wpdb->prefix . "spidercalendar_event where published=1 and ((date_end>=%s) or (date_end=%s)) and calendar=%d", "" . substr($date, 0, 7) . "-01", "0000-00-00", $calendar)." ".$order_by." ");
-  }
+  if($cat_ids!='' and preg_match("/^[0-9\,]+$/", $cat_ids)){
   
+			$query = $wpdb->prepare ("SELECT " . $wpdb->prefix . "spidercalendar_event.*,	" . $wpdb->prefix . "spidercalendar_event_category.color  from " . $wpdb->prefix . "spidercalendar_event JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category = " . $wpdb->prefix . "spidercalendar_event_category.id 	where " . $wpdb->prefix . "spidercalendar_event_category.published=1 and " . $wpdb->prefix . "spidercalendar_event.category IN (".$cat_ids.") and " . $wpdb->prefix . "spidercalendar_event.published=1 and ( ( (date<=%s	or date like %s) and  (date_end>=%s ) or date_end='0000-00-00'  ) or ( date_end is Null and date like %s ) ) and calendar=%d ",substr( $date,0,7).'-01',substr( $date,0,7)."%",	substr( $date,0,7).'-01',substr( $date,0,7)."%",$calendar);	
+			}
+	else{
+			 $query = $wpdb->prepare("SELECT * from " . $wpdb->prefix . "spidercalendar_event where published=1 and ((date_end>=%s) or (date_end=%s)) and calendar=%d", "" . substr($date, 0, 7) . "-01", "0000-00-00", $calendar);
+  }
+  $rows = $wpdb->get_results($query." ".$order_by);
   
 			
   

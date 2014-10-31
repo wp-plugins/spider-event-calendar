@@ -973,15 +973,24 @@ foreach($categories as $category)
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
                 ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar ?>','<?php echo $widget; ?>')"> <?php echo  $category->title ?></p></li>
-
-
 <?php
-
-
+} 
+if (!empty($categories)) {
+?>
+<li style="height:30px"><p class="categories1" style="background-color:<?php echo $bg;?>">&nbsp;&nbsp;&nbsp;&nbsp;</p><p class="categories2" id="category0" style="color:#<?php echo $bg; ?>" onclick="showbigcalendar('bigcalendar<?php echo $many_sp_calendar; ?>', '<?php echo add_query_arg(array(
+                'action' => 'spiderbigcalendar_month_widget',
+                'theme_id' => $theme_id,
+                'calendar' => $calendar_id,
+                'select' => $view_select,
+                'date' => $year . '-' . add_0((Month_num($month))),
+                'many_sp_calendar' => $many_sp_calendar,
+                'cur_page_url' => $path_sp_cal,
+				'cat_id' => '',
+				'cat_ids' => '',
+                'widget' => $widget,
+                ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar ?>','<?php echo $widget; ?>')"><?php echo __('All categories', 'sp_calendar'); ?></p></li>
+<?php echo '</ul><br><br>';
 }
-
-echo '</ul><br><br>';
-
   die();
 }
 

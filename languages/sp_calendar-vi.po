@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: spider_calendar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-13 17:09+0400\n"
-"PO-Revision-Date: 2013-08-13 17:11+0400\n"
+"PO-Revision-Date: 2014-10-27 12:40+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: vi\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.6.3\n"
 "X-Poedit-SearchPath-0: C:\\wamp\\www\\wordpress3.5\\wp-content\\plugins"
 "\\spider-event-calendar\n"
 
@@ -341,6 +341,10 @@ msgstr "Thứ bảy"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:963
 msgid "Sunday"
 msgstr "Chủ nhật"
+
+#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/views.php:760
+msgid "All categories"
+msgstr "Tất cả các loại"
 
 #~ msgid "No Repeat"
 #~ msgstr "Không Lặp lại"
