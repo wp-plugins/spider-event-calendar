@@ -144,6 +144,9 @@ Vietnamese (vi)
 
 == Changelog ==
 
+= 1.4.11 =
+Added "All Categories" button to all views
+
 = 1.4.10 =
 bug fixed
 
