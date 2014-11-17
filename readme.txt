@@ -145,13 +145,13 @@ Vietnamese (vi)
 == Changelog ==
 
 = 1.4.11 =
-Added "All Categories" button to all views
+Added "All Categories" button to all views 
 
 = 1.4.10 =
-bug fixed
+bug fixed  
 
 = 1.4.9 =
-when the current day is sunday the calendar will not show the set bordercolor for the current day bug fixed
+when the current day is sunday the calendar will not show the set bordercolor for the current day bug fixed  
 
 = 1.4.8 =
 warning in list view fixed
