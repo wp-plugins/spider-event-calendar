@@ -46,7 +46,6 @@ Different categories created for the calendar will be displayed as a legend belo
 * Filtering possibility in the front end: when clicking upon the category legend it will display events of that category only.    
 * Possibility to display multiple events for a single day.   
 * Possibility to include custom HTML, e.g. images in the event description.       
-* The events of the Upcoming events widget, as well as their sequence and number can be customized from widget area.     
 * Possibility of displaying/hiding the category legend below the calendar.    
 * Possibility of selecting the start day of the week (Monday, Sunday).   
 * Possibility of defining the default view, as well as view options for the calendar widget.
