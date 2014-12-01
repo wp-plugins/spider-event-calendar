@@ -75,6 +75,7 @@ Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-cal
 *   Possibility of displaying/hiding the category legend below the calendar widget.  
 *   Possibility of selecting the start day of the week (Monday, Sunday).   
 *   Possibility to select calendar date style in the popup.    
+*   Possibility to set a number of events to be displayed within a single day   
 
 
 ###IMPORTANT: If you think you found a bug in Spider Calendar or have any problem/question concerning the plugin, please check out [Support Forum](http://web-dorado.com/forum/spider-calendar-wordpress.html) in our website. If you do not find a solution here, do not hesitate to contact us at [info@web-dorado.com](mailto:info@web-dorado.com).
