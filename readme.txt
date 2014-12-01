@@ -27,37 +27,35 @@ Different categories created for the calendar will be displayed as a legend belo
   
 = Features of Spider Event Calendar: =    
 
-* 100% responsive. Fully compatible with all mobile devices.
-* You can add unlimited number of calendars, event categories and unlimited number of events for each calendar.  
-* [WordPress Calendar](http://web-dorado.com/products/wordpress-calendar.html) can be used as a plugin and as a widget as well.  
-* Separate upcoming events widget to display upcoming events in a list. The widget features are customizable.
-* With a simple click on the date on the Calendar you will see the events and their descriptions recorded for that day.  
-* Spider Event Calendar supports events that last more than one day.  
-* Possibility to set the month and the year initially displayed on the calendar (option to display any particular month instead of the current month on the calendar).  
-* Possibility to select calendar date style in the popup.    
-* Possibility of displaying events repeating on a specific day of week on a weekly, monthly and even yearly basis.       
-* Possibily of displaying single-day events.   
-* Possibility to choose month display format in the Spider Event Calendar.    
-* Option of displaying from one to four views (Month, List, Week and Day).   
-* Possibility of setting one of the view options as a default one.    
-* An option to create categories.     
-* Possibility to assign a category for each event.   
-* Option of having different colors for each category.   
-* Filtering possibility in the front end: when clicking upon the category legend it will display events of that category only.    
-* Possibility to display multiple events for a single day.   
-* Possibility to include custom HTML, e.g. images in the event description.       
-* Possibility of displaying/hiding the category legend below the calendar.    
-* Possibility of selecting the start day of the week (Monday, Sunday).   
-* Possibility of defining the default view, as well as view options for the calendar widget.
-* Colors and fonts of the Upcoming events widget can be customized from the widget area.  
-* Possibility to include only the events and not the calendar as whole in a list form with Upcoming Events widget.    
-* Calendar widget uses lightbox for displaying events similar to the large calendar.   
-* Possibility of searching and browsing event in the back end for easier and quick editing.   
-* Possibility to display events of only specific categories, when pressing the mentioned category labels below.   
-* Possibility to use the same color for the event categories (legend display below the calendars) for a uni-color design.
-* Support for both 12-hour and 24-hour time options.
-* All categories legend for displaying all events or returning to original state after hitting a specific category
-* Support for recurring events  
+*   100% responsive. Fully compatible with all mobile devices.
+*   You can add unlimited number of calendars, event categories and unlimited number of events for each calendar.  
+*   [WordPress Calendar](http://web-dorado.com/products/wordpress-calendar.html) can be used as a plugin and as a widget as well.  
+*   Separate upcoming events widget to display upcoming events in a list. The widget features are customizable.
+*   With a simple click on the date on the Calendar you will see the events and their descriptions recorded for that day.  
+*   Spider Event Calendar supports events that last more than one day.  
+*   Possibility to set the month and the year initially displayed on the calendar (option to display any particular month instead of the current month on the calendar).  
+*   Possibility of displaying events repeating on a specific day of week on a weekly, monthly and even yearly basis.       
+*   Possibily of displaying single-day events.   
+*   Possibility to choose month display format in the Spider Event Calendar.    
+*   Option of displaying from one to four views (Month, List, Week and Day).   
+*   Possibility of setting one of the view options as a default one.    
+*   An option to create categories.     
+*   Possibility to assign a category for each event.   
+*   Option of having different colors for each category.   
+*   Filtering possibility in the front end: when clicking upon the category legend it will display events of that category only.    
+*   Possibility to display multiple events for a single day.   
+*   Possibility to include custom HTML, e.g. images in the event description.       
+*   Possibility of displaying/hiding the category legend below the calendar.    
+*   Possibility of defining the default view, as well as view options for the calendar widget.
+*   Colors and fonts of the Upcoming events widget can be customized from the widget area.  
+*   Possibility to include only the events and not the calendar as whole in a list form with Upcoming Events widget.    
+*   Calendar widget uses lightbox for displaying events similar to the large calendar.   
+*   Possibility of searching and browsing event in the back end for easier and quick editing.   
+*   Possibility to display events of only specific categories, when pressing the mentioned category labels below.   
+*   Possibility to use the same color for the event categories (legend display below the calendars) for a uni-color design.
+*   Support for both 12-hour and 24-hour time options.
+*   All categories legend for displaying all events or returning to original state after hitting a specific category
+*   Support for recurring events  
 
 Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-calendar.html) to add features:   
 
@@ -74,7 +72,9 @@ Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-cal
 *   Possibility to define the main border radius, color and width in the Spider Event Calendar.   
 *   You have also possibility to change popup window parameters in the Spider Event Calendar.    
 *   Possibility to add new themes based on the default theme.   
-*   Possibility of displaying/hiding the category legend below the calendar widget.
+*   Possibility of displaying/hiding the category legend below the calendar widget.  
+*   Possibility of selecting the start day of the week (Monday, Sunday).   
+*   Possibility to select calendar date style in the popup.    
 
 
 ###IMPORTANT: If you think you found a bug in Spider Calendar or have any problem/question concerning the plugin, please check out [Support Forum](http://web-dorado.com/forum/spider-calendar-wordpress.html) in our website. If you do not find a solution here, do not hesitate to contact us at [info@web-dorado.com](mailto:info@web-dorado.com).
