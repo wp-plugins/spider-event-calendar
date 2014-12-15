@@ -56,6 +56,7 @@ Different categories created for the calendar will be displayed as a legend belo
 *   Support for both 12-hour and 24-hour time options.
 *   All categories legend for displaying all events or returning to original state after hitting a specific category
 *   Support for recurring events  
+*   Support for multiple calendars within a single page/post   
 
 Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-calendar.html) to add features:   
 
