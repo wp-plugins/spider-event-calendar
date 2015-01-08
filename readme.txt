@@ -149,7 +149,7 @@ Vietnamese (vi)
 Added "All Categories" button to all views 
 
 = 1.4.10 =
-bug fixed  
+bug fixed in frontend
 
 = 1.4.9 =
 when the current day is sunday the calendar will not show the set bordercolor for the current day bug fixed  
@@ -209,7 +209,7 @@ If you want to update the calendar plugin while preserving your existing calenda
     
 = Creating/Editing calendars. =    
     
-2.1 On the left menu select  Calendar>Calendars>Add a Calendar.	
+2.1 On the left menu select  Calendar ->Calendars ->Add a Calendar.	
 2.2 Title. Add a title for the calendar.	
 2.3 Default Year. Specify the year that is displayed by default.	
 2.4 Default month. Specify the month that is displayed by default.	
