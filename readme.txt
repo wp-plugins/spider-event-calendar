@@ -211,7 +211,7 @@ If you want to update the calendar plugin while preserving your existing calenda
     
 2.1 On the left menu select  Calendar ->Calendars ->Add a Calendar.	
 2.2 Title. Add a title for the calendar.	
-2.3 Default Year. Specify the year that is displayed by default.	
+2.3 Default Year. Specify the year that is displayed by default. Leave empty for current year.	
 2.4 Default month. Specify the month that is displayed by default.	
 2.5 Use 12 hours time format. Choose the format of the time for the calendar.	
 2.6 Published. Choose whether to publish the calendar or not.	
