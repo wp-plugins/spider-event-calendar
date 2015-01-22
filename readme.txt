@@ -196,10 +196,12 @@ categories and upcoming events
     
 1.	Log in to the administrator panel for installing the calendar.   
 2.	Go to Plugins Add >New >Upload.    
-3.	Click **Choose file** (**Browse**) and select the Spider Event Calendar zip file.    
+3.	Click **Choose file** (**Browse**) and select the Spider Event Calendar zip file.   
+*For Mac Users*     
+*Go to your Downloads folder and locate the folder with the Spider Event Calendar. Right-click on the folder and select Compress. Now you have a newly created .zip file which can be installed as described here.*    
 4.	Click **Upload&Install** button for uploading and installing the calendar.    
 5.	Click **Activate Plugin** button for activating the calendar plugin.    
-If the installation of the calendar succeeded you will see the message in the picture. If any problem occurs, during the installation of the calendar please contact us info@web-dorado.com.    
+6.	If the installation of the calendar succeeded you will see the message in the picture. If any problem occurs, during the installation of the calendar please contact us info@web-dorado.com.    
 
 1.3 Updating the calendar.  
 
