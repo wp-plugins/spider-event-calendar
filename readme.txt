@@ -56,7 +56,6 @@ Different categories created for the calendar will be displayed as a legend belo
 *   Support for both 12-hour and 24-hour time options.
 *   All categories legend for displaying all events or returning to original state after hitting a specific category
 *   Support for recurring events  
-*   Support for multiple calendars within a single page/post  
 
 Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-calendar.html) to add features:   
 
@@ -77,7 +76,6 @@ Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-cal
 *   Possibility of selecting the start day of the week (Monday, Sunday).   
 *   Possibility to select calendar date style in the popup.    
 *   Possibility to set a number of events to be displayed within a single day   
-*   Option of displaying repeat rate for the recurring events   
 
 ###IMPORTANT: If you think you found a bug in Spider Calendar or have any problem/question concerning the plugin, please check out [Support Forum](http://web-dorado.com/forum/spider-calendar-wordpress.html) in our website. If you do not find a solution here, do not hesitate to contact us at [info@web-dorado.com](mailto:info@web-dorado.com).
 
