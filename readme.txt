@@ -29,7 +29,7 @@ Different categories created for the calendar will be displayed as a legend belo
 
 *   100% responsive. Fully compatible with all mobile devices.
 *   You can add unlimited number of calendars, event categories and unlimited number of events for each calendar.  
-*   [WordPress Calendar](http://web-dorado.com/products/wordpress-calendar.html) can be used as a plugin and as a widget as well.  
+*   [WordPress Calendar](http://web-dorado.com/products/wordpress-calendar.html) can be used as a widget as well.  
 *   Separate upcoming events widget to display upcoming events in a list. The widget features are customizable.
 *   With a simple click on the date on the Calendar you will see the events and their descriptions recorded for that day.  
 *   Spider Event Calendar supports events that last more than one day.  
@@ -182,7 +182,7 @@ categories and upcoming events
 
   
   == Spider Event Calendar ==    
-= Step by step guide for the calendar installation,Installing the calendar =    
+= Step by step guide for the calendar installation,  Installing the calendar =    
 
 1.1 Minimum requirements for installing the WordPress Calendar.
 
@@ -262,7 +262,7 @@ There are 11 default calendar and widget themes. You can use one of the calendar
 4.3.2 Header background color. Choose the background color of the calendar header.	
 4.3.3 Current month font size. Define the font size of the calendar current month.	
 4.3.4 Current Month color. Choose the color of the calendar current month.	
-4.3.5 Current Month arrow color. Choose the color for the calendar*s current month arrow.	
+4.3.5 Current Month arrow color. Choose the color for the calendar's current month arrow.	
 4.3.6 Arrow size. Define the size of the arrow on the calendar.   	
 4.3.7 Names of the Weekdays color. Choose the color for the names of weekdays.	
 4.3.8 Names of the Weekdays cell height. Define the height of the cell for the names of weekdays.	
