@@ -180,6 +180,9 @@ bug fix, (width parameter problem), correct user manual links
 = 1.4 =
 categories and upcoming events
 
+= 1.0.0 =
+Initial version
+
   
   == Spider Event Calendar ==    
 = Step by step guide for the calendar installation,  Installing the calendar =    
