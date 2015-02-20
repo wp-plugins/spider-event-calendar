@@ -413,6 +413,39 @@ Alternatively, you can use Spider Event Calendar without the button on the toolb
 7.4 Select Default View. Select the default view from provided options (Month, List, Week and Day).   	
 7.5 Select Views. Select the views options (Month, List, Week and Day) for the calendar in the public view.   	
 7.6 Save the widget where the calendar is inserted.   	
+
+Step 8: Publishing the Upcoming Events widget.   
+In addition to the main widget you can also use Upcoming Events widget, which will display a custom list of upcoming events.     
+8.1 Add Upcoming Events Widget to the sidebar.   
+8.2 Title. Provide title for the widget.    
+8.3 Select Calendar. Select a calendar from the given list.   
+8.4 Select Theme for a widget. Select a theme for the widget from the given list.   
+8.5 Events to display. Choose among the display possibilities for the list.   
+8.5.1 Starting from current date.   
+Event quantity. Select the amount of events to be displayed with the widget.   
+8.5.2 Events in date interval.   
+Starting from.Select whether to start with the current day or choose a custom day to start the list.   
+Select start date.Choose the start date for the event list.   
+Following days quantity.Define the amount of days you want the event list to include events from.   
+Events quantity.Define the amount of events to be displayed in the event list.   
+Ordering.Choose whether to have the events displayed randomly or ordered. When random, specified amount of events will be randomly generated from the entire list of events within the provided interval.   
+8.5.3 Selected Events.   
+Select events from list.Click on Add button to specify the events you want to show in the events list.   
+8.6 Show Event Date.Choose whether to display the event date in the list or not.   
+8.7 Show Event Repeat Rate. Choose whether to display the event repeat rate in the list or not.   
+8.8 Show Event Text. Choose whether to display the event details in the list or not.   
+8.9 Show Numbering.Choose whether to have the listed events.    
+8.10 Width. Define the width of the widget.   
+8.11 Background Color.Select the background color for the widget.    
+8.12 Event Title Color.Choose the title color for the events.   
+8.13 Event Title Font Size.Define the font size for the event titles.   
+8.14 Event Title Font.Specify the font family for the event titles.   
+8.15 Event Date Color.Choose the color to display the event dates.   
+8.16 Event Date Format.Choose the date format for the events.   
+8.17 Event Repeat Rate Color.Choose the color to display the repeat rate line.   
+8.18 Event Text Color.Select the text color for the events.   
+8.19 Divider Color.Select the color to be used with the divider.   
+8.20 Save the widget.    
     
 
   
