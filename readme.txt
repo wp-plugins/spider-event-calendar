@@ -140,6 +140,30 @@ Vietnamese (vi)
 6.  WordPress Event Calendar - Edit Theme	
 
 
+== Frequently Asked Questions ==
+
+= 1. Can  Spider Calendar display more than one event per day? =
+You can add multiple events per single day. The first event will be displayed in the Month view with a hyperlink “See More”. Upon clicking “See More” the list of the events will be displayed in a pop-up.  
+
+= 2. Is it possible to translate the Spider Calendar into another language? =
+It is only possible to translate the front end of the plugin. To do so, you should set define('WPLANG','[lang_code]') to the desired language code in wp_config.php file of your website. This way the plugin should be translated automatically. Please be informed, that you can modify the translations from wp-content/plugins/spider_event_calendar/languages/ (you will need POEdit http://www.poedit.net/download.php). 
+
+= 3. Can I insert a picture in an event? = 
+Yes, you can insert any HTML, including images into the text (and even in the title) of an event.  
+
+= 4. Can I create recurring events? =
+Yes, there are multiple options for creating recurring events, including events which repeat  on a daily, monthly, weekly or yearly basis (the options can be set from the back end). 
+
+= 5. Is it possible to change the month and the year initially displayed on the calendar? =  
+Yes, when creating the calendar you can change both the initial year and display month. If you leave the year blank it will display the current year. For the month you can select a specific month from the dropdown list or leave it to “current” option.
+
+= 6. Is it possible to edit the events by the user from front end or back end? =
+It is only possible to add events from the back end by the Administrator role user.  
+
+= 7. Why do I need separate upcoming events widget? =
+In addition to the typical calendar which comes as a plugin and widget, you also get an upcoming events widget. It displays the upcoming events with a list view. The theme and its overall appearance can be modified within the widget area. 
+
+
 == Changelog ==
 
 = 1.4.11 =
