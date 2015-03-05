@@ -41,8 +41,8 @@ $calendar = $wpdb->get_results("SHOW COLUMNS FROM ".$wpdb->prefix."spidercalenda
 	
 	
 	
-if ($calexist1==0) {
-    if ($calexist==1) {
+if ($calexist1 == 0) {
+    if ($calexist == 0) {
       $sql = "ALTER TABLE " . $wpdb->prefix . "spidercalendar_calendar ADD start_month varchar(255);";
       $wpdb->query($sql);
     }

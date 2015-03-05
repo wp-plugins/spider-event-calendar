@@ -145,7 +145,7 @@ function html_show_spider_calendar($rows, $pageNav, $sort) {
     </table>
     <?php
     if (isset($_POST['serch_or_not']) && ($_POST['serch_or_not'] == "search")) {
-      $serch_value = $_POST['search_events_by_title'];
+      $serch_value = esc_js(esc_html(stripslashes($_POST['search_events_by_title'])));
     }
     else {
       $serch_value = "";
@@ -209,9 +209,9 @@ function html_show_spider_calendar($rows, $pageNav, $sort) {
         <?php } ?>
       </tbody>
     </table>
-    <input type="hidden" name="id_for_playlist" id="id_for_playlist" value="<?php if (isset($_POST['id_for_playlist'])) echo $_POST['id_for_playlist'];?>"/>
-    <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if (isset($_POST['asc_or_desc'])) echo $_POST['asc_or_desc'];?>"/>
-    <input type="hidden" name="order_by" id="order_by" value="<?php if (isset($_POST['order_by'])) echo $_POST['order_by'];?>"/>
+    <input type="hidden" name="id_for_playlist" id="id_for_playlist" value="<?php if (isset($_POST['id_for_playlist'])) echo esc_js(esc_html(stripslashes($_POST['id_for_playlist'])));?>"/>
+    <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if (isset($_POST['asc_or_desc'])) echo esc_js(esc_html(stripslashes($_POST['asc_or_desc'])));?>"/>
+    <input type="hidden" name="order_by" id="order_by" value="<?php if (isset($_POST['order_by'])) echo esc_js(esc_html(stripslashes($_POST['order_by'])));?>"/>
     <?php
     ?>
   </form>
@@ -643,7 +643,7 @@ function show_event_category($rows, $pageNav, $sort){
     </table>
     <?php
     if (isset($_POST['serch_or_not']) && ($_POST['serch_or_not'] == "search")) {
-      $serch_value = $_POST['search_cat_by_title'];
+      $serch_value = esc_js(esc_html(stripslashes($_POST['search_cat_by_title'])));
     }
     else {
       $serch_value = "";
@@ -710,9 +710,9 @@ function show_event_category($rows, $pageNav, $sort){
         <?php } ?>
       </tbody>
     </table>
-    <input type="hidden" name="id_for_playlist" id="id_for_playlist" value="<?php if (isset($_POST['id_for_playlist'])) echo $_POST['id_for_playlist'];?>"/>
-    <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if (isset($_POST['asc_or_desc'])) echo $_POST['asc_or_desc'];?>"/>
-    <input type="hidden" name="order_by" id="order_by" value="<?php if (isset($_POST['order_by'])) echo $_POST['order_by'];?>"/>
+    <input type="hidden" name="id_for_playlist" id="id_for_playlist" value="<?php if (isset($_POST['id_for_playlist'])) echo esc_js(esc_html(stripslashes($_POST['id_for_playlist'])));?>"/>
+    <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if (isset($_POST['asc_or_desc'])) echo esc_js(esc_html(stripslashes($_POST['asc_or_desc'])));?>"/>
+    <input type="hidden" name="order_by" id="order_by" value="<?php if (isset($_POST['order_by'])) echo esc_js(esc_html(stripslashes($_POST['order_by'])));?>"/>
     <?php
     ?>
   </form>
@@ -996,13 +996,13 @@ else
   </table>
   <?php
   if (isset($_POST['serch_or_not']) && ($_POST['serch_or_not'] == "search")) {
-    $serch_value = $_POST['search_events_by_title'];
+    $serch_value = esc_js(esc_html(stripslashes($_POST['search_events_by_title'])));
   }
   else {
     $serch_value = "";
   }
-  $startdate = (isset($_POST["startdate"]) ? esc_html($_POST["startdate"]) : '');
-  $enddate = (isset($_POST["enddate"]) ? esc_html($_POST["enddate"]) : '');
+  $startdate = (isset($_POST["startdate"]) ? esc_js(esc_html(stripslashes($_POST["startdate"]))) : '');
+  $enddate = (isset($_POST["enddate"]) ? esc_js(esc_html(stripslashes($_POST["enddate"]))) : '');
   $serch_fields = '
     <div class="alignleft actions">
     	<label for="search_events_by_title" style="font-size:14px">Title: </label>
@@ -1088,8 +1088,8 @@ else
     </tbody>
   </table>
   <input type="hidden" name="boxchecked" value="0">
-  <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if (isset($_POST['asc_or_desc'])) echo $_POST['asc_or_desc']; ?>"/>
-  <input type="hidden" name="order_by" id="order_by" value="<?php if (isset($_POST['order_by'])) echo $_POST['order_by']; ?>"/>
+  <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if (isset($_POST['asc_or_desc'])) echo esc_js(esc_html(stripslashes($_POST['asc_or_desc']))); ?>"/>
+  <input type="hidden" name="order_by" id="order_by" value="<?php if (isset($_POST['order_by'])) echo esc_js(esc_html(stripslashes($_POST['order_by']))); ?>"/>
   <?php
   ?>
 </form>
@@ -1167,13 +1167,13 @@ function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name)
   </table>
   <?php
   if (isset($_POST['serch_or_not']) && ($_POST['serch_or_not'] == "search")) {
-    $serch_value = $_POST['search_events_by_title'];
+    $serch_value = esc_js(esc_html(stripslashes($_POST['search_events_by_title'])));
   }
   else {
     $serch_value = "";
   }
-  $startdate = (isset($_POST["startdate"]) ? esc_html($_POST["startdate"]) : '');
-  $enddate = (isset($_POST["enddate"]) ? esc_html($_POST["enddate"]) : '');
+  $startdate = (isset($_POST["startdate"]) ? esc_js(esc_html(stripslashes($_POST["startdate"]))) : '');
+  $enddate = (isset($_POST["enddate"]) ? esc_js(esc_html(stripslashes($_POST["enddate"]))) : '');
   $serch_fields = '
     <div class="alignleft actions">
     	<label for="search_events_by_title" style="font-size:14px">Title: </label>
@@ -1257,9 +1257,9 @@ function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name)
       <?php } ?>
     </tbody>
   </table>
-  <input type="hidden" name="id_for_playlist" id="id_for_playlist" value="<?php if (isset($_POST['id_for_playlist'])) echo $_POST['id_for_playlist']; ?>"/>
-  <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if (isset($_POST['asc_or_desc'])) echo $_POST['asc_or_desc']; ?>"/>
-  <input type="hidden" name="order_by" id="order_by" value="<?php if (isset($_POST['order_by'])) echo $_POST['order_by']; ?>"/>
+  <input type="hidden" name="id_for_playlist" id="id_for_playlist" value="<?php if (isset($_POST['id_for_playlist'])) echo esc_js(esc_html(stripslashes($_POST['id_for_playlist']))); ?>"/>
+  <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if (isset($_POST['asc_or_desc'])) echo esc_js(esc_html(stripslashes($_POST['asc_or_desc']))); ?>"/>
+  <input type="hidden" name="order_by" id="order_by" value="<?php if (isset($_POST['order_by'])) echo esc_js(esc_html(stripslashes($_POST['order_by']))); ?>"/>
   <?php
   ?>
 </form>

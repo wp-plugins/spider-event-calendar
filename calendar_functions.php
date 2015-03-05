@@ -36,7 +36,7 @@ else $calendar_id="0";
       $order = "ORDER BY " . $sort["sortid_by"] . " DESC";
     }
     if ($_POST['page_number']) {
-      $limit = (esc_html($_POST['page_number'])- 1) * 20;
+      $limit = (esc_sql(esc_html(stripslashes($_POST['page_number'])))- 1) * 20;
     }
     else {
       $limit = 0;
@@ -46,7 +46,7 @@ else $calendar_id="0";
     $limit = 0;
   }
   if (isset($_POST['search_events_by_title'])) {
-    $search_tag = esc_html($_POST['search_events_by_title']);
+    $search_tag = esc_sql(esc_html(stripslashes($_POST['search_events_by_title'])));
   }
   else {
     $search_tag = "";
@@ -91,7 +91,7 @@ function show_spider_calendar() {
   $sort["1_or_2"] = "2";
   if (isset($_POST['page_number'])) {
     if (isset($_POST['order_by']) && esc_html($_POST['order_by']) != '') {
-      $sort["sortid_by"] = esc_sql(esc_html($_POST['order_by']));
+      $sort["sortid_by"] = esc_sql(esc_html(stripslashes($_POST['order_by'])));
     }
     if (isset($_POST['asc_or_desc']) && (esc_html($_POST['asc_or_desc']) == 1)) {
       $sort["custom_style"] = "manage-column column-title sorted asc";
@@ -104,7 +104,7 @@ function show_spider_calendar() {
       $order = "ORDER BY " . $sort["sortid_by"] . " DESC";
     }
     if (isset($_POST['page_number']) && (esc_html($_POST['page_number']))) {
-      $limit = (esc_html($_POST['page_number']) - 1) * 20;
+      $limit = (esc_sql(esc_html(stripslashes($_POST['page_number']))) - 1) * 20;
     }
     else {
       $limit = 0;
@@ -114,7 +114,7 @@ function show_spider_calendar() {
     $limit = 0;
   }
   if (isset($_POST['search_events_by_title'])) {
-    $search_tag = esc_html($_POST['search_events_by_title']);
+    $search_tag = esc_sql(esc_html(stripslashes($_POST['search_events_by_title'])));
   }
   else {
     $search_tag = "";
@@ -145,7 +145,7 @@ function show_event_cat(){
   $sort["1_or_2"] = "2";
   if (isset($_POST['page_number'])) {
     if (isset($_POST['order_by']) && esc_html($_POST['order_by']) != '') {
-      $sort["sortid_by"] = esc_sql( esc_html($_POST['order_by']));
+      $sort["sortid_by"] = esc_sql(esc_html(stripslashes($_POST['order_by'])));
     }
     if (isset($_POST['asc_or_desc']) && (esc_html($_POST['asc_or_desc']) == 1)) {
       $sort["custom_style"] = "manage-column column-title sorted asc";
@@ -158,7 +158,7 @@ function show_event_cat(){
       $order = "ORDER BY " . $sort["sortid_by"] . " DESC";
     }
     if (isset($_POST['page_number']) && (esc_html($_POST['page_number']))) {
-      $limit = (esc_html($_POST['page_number']) - 1) * 20;
+      $limit = (esc_sql(esc_html(stripslashes($_POST['page_number']))) - 1) * 20;
     }
     else {
       $limit = 0;
@@ -168,7 +168,7 @@ function show_event_cat(){
     $limit = 0;
   }
   if (isset($_POST['search_cat_by_title'])) {
-    $search_tag = esc_html($_POST['search_cat_by_title']);
+    $search_tag = esc_sql(esc_html(stripslashes($_POST['search_cat_by_title'])));
   }
   else {
     $search_tag = "";
@@ -236,10 +236,10 @@ function save_spider_category_event() {
   }
   */
   if(isset($_POST['title'])){
-	  $title = (isset($_POST["title"]) ? esc_html(stripslashes($_POST["title"])) : '');
+	  $title = (isset($_POST["title"]) ? esc_sql(esc_html(stripslashes($_POST["title"]))) : '');
 	  $published = (isset($_POST["published"]) ? (int) $_POST["published"] : 1);
-	  $color = (isset($_POST["color"]) ? esc_html(stripslashes($_POST["color"])) : '');
-	  $description = (isset($_POST["description"]) ? esc_html(stripslashes($_POST["description"])) : '');
+	  $color = (isset($_POST["color"]) ? esc_sql(esc_html(stripslashes($_POST["color"]))) : '');
+	  $description = (isset($_POST["description"]) ? esc_sql(esc_html(stripslashes($_POST["description"]))) : '');
 	  global $wpdb;
 	 
 		$save_or_no = $wpdb->insert($wpdb->prefix . 'spidercalendar_event_category', array(
@@ -291,10 +291,10 @@ function spider_category_published($id) {
 
 function apply_spider_category_event($id) {
 
-	  $title = (isset($_POST["title"]) ? esc_html(stripslashes($_POST["title"])) : '');
+	  $title = (isset($_POST["title"]) ? esc_sql(esc_html(stripslashes($_POST["title"]))) : '');
 	  $published = (isset($_POST["published"]) ? (int) $_POST["published"] : 1);
-	  $color = (isset($_POST["color"]) ? esc_html(stripslashes($_POST["color"])) : '');
-	  $description = (isset($_POST["description"]) ? esc_html(stripslashes($_POST["description"])) : '');
+	  $color = (isset($_POST["color"]) ? esc_sql(esc_html(stripslashes($_POST["color"]))) : '');
+	  $description = (isset($_POST["description"]) ? esc_sql(esc_html(stripslashes($_POST["description"]))) : '');
 	  global $wpdb;
 
 
@@ -319,12 +319,12 @@ function apply_spider_calendar($id) {
     exit;
   }
 if(isset($_POST['title'])){
-  $title = (isset($_POST["title"]) ? esc_html(stripslashes($_POST["title"])) : '');
-  $user_type = (isset($_POST["user_type"]) ? esc_html($_POST["user_type"]) : '');
+  $title = (isset($_POST["title"]) ? esc_sql(esc_html(stripslashes($_POST["title"]))) : '');
+  $user_type = (isset($_POST["user_type"]) ? esc_sql(esc_html(stripslashes($_POST["user_type"]))) : '');
   $time_format = (isset($_POST["time_format"]) ? (int) $_POST["time_format"] : 0);
-  $def_year = (isset($_POST["def_year"]) ? esc_html($_POST["def_year"]) : '');
-  $def_month = (isset($_POST["def_month"]) ? esc_html($_POST["def_month"]) : '');
-  $allow_publish = (isset($_POST["allow_publish"]) ? esc_html($_POST["allow_publish"]) : '');
+  $def_year = (isset($_POST["def_year"]) ? esc_sql(esc_html(stripslashes($_POST["def_year"]))) : '');
+  $def_month = (isset($_POST["def_month"]) ? esc_sql(esc_html(stripslashes($_POST["def_month"]))) : '');
+  $allow_publish = (isset($_POST["allow_publish"]) ? esc_sql(esc_html(stripslashes($_POST["allow_publish"]))) : '');
   $published = (isset($_POST["published"]) ? (int) $_POST["published"] : 1);
   global $wpdb;
   if ($id === -1) {
@@ -422,7 +422,7 @@ global $wpdb;
   $sort["1_or_2"] = "2";
   if (isset($_POST['page_number'])) {
     if (isset($_POST['order_by']) && esc_html($_POST['order_by']) != '') {
-      $sort["sortid_by"] =esc_sql(  esc_html($_POST['order_by']));
+      $sort["sortid_by"] =esc_sql(esc_html(stripslashes($_POST['order_by'])));
     }
     if (isset($_POST['asc_or_desc']) && (esc_html($_POST['asc_or_desc']) == 1)) {
       $sort["custom_style"] = "manage-column column-title sorted asc";
@@ -435,7 +435,7 @@ global $wpdb;
       $order = "ORDER BY " . $sort["sortid_by"] . " DESC";
     }
     if (isset($_POST['page_number']) && (esc_html($_POST['page_number']))) {
-      $limit = (esc_html($_POST['page_number']) - 1) * 20;
+      $limit = (esc_sql(esc_html(stripslashes($_POST['page_number']))) - 1) * 20;
     }
     else {
       $limit = 0;
@@ -445,7 +445,7 @@ global $wpdb;
     $limit = 0;
   }
   if (isset($_POST['search_events_by_title'])) {
-    $search_tag = esc_html($_POST['search_events_by_title']);
+    $search_tag = esc_sql(esc_html(stripslashes($_POST['search_events_by_title'])));
   }
   else {
     $search_tag = "";
@@ -457,10 +457,10 @@ global $wpdb;
     $where = '';
   }
   if (isset($_POST['startdate']) && esc_html($_POST['startdate'])) {
-    $where .= ' AND ' . $wpdb->prefix . 'spidercalendar_event.date > \'' . esc_sql( esc_html($_POST['startdate']) ) . '\' ';
+    $where .= ' AND ' . $wpdb->prefix . 'spidercalendar_event.date > \'' . esc_sql(esc_html(stripslashes($_POST['startdate']))) . '\' ';
   }
   if (isset($_POST['enddate']) && $_POST['enddate']) {
-    $where .= ' AND ' . $wpdb->prefix . 'spidercalendar_event.date < \'' .esc_sql( esc_html($_POST['enddate']) ). '\' ';
+    $where .= ' AND ' . $wpdb->prefix . 'spidercalendar_event.date < \'' .esc_sql(esc_html(stripslashes($_POST['enddate']))). '\' ';
   }
   // Get the total number of records.
   $query = $wpdb->prepare ("SELECT COUNT(*) FROM " . $wpdb->prefix . "spidercalendar_event WHERE calendar=%d " . $where . " ", $calendar_id);
@@ -499,29 +499,29 @@ function edit_spider_event($calendar_id, $id) {
 function apply_spider_event($calendar_id, $id) {
   global $wpdb;
   if(isset($_POST['title'])){
-  $title = ((isset($_POST['title'])) ? esc_html(stripslashes($_POST['title'])) : '');
-  $category = ((isset($_POST['category'])) ? esc_html(stripslashes($_POST['category'])) : '');
-  $text_for_date = ((isset($_POST['text_for_date'])) ? stripslashes($_POST['text_for_date']) : '');
+  $title = ((isset($_POST['title'])) ? esc_sql(esc_html(stripslashes($_POST['title']))) : '');
+  $category = ((isset($_POST['category'])) ? esc_sql(esc_html(stripslashes($_POST['category']))) : '');
+  $text_for_date = ((isset($_POST['text_for_date'])) ? esc_sql(esc_html(stripslashes($_POST['text_for_date']))) : '');
   $published = ((isset($_POST['published'])) ? (int) $_POST['published'] : 1);
-  $repeat = ((isset($_POST['repeat'])) ? esc_html($_POST['repeat']) : '');
-  $week = ((isset($_POST['week'])) ? esc_html($_POST['week']) : '');
-  $month = ((isset($_POST['month'])) ? esc_html($_POST['month']) : '');
-  $monthly_list = ((isset($_POST['monthly_list'])) ? esc_html($_POST['monthly_list']) : '');
-  $month_type = ((isset($_POST['month_type'])) ? esc_html($_POST['month_type']) : '');
-  $month_week = ((isset($_POST['month_week'])) ? esc_html($_POST['month_week']) : '');
-  $year_month = ((isset($_POST['year_month'])) ? esc_html($_POST['year_month']) : '');
-  $repeat_method = ((isset($_POST['repeat_method'])) ? esc_html($_POST['repeat_method']) : 'no_repeat');
-  $date = ((isset($_POST['date'])) ? esc_html($_POST['date']) : '');
-  $date_end = ((isset($_POST['date_end'])) ? esc_html($_POST['date_end']) : '');
+  $repeat = ((isset($_POST['repeat'])) ? esc_sql(esc_html(stripslashes($_POST['repeat']))) : '');
+  $week = ((isset($_POST['week'])) ? esc_sql(esc_html(stripslashes($_POST['week']))) : '');
+  $month = ((isset($_POST['month'])) ? esc_sql(esc_html(stripslashes($_POST['month']))) : '');
+  $monthly_list = ((isset($_POST['monthly_list'])) ? esc_sql(esc_html(stripslashes($_POST['monthly_list']))) : '');
+  $month_type = ((isset($_POST['month_type'])) ? esc_sql(esc_html(stripslashes($_POST['month_type']))) : '');
+  $month_week = ((isset($_POST['month_week'])) ? esc_sql(esc_html(stripslashes($_POST['month_week']))) : '');
+  $year_month = ((isset($_POST['year_month'])) ? esc_sql(esc_html(stripslashes($_POST['year_month']))) : '');
+  $repeat_method = ((isset($_POST['repeat_method'])) ? esc_sql(esc_html(stripslashes($_POST['repeat_method']))) : 'no_repeat');
+  $date = ((isset($_POST['date'])) ? esc_sql(esc_html(stripslashes($_POST['date']))) : '');
+  $date_end = ((isset($_POST['date_end'])) ? esc_sql(esc_html(stripslashes($_POST['date_end']))) : '');
   if ($date_end == '' && $repeat_method != 'no_repeat') {
     $date_end = '2070-12-12';
   }
-  $select_from = ((isset($_POST['select_from'])) ? esc_html($_POST['select_from']) : '');
-  $select_to = ((isset($_POST['select_to'])) ? esc_html($_POST['select_to']) : '');
-  $selhour_from = ((isset($_POST['selhour_from'])) ? esc_html($_POST['selhour_from']) : '');
-  $selhour_to = ((isset($_POST['selhour_to'])) ? esc_html($_POST['selhour_to']) : '');
-  $selminute_from = ((isset($_POST['selminute_from'])) ? esc_html($_POST['selminute_from']) : '');
-  $selminute_to = ((isset($_POST['selminute_to'])) ? esc_html($_POST['selminute_to']) : '');
+  $select_from = ((isset($_POST['select_from'])) ? esc_sql(esc_html(stripslashes($_POST['select_from']))) : '');
+  $select_to = ((isset($_POST['select_to'])) ? esc_sql(esc_html(stripslashes($_POST['select_to']))) : '');
+  $selhour_from = ((isset($_POST['selhour_from'])) ? esc_sql(esc_html(stripslashes($_POST['selhour_from']))) : '');
+  $selhour_to = ((isset($_POST['selhour_to'])) ? esc_sql(esc_html(stripslashes($_POST['selhour_to']))) : '');
+  $selminute_from = ((isset($_POST['selminute_from'])) ? esc_sql(esc_html(stripslashes($_POST['selminute_from']))) : '');
+  $selminute_to = ((isset($_POST['selminute_to'])) ? esc_sql(esc_html(stripslashes($_POST['selminute_to']))) : '');
   if ($selhour_from) {
     if ($selhour_to) {
       $time = $selhour_from . ':' . $selminute_from . '' . $select_from . '-' . $selhour_to . ':' . $selminute_to . '' . $select_to;

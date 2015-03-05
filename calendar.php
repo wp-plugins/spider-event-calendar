@@ -4,7 +4,7 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: http://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.4.12
+Version: 1.4.13
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -328,11 +328,11 @@ function spider_calendar_quick_update() {
   global $wpdb;
   if (isset($_POST['calendar_id']) && isset($_POST['calendar_title']) && isset($_POST['us_12_format_sp_calendar']) && isset($_POST['default_year']) && isset($_POST['default_month'])) {
     $wpdb->update($wpdb->prefix . 'spidercalendar_calendar', array(
-        'title' => $_POST['calendar_title'],
-        'time_format' => $_POST['us_12_format_sp_calendar'],
-        'def_year' => $_POST['default_year'],
-        'def_month' => $_POST['default_month'],
-      ), array('id' => $_POST['calendar_id']), array(
+        'title' => esc_sql(esc_html(stripslashes($_POST['calendar_title']))),
+        'time_format' => esc_sql(esc_html(stripslashes($_POST['us_12_format_sp_calendar']))),
+        'def_year' => esc_sql(esc_html(stripslashes($_POST['default_year']))),
+        'def_month' => esc_sql(esc_html(stripslashes($_POST['default_month']))),
+      ), array('id' => esc_sql(esc_html(stripslashes($_POST['calendar_id'])))), array(
         '%s',
         '%d',
         '%s',
