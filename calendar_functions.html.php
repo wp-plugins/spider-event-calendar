@@ -117,7 +117,8 @@ function html_show_spider_calendar($rows, $pageNav, $sort) {
     }
   </script>
   <form method="post" onKeyPress="doNothing()" action="admin.php?page=SpiderCalendar" id="admin_form" name="admin_form">
-    <table cellspacing="10" width="100%" id="calendar_table">
+    <?php $sp_cal_nonce = wp_create_nonce('nonce_sp_cal'); ?>
+	<table cellspacing="10" width="100%" id="calendar_table">
       <tr>
         <td width="100%" style="font-size:14px; font-weight:bold">
           <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a>
@@ -203,12 +204,13 @@ function html_show_spider_calendar($rows, $pageNav, $sort) {
         </td>
         <td><a href="admin.php?page=SpiderCalendar&task=show_manage_event&calendar_id=<?php echo $rows[$i]->id; ?>">Manage events</a></td>
         <td><a <?php if (!$rows[$i]->published) echo 'style="color:#C00"'; ?>
-          href="admin.php?page=SpiderCalendar&task=published&id=<?php echo $rows[$i]->id; ?>"><?php if ($rows[$i]->published) echo 'Yes'; else echo 'No'; ?></a>
+          href="admin.php?page=SpiderCalendar&task=published&id=<?php echo $rows[$i]->id; ?>&_wpnonce=<?php echo $sp_cal_nonce; ?>"><?php if ($rows[$i]->published) echo 'Yes'; else echo 'No'; ?></a>
         </td>
       </tr>
         <?php } ?>
       </tbody>
     </table>
+	<?php wp_nonce_field('nonce_sp_cal', 'nonce_sp_cal'); ?>
     <input type="hidden" name="id_for_playlist" id="id_for_playlist" value="<?php if (isset($_POST['id_for_playlist'])) echo esc_js(esc_html(stripslashes($_POST['id_for_playlist'])));?>"/>
     <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if (isset($_POST['asc_or_desc'])) echo esc_js(esc_html(stripslashes($_POST['asc_or_desc'])));?>"/>
     <input type="hidden" name="order_by" id="order_by" value="<?php if (isset($_POST['order_by'])) echo esc_js(esc_html(stripslashes($_POST['order_by'])));?>"/>
@@ -345,6 +347,7 @@ function html_add_spider_calendar() {
         </td>
       </tr>
     </table>
+	<?php wp_nonce_field('nonce_sp_cal', 'nonce_sp_cal'); ?>
     <input type="hidden" name="option" value="com_spidercalendar"/>
     <input type="hidden" name="id" value=""/>
     <input type="hidden" name="cid[]" value=""/>
@@ -480,6 +483,7 @@ function html_edit_spider_calendar($row) {
         </td>
       </tr>
     </table>
+	<?php wp_nonce_field('nonce_sp_cal', 'nonce_sp_cal'); ?>
     <input type="hidden" name="option" value="com_spidercalendar"/>
     <input type="hidden" name="id" value="<?php echo $row->id; ?>"/>
     <input type="hidden" name="cid[]" value="<?php echo $row->id; ?>"/>
@@ -614,7 +618,8 @@ function show_event_category($rows, $pageNav, $sort){
     }
   </script>
   <form method="post" onKeyPress="doNothing()" action="admin.php?page=spider_calendar_event_category" id="admin_form" name="admin_form">
-    <table cellspacing="10" width="100%" id="category_table">
+    <?php $sp_cal_nonce = wp_create_nonce('nonce_sp_cal'); ?>
+	<table cellspacing="10" width="100%" id="category_table">
       <tr>
         <td width="100%" style="font-size:14px; font-weight:bold">
           <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a>
@@ -704,12 +709,13 @@ function show_event_category($rows, $pageNav, $sort){
           </div>
         </td>
         <td><?php echo $rows[$i]->description; ?></td>
-        <td><a <?php if (!$rows[$i]->published) echo 'style="color:#C00"'; ?> href="admin.php?page=spider_calendar_event_category&task=published&id=<?php echo $rows[$i]->id; ?>"><?php if ($rows[$i]->published) echo 'Yes'; else echo 'No'; ?></a>
+        <td><a <?php if (!$rows[$i]->published) echo 'style="color:#C00"'; ?> href="admin.php?page=spider_calendar_event_category&task=published&id=<?php echo $rows[$i]->id; ?>&_wpnonce=<?php echo $sp_cal_nonce; ?>"><?php if ($rows[$i]->published) echo 'Yes'; else echo 'No'; ?></a>
         </td>
       </tr>
         <?php } ?>
       </tbody>
     </table>
+	<?php wp_nonce_field('nonce_sp_cal', 'nonce_sp_cal'); ?>
     <input type="hidden" name="id_for_playlist" id="id_for_playlist" value="<?php if (isset($_POST['id_for_playlist'])) echo esc_js(esc_html(stripslashes($_POST['id_for_playlist'])));?>"/>
     <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if (isset($_POST['asc_or_desc'])) echo esc_js(esc_html(stripslashes($_POST['asc_or_desc'])));?>"/>
     <input type="hidden" name="order_by" id="order_by" value="<?php if (isset($_POST['order_by'])) echo esc_js(esc_html(stripslashes($_POST['order_by'])));?>"/>
@@ -807,7 +813,8 @@ $row=$wpdb->get_row($wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spiderca
                 </table>
                 
      </fieldset >  
-       </div>              
+       </div>
+<?php wp_nonce_field('nonce_sp_cal', 'nonce_sp_cal'); ?>	   
 <input type="hidden" name="id" value="<?php echo $id ?>" />
 </form>
 				<?php		
@@ -1087,6 +1094,7 @@ else
       <?php } ?>
     </tbody>
   </table>
+  <?php wp_nonce_field('nonce_sp_cal', 'nonce_sp_cal'); ?>
   <input type="hidden" name="boxchecked" value="0">
   <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if (isset($_POST['asc_or_desc'])) echo esc_js(esc_html(stripslashes($_POST['asc_or_desc']))); ?>"/>
   <input type="hidden" name="order_by" id="order_by" value="<?php if (isset($_POST['order_by'])) echo esc_js(esc_html(stripslashes($_POST['order_by']))); ?>"/>
@@ -1136,7 +1144,8 @@ function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name)
     }
   </script>
   <form method="post" onKeyPress="doNothing()" action="admin.php?page=SpiderCalendar&task=show_manage_event&calendar_id=<?php echo $calendar_id; ?>" id="admin_form" name="admin_form">
-    <table cellspacing="10" width="95%">
+    <?php $sp_cal_nonce = wp_create_nonce('nonce_sp_cal'); ?>
+	<table cellspacing="10" width="95%">
     <tr>
       <td width="100%" style="font-size:14px; font-weight:bold">
         <a href="http://web-dorado.com/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
@@ -1243,15 +1252,16 @@ function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name)
       <td><?php if ($rows[$i]->date_end != '0000-00-00' && $rows[$i]->date_end != '2070-12-12') echo $rows[$i]->date . ' - ' . $rows[$i]->date_end; else echo $rows[$i]->date; ?></td>
       <td><?php echo $rows[$i]->time ?></td>
 	  <td><?php echo $rows[$i]->cattitle ?></td>
-      <td><a <?php if (!$rows[$i]->published) echo 'style="color:#C00"'; ?>
-        href="admin.php?page=SpiderCalendar&calendar_id=<?php echo $calendar_id; ?>&task=published_event&id=<?php echo $rows[$i]->id; ?>"><?php if ($rows[$i]->published)
-        echo 'Yes'; else echo 'No'; ?></a>
+      <td>
+	    <a <?php if (!$rows[$i]->published) echo 'style="color:#C00"'; ?> href="admin.php?page=SpiderCalendar&calendar_id=<?php echo $calendar_id; ?>&task=published_event&id=<?php echo $rows[$i]->id; ?>&_wpnonce=<?php echo $sp_cal_nonce; ?>"><?php if ($rows[$i]->published)
+          echo 'Yes'; else echo 'No'; ?>
+		</a>
       </td>
       <td>
         <a href="admin.php?page=SpiderCalendar&calendar_id=<?php echo $calendar_id; ?>&task=edit_event&id=<?php echo $rows[$i]->id; ?>">Edit</a>
       </td>
       <td>
-        <a href="admin.php?page=SpiderCalendar&calendar_id=<?php echo $calendar_id; ?>&task=remove_event&id=<?php echo $rows[$i]->id; ?>">Delete</a>
+        <a href="admin.php?page=SpiderCalendar&calendar_id=<?php echo $calendar_id; ?>&task=remove_event&id=<?php echo $rows[$i]->id; ?>&_wpnonce=<?php echo $sp_cal_nonce; ?>">Delete</a>
       </td>
     </tr>
       <?php } ?>
@@ -1746,6 +1756,7 @@ ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spide
         </td>
       </tr>
     </table>
+	<?php wp_nonce_field('nonce_sp_cal', 'nonce_sp_cal'); ?>
     <input type="hidden" name="option" value="com_spidercalendar"/>
     <input type="hidden" name="task" value=""/>
     <input type="hidden" name="calendar" value=""/>
@@ -2273,6 +2284,7 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
         </td>
       </tr>
     </table>
+	<?php wp_nonce_field('nonce_sp_cal', 'nonce_sp_cal'); ?>
     <input type="hidden" name="option" value="com_spidercalendar"/>
     <input type="hidden" name="id" value="<?php echo $row->id; ?>"/>
     <input type="hidden" name="cid[]" value="<?php echo $row->id; ?>"/>

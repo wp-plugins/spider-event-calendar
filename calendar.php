@@ -4,7 +4,7 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: http://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.4.13
+Version: 1.4.14
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -633,24 +633,31 @@ function Manage_Spider_Calendar() {
       add_spider_calendar();
       break;
     case 'published';
+	  $nonce_sp_cal = $_REQUEST['_wpnonce'];
+	  if (! wp_verify_nonce($nonce_sp_cal, 'nonce_sp_cal') )
+   	    die("Are you sure you want to do this?");
       spider_calendar_published($id);
       show_spider_calendar();
       break;
     case 'Save':
       if (!$id) {
+	    check_admin_referer('nonce_sp_cal', 'nonce_sp_cal');
         apply_spider_calendar(-1);
       }
       else {
+	    check_admin_referer('nonce_sp_cal', 'nonce_sp_cal');
         apply_spider_calendar($id);
       }
       show_spider_calendar();
       break;
     case 'Apply':
       if (!$id) {
+	    check_admin_referer('nonce_sp_cal', 'nonce_sp_cal');
         apply_spider_calendar(-1);
         $id = $wpdb->get_var("SELECT MAX(id) FROM " . $wpdb->prefix . "spidercalendar_calendar");
       }
       else {
+	    check_admin_referer('nonce_sp_cal', 'nonce_sp_cal');
         apply_spider_calendar($id);
       }
       edit_spider_calendar($id);
@@ -659,6 +666,7 @@ function Manage_Spider_Calendar() {
       edit_spider_calendar($id);
       break;
     case 'remove_calendar':
+	  check_admin_referer('nonce_sp_cal', 'nonce_sp_cal');
       remove_spider_calendar($id);
       show_spider_calendar();
       break;
@@ -671,18 +679,22 @@ function Manage_Spider_Calendar() {
       break;
     case 'save_event':
       if ($id) {
+	    check_admin_referer('nonce_sp_cal', 'nonce_sp_cal');
         apply_spider_event($calendar_id, $id);
       }
       else {
+	    check_admin_referer('nonce_sp_cal', 'nonce_sp_cal');
         apply_spider_event($calendar_id, -1);
       }
       show_spider_event($calendar_id);
       break;
     case 'apply_event':
       if ($id) {
+	    check_admin_referer('nonce_sp_cal', 'nonce_sp_cal');
         apply_spider_event($calendar_id, $id);
       }
       else {
+	    check_admin_referer('nonce_sp_cal', 'nonce_sp_cal');
         apply_spider_event($calendar_id, -1);
         $id = $wpdb->get_var("SELECT MAX(id) FROM " . $wpdb->prefix . "spidercalendar_event");
       }
@@ -692,10 +704,16 @@ function Manage_Spider_Calendar() {
       edit_spider_event($calendar_id, $id);
       break;
     case 'remove_event':
+	  $nonce_sp_cal = $_REQUEST['_wpnonce'];
+	  if (! wp_verify_nonce($nonce_sp_cal, 'nonce_sp_cal') ) 
+	    die("Are you sure you want to do this?");
       remove_spider_event($calendar_id, $id);
       show_spider_event($calendar_id);
       break;
     case 'published_event';
+	  $nonce_sp_cal = $_REQUEST['_wpnonce'];
+	  if (! wp_verify_nonce($nonce_sp_cal, 'nonce_sp_cal') )
+   	    die("Are you sure you want to do this?");
       published_spider_event($calendar_id, $id);
       show_spider_event($calendar_id);
       break;
@@ -735,11 +753,13 @@ switch($task){
 
 	case 'save_category_event':
 	if(!$id){
+	    check_admin_referer('nonce_sp_cal', 'nonce_sp_cal');
 		save_spider_category_event();
 		$id = $wpdb->get_var("SELECT MAX(id) FROM " . $wpdb->prefix . "spidercalendar_event_category");
 		}
 		else
 		{
+		check_admin_referer('nonce_sp_cal', 'nonce_sp_cal');
 		apply_spider_category_event($id);
 		}
 		show_event_cat();
@@ -747,10 +767,12 @@ switch($task){
 		
 	case 'apply_event_category':
 	 if (!$id) {
+	    check_admin_referer('nonce_sp_cal', 'nonce_sp_cal');
         save_spider_category_event();
         $id = $wpdb->get_var("SELECT MAX(id) FROM " . $wpdb->prefix . "spidercalendar_event_category");
       }
       else {
+	    check_admin_referer('nonce_sp_cal', 'nonce_sp_cal');
         apply_spider_category_event($id);
       }
       edit_event_category($id);
@@ -762,10 +784,14 @@ switch($task){
 		break;
 		
 	case 'remove_event_category':	
+		check_admin_referer('nonce_sp_cal', 'nonce_sp_cal');
 		remove_category_event($id);
 		show_event_cat();
 		break;
 	case 'published':
+		$nonce_sp_cal = $_REQUEST['_wpnonce'];
+		if (! wp_verify_nonce($nonce_sp_cal, 'nonce_sp_cal') )
+	      die("Are you sure you want to do this?");
 		spider_category_published($id);
 		show_event_cat();
 		break;
