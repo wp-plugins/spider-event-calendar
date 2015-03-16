@@ -141,6 +141,8 @@ Vietnamese (vi)
 
 
 == Changelog ==
+= 1.4.14 =
+bug fixed in upcoming events widget
 
 = 1.4.11 =
 Added "All Categories" button to all views 
