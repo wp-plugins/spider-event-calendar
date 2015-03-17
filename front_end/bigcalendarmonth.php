@@ -11,7 +11,7 @@ function big_calendar_month() {
   $path_sp_cal = (isset($_GET['cur_page_url']) ? esc_html($_GET['cur_page_url']) : '');
   $query = "SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar where id=".$calendar_id."";
   $calendar = $wpdb->query($query);
-
+  $site_url = get_option( "home", get_site_url()).'/wp-admin/admin-ajax.php';
 
   ///////////////////////////////////////////////////////////////////////////////////
   
@@ -431,7 +431,7 @@ min-height: 30px;
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
 				'rand' => $many_sp_calendar,
-                ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" ><span style="color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px"><?php echo __('Day', 'sp_calendar'); ?></span>
+                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" ><span style="color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px"><?php echo __('Day', 'sp_calendar'); ?></span>
             </div>
             <div class="views" style="<?php if (!in_array('week', $views) AND $defaultview != 'week') echo 'display:none;'; if ($view == 'bigcalendarweek') echo 'background-color:' . $bg_top . ';top:0;' ?>"
               onclick="showbigcalendar('bigcalendar<?php echo $many_sp_calendar; ?>', '<?php echo add_query_arg(array(
@@ -447,7 +447,7 @@ min-height: 30px;
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
 				'rand' => $many_sp_calendar,
-                ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" ><span style="color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px"><?php echo __('Week', 'sp_calendar'); ?></span>
+                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" ><span style="color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px"><?php echo __('Week', 'sp_calendar'); ?></span>
             </div>
             <div class="views" style="<?php if (!in_array('list', $views) AND $defaultview != 'list') echo 'display:none;'; if ($view == 'bigcalendarlist') echo 'background-color:' . $bg_top . ';top:0;' ?>"
               onclick="showbigcalendar('bigcalendar<?php echo $many_sp_calendar; ?>', '<?php echo add_query_arg(array(
@@ -462,7 +462,7 @@ min-height: 30px;
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
 				'rand' => $many_sp_calendar,
-                ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"><span style="color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px"><?php echo __('List', 'sp_calendar'); ?></span>
+                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"><span style="color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px"><?php echo __('List', 'sp_calendar'); ?></span>
             </div>
             <div class="views" style="<?php if (!in_array('month', $views) AND $defaultview != 'month') echo 'display:none;'; if ($view == 'bigcalendarmonth') echo 'background-color:' . $bg_top . ';top:0;'; ?>"
               onclick="showbigcalendar('bigcalendar<?php echo $many_sp_calendar; ?>', '<?php echo add_query_arg(array(
@@ -477,7 +477,7 @@ min-height: 30px;
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
 				'rand' => $many_sp_calendar,
-                ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" ><span style="color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px"><?php echo __('Month', 'sp_calendar'); ?></span>
+                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" ><span style="color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px"><?php echo __('Month', 'sp_calendar'); ?></span>
             </div>
           </div>
 
@@ -503,7 +503,7 @@ min-height: 30px;
 				'cat_id' => '',
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
-                ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"  >
+                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"  >
 <span style="position:relative;top:25%;color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px">Day</span>
 </div>
 </li>
@@ -521,7 +521,7 @@ min-height: 30px;
 				'cat_id' => '',
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
-                ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')">
+                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')">
 	<span style="position:relative;top:25%;color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px">Week</span>
 </div>
 </li>
@@ -538,7 +538,7 @@ min-height: 30px;
 				'cat_id' => '',
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
-                ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" >
+                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" >
 <span style="position:relative;top:25%;color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px">List</span>
 </div>
 </li>
@@ -555,7 +555,7 @@ min-height: 30px;
 				'cat_id' => '',
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
-                ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" >
+                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" >
 <span style="position:relative;top:25%;color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px">Month</span></div></li>
 
 </ul>
@@ -585,7 +585,7 @@ min-height: 30px;
 								'cat_id' => '',
 								'cat_ids' => $cat_ids,
                                 'widget' => $widget,
-                                ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" style="text-align:center; cursor:pointer; width:100%; background-color:#000000; filter:alpha(opacity=30); opacity:0.3;">
+                                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" style="text-align:center; cursor:pointer; width:100%; background-color:#000000; filter:alpha(opacity=30); opacity:0.3;">
                               <span style="font-size:18px;color:#FFF"><?php echo $year - 1; ?></span>
                             </div>
                           </td>
@@ -608,7 +608,7 @@ min-height: 30px;
 								'cat_id' => '',
 								'cat_ids' => $cat_ids,
                                 'widget' => $widget,
-                                ), admin_url('admin-ajax.php'));
+                                ), $site_url);
                               ?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')">&#9664;
                             </a>
                           </td>
@@ -635,7 +635,7 @@ min-height: 30px;
 								'cat_id' => '',
 								'cat_ids' => $cat_ids,
                                 'widget' => $widget,
-                                ), admin_url('admin-ajax.php'));
+                                ), $site_url);
                               ?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')">&#9654;
                             </a>
                           </td>
@@ -652,7 +652,7 @@ min-height: 30px;
 								'cat_id' => '',
 								'cat_ids' => $cat_ids,
                                 'widget' => $widget,
-                                ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" style="text-align:center; cursor:pointer; width:100%; background-color:#000000; filter:alpha(opacity=30); opacity:0.3;">
+                                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" style="text-align:center; cursor:pointer; width:100%; background-color:#000000; filter:alpha(opacity=30); opacity:0.3;">
                               <span style="font-size:18px;color:#FFF"><?php echo $year + 1; ?></span>
                             </div>
                           </td>
@@ -808,7 +808,7 @@ $color=str_replace('#','',$color);
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height,
 							  'cat_id' => $cat_ids
-                              ), admin_url('admin-ajax.php')) . '"><b>' . style($ev_title[$j],$cat_color) . '</b>
+                              ), $site_url) . '"><b>' . style($ev_title[$j],$cat_color) . '</b>
                           </a>';
           }
           else {
@@ -826,7 +826,7 @@ $color=str_replace('#','',$color);
                               'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height,
-                              ), admin_url('admin-ajax.php')) . '"><b>' . __('See more', 'sp_calendar') . '</b>
+                              ), $site_url) . '"><b>' . __('See more', 'sp_calendar') . '</b>
                           </a>';
             break;
           }
@@ -868,7 +868,7 @@ $color=str_replace('#','',$color);
                               'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height,
-                              ), admin_url('admin-ajax.php')) . '"><b>' . style($ev_title[$j],$cat_color) . '</b>
+                              ), $site_url) . '"><b>' . style($ev_title[$j],$cat_color) . '</b>
                           </a>';
             }
             else {
@@ -886,7 +886,7 @@ $color=str_replace('#','',$color);
                               'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height,
-                              ), admin_url('admin-ajax.php')) . '"><b>' . __('See more', 'sp_calendar') . '</b>
+                              ), $site_url) . '"><b>' . __('See more', 'sp_calendar') . '</b>
                           </a>';
               break;
             }
@@ -916,7 +916,7 @@ $color=str_replace('#','',$color);
 				$cat_color=category_color($ev_id[$j]);
 		
           if ($r < $number_of_shown_evetns) {
-            echo '        <a class="thickbox-previewbigcalendar' . $many_sp_calendar . '" style="background:none; color:' . $event_title_color . ';"
+            echo '       <a class="thickbox-previewbigcalendar' . $many_sp_calendar . '" style="background:none; color:' . $event_title_color . ';"
                             href="' . add_query_arg(array(
                               'action' => 'spidercalendarbig',
                               'theme_id' => $theme_id,
@@ -930,7 +930,7 @@ $color=str_replace('#','',$color);
                               'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height,
-                              ), admin_url('admin-ajax.php')) . '"><b>' . style($ev_title[$j],$cat_color) . '</b>
+                              ), $site_url) . '"><b>' . style($ev_title[$j],$cat_color) . '</b>
                           </a>';
           }
           else {
@@ -948,7 +948,7 @@ $color=str_replace('#','',$color);
                               'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height,
-                              ), admin_url('admin-ajax.php')) . '"><b>' . __('See more', 'sp_calendar') . '</b>
+                              ), $site_url) . '"><b>' . __('See more', 'sp_calendar') . '</b>
                           </a>';
             break;
           }
@@ -993,7 +993,7 @@ $color=str_replace('#','',$color);
                                 'TB_iframe' => 1,
                                 'tbWidth' => $popup_width,
                                 'tbHeight' => $popup_height,
-                                ), admin_url('admin-ajax.php')) . '"><b>' . style($ev_title[$j],$cat_color) . '</b>
+                                ), $site_url) . '"><b>' . style($ev_title[$j],$cat_color) . '</b>
                             </a>';
           }
           else {
@@ -1011,7 +1011,7 @@ $color=str_replace('#','',$color);
                                 'TB_iframe' => 1,
                                 'tbWidth' => $popup_width,
                                 'tbHeight' => $popup_height,
-                                ), admin_url('admin-ajax.php')) . '"><b>' . __('See more', 'sp_calendar') . '</b>
+                                ), $site_url) . '"><b>' . __('See more', 'sp_calendar') . '</b>
                             </a>';
             break;
           }
@@ -1052,7 +1052,7 @@ $color=str_replace('#','',$color);
                               'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height,
-                              ), admin_url('admin-ajax.php')) . '"><b>' . style($ev_title[$j],$cat_color) . '</b>
+                              ), $site_url) . '"><b>' . style($ev_title[$j],$cat_color) . '</b>
                           </a>';
               }
               else {
@@ -1070,7 +1070,7 @@ $color=str_replace('#','',$color);
                               'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height,
-                              ), admin_url('admin-ajax.php')) . '"><b>' . __('See more', 'sp_calendar') . '</b>
+                              ), $site_url) . '"><b>' . __('See more', 'sp_calendar') . '</b>
                           </a>';
                 break;
               }
@@ -1114,7 +1114,7 @@ if (in_array($i, $array_days)) {
                               'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height,
-                              ), admin_url('admin-ajax.php')) . '"><b>' . style($ev_title[$j],$cat_color) . '</b>
+                              ), $site_url) . '"><b>' . style($ev_title[$j],$cat_color) . '</b>
                           </a>';
             }
             else {
@@ -1131,7 +1131,7 @@ if (in_array($i, $array_days)) {
                               'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height,
-                              ), admin_url('admin-ajax.php')) . '"><b>' . __('See more', 'sp_calendar') . '</b>
+                              ), $site_url) . '"><b>' . __('See more', 'sp_calendar') . '</b>
                           </a></p>';
               break;
             }
@@ -1283,7 +1283,7 @@ foreach($categories as $category)
 				'cat_id' => $category->id,
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
-                ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"> <?php echo  $category->title ?></p></li>
+                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"> <?php echo  $category->title ?></p></li>
 
 
 <?php } 
@@ -1300,7 +1300,7 @@ if (!empty($categories)) {
 				'cat_id' => '',
 				'cat_ids' => '',
                 'widget' => $widget,
-                ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"><?php echo __('All categories', 'sp_calendar'); ?></p></li>
+                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"><?php echo __('All categories', 'sp_calendar'); ?></p></li>
 <?php
 }
  echo '</ul><br><br>';

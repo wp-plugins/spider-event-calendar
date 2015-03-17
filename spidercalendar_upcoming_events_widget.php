@@ -782,7 +782,7 @@ href="' . add_query_arg(array(
 							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
-                              ), admin_url('admin-ajax.php')) . '"
+                              ), get_option( "home", get_site_url()).'/wp-admin/admin-ajax.php') . '"
  ></br><b>'. $isk++.'.'.$event_title.'</b></a></div>';
 
 }
@@ -799,7 +799,7 @@ href="' . add_query_arg(array(
 							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
-                              ), admin_url('admin-ajax.php')) . '" ></br><b>'.$event_title.'</b></a></div>';
+                              ), get_option( "home", get_site_url()).'/wp-admin/admin-ajax.php') . '" ></br><b>'.$event_title.'</b></a></div>';
 
 }	
 
@@ -995,7 +995,7 @@ href="' . add_query_arg(array(
 							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
-                              ), admin_url('admin-ajax.php')) . '" >'. __('See more', 'sp_calendar').'</a></div>';
+                              ), get_option( "home", get_site_url()).'/wp-admin/admin-ajax.php') . '" >'. __('See more', 'sp_calendar').'</a></div>';
 
 
 }
@@ -1333,7 +1333,7 @@ href="' . add_query_arg(array(
 							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
-                              ), admin_url('admin-ajax.php')) . '" ><b>'. $isk++.'.'.$event_title.'</b></a></div>';
+                              ), get_option( "home", get_site_url()).'/wp-admin/admin-ajax.php') . '" ><b>'. $isk++.'.'.$event_title.'</b></a></div>';
 }
 else
 {
@@ -1348,7 +1348,7 @@ href="' . add_query_arg(array(
 							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
-                              ), admin_url('admin-ajax.php')) . '" ><b>'.$event_title.'</b></a></div>';
+                              ), get_option( "home", get_site_url()).'/wp-admin/admin-ajax.php') . '" ><b>'.$event_title.'</b></a></div>';
 }
 	
 ?>
@@ -1470,7 +1470,7 @@ href="' . add_query_arg(array(
 							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
-                              ), admin_url('admin-ajax.php')) . '" >'. __('See more', 'sp_calendar').'</a></div>';
+                              ), get_option( "home", get_site_url()).'/wp-admin/admin-ajax.php') . '" >'. __('See more', 'sp_calendar').'</a></div>';
 
 }
 }
@@ -1738,7 +1738,7 @@ href="' . add_query_arg(array(
 							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
-                              ), admin_url('admin-ajax.php')) . '" ></br><b>'. $isk++.'.'.$event_title.'</b></a></div>';
+                              ), get_option( "home", get_site_url()).'/wp-admin/admin-ajax.php') . '" ></br><b>'. $isk++.'.'.$event_title.'</b></a></div>';
 }
 else
 {
@@ -1753,7 +1753,7 @@ href="' . add_query_arg(array(
 							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
-                              ), admin_url('admin-ajax.php')) . '" ></br><b>'.$event_title.'</b></a></div>';
+                              ), get_option( "home", get_site_url()).'/wp-admin/admin-ajax.php') . '" ></br><b>'.$event_title.'</b></a></div>';
 }
 	
 ?>
@@ -1877,7 +1877,7 @@ href="' . add_query_arg(array(
 							  'TB_iframe' => 1,
                               'tbWidth' => $popup_width,
                               'tbHeight' => $popup_height
-                              ), admin_url('admin-ajax.php')) . '" >'.__('See more', 'sp_calendar').'</a></div>';
+                              ), get_option( "home", get_site_url()).'/wp-admin/admin-ajax.php') . '" >'.__('See more', 'sp_calendar').'</a></div>';
 
 }
 }
@@ -2186,7 +2186,7 @@ $ev++;
 			</td>
 			<td>
             <?php global $sonan; ?>
-				<a href="<?php echo admin_url('admin-ajax.php'); ?>?action=upcoming&id_input=<?php echo $this->get_field_id('event_select');?>&w_id=<?php echo $this->get_field_id('title');?>&TB_iframe=1&tbWidth=1024&tbHeight=768" class="thickbox-preview<?php echo $sonan; ?>" id="<?php echo $id?>"  onclick="addcal(this,'<?php echo $this->get_field_id('calendar'); ?>','<?php echo $this->get_field_id('event_select');?>','<?php echo $this->get_field_id('title');?>')" rel="{handler: 'iframe', size: {x: 750, y: 450}}" >
+				<a href="<?php echo get_option( "home", get_site_url()).'/wp-admin/admin-ajax.php'; ?>?action=upcoming&id_input=<?php echo $this->get_field_id('event_select');?>&w_id=<?php echo $this->get_field_id('title');?>&TB_iframe=1&tbWidth=1024&tbHeight=768" class="thickbox-preview<?php echo $sonan; ?>" id="<?php echo $id?>"  onclick="addcal(this,'<?php echo $this->get_field_id('calendar'); ?>','<?php echo $this->get_field_id('event_select');?>','<?php echo $this->get_field_id('title');?>')" rel="{handler: 'iframe', size: {x: 750, y: 450}}" >
 
 				<img src="<?php echo plugins_url(); ?>/spider-event-calendar/front_end/images/add_but.png" class="hasTip" /> </a>
 				
@@ -2226,7 +2226,7 @@ $ev++;
 function addcal(x,y,z,f)
 {
 	var calendar=document.getElementById(y).value;
-	jQuery(x).attr('href','<?php echo admin_url('admin-ajax.php'); ?>?action=upcoming&id_input='+z+'&w_id='+f+'&upcalendar_id='+calendar+'&TB_iframe=1&tbWidth=1024&tbHeight=768');
+	jQuery(x).attr('href','<?php echo get_option( "home", get_site_url()).'/wp-admin/admin-ajax.php'; ?>?action=upcoming&id_input='+z+'&w_id='+f+'&upcalendar_id='+calendar+'&TB_iframe=1&tbWidth=1024&tbHeight=768');
 }
 </script> 
 	<table width="100%" class="paramlist admintable" cellpadding="3">

@@ -785,7 +785,6 @@ $row=$wpdb->get_row($wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spiderca
 			    <tr>
 					<td class="key"><label for="message"> <?php echo 'Description'; ?>:</label></td>
 					<td ><div id="poststuff" style="width:100% !important;">
-					
 					 <?php if(version_compare(get_bloginfo('version'),3.3)<0) {?>
 							<div id="<?php echo user_can_richedit() ? 'postdivrich' : 'postdiv'; ?>" class="postarea"><?php the_editor(stripslashes($row->description),"description","title" ); ?>
 							</div>

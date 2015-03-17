@@ -239,7 +239,7 @@ function save_spider_category_event() {
 	  $title = (isset($_POST["title"]) ? esc_sql(esc_html(stripslashes($_POST["title"]))) : '');
 	  $published = (isset($_POST["published"]) ? (int) $_POST["published"] : 1);
 	  $color = (isset($_POST["color"]) ? esc_sql(esc_html(stripslashes($_POST["color"]))) : '');
-	  $description = (isset($_POST["description"]) ? esc_sql(esc_html(stripslashes($_POST["description"]))) : '');
+	  $description = preg_replace('#<script(.*?)>(.*?)</script>#is', '', stripslashes($_POST["description"]));
 	  global $wpdb;
 	 
 		$save_or_no = $wpdb->insert($wpdb->prefix . 'spidercalendar_event_category', array(
@@ -294,7 +294,7 @@ function apply_spider_category_event($id) {
 	  $title = (isset($_POST["title"]) ? esc_sql(esc_html(stripslashes($_POST["title"]))) : '');
 	  $published = (isset($_POST["published"]) ? (int) $_POST["published"] : 1);
 	  $color = (isset($_POST["color"]) ? esc_sql(esc_html(stripslashes($_POST["color"]))) : '');
-	  $description = (isset($_POST["description"]) ? esc_sql(esc_html(stripslashes($_POST["description"]))) : '');
+	  $description = preg_replace('#<script(.*?)>(.*?)</script>#is', '', stripslashes($_POST["description"]));
 	  global $wpdb;
 
 
@@ -500,8 +500,8 @@ function apply_spider_event($calendar_id, $id) {
   global $wpdb;
   if(isset($_POST['title'])){
   $title = ((isset($_POST['title'])) ? esc_sql(esc_html(stripslashes($_POST['title']))) : '');
-  $category = ((isset($_POST['category'])) ? esc_sql(esc_html(stripslashes($_POST['category']))) : '');
-  $text_for_date = ((isset($_POST['text_for_date'])) ? esc_sql(esc_html(stripslashes($_POST['text_for_date']))) : '');
+  $category = ((isset($_POST['category'])) ? esc_sql(esc_html(stripslashes($_POST['category']))) : ''); 
+  $text_for_date = preg_replace('#<script(.*?)>(.*?)</script>#is', '', stripslashes($_POST["text_for_date"]));
   $published = ((isset($_POST['published'])) ? (int) $_POST['published'] : 1);
   $repeat = ((isset($_POST['repeat'])) ? esc_sql(esc_html(stripslashes($_POST['repeat']))) : '');
   $week = ((isset($_POST['week'])) ? esc_sql(esc_html(stripslashes($_POST['week']))) : '');
