@@ -11,7 +11,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. 
 == Description ==    
-  
+WordPress event calendar is a FREE user-friendly responsive plugin to manage multiple recurring events and with various options.  
+    
 [WordPress Calendar](http://web-dorado.com/products/wordpress-calendar.html)  
 [Demo](http://wpdemo.web-dorado.com/spider-calendar/)  
 [Demo Admin](http://wpdemo.web-dorado.com/wp-admin/admin.php?page=SpiderCalendar)  
