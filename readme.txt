@@ -142,6 +142,11 @@ Vietnamese (vi)
 
 
 == Changelog ==
+
+= 1.4.15 =
+bug fixed in description editor
+allow origin issue fixed
+
 = 1.4.14 =
 bug fixed in upcoming events widget
 
