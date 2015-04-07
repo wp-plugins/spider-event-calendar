@@ -4,11 +4,11 @@ add_action( 'wp_print_scripts', 'cal_scripts' );
 
 
 function  cal_scripts(){
-  wp_enqueue_script("Calendar", plugins_url("elements/calendar.js", __FILE__), FALSE);
-  wp_enqueue_script("calendar-setup", plugins_url("elements/calendar-setup.js", __FILE__), FALSE);
-  wp_enqueue_script("calendar_function", plugins_url("elements/calendar_function.js", __FILE__), FALSE);
-  wp_enqueue_style("Css", plugins_url("elements/calendar-jos.css", __FILE__), FALSE);
-  wp_enqueue_script('spider_color',plugins_url('jscolor/jscolor.js',__FILE__));
+  wp_enqueue_script("Calendar", plugins_url("elements/calendar.js", __FILE__), array(), '1.4.16', FALSE);
+  wp_enqueue_script("calendar-setup", plugins_url("elements/calendar-setup.js", __FILE__), array(), '1.4.16', FALSE);
+  wp_enqueue_script("calendar_function", plugins_url("elements/calendar_function.js", __FILE__), array(), '1.4.16', FALSE);
+  wp_enqueue_style("Css", plugins_url("elements/calendar-jos.css", __FILE__), array(), '1.4.16', FALSE);
+  wp_enqueue_script('spider_color',plugins_url('jscolor/jscolor.js',__FILE__), array(), '1.4.16');
 }
 
 if (!class_exists('WP_Widget')) {

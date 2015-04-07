@@ -23,7 +23,7 @@ div.calendar {
   padding: 2px;          /* Make the buttons seem like they're pressing */
   border:0px;
   height:inherit;
-  
+  display: table-cell !important;
 }
 .calendar .button {
 	
