@@ -144,6 +144,9 @@ Vietnamese (vi)
 
 == Changelog ==
 
+= 1.4.16 =
+cache issue fixed
+
 = 1.4.15 =
 bug fixed in description editor
 allow origin issue fixed
