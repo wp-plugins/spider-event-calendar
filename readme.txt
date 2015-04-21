@@ -161,7 +161,7 @@ Added "All Categories" button to all views
 bug fixed in frontend
 
 = 1.4.9 =
-when the current day is sunday the calendar will not show the set bordercolor for the current day bug fixed  
+bug in current day fixed  
 
 = 1.4.8 =
 warning in list view fixed
