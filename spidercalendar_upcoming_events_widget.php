@@ -2081,7 +2081,7 @@ $ev++;
 		
 		<tr class="starting" id="<?php echo $this->get_field_id('starting'); ?>">
 			<td class="paramlist_quality">
-				<label style="font-size:10px" for="<?php echo $this->get_field_id('starting'); ?>">Strating From:</label>
+				<label style="font-size:10px" for="<?php echo $this->get_field_id('starting'); ?>">Starting From:</label>
 			</td>
 			<td>
 				<label for="current" style="font-size:10px"><input type="radio" name="<?php echo $this->get_field_name('starting'); ?>" value="0" <?php if ($instance['starting'] == '0') echo 'checked="checked"'; ?> onchange="showd_(0)" id="current" />
