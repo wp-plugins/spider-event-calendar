@@ -738,8 +738,34 @@ $row=$wpdb->get_row($wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spiderca
 					document.getElementById('adminForm').submit();
 				  }
 		  }
+		  jQuery(document).ready(function() {
+		jQuery('.color_input').wpColorPicker();
+	 });
         </script>    
-
+		<style>
+		.wp-picker-holder{
+			position: absolute;
+			z-index: 2;
+			top: 20px;
+		}
+		.wp-color-result {
+		  background-color: transparent;
+		  width: 85px;
+		}
+		.wp-color-result:focus{
+			outline: none;
+		}
+		.color_for_this {
+		  height: 24px;
+		  top: 0px;
+		  position: relative;
+		  width: 35px;
+		  left: 2px;
+		}
+		 .wp-color-result:hover{
+		  background-color: transparent;
+		}
+		</style>
 	<table>
 		 <tr>
 			  <td align="right"><input type="button" onClick="submitbutton('save_category_event')" value="Save" class="button-secondary action"></td>
@@ -773,8 +799,11 @@ $row=$wpdb->get_row($wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spiderca
 				 <tr>
 			   <td class="key" ><label for="message"><?php echo 'Category Color'; ?>:</label>  </td>
              
-               <td><input type="text" name="color" id="color" class="color" style="width:134px;" value="<?php if(isset($row->color)) echo htmlspecialchars($row->color); 
-			   ?>"/></td>
+               <td>
+				<div class="color_for_this" style="background-color: #<?php if(isset($row->color)) echo htmlspecialchars($row->color); ?>">
+					<input type="text" name="color" id="color" class="color_input wp-color-picker" style="width:134px;" value="<?php if(isset($row->color)) echo htmlspecialchars($row->color); ?>"/>
+				</div>
+				</td>
                </tr>
                 
 

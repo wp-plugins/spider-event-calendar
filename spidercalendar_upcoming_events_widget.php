@@ -2,13 +2,14 @@
 $sonan=1;
 add_action( 'wp_print_scripts', 'cal_scripts' );
 
-
 function  cal_scripts(){
-  wp_enqueue_script("Calendar", plugins_url("elements/calendar.js", __FILE__), array(), '1.4.16', FALSE);
-  wp_enqueue_script("calendar-setup", plugins_url("elements/calendar-setup.js", __FILE__), array(), '1.4.16', FALSE);
-  wp_enqueue_script("calendar_function", plugins_url("elements/calendar_function.js", __FILE__), array(), '1.4.16', FALSE);
-  wp_enqueue_style("Css", plugins_url("elements/calendar-jos.css", __FILE__), array(), '1.4.16', FALSE);
-  wp_enqueue_script('spider_color',plugins_url('jscolor/jscolor.js',__FILE__), array(), '1.4.16');
+  global $wd_spider_calendar_version;
+  wp_enqueue_script("Calendar", plugins_url("elements/calendar.js", __FILE__), array(), $wd_spider_calendar_version, FALSE);
+  wp_enqueue_script("calendar-setup", plugins_url("elements/calendar-setup.js", __FILE__), array(), $wd_spider_calendar_version, FALSE);
+  wp_enqueue_script("calendar_function", plugins_url("elements/calendar_function.js", __FILE__), array(), $wd_spider_calendar_version, FALSE);
+  wp_enqueue_style("Css", plugins_url("elements/calendar-jos.css", __FILE__), array(), $wd_spider_calendar_version, FALSE);
+  wp_enqueue_script('wp-color-picker');
+  wp_enqueue_style( 'wp-color-picker' );
 }
 
 if (!class_exists('WP_Widget')) {
@@ -1984,26 +1985,72 @@ $ev++;
 	$id = $this->get_field_id('title');
 
     ?>
-	 <script>jscolor.bind();
-	 
+	 <script>
+	jQuery(document).ready(function() {
+		jQuery('.color_input').wpColorPicker();
+	 });
 	function selectcal(x)
 	{
-
-
-	
-	a=x.parentNode.parentNode.parentNode.childNodes[29].childNodes[3].childNodes[1]
-	selectcalendarvalue=x.value;
-    a.href=a.href+'&upcalendar_id='+selectcalendarvalue;
+		a=x.parentNode.parentNode.parentNode.childNodes[29].childNodes[3].childNodes[1]
+		selectcalendarvalue=x.value;
+		a.href=a.href+'&upcalendar_id='+selectcalendarvalue;
 	}
 	 
 	 </script>
 	 <style>
+	 .wp-color-result:focus{
+		outline: none;
+	 }
+	 .wp-picker-container:has(.wp-picker-open) { color: red; }
 	 #wd_admin_form .calendar .wd_button{
 		display: table-cell !important;
 	 }
 	 
 	 #wd_admin_form div.calendar{
 		margin-left: -101px;
+	 }
+
+	 .wp-picker-container{
+		position: absolute;
+		left: 5px;
+		top: 0px;
+	 }
+	 .paramlist_value{
+		position: relative;
+	 }
+	 .color_input.wp-color-picker{
+		  height: 23px;
+	 }
+	 .wp-picker-holder{
+		top: -11px;
+		position: relative;
+		z-index: 3;
+	 }
+	 .wp-color-result:after{
+		  width: 73px;
+	 }
+	 .paramlist_value > .wp-picker-container > a{
+		left: -1px;
+	 }
+	 .wp-picker-container .wp-picker-container > a{
+		  left: -11px;
+	 }
+	 .wp-color-result{
+		  background-color: transparent;
+		  left: -6px;
+	 }
+	 .wp-color-result:hover{
+		  background-color: transparent;
+		}
+	 .color_for_this{
+		  height: 24px;
+		  top: 0px;
+		  position: relative;
+		  width: 35px;
+		  left: 2px;
+	 }
+	 #repeat_rate_col .wp-picker-container .wp-picker-container > a{
+		  left: -6px;
 	 }
 	 </style>
     <p>
@@ -2291,7 +2338,7 @@ function addcal(x,y,z,f)
 	
 	<hr>
 	
-	<table width="100%" class="paramlist admintable" cellpadding="3">
+	<table width="100%" class="paramlist admintable"  cellpadding="4">
       <tbody>
 	  <tr>
           <td style="width:120px" class="paramlist_key">
@@ -2310,7 +2357,9 @@ function addcal(x,y,z,f)
             </span>
           </td>
           <td class="paramlist_value">
-				<input class="color" id="<?php echo $this->get_field_id('bg_color'); ?>" name="<?php echo $this->get_field_name('bg_color'); ?>" value="<?php echo $instance['bg_color'];?>" />
+			<div class="color_for_this" style="background-color: #<?php echo $instance['bg_color'];?>">
+			<input class="color_input wp-color-picker" id="<?php echo $this->get_field_id('bg_color'); ?>" name="<?php echo $this->get_field_name('bg_color'); ?>" value="<?php echo $instance['bg_color'];?>" />
+			</div>
           </td>
         </tr>
 		 <tr>
@@ -2320,7 +2369,9 @@ function addcal(x,y,z,f)
             </span>
           </td>
           <td class="paramlist_value">
-				<input class="color" id="<?php echo $this->get_field_id('title_color'); ?>" name="<?php echo $this->get_field_name('title_color'); ?>" value="<?php echo $instance['title_color'];?>" />
+			<div class="color_for_this" style="background-color: #<?php echo $instance['title_color'];?>">
+				<input class="color_input wp-color-picker" id="<?php echo $this->get_field_id('title_color'); ?>" name="<?php echo $this->get_field_name('title_color'); ?>" value="<?php echo $instance['title_color'];?>" />
+			</div>
           </td>
         </tr>
 		<tr>
@@ -2357,7 +2408,9 @@ function addcal(x,y,z,f)
             </span>
           </td>
           <td class="paramlist_value">
-				<input class="color" id="<?php echo $this->get_field_id('date_color'); ?>" name="<?php echo $this->get_field_name('date_color'); ?>" value="<?php echo $instance['date_color'];?>" />
+			<div class="color_for_this" style="background-color: #<?php echo $instance['date_color'];?>">
+				<input class="color_input wp-color-picker" id="<?php echo $this->get_field_id('date_color'); ?>" name="<?php echo $this->get_field_name('date_color'); ?>" value="<?php echo $instance['date_color'];?>" />
+			</div>
           </td>
         </tr>
 		<tr>
@@ -2376,8 +2429,8 @@ function addcal(x,y,z,f)
               <label style="font-size:10px" for="<?php echo $this->get_field_id('repeat_color'); ?>" class="hasTip">Event Repeat Rate Color:</label>
             </span>
           </td>
-          <td class="paramlist_value">
-				<input class="color" id="<?php echo $this->get_field_id('repeat_color'); ?>" name="<?php echo $this->get_field_name('repeat_color'); ?>" value="<?php echo $instance['repeat_color'];?>" />
+          <td class="paramlist_value" id="repeat_rate_col">
+				<input class="color_input wp-color-picker" id="<?php echo $this->get_field_id('repeat_color'); ?>" name="<?php echo $this->get_field_name('repeat_color'); ?>" value="<?php echo $instance['repeat_color'];?>" />
           </td>
         </tr>
 		
@@ -2389,7 +2442,9 @@ function addcal(x,y,z,f)
             </span>
           </td>
           <td class="paramlist_value">
-				<input class="color" id="<?php echo $this->get_field_id('text_color'); ?>" name="<?php echo $this->get_field_name('text_color'); ?>" value="<?php echo $instance['text_color'];?>" />
+			<div class="color_for_this" style="background-color: #<?php echo $instance['text_color'];?>">
+				<input class="color_input wp-color-picker" id="<?php echo $this->get_field_id('text_color'); ?>" name="<?php echo $this->get_field_name('text_color'); ?>" value="<?php echo $instance['text_color'];?>" />
+			</div>
           </td>
         </tr>
 		
@@ -2400,7 +2455,9 @@ function addcal(x,y,z,f)
             </span>
           </td>
           <td class="paramlist_value">
-				<input class="color" id="<?php echo $this->get_field_id('divider_color'); ?>" name="<?php echo $this->get_field_name('divider_color'); ?>" value="<?php echo $instance['divider_color'];?>" />
+			<div class="color_for_this" style="background-color: #<?php echo $instance['divider_color'];?>">
+				<input class="color_input wp-color-picker" id="<?php echo $this->get_field_id('divider_color'); ?>" name="<?php echo $this->get_field_name('divider_color'); ?>" value="<?php echo $instance['divider_color'];?>" />
+			</div>
           </td>
         </tr>
 	 </tbody>
