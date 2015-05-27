@@ -347,7 +347,7 @@ $id = $this->get_field_id('title');
 <style type="text/css">
 
 #event_repeat<?php echo $id?>{
-color:#<?php echo $repeat_color ?>;
+color:#<?php echo str_replace('#','',$repeat_color); ?>;
 padding-top:14px;
 <?php if($show_eventtext==0){?>
 padding-bottom:14px!important;
@@ -365,7 +365,7 @@ border-collapse:collapse;
 
 #event_text<?php echo $id?>{
 padding:15px;
-color:#<?php echo $text_color?>;
+color:#<?php echo str_replace('#','',$text_color); ?>;
 padding-bottom:14px!important;
 <?php if($show_repeat==0) {?>
 padding-top:14px!important;
@@ -376,7 +376,7 @@ padding-left: 8px;
 
 #event_date<?php echo $id?>
 {
-color:#<?php echo $date_color?>;
+color:#<?php echo str_replace('#','',$date_color); ?>;
 <?php if($show_eventtext==0){?>
 padding-bottom:14px!important;
 <?php } ?>
@@ -392,7 +392,7 @@ padding-bottom:14px!important;
 {
 font-size:<?php echo $title_size?>px;
 font-family:<?php echo $title_font?>;
-color:#<?php echo $title_color?> !important;
+color:#<?php echo str_replace('#','',$title_color); ?> !important;
 text-decoration:none;
 
 }
@@ -414,7 +414,7 @@ padding-top:2px;
  }
  #divider<?php echo $id?>
  {
- background-color:#<?php echo $instance['divider_color']?>;
+ background-color:#<?php echo str_replace('#','',$instance['divider_color']); ?>;
  border:none; 
  height:1px;
  }
@@ -428,7 +428,7 @@ padding-bottom:14px;
 
 .module<?php echo $id?>
 {
-background-color:#<?php echo $bg_color?>;
+background-color:#<?php echo str_replace('#','',$bg_color);?>;
 width:<?php echo $width?>px;
 border:1px ;
 border-radius:8px;
@@ -447,8 +447,6 @@ border:2px solid #6A6A6A;;
 <?php
 $query1= "SELECT * FROM " . $wpdb->prefix . "spidercalendar_event WHERE published='1' LIMIT 0,".$event_from_current_day;
 $rows = $wpdb->get_results($query1);
-
-
  $daysarray = array();
 
 foreach($rows as $row)
@@ -493,7 +491,6 @@ echo '<div class="module'.$id.'">';
 {
 	$query="SELECT * FROM   " . $wpdb->prefix . "spidercalendar_event WHERE calendar=".$calendar_id."  AND published='1'  ORDER BY date";	
 $evs = $wpdb->get_results($query);
-
 $st_date=date('Y-m-d');
 $dates=array();
 foreach($evs as $ev)
@@ -2357,7 +2354,7 @@ function addcal(x,y,z,f)
             </span>
           </td>
           <td class="paramlist_value">
-			<div class="color_for_this" style="background-color: #<?php echo $instance['bg_color'];?>">
+			<div class="color_for_this" style="background-color: #<?php echo str_replace('#','',$instance['bg_color']);?>">
 			<input class="color_input wp-color-picker" id="<?php echo $this->get_field_id('bg_color'); ?>" name="<?php echo $this->get_field_name('bg_color'); ?>" value="<?php echo $instance['bg_color'];?>" />
 			</div>
           </td>
@@ -2369,7 +2366,7 @@ function addcal(x,y,z,f)
             </span>
           </td>
           <td class="paramlist_value">
-			<div class="color_for_this" style="background-color: #<?php echo $instance['title_color'];?>">
+			<div class="color_for_this" style="background-color: #<?php echo str_replace('#','',$instance['title_color']);?>">
 				<input class="color_input wp-color-picker" id="<?php echo $this->get_field_id('title_color'); ?>" name="<?php echo $this->get_field_name('title_color'); ?>" value="<?php echo $instance['title_color'];?>" />
 			</div>
           </td>
@@ -2408,7 +2405,7 @@ function addcal(x,y,z,f)
             </span>
           </td>
           <td class="paramlist_value">
-			<div class="color_for_this" style="background-color: #<?php echo $instance['date_color'];?>">
+			<div class="color_for_this" style="background-color: #<?php echo str_replace('#','',$instance['date_color']);?>">
 				<input class="color_input wp-color-picker" id="<?php echo $this->get_field_id('date_color'); ?>" name="<?php echo $this->get_field_name('date_color'); ?>" value="<?php echo $instance['date_color'];?>" />
 			</div>
           </td>
@@ -2442,7 +2439,7 @@ function addcal(x,y,z,f)
             </span>
           </td>
           <td class="paramlist_value">
-			<div class="color_for_this" style="background-color: #<?php echo $instance['text_color'];?>">
+			<div class="color_for_this" style="background-color: #<?php echo str_replace('#','',$instance['text_color']);?>">
 				<input class="color_input wp-color-picker" id="<?php echo $this->get_field_id('text_color'); ?>" name="<?php echo $this->get_field_name('text_color'); ?>" value="<?php echo $instance['text_color'];?>" />
 			</div>
           </td>
@@ -2455,7 +2452,7 @@ function addcal(x,y,z,f)
             </span>
           </td>
           <td class="paramlist_value">
-			<div class="color_for_this" style="background-color: #<?php echo $instance['divider_color'];?>">
+			<div class="color_for_this" style="background-color: #<?php echo str_replace('#','',$instance['divider_color']);?>">
 				<input class="color_input wp-color-picker" id="<?php echo $this->get_field_id('divider_color'); ?>" name="<?php echo $this->get_field_name('divider_color'); ?>" value="<?php echo $instance['divider_color'];?>" />
 			</div>
           </td>
