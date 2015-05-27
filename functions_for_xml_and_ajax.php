@@ -190,13 +190,13 @@ function seemore() {
     $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=%d', $theme_id));
     $show_event = $theme->day_start;
   }
-  $title_color = '#' . $theme->title_color;
+  $title_color = '#' . str_replace('#','',$theme->title_color);
   $title_size = $theme->title_font_size;
-  $show_event_bgcolor = '#' . $theme->show_event_bgcolor;
+  $show_event_bgcolor = '#' . str_replace('#','',$theme->show_event_bgcolor);
   $popup_width = $theme->popup_width;
   $popup_height = $theme->popup_height;
 
-  $date_color = '#' . $theme->date_color;
+  $date_color = '#' . str_replace('#','',$theme->date_color);
   $date_size = $theme->date_size;
   $date_font = $theme->date_font;
   // $date_format = '';
@@ -294,7 +294,7 @@ WHERE " . $wpdb->prefix . "spidercalendar_event.published=1  AND " . $wpdb->pref
             echo '<div >';
 			echo '<div style="display: table-cell;">'; 
 			if(!isset($row->color)) $row->color = "";
-			echo '	<div style="border-top: 1px solid #FFF;height: 76px;border-right: 2px solid #'.$row->color.';display: table-cell;font-size: 25px;background-color: #E8E8E8;">'.($i + 1).'&nbsp;</div>';
+			echo '	<div style="border-top: 1px solid #FFF;height: 76px;border-right: 2px solid #'.str_replace('#','',$row->color).';display: table-cell;font-size: 25px;background-color: #E8E8E8;">'.($i + 1).'&nbsp;</div>';
                  echo '<a style="display: table-cell;text-decoration: none;font-size: 20px;color:' . $title_color . '; line-height:30px"
                     href="' . add_query_arg(array(
                       'action' => 'spidercalendarbig',
@@ -318,7 +318,7 @@ WHERE " . $wpdb->prefix . "spidercalendar_event.published=1  AND " . $wpdb->pref
 		  {
 		  echo '<div >';
 		  echo '<div style="display: table-cell;">'; 
-		   echo '<div style="border-top: 1px solid #FFF;height: 76px;border-right: 2px solid #'.$row->color.';display: table-cell;font-size: 25px;background-color: #E8E8E8;">&nbsp; &nbsp;&nbsp;</div>';
+		   echo '<div style="border-top: 1px solid #FFF;height: 76px;border-right: 2px solid #'.str_replace('#','',$row->color).';display: table-cell;font-size: 25px;background-color: #E8E8E8;">&nbsp; &nbsp;&nbsp;</div>';
                  echo '<a style="display: table-cell;text-decoration: none;font-size: 20px;color:' . $title_color . '; line-height:30px"
                     href="' . add_query_arg(array(
                       'action' => 'spidercalendarbig',
@@ -438,17 +438,17 @@ function spiderbigcalendar() {
     $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=%d', $theme_id));
   }
   
-  $title_color = '#' . $theme->title_color;
+  $title_color = '#' . str_replace('#','',$theme->title_color);
   $title_size = $theme->title_font_size;
   $title_font = $theme->title_font;
   $title_style = $theme->title_style;
-  $date_color = '#' . $theme->date_color;
+  $date_color = '#' . str_replace('#','',$theme->date_color);
   $date_size = $theme->date_size;
   $date_font = $theme->date_font;
   $date_style = $theme->date_style;
-  $next_prev_event_bgcolor = '#' . $theme->next_prev_event_bgcolor;
-  $next_prev_event_arrowcolor = '#' . $theme->next_prev_event_arrowcolor;
-  $show_event_bgcolor = '#' . $theme->show_event_bgcolor;
+  $next_prev_event_bgcolor = '#' . str_replace('#','',$theme->next_prev_event_bgcolor);
+  $next_prev_event_arrowcolor = '#' . str_replace('#','',$theme->next_prev_event_arrowcolor);
+  $show_event_bgcolor = '#' . str_replace('#','',$theme->show_event_bgcolor);
   $popup_width = $theme->popup_width;
   $popup_height = $theme->popup_height;
   $date_format = $theme->date_format;
@@ -647,7 +647,7 @@ WHERE " . $wpdb->prefix . "spidercalendar_event_category.published=1 AND " . $wp
 		  else
 		  $row_color = "";
 		  
-          echo '<div style="border-left: 7px solid #'.$row_color.';color:' . $title_color . ';font-size:' . $title_size . 'px; font-family:' . $title_font . '; ' . $font_weight . '; ' . $font_style . '  ">' . $row_title . '</div>';
+          echo '<div style="border-left: 7px solid #'.str_replace('#','',$row_color).';color:' . $title_color . ';font-size:' . $title_size . 'px; font-family:' . $title_font . '; ' . $font_weight . '; ' . $font_style . '  ">' . $row_title . '</div>';
 		  if ($row->text_for_date != '') {
           echo '<div style="line-height:20px">' . wpautop($row->text_for_date) . '</div>';
 		  }
