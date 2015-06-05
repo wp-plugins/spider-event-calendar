@@ -32,8 +32,7 @@ Different categories created for the calendar will be displayed as a legend belo
 *   You can add unlimited number of calendars, event categories and unlimited number of events for each calendar.  
 *   [WordPress Calendar](http://web-dorado.com/products/wordpress-calendar.html) can be used as a widget as well.  
 *   Separate upcoming events widget to display upcoming events in a list. The widget features are customizable.
-*   With a simple click on the date on the Calendar you will see the events and their descriptions recorded for that day.  
-*   Spider Event Calendar supports events that last more than one day.  
+*   With a simple click on the date on the Calendar you will see the events and their descriptions recorded for that day.   
 *   Possibility to set the month and the year initially displayed on the calendar (option to display any particular month instead of the current month on the calendar).  
 *   Possibility of displaying events repeating on a specific day of week on a weekly, monthly and even yearly basis.   
 *   Possibility of displaying single-day events.  
@@ -143,6 +142,7 @@ Vietnamese (vi)
 
 
 == Changelog ==
+
 = 1.4.20 =
 bug in color picker fixed
 
