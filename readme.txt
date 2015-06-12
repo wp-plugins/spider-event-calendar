@@ -17,7 +17,6 @@ WordPress event calendar is a FREE user-friendly responsive plugin to manage mul
 [Demo](http://wpdemo.web-dorado.com/spider-calendar/)  
 [Demo Admin](http://wpdemo.web-dorado.com/wp-admin/admin.php?page=SpiderCalendar)  
 [User Manual](http://web-dorado.com/spider-calendar-wordpress-guide-step-1.html)  
-[Frequently Asked Questions](http://web-dorado.com/forum/spider-calendar-wordpress/1033-spider-calendar-faq.html)  
 
 
 Spider Event Calendar is a highly configurable plugin which allows you to have multiple organized events in a calendar. This plugin is one of the best WordPress Calendar available in WordPress Directory.  If you have problem with organizing your WordPress Calendar events and displaying them in a calendar format, then Spider Wordpress Calendar Plugin is the best solution. Maybe you just want to have a quick look at your calendar to remind yourself about the future appointments? It will be great if calendar extension will be able to show all events, display them in a widget as a beautiful and customizable calendar on your website. Spider WordPress Calendar is an extraordinary user friendly calendar.   
