@@ -4,11 +4,11 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: https://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.4.20
+Version: 1.4.21
 Author: https://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
-$wd_spider_calendar_version="1.4.20";
+$wd_spider_calendar_version="1.4.21";
 // LANGUAGE localization.
 function sp_calendar_language_load() {
   load_plugin_textdomain('sp_calendar', FALSE, basename(dirname(__FILE__)) . '/languages');
@@ -1148,6 +1148,16 @@ function calendar_Featured_Plugins() {  ?>
 					<p>Form Maker is a modern and advanced tool for creating WordPress forms easily and fast.</p>
 				</div>
 				<a target="_blank" href="https://web-dorado.com/products/wordpress-form.html" class="download">Download</a>
+			</li>
+			<li class="events-wd">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Event Calendar WD</strong>
+				</div>
+				<div class="description">
+					<p>Organize and publish your events in an easy and elegant way using Event Calendar WD.</p>
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-event-calendar-wd.html" class="download">Download</a>
 			</li>
 			 <li class="catalog">
 				<div class="product"></div>

@@ -1,4 +1,3 @@
-
 #main_featured_plugins_page #featured-plugins-list {
 	position:relative;
 	margin:0px auto;
@@ -39,6 +38,7 @@
 #main_featured_plugins_page #featured-plugins-list  li.catalog  .product {background:url(images/catalog.png) left center no-repeat;}
 #main_featured_plugins_page #featured-plugins-list  li.contact-maker  .product {background:url(images/contact.maker.png) left center no-repeat;   background-size: 61%;}
 #main_featured_plugins_page #featured-plugins-list  li.contacts  .product {background:url(images/contacts.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.events-wd  .product {background:url(images/events_wd.png) left center no-repeat;}
 #main_featured_plugins_page #featured-plugins-list  li.facebook  .product {background:url(images/facebook.png) left center no-repeat;}
 #main_featured_plugins_page #featured-plugins-list  li.faq  .product {background:url(images/faq.png) left center no-repeat;}
 #main_featured_plugins_page #featured-plugins-list  li.flash-calendar .product {background:url(images/flash.calendar.png) left center no-repeat;}
