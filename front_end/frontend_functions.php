@@ -30,11 +30,7 @@ function php_Month_num($month_name) {
 }
 
 function php_GetNextDate($beginDate, $repeat) {
-  //explode the date by "-" and storing to array
-  $date_parts1 = explode("-", $beginDate);
-  //gregoriantojd() Converts a Gregorian date to Julian Day Count
-  $start_date = gregoriantojd($date_parts1[1], $date_parts1[2], $date_parts1[0]);
-  return jdtogregorian($start_date + $repeat);
+  return date('n/j/Y',strtotime($beginDate.' +'.$repeat.' day'));
 }
 
 function php_daysDifference($beginDate, $endDate) {
@@ -42,9 +38,10 @@ function php_daysDifference($beginDate, $endDate) {
   $date_parts1 = explode("-", $beginDate);
   $date_parts2 = explode("-", $endDate);
   //gregoriantojd() Converts a Gregorian date to Julian Day Count
-  $start_date = gregoriantojd($date_parts1[1], $date_parts1[2], $date_parts1[0]);
-  $end_date = gregoriantojd($date_parts2[1], $date_parts2[2], $date_parts2[0]);
-  return $end_date - $start_date;
+  $start_date = mktime(0,0,0,$date_parts1[1], $date_parts1[2], $date_parts1[0]);
+  $end_date = mktime(0,0,0,$date_parts2[1], $date_parts2[2], $date_parts2[0]);
+  $diff= floor(($end_date - $start_date)/86400);
+  return $diff;
 }
 
 function php_getdays($show_numbers_for_events, $calendar, $date, $theme_id, $widget) {
