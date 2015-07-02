@@ -2142,7 +2142,7 @@ $ev++;
 			<td>
 				<input style="width:85px" class="inputbox" type="text" name="<?php echo $this->get_field_name('start_date'); ?>'" id="<?php echo $this->get_field_id('start_date'); ?>" size="10" maxlength="10" value="<?php echo $instance['start_date']; ?>"/>
 				
-                    <input type="reset" class="wd_button" value="..." onclick="return showCalendar('<?php echo $this->get_field_id('start_date'); ?>','%Y-%m-%d');"/>
+                    <input type="reset" class="wd_button" value="..." onclick="return showCalendar('<?php echo $this->get_field_id('start_date'); ?>','%Y-%m-%d');" style="border: 1px solid #DDD; border-radius: 50px;"/>
 			</td>
 		</tr>
 		
