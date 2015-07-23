@@ -1,7 +1,7 @@
 === WordPress Event Calendar ===  
 Contributors: webdorado  
-Donate link: http://web-dorado.com/products/wordpress-calendar.html  
-Tags: calendar, calendars, event, event calendar, event manager, events calendar,calendar widget,  event registration, event management,events, Kalender, agenda, calendario, availability calendar,o nline calendar, holiday calendar, scheduling, free calendar, Calender, upcoming events, event widget , event list, calendar localization, Organizer, editorial calendar, Interactive Calendar, news calendar, meeting, appointment, event tracking, event organizer, upcoming events widget, event page, event bookings, recurring, recurring events, conference, date, dates, schedule, times, venue, AJAX, responsive, shortcode, seminar, summit, reservation
+Donate link: https://web-dorado.com/products/wordpress-calendar.html  
+Tags: calendar, calendars, event, event calendar, event manager, events calendar,calendar widget,  event registration, event management,events, Kalender, agenda, calendario, availability calendar,o nline calendar, holiday calendar, scheduling, free calendar, Calender, upcoming events, event widget , event list, calendar localization, Organizer, editorial calendar, Interactive Calendar, news calendar, meeting, appointment, event tracking, event organizer, upcoming events widget, event page, event bookings, recurring, recurring events, conference, date, dates, schedule, times, venue, AJAX, responsive, shortcode, seminar, summit, reservation 
 Requires at least: 3.4  
 Tested up to: 4.2  
 Stable tag: 1.4.23
@@ -13,10 +13,10 @@ Spider Event Calendar is a highly configurable product which allows you to have 
 == Description ==    
 WordPress event calendar is a FREE user-friendly responsive plugin to manage multiple recurring events and with various options.  
     
-[WordPress Calendar](http://web-dorado.com/products/wordpress-calendar.html)  
+[WordPress Calendar](https://web-dorado.com/products/wordpress-calendar.html)  
 [Demo](http://wpdemo.web-dorado.com/spider-calendar/)  
 [Demo Admin](http://wpdemo.web-dorado.com/wp-admin/admin.php?page=SpiderCalendar)  
-[User Manual](http://web-dorado.com/spider-calendar-wordpress-guide-step-1.html)  
+[User Manual](https://web-dorado.com/spider-calendar-wordpress-guide-step-1.html)  
 
 
 Spider Event Calendar is a highly configurable plugin which allows you to have multiple organized events in a calendar. This plugin is one of the best WordPress Calendar available in WordPress Directory.  If you have problem with organizing your WordPress Calendar events and displaying them in a calendar format, then Spider Wordpress Calendar Plugin is the best solution. Maybe you just want to have a quick look at your calendar to remind yourself about the future appointments? It will be great if calendar extension will be able to show all events, display them in a widget as a beautiful and customizable calendar on your website. Spider WordPress Calendar is an extraordinary user friendly calendar.   
@@ -29,7 +29,7 @@ Different categories created for the calendar will be displayed as a legend belo
 
 *   100% responsive. Fully compatible with all mobile devices.
 *   You can add unlimited number of calendars, event categories and unlimited number of events for each calendar.  
-*   [WordPress Calendar](http://web-dorado.com/products/wordpress-calendar.html) can be used as a widget as well.  
+*   [WordPress Calendar](https://web-dorado.com/products/wordpress-calendar.html) can be used as a widget as well.  
 *   Separate upcoming events widget to display upcoming events in a list. The widget features are customizable.
 *   With a simple click on the date on the Calendar you will see the events and their descriptions recorded for that day.   
 *   Possibility to set the month and the year initially displayed on the calendar (option to display any particular month instead of the current month on the calendar).  
@@ -55,11 +55,11 @@ Different categories created for the calendar will be displayed as a legend belo
 *   All categories legend for displaying all events or returning to original state after hitting a specific category
 *   Support for recurring events  
 
-Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-calendar.html) to add features:   
+Upgrade to [WordPress Calendar Pro](https://web-dorado.com/products/wordpress-calendar.html) to add features:   
 
 *   Spider Event Calendar allows you to change the colors of the calendar and fit it to the colors of your website.    
 *   Spider Event Calendar has 17 standard themes included in extension package for the plugin and 6 themes for the widget.      
-*   You can set width of the Spider Event Calendar in the widget and in the [WordPress calendar plugin](http://web-dorado.com/products/wordpress-calendar.html) as well.    
+*   You can set width of the Spider Event Calendar in the widget and in the [WordPress calendar plugin](https://web-dorado.com/products/wordpress-calendar.html) as well.    
 *   You can change calendar date color, font size and font family in the popup.   
 *   Possibility to change arrow color and background color in the popup in the Spider Event Calendar.   
 *   Possibility to change popup background color in the Spider Event Calendar.   
@@ -76,7 +76,7 @@ Upgrade to [WordPress Calendar Pro](http://web-dorado.com/products/wordpress-cal
 *   Possibility to set a number of events to be displayed within a single day   
 
 ###IMPORTANT:   
-If you think you found a bug in Spider Calendar or have any problem/question concerning the plugin, please check out [Support Forum](http://web-dorado.com/forum/spider-calendar-wordpress.html) in our website. If you do not find a solution here, do not hesitate to contact us at [info@web-dorado.com](mailto:info@web-dorado.com).
+If you think you found a bug in Spider Calendar or have any problem/question concerning the plugin, please check out [Support Forum](https://web-dorado.com/forum/spider-calendar-wordpress.html) in our website. If you do not find a solution here, do not hesitate to contact us at [info@web-dorado.com](mailto:info@web-dorado.com).
 
   
 ### Supported languages  
