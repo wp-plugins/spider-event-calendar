@@ -10,7 +10,7 @@ class spider_calendar extends WP_Widget {
       'description' => 'Spider Calendar is a highly configurable product which allows you to have multiple organized events.'
     );
     $control_ops = array('id_base' => 'spider_calendar'); // Widget Control Settings.
-    $this->WP_Widget('spider_calendar', 'Spider Calendar', $widget_ops, $control_ops); // Create the widget.
+    parent::__construct('spider_calendar', 'Spider Calendar', $widget_ops, $control_ops); // Create the widget.
   }
 
   // Extract Args //

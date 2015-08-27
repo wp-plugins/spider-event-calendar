@@ -24,7 +24,7 @@ class upcoming_events extends WP_Widget {
       'description' => ''
     );
     $control_ops = array('id_base' => 'upcoming_events'); // Widget Control Settings.
-    $this->WP_Widget('upcoming_events', 'Upcoming Events', $widget_ops, $control_ops); // Create the widget.
+    parent::__construct('upcoming_events', 'Upcoming Events', $widget_ops, $control_ops); // Create the widget.
   }
 
   // Extract Args //
