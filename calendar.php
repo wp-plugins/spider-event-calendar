@@ -3,11 +3,11 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: https://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.4.27
+Version: 1.4.28
 Author: https://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
-$wd_spider_calendar_version="1.4.27";
+$wd_spider_calendar_version="1.4.28";
 // LANGUAGE localization.
 function sp_calendar_language_load() {
   load_plugin_textdomain('sp_calendar', FALSE, basename(dirname(__FILE__)) . '/languages');
@@ -608,6 +608,16 @@ add_action('wp_ajax_nopriv_spiderbigcalendar_day_widget', 'big_calendar_day_widg
 add_action('wp_ajax_nopriv_spidercalendarbig', 'spiderbigcalendar');
 add_action('wp_ajax_nopriv_spiderseemore', 'seemore');
 add_action('wp_ajax_nopriv_window', 'php_window');
+
+//notices
+if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
+	require_once( 'spider_calendar_admin_class.php' );
+	include_once('spider_calendar_notices_class.php');
+	require_once('notices.php');
+	add_action( 'plugins_loaded', array( 'SC_Admin', 'get_instance' ) );
+}
+
+
 // Add style head.
 function add_button_style_calendar() {
   echo '<script>var wdplugin_url = "' . plugins_url('', __FILE__) . '";</script>';
