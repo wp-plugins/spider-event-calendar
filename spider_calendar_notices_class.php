@@ -100,8 +100,7 @@ class SC_Notices {
 				if ($admin_display_check == 0 && strtotime( $admin_display_start ) <= strtotime( $current_date )) {
 
 					// Get remaining query string
-					$query_str = esc_url( add_query_arg( 'sc_admin_notice_ignore', $slug ) );
-
+					$query_str = (isset($admin_notices[$slug]['later_link']) ? $admin_notices[$slug]['later_link'] : esc_url(add_query_arg('sc_admin_notice_ignore', $slug)));
 					// Admin notice display output
 					echo '<div class="update-nag sc-admin-notice">';
 					echo '<div class="sc-notice-logo"></div>';

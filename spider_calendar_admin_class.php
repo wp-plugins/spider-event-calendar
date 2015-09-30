@@ -2,7 +2,7 @@
 
 class SC_Admin {
 	public static $instance = null;
-	protected $version = '1.4.28';
+	protected $version = '1.4.29';
 	public $prefix = "sc_";
 	protected $notices = null;
 	public static function get_instance() {
